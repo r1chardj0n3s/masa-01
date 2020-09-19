@@ -5,7 +5,13 @@ keyboard = dict()
 
 world = esper.World()
 
-PLAYER_SPEED = 500
+PLAYER_SPEED = 550
+# kenney tiles have fake isometric, 2:1 pixel ratio of diagonals
+# the following transformation ensures hitting the controller diagonally
+# makes the character move on a "kenney-diagonal" line as drawn on the map
+DIMETRIC_FACTOR = 5.0 ** 0.5  # sqrt(5) aka diagonal of a triangle with sides 2, 1 
+PLAYER_SPEED_X = PLAYER_SPEED / DIMETRIC_FACTOR
+PLAYER_SPEED_Y = PLAYER_SPEED / (DIMETRIC_FACTOR * 2)
 
 
 class Sprite:
@@ -37,13 +43,13 @@ class PlayerControlProcessor(esper.Processor):
             dx = 0
             dy = 0
             if keyboard.get(arcade.key.UP):
-                dy += PLAYER_SPEED
+                dy += PLAYER_SPEED_Y
             if keyboard.get(arcade.key.DOWN):
-                dy -= PLAYER_SPEED
+                dy -= PLAYER_SPEED_Y
             if keyboard.get(arcade.key.RIGHT):
-                dx += PLAYER_SPEED
+                dx += PLAYER_SPEED_X
             if keyboard.get(arcade.key.LEFT):
-                dx -= PLAYER_SPEED
+                dx -= PLAYER_SPEED_X
             velocity.dx = dx
             velocity.dy = dy
 
