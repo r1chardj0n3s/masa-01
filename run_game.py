@@ -73,8 +73,8 @@ class Game(arcade.Window):
 
     def load_map(self, level_map):
         self.sprites = arcade.SpriteList()
-        sprite = arcade.Sprite(":resources:images/alien/alienBlue_front.png")
-        bee = arcade.Sprite(":resources:images/enemies/bee.png")
+        sprite = arcade.Sprite("data/kenney_robot-pack_side/robot_blueDrive1.png", scale=.5)
+        bee = arcade.Sprite(":resources:images/enemies/bee.png", scale=.5)
         self.sprites.append(sprite)  # TODO ECS me??
         self.sprites.append(bee)  # TODO ECS me??
 
