@@ -8,26 +8,32 @@ world = esper.World()
 PLAYER_SPEED = 500
 
 
-class Sprite():
+class Sprite:
     def __init__(self, sprite):
         self.sprite = sprite
 
-class PlayerControlled():
+
+class PlayerControlled:
     ...
 
-class Position():
+
+class Position:
     def __init__(self, x, y):
         self.x = x
         self.y = y
 
-class Velocity():
+
+class Velocity:
     def __init__(self, dx, dy):
         self.dx = dx
         self.dy = dy
 
+
 class PlayerControlProcessor(esper.Processor):
     def process(self, dt):
-        for ent, (pc, velocity) in self.world.get_components(PlayerControlled, Velocity):           
+        for ent, (pc, velocity) in self.world.get_components(
+            PlayerControlled, Velocity
+        ):
             dx = 0
             dy = 0
             if keyboard.get(arcade.key.UP):
@@ -41,14 +47,13 @@ class PlayerControlProcessor(esper.Processor):
             velocity.dx = dx
             velocity.dy = dy
 
-                
-
 
 class VelocityPositionProcessor(esper.Processor):
     def process(self, dt):
-        for ent, (position, velocity) in self.world.get_components(Position, Velocity):           
+        for ent, (position, velocity) in self.world.get_components(Position, Velocity):
             position.x += velocity.dx * dt
             position.y += velocity.dy * dt
+
 
 class SpriteProcessor(esper.Processor):
     def process(self, dt):
@@ -66,31 +71,42 @@ class Game(arcade.Window):
     def __init__(self):
         super().__init__(1280, 720, "Junk Yard Wars")
 
+    def load_map(self, level_map):
         self.sprites = arcade.SpriteList()
+        sprite = arcade.Sprite(":resources:images/alien/alienBlue_front.png")
+        bee = arcade.Sprite(":resources:images/enemies/bee.png")
+        self.sprites.append(sprite)  # TODO ECS me??
+        self.sprites.append(bee)  # TODO ECS me??
 
-        sprite = arcade.Sprite(':resources:images/alien/alienBlue_front.png')
-        bee = arcade.Sprite(':resources:images/enemies/bee.png')
-        self.sprites.append(sprite)   # TODO ECS me??
-        self.sprites.append(bee)   # TODO ECS me??
-
-        self.my_map = arcade.tilemap.read_tmx("data/first-map.tmx")
+        self.my_map = arcade.tilemap.read_tmx("data/{}.tmx".format(level_map))
         map_height = self.my_map.map_size.height * self.my_map.tile_size[1]
-        for obj in arcade.tilemap.get_tilemap_layer(self.my_map, 'triggers').tiled_objects:
-            if obj.name == 'PLAYER_SPAWN':
-                world.create_entity(PlayerControlled(), Velocity(0,0), Position(obj.location.x, map_height-obj.location.y), Sprite(sprite))
-            if obj.name == 'ENEMY_SPAWN':
-                world.create_entity(Velocity(0,0), Position(obj.location.x, map_height-obj.location.y), Sprite(bee))
+        for obj in arcade.tilemap.get_tilemap_layer(
+            self.my_map, "triggers"
+        ).tiled_objects:
+            if obj.name == "PLAYER_SPAWN":
+                world.create_entity(
+                    PlayerControlled(),
+                    Velocity(0, 0),
+                    Position(obj.location.x, map_height - obj.location.y),
+                    Sprite(sprite),
+                )
+            if obj.name == "ENEMY_SPAWN":
+                world.create_entity(
+                    Velocity(0, 0),
+                    Position(obj.location.x, map_height - obj.location.y),
+                    Sprite(bee),
+                )
 
-        self.ground_list = arcade.tilemap.process_layer(self.my_map, 'ground')
-        self.foreground_list = arcade.tilemap.process_layer(self.my_map, 'foreground')
+        self.ground_list = arcade.tilemap.process_layer(self.my_map, "ground")
+        self.foreground_list = arcade.tilemap.process_layer(self.my_map, "foreground")
 
     def on_key_press(self, symbol, modifiers):
         keyboard[symbol] = True
         if symbol == arcade.key.ESCAPE:
             arcade.close_window()
 
-        if symbol== arcade.key.SPACE:
-            self.transition_map('second-map')
+        if symbol == arcade.key.SPACE:
+            self.load_map("second-map")
 
     def on_key_release(self, symbol, modifiers):
         del keyboard[symbol]
@@ -104,13 +120,7 @@ class Game(arcade.Window):
         self.sprites.draw()
         self.foreground_list.draw()
 
-    def transition_map(self, level_map):
-        self.my_map = arcade.tilemap.read_tmx("data/{}.tmx".format(level_map))
-
-        self.background_list = arcade.tilemap.process_layer(self.my_map, level_map)
-
-        self.on_draw()
-
 
 game = Game()
+game.load_map("first-map")
 arcade.run()
