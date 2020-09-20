@@ -1,6 +1,45 @@
 import arcade
+import esper
 
 keyboard = dict()
+
+world = esper.World()
+
+
+class Sprite():
+    def __init__(self, sprite):
+        self.sprite = sprite
+
+class PlayerControlled():
+    ...
+
+class Position():
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+
+class PlayerControlProcessor(esper.Processor):
+    def process(self, dt):
+        for ent, (pc, position) in self.world.get_components(PlayerControlled, Position):           
+            if keyboard.get(arcade.key.UP):
+                position.y += 5
+            if keyboard.get(arcade.key.DOWN):
+                position.y -= 5
+            if keyboard.get(arcade.key.RIGHT):
+                position.x += 5
+            if keyboard.get(arcade.key.LEFT):
+                position.x -= 5
+
+class SpriteProcessor(esper.Processor):
+    def process(self, dt):
+        for ent, (sprite, position) in self.world.get_components(Sprite, Position):           
+            sprite.sprite.center_x = position.x
+            sprite.sprite.center_y = position.y
+
+
+world.add_processor(PlayerControlProcessor())
+world.add_processor(SpriteProcessor())
+
 
 class Game(arcade.Window):
     def __init__(self):
@@ -8,8 +47,10 @@ class Game(arcade.Window):
 
         self.sprites = arcade.SpriteList()
 
-        self.sprite = arcade.Sprite(':resources:images/alien/alienBlue_front.png', center_x=100, center_y=100)
-        self.sprites.append(self.sprite)
+        sprite = arcade.Sprite(':resources:images/alien/alienBlue_front.png', center_x=100, center_y=100)
+        world.create_entity(PlayerControlled(), Position(100, 100), Sprite(sprite))
+
+        self.sprites.append(sprite)   # TODO ECS me??
 
         self.my_map = arcade.tilemap.read_tmx("data/first-map.tmx")
 
@@ -24,14 +65,7 @@ class Game(arcade.Window):
         del keyboard[symbol]
 
     def on_update(self, dt):
-        if keyboard.get(arcade.key.UP):
-            self.sprite.center_y += 5
-        if keyboard.get(arcade.key.DOWN):
-            self.sprite.center_y -= 5
-        if keyboard.get(arcade.key.RIGHT):
-            self.sprite.center_x += 5
-        if keyboard.get(arcade.key.LEFT):
-            self.sprite.center_x -= 5
+        world.process(dt)
 
     def on_draw(self):
         arcade.start_render()
