@@ -11,11 +11,11 @@ class DebugCircle:
 
 
 class DebugPoly:
-    def __init__(self, poly, size, color):
+    def __init__(self, poly, size, color, draw=False):
         self.poly = poly
         self.size = size
         self.color = color
-        self.draw = False
+        self.draw = draw
 
     def __repr__(self):
         return f"<DebugPolygon size={self.size} color={self.color} draw={self.draw} path={self.poly}>"

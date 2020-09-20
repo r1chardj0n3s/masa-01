@@ -1,6 +1,7 @@
 import esper
 import arcade
 
+from .useful_polygon import UsefulPolygon
 from .sprite import Sprite, SpriteList, SpriteFacing
 from .facing import Facing
 from .draw_layer import DrawLayer
@@ -11,7 +12,6 @@ from .velocity import Velocity
 from .player import PlayerControlled
 from .scene import Scene
 from .enemy import Enemy
-from .level_exit import LevelExit
 from ..tmx_fixes import load_object_layer
 from ..render_priorities import (
     BACKGROUND_LAYER,
@@ -40,7 +40,7 @@ class LevelProcessor(esper.Processor):
         for _, current_level in self.world.get_component(CurrentLevel):
             for e, level in self.world.get_component(Level):
                 if level.name != current_level.name:
-                    self.world.delete_entity(e)
+                    self.world.delete_entity(e, immediate=True)
             if not current_level.loaded:
                 self.load_map(current_level.name)
                 current_level.loaded = True
@@ -95,7 +95,7 @@ class LevelProcessor(esper.Processor):
                 self.world.create_entity(
                     obj,
                     LevelExit(next_level),
-                    DebugPoly(obj.point_list, 10, arcade.color.WHITE),
+                    DebugPoly(obj.point_list, 10, arcade.color.WHITE, draw=True),
                     Level(level_name)
                 )
         self.world.create_entity(
@@ -120,5 +120,29 @@ class LevelProcessor(esper.Processor):
         )
 
 
+class LevelExit:
+    def __init__(self, next_level):
+        self.next_level = next_level
+
+    def __repr__(self):
+        return '<LevelExit next_level={self.next_level}>'
+
+
+class LevelExitProcessor(esper.Processor):
+    def process(self, dt):
+        for ent, (pc, position) in self.world.get_components(
+            PlayerControlled, Position
+        ):
+            for ent, (poly, levelExit) in self.world.get_components(
+                UsefulPolygon, LevelExit
+            ):
+                if poly.is_point_inside(position.x, position.y):
+                    # import pdb; pdb.set_trace()
+                    for _, (currentLevel,) in self.world.get_components(CurrentLevel):
+                        currentLevel.name = levelExit.next_level
+                        currentLevel.loaded = False
+
+
 def init(world):
+    world.add_processor(LevelExitProcessor())
     world.add_processor(LevelProcessor())
