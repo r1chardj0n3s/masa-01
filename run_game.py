@@ -5,6 +5,8 @@ keyboard = dict()
 
 world = esper.World()
 
+PLAYER_SPEED = 100
+
 
 class Sprite():
     def __init__(self, sprite):
@@ -18,17 +20,32 @@ class Position():
         self.x = x
         self.y = y
 
+class Velocity():
+    def __init__(self, dx, dy):
+        self.dx = dx
+        self.dy = dy
+
 class PlayerControlProcessor(esper.Processor):
     def process(self, dt):
-        for ent, (pc, position) in self.world.get_components(PlayerControlled, Position):           
+        for ent, (pc, velocity) in self.world.get_components(PlayerControlled, Velocity):           
+            dx = 0
+            dy = 0
             if keyboard.get(arcade.key.UP):
-                position.y += 5
+                dy += PLAYER_SPEED
             if keyboard.get(arcade.key.DOWN):
-                position.y -= 5
+                dy -= PLAYER_SPEED
             if keyboard.get(arcade.key.RIGHT):
-                position.x += 5
+                dx += PLAYER_SPEED
             if keyboard.get(arcade.key.LEFT):
-                position.x -= 5
+                dx -= PLAYER_SPEED
+            velocity.dx = dx
+            velocity.dy = dy
+
+class VelocityPositionProcessor(esper.Processor):
+    def process(self, dt):
+        for ent, (position, velocity) in self.world.get_components(Position, Velocity):           
+            position.x += velocity.dx * dt
+            position.y += velocity.dy * dt
 
 class SpriteProcessor(esper.Processor):
     def process(self, dt):
@@ -38,6 +55,7 @@ class SpriteProcessor(esper.Processor):
 
 
 world.add_processor(PlayerControlProcessor())
+world.add_processor(VelocityPositionProcessor())
 world.add_processor(SpriteProcessor())
 
 
@@ -48,7 +66,7 @@ class Game(arcade.Window):
         self.sprites = arcade.SpriteList()
 
         sprite = arcade.Sprite(':resources:images/alien/alienBlue_front.png', center_x=100, center_y=100)
-        world.create_entity(PlayerControlled(), Position(100, 100), Sprite(sprite))
+        world.create_entity(PlayerControlled(), Velocity(0,0), Position(100, 100), Sprite(sprite))
 
         self.sprites.append(sprite)   # TODO ECS me??
 
