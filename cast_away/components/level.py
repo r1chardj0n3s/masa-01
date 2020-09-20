@@ -63,10 +63,10 @@ class LevelProcessor(esper.Processor):
                     debugCircle(obj.location.x, obj.location.y),
                     Facing(Facing.EAST),
                     SpriteFacing(
-                        arcade.load_texture("data/robot_north.png"),
-                        arcade.load_texture("data/robot_east.png"),
-                        arcade.load_texture("data/robot_south.png"),
-                        arcade.load_texture("data/robot_west.png"),
+                        arcade.load_texture("data/kenney_robot-pack_side/robot_blueDrive1 - Butt.png"),
+                        arcade.load_texture("data/kenney_robot-pack_side/robot_blueDrive1.png"),
+                        arcade.load_texture("data/kenney_robot-pack_side/robot_blueDrive1.png", flipped_horizontally=True),
+                        arcade.load_texture("data/kenney_robot-pack_side/robot_blueDrive1 - Butt.png", flipped_horizontally=True),
                     ),
                     Sprite(
                         "data/kenney_robot-pack_side/robot_blueDrive1.png",
