@@ -14,9 +14,11 @@ class SpriteList:
         self._arcade_sprite_list = arcade.SpriteList()
 
 class SpriteFacing:
-    def __init__(self, left_texture, right_texture):
-        self.left_texture = left_texture
-        self.right_texture = right_texture
+    def __init__(self, north_texture, east_texture, south_texture, west_texture):
+        self.north_texture = north_texture
+        self.east_texture = east_texture
+        self.south_texture = south_texture
+        self.west_texture = west_texture
 
 class SpriteProcessor(esper.Processor):
     def process(self, dt):
@@ -46,10 +48,14 @@ class SpriteListProcessor(esper.Processor):
 class SpriteFacingProcessor(esper.Processor):
     def process(self, dt):
         for _, (sprite, sprite_facing, facing) in self.world.get_components(Sprite, SpriteFacing, Facing):
-            if facing.direction in (Facing.NORTH, Facing.EAST):
-                sprite._arcade_sprite.texture = sprite_facing.right_texture
-            else:
-                sprite._arcade_sprite.texture = sprite_facing.left_texture
+            if facing.direction == Facing.NORTH:
+                sprite._arcade_sprite.texture = sprite_facing.north_texture
+            elif facing.direction == Facing.EAST:
+                sprite._arcade_sprite.texture = sprite_facing.east_texture
+            elif facing.direction == Facing.SOUTH:
+                sprite._arcade_sprite.texture = sprite_facing.south_texture
+            elif facing.direction == Facing.WEST:
+                sprite._arcade_sprite.texture = sprite_facing.west_texture
 
 
 def init(world):
