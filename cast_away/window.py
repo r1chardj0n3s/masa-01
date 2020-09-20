@@ -3,7 +3,7 @@ import arcade
 from . import keyboard
 
 from .components import init_world
-from .components.sprite import Sprite, SpriteList
+from .components.sprite import Sprite, SpriteList, SpriteFacing
 from .components.facing import Facing
 from .components.position import Position
 from .components.velocity import Velocity
@@ -36,6 +36,10 @@ class Game(arcade.Window):
                     Velocity(0, 0),
                     Position(obj.location.x, obj.location.y),
                     Facing(Facing.EAST),
+                    SpriteFacing(
+                        arcade.load_texture("data/kenney_robot-pack_side/robot_blueDrive1.png", flipped_horizontally=True),
+                        arcade.load_texture("data/kenney_robot-pack_side/robot_blueDrive1.png")
+                    ),
                     Sprite(
                         "data/kenney_robot-pack_side/robot_blueDrive1.png", scale=0.5
                     ),
