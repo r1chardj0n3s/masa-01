@@ -1,13 +1,16 @@
-import wasabi2d
+import arcade
 import sys
 
-scene = wasabi2d.Scene()
+window = arcade.Window(800, 600, "Junk Yard Wars")
 
-scene.layers[0].add_label("Hello World", pos=(100, 100))
+sprites = arcade.SpriteList()
 
-@wasabi2d.event
-def on_key_down(key):
-    if key == wasabi2d.keys.ESCAPE:
-        sys.exit()
+sprite = arcade.Sprite(':resources:images/alien/alienBlue_front.png', center_x=100, center_y=100)
+sprites.append(sprite)
 
-wasabi2d.run()
+
+arcade.start_render()
+sprites.draw()
+
+
+arcade.run()
