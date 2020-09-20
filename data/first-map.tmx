@@ -8,7 +8,7 @@
   <object id="8" name="PLAYER_SPAWN" x="300" y="313">
    <point/>
   </object>
-  <object id="9" name="ENEMY_SPAWN" x="1031" y="185">
+  <object id="9" name="ENEMY_SPAWN" x="1031" y="250">
    <point/>
   </object>
   <object id="10" name="EXIT" x="901" y="185">

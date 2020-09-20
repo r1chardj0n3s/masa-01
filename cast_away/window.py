@@ -39,6 +39,7 @@ class Game(arcade.Window):
                     Velocity(0, 0),
                     Position(obj.location.x, obj.location.y),
                     Sprite(":resources:images/enemies/bee.png", scale=0.5),
+                    DebugCircle(obj.location.x, obj.location.y,10,(255,0,0,100)),
                 )
             if obj.name == "ARENA_BOUNDARY":
                 px = obj.location.x

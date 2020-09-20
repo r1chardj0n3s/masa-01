@@ -8,6 +8,7 @@ def load_object_layer(map, layer_name):
     def fix_height(p):
         return p._replace(y = map_height - p.y)
     for obj in layer.tiled_objects:
+        print(f"obj: {obj.name} location {obj.location}")
         if isinstance(obj, pytiled_parser.objects.PolygonObject):
             obj.location = fix_height(obj.location)
             # obj.points = [fix_height(p) for p in obj.points]
@@ -15,4 +16,5 @@ def load_object_layer(map, layer_name):
             obj.location = fix_height(obj.location)
         else:
             raise NotImplementedError(f"object not yet supported properly in fix_height {obj}")
+        print(f"\tnew location {obj.location}")
     return layer
