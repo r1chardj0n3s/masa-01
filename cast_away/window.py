@@ -9,7 +9,7 @@ from .components.position import Position
 from .components.velocity import Velocity
 from .components.player import PlayerControlled
 from .components.scene import Scene
-
+from .components.enemy import Enemy
 
 
 def load_object_layer(map, layer_name):
@@ -49,6 +49,7 @@ class Game(arcade.Window):
                     Velocity(0, 0),
                     Position(obj.location.x, obj.location.y),
                     Sprite(":resources:images/enemies/bee.png", scale=0.5),
+                    Enemy(),
                 )
 
         self.ground_list = arcade.tilemap.process_layer(self.my_map, "ground")

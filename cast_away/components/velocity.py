@@ -7,14 +7,13 @@ class Velocity:
     def __init__(self, dx, dy):
         self.dx = dx
         self.dy = dy
-    
+
     def __repr__(self):
-        return f'<Velocity dx={self.dx} dy={self.dy}>'
+        return f"<Velocity dx={self.dx} dy={self.dy}>"
 
     def scale(self, amount):
         self.dx *= amount
         self.dy *= amount
-
 
 
 class VelocityPositionProcessor(esper.Processor):
