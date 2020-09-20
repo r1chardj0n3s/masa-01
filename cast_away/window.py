@@ -5,19 +5,18 @@ from . import keyboard
 from .components import init_world
 from .components.sprite import Sprite, SpriteList, SpriteFacing
 from .components.facing import Facing
+from .components.debug_primitives import DebugCircle, DebugPoly
 from .components.position import Position
+from .components.position_constriants import ArenaBoundary
 from .components.velocity import Velocity
 from .components.player import PlayerControlled
 from .components.scene import Scene
 from .components.enemy import Enemy
+from .tmx_fixes import load_object_layer
 
 
-def load_object_layer(map, layer_name):
-    layer = arcade.tilemap.get_tilemap_layer(map, layer_name)
-    map_height = map.map_size.height * map.tile_size[1]
-    for obj in layer.tiled_objects:
-        obj.location = obj.location._replace(y=map_height - obj.location.y)
-    return layer
+def debugCircle(x, y):
+    return DebugCircle(x, y, 10, (255, 0, 0, 100))
 
 
 class Game(arcade.Window):
@@ -35,6 +34,7 @@ class Game(arcade.Window):
                     PlayerControlled(),
                     Velocity(0, 0),
                     Position(obj.location.x, obj.location.y),
+                    debugCircle(obj.location.x, obj.location.y),
                     Facing(Facing.EAST),
                     SpriteFacing(
                         arcade.load_texture("data/robot_north.png"),
@@ -43,7 +43,8 @@ class Game(arcade.Window):
                         arcade.load_texture("data/robot_west.png"),
                     ),
                     Sprite(
-                        "data/kenney_robot-pack_side/robot_blueDrive1.png", scale=0.5
+                        "data/kenney_robot-pack_side/robot_blueDrive1.png",
+                        scale=0.5
                     ),
                 )
             if obj.name == "ENEMY_SPAWN":
@@ -52,10 +53,22 @@ class Game(arcade.Window):
                     Position(obj.location.x, obj.location.y),
                     Sprite(":resources:images/enemies/bee.png", scale=0.5),
                     Enemy(),
+                    debugCircle(obj.location.x, obj.location.y),
                 )
-
+            if obj.name == "ARENA_BOUNDARY":
+                px = obj.location.x
+                py = obj.location.y
+                point_list = [(px + p.x, py + p.y*-1) for p in obj.points]
+                self.player_walk_poly = point_list
+                self.world.create_entity(
+                    ArenaBoundary(point_list),
+                    DebugPoly(point_list, 10, arcade.color.WHITE)
+                )
         self.ground_list = arcade.tilemap.process_layer(self.my_map, "ground")
-        self.foreground_list = arcade.tilemap.process_layer(self.my_map, "foreground")
+        self.foreground_list = arcade.tilemap.process_layer(
+            self.my_map,
+            "foreground"
+        )
 
     def on_key_press(self, symbol, modifiers):
         keyboard.state[symbol] = True
@@ -74,3 +87,18 @@ class Game(arcade.Window):
         for _, sprite_list in self.world.get_component(SpriteList):
             sprite_list._arcade_sprite_list.draw()
         self.foreground_list.draw()
+        for _, debug_circle in self.world.get_component(DebugCircle):
+            if debug_circle.draw:
+                arcade.draw_circle_filled(
+                    debug_circle.x,
+                    debug_circle.y,
+                    debug_circle.size,
+                    debug_circle.color
+                )
+        for _, debug in self.world.get_component(DebugPoly):
+            if debug.draw:
+                arcade.draw_polygon_outline(
+                    debug.poly,
+                    debug.color,
+                    debug.size
+                )

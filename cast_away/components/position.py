@@ -1,3 +1,4 @@
+
 class Position:
     def __init__(self, x, y):
         self.x = x
@@ -5,4 +6,3 @@ class Position:
     
     def __repr__(self):
         return f'<Position x={self.x} y={self.y}>'
-
