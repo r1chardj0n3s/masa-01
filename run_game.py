@@ -67,6 +67,13 @@ world.add_processor(VelocityPositionProcessor())
 world.add_processor(SpriteProcessor())
 
 
+def load_object_layer(map, layer_name):
+    layer = arcade.tilemap.get_tilemap_layer(map, layer_name)
+    map_height = map.map_size.height * map.tile_size[1]
+    for obj in layer.tiled_objects:
+        obj.location = obj.location._replace(y = map_height - obj.location.y)
+    return layer
+
 class Game(arcade.Window):
     def __init__(self):
         super().__init__(1280, 720, "Junk Yard Wars")
@@ -79,21 +86,19 @@ class Game(arcade.Window):
         self.sprites.append(bee)  # TODO ECS me??
 
         self.my_map = arcade.tilemap.read_tmx("data/{}.tmx".format(level_map))
-        map_height = self.my_map.map_size.height * self.my_map.tile_size[1]
-        for obj in arcade.tilemap.get_tilemap_layer(
-            self.my_map, "triggers"
-        ).tiled_objects:
+        triggers = load_object_layer(self.my_map, "triggers")
+        for obj in triggers.tiled_objects:
             if obj.name == "PLAYER_SPAWN":
                 world.create_entity(
                     PlayerControlled(),
                     Velocity(0, 0),
-                    Position(obj.location.x, map_height - obj.location.y),
+                    Position(obj.location.x, obj.location.y),
                     Sprite(sprite),
                 )
             if obj.name == "ENEMY_SPAWN":
                 world.create_entity(
                     Velocity(0, 0),
-                    Position(obj.location.x, map_height - obj.location.y),
+                    Position(obj.location.x, obj.location.y),
                     Sprite(bee),
                 )
 
