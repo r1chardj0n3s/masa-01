@@ -41,6 +41,9 @@ class PlayerControlProcessor(esper.Processor):
             velocity.dx = dx
             velocity.dy = dy
 
+                
+
+
 class VelocityPositionProcessor(esper.Processor):
     def process(self, dt):
         for ent, (position, velocity) in self.world.get_components(Position, Velocity):           
@@ -79,6 +82,9 @@ class Game(arcade.Window):
         if symbol == arcade.key.ESCAPE:
             arcade.close_window()
 
+        if symbol== arcade.key.SPACE:
+            self.transition_map('second-map')
+
     def on_key_release(self, symbol, modifiers):
         del keyboard[symbol]
 
@@ -89,6 +95,14 @@ class Game(arcade.Window):
         arcade.start_render()
         self.background_list.draw()
         self.sprites.draw()
+
+    def transition_map(self, level_map):
+        self.my_map = arcade.tilemap.read_tmx("data/{}.tmx".format(level_map))
+
+        self.background_list = arcade.tilemap.process_layer(self.my_map, level_map)
+
+        self.on_draw()
+
 
 game = Game()
 arcade.run()
