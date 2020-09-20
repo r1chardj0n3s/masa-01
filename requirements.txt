@@ -1,2 +1,2 @@
-arcade
+-e git://github.com/thetrav/arcade.git@development#egg=arcade
 esper
