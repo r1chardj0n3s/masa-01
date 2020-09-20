@@ -8,6 +8,7 @@ from .position import Position
 from .facing import Facing
 from .gun_cooldown import GunCooldown
 from .sprite import Sprite
+from .player_bullet import PlayerBullet
 
 
 class ShootingProcessor(esper.Processor):
@@ -19,11 +20,12 @@ class ShootingProcessor(esper.Processor):
                 continue
             if keyboard.state.get(arcade.key.SPACE):
                 velocity = facing.velocity()
-                velocity.scale(100)
+                velocity.scale(1000)
                 self.world.create_entity(
                     Sprite(":resources:images/items/star.png", scale=0.5),
                     Position(x=position.x, y=position.y),
                     velocity,
+                    PlayerBullet()
                 )
                 self.world.add_component(ent, GunCooldown(.5))
 
