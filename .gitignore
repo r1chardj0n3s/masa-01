@@ -6,8 +6,9 @@ __pycache__/
 # C extensions
 *.so
 
-#patched version of arcade
+#patched version of libs
 src/arcade
+src/pytiled-parser
 
 # Distribution / packaging
 .Python

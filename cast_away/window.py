@@ -5,20 +5,13 @@ from . import keyboard
 from .components import init_world
 from .components.sprite import Sprite, SpriteList
 from .components.facing import Facing
+from .components.debug_circles import DebugCircle
 from .components.position import Position
+from .components.position_constriants import ArenaBoundary
 from .components.velocity import Velocity
 from .components.player import PlayerControlled
 from .components.scene import Scene
-
-
-
-def load_object_layer(map, layer_name):
-    layer = arcade.tilemap.get_tilemap_layer(map, layer_name)
-    map_height = map.map_size.height * map.tile_size[1]
-    for obj in layer.tiled_objects:
-        obj.location = obj.location._replace(y=map_height - obj.location.y)
-    return layer
-
+from .tmx_fixes import load_object_layer
 
 class Game(arcade.Window):
     def __init__(self):
@@ -35,6 +28,7 @@ class Game(arcade.Window):
                     PlayerControlled(),
                     Velocity(0, 0),
                     Position(obj.location.x, obj.location.y),
+                    DebugCircle(obj.location.x, obj.location.y,10,(255,0,0,100)),
                     Facing(Facing.EAST),
                     Sprite(
                         "data/kenney_robot-pack_side/robot_blueDrive1.png", scale=0.5
@@ -46,6 +40,12 @@ class Game(arcade.Window):
                     Position(obj.location.x, obj.location.y),
                     Sprite(":resources:images/enemies/bee.png", scale=0.5),
                 )
+            if obj.name == "ARENA_BOUNDARY":
+                px = obj.location.x
+                py = obj.location.y-195 #WAT!?
+                point_list = [(px + p.x, py+p.y*-1) for p in obj.points]
+                self.player_walk_poly = point_list
+                self.world.create_entity(ArenaBoundary(point_list))
 
         self.ground_list = arcade.tilemap.process_layer(self.my_map, "ground")
         self.foreground_list = arcade.tilemap.process_layer(self.my_map, "foreground")
@@ -67,3 +67,6 @@ class Game(arcade.Window):
         for _, sprite_list in self.world.get_component(SpriteList):
             sprite_list._arcade_sprite_list.draw()
         self.foreground_list.draw()
+        for _, debug_circle in self.world.get_component(DebugCircle):
+            if debug_circle.draw:
+                arcade.draw_circle_filled(debug_circle.x, debug_circle.y, debug_circle.size, debug_circle.color)
