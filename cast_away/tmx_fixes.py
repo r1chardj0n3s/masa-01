@@ -1,6 +1,7 @@
 
 import arcade
 import pytiled_parser.objects
+from .components.useful_polygon import UsefulPolygon
 
 
 def load_object_layer(map, layer_name):
@@ -9,14 +10,18 @@ def load_object_layer(map, layer_name):
 
     def fix_height(p):
         return p._replace(y=map_height - p.y)
-    for obj in layer.tiled_objects:
+
+    def convert(obj):
         if isinstance(obj, pytiled_parser.objects.PolygonObject):
             obj.location = fix_height(obj.location)
-            # obj.points = [fix_height(p) for p in obj.points]
+            return UsefulPolygon(obj)
         elif isinstance(obj, pytiled_parser.objects.PointObject):
             obj.location = fix_height(obj.location)
+            return obj
         else:
             raise NotImplementedError(
                 f"object not yet supported properly in fix_height {obj}"
             )
+
+    layer.tiled_objects = [convert(obj) for obj in layer.tiled_objects]
     return layer

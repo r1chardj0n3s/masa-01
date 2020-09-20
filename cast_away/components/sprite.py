@@ -4,6 +4,7 @@ import esper
 from .position import Position
 from .facing import Facing
 
+
 class Sprite:
     def __init__(self, path, scale=1):
         self._arcade_sprite = arcade.Sprite(path, scale=scale)
@@ -13,12 +14,17 @@ class SpriteList:
     def __init__(self):
         self._arcade_sprite_list = arcade.SpriteList()
 
+    def draw(self):
+        self._arcade_sprite_list.draw()
+
+
 class SpriteFacing:
     def __init__(self, north_texture, east_texture, south_texture, west_texture):
         self.north_texture = north_texture
         self.east_texture = east_texture
         self.south_texture = south_texture
         self.west_texture = west_texture
+
 
 class SpriteProcessor(esper.Processor):
     def process(self, dt):

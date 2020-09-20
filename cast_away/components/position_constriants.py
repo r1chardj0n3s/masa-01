@@ -1,30 +1,29 @@
 import esper
-from arcade.geometry import is_point_in_polygon
 from .velocity import Velocity
 from .position import Position
 from .debug_primitives import DebugCircle
+from .useful_polygon import UsefulPolygon
 
 
 class ArenaBoundary:
-    def __init__(self, polygon):
-        self.polygon = polygon
-
     def __repr__(self):
-        return f'<ArenaBoundary polygon={self.polygon}>'
+        return '<ArenaBoundary>'
 
 
 class PositionConstraintProcessor(esper.Processor):
     def process(self, dt):
-        for _, (boundary,) in self.world.get_components(ArenaBoundary):
+        for _, (_, polygon) in self.world.get_components(
+            ArenaBoundary,
+            UsefulPolygon
+        ):
             for ent, (position, velocity, debug) in self.world.get_components(
                 Position,
                 Velocity,
                 DebugCircle
             ):
-                if not is_point_in_polygon(
+                if not polygon.is_point_inside(
                     position.x,
-                    position.y,
-                    boundary.polygon
+                    position.y
                 ):
                     debug.x = position.x
                     debug.y = position.y
