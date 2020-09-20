@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.4" tiledversion="1.4.2" orientation="orthogonal" renderorder="right-down" width="100" height="100" tilewidth="32" tileheight="32" infinite="0" nextlayerid="2" nextobjectid="1">
+<map version="1.4" tiledversion="1.4.2" orientation="orthogonal" renderorder="right-down" width="40" height="22" tilewidth="32" tileheight="32" infinite="0" nextlayerid="3" nextobjectid="4">
  <tileset firstgid="1" source="kenney-platformerkit2.tsx"/>
- <layer id="1" name="Tile Layer 1" width="100" height="100">
+ <layer id="1" name="Tile Layer 1" width="40" height="22">
   <data encoding="base64" compression="zlib">
-   eJzt3VtugzAQBdB0/6voTqt8WE0RBWPGD+xzpHzVjMvckhiiwusFwGy+v85fjCMnL7nFiepji2xmz75m385+fnXumXNIeuWRxkSOm0HPPNK4o7ErZfHWO480dm/8alm81djfiM+G1XJIauVRut2Kx8SnkfJI28pjjJppu5UzGSWPvc+PFTMZIQ/rq1/R+1u6toqs91Q19jUyi88xK2TS+72q1tineloes2fSM4+INdiMIr9janG9dvZMrvQvIruIfs6eSUv6CAAAAAAAAAAAAAAAQCT/rzKGbQ5yGYNcxiSXMckBAAAAAIDaXIseS8RzJiLuc0p5z3L7vR0nn//Vvl/v0VyOnb9Kn/t0t4/bY0Um+32oeb/wo/lXz+PoGSq520f9HpH1nubsvaF1HrXqPUHuOii3VqTV8ojuszzKlK5Ja9S9O+fT3TnHixzXutZoIs4NWs0VVWNUUf1pOacszuu0mnvWYyNyv0rrXL0eJYv8ene3zznvlEV+zag6q30fUmNfZ+1VL2d/lzkvAADq+gFtm73Z
+   eJxjYBgFo2AUjHSwkBGB6WEPrfVQAoi1j97uIsXugXQbITcMBrfBALpbBou7kAG98iYlYDC7D+auwehGbOlvsLhxsOffwVz+Deb6gxQ7h4L76N02IEcPrdwIAFcbIOk=
   </data>
  </layer>
+ <objectgroup id="2" name="Object Layer 1"/>
 </map>
