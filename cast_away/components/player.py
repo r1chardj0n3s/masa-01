@@ -28,15 +28,11 @@ class PlayerVelocityProcessor(esper.Processor):
             dy = 0
             if keyboard.state.get(arcade.key.UP):
                 dy += PLAYER_SPEED_Y
-                dx += PLAYER_SPEED_X
             if keyboard.state.get(arcade.key.DOWN):
                 dy -= PLAYER_SPEED_Y
-                dx -= PLAYER_SPEED_X
             if keyboard.state.get(arcade.key.RIGHT):
-                dy -= PLAYER_SPEED_Y
                 dx += PLAYER_SPEED_X
             if keyboard.state.get(arcade.key.LEFT):
-                dy += PLAYER_SPEED_Y
                 dx -= PLAYER_SPEED_X
             velocity.dx = dx
             velocity.dy = dy
