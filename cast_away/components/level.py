@@ -1,6 +1,7 @@
 import esper
 import arcade
 import pytiled_parser
+import os
 
 from .useful_polygon import UsefulPolygon
 from .sprite import Sprite, SpriteList, SpriteFacing
@@ -28,11 +29,15 @@ class CurrentLevel:
     def __init__(self, name):
         self.name = name
         self.loaded = False
+        self.timestamp = None
 
 
 def debugCircle(x, y):
     return DebugCircle(x, y, 10, (255, 0, 0, 100))
 
+
+def map_filename(name):
+    return f"data/{name}.tmx"
 
 class LevelProcessor(esper.Processor):
     def process(self, dt):
@@ -40,9 +45,15 @@ class LevelProcessor(esper.Processor):
             for e, level in self.world.get_component(Level):
                 if level.name != current_level.name:
                     self.world.delete_entity(e, immediate=True)
+            ts = os.path.getmtime(map_filename(current_level.name))
+            if ts != current_level.timestamp:
+                for e, level in self.world.get_component(Level):
+                    self.world.delete_entity(e, immediate=True)
+                current_level.loaded = False
             if not current_level.loaded:
                 self.load_map(current_level.name)
                 current_level.loaded = True
+            current_level.timestamp = ts
 
     def load_map(self, level_name):
         sprite_list = SpriteList()
@@ -51,7 +62,7 @@ class LevelProcessor(esper.Processor):
             Level(level_name)
         )
         self.world.create_entity(Scene(), sprite_list, Level(level_name))
-        my_map = arcade.tilemap.read_tmx("data/{}.tmx".format(level_name))
+        my_map = arcade.tilemap.read_tmx(map_filename(level_name))
         triggers = load_object_layer(my_map, "triggers")
         for obj in triggers.tiled_objects:
             if obj.name == "PLAYER_SPAWN":
