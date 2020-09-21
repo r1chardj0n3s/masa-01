@@ -1,241 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.4" tiledversion="1.4.2" orientation="staggered" renderorder="right-down" width="9" height="21" tilewidth="128" tileheight="64" infinite="0" staggeraxis="y" staggerindex="odd" nextlayerid="21" nextobjectid="9">
- <tileset firstgid="1" source="kenney-blocks.tsx"/>
- <tileset firstgid="641" source="kenney-fences.tsx"/>
- <tileset firstgid="673" source="kenney-trees.tsx"/>
- <tileset firstgid="689" source="kenney-props.tsx"/>
- <layer id="19" name="Tile Layer 7" width="9" height="21">
-  <properties>
-   <property name="z" type="int" value="-7"/>
-  </properties>
-  <data encoding="csv">
-0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,462,0,0,0,
-0,0,0,0,417,417,0,0,0,
-0,0,0,0,0,417,0,0,0,
-0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0
-</data>
- </layer>
- <layer id="18" name="Tile Layer 6" width="9" height="21" offsetx="0" offsety="-26">
-  <properties>
-   <property name="z" type="int" value="-5"/>
-  </properties>
-  <data encoding="csv">
-0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,
-0,0,0,0,417,0,0,0,0,
-0,0,0,0,417,417,0,0,0,
-0,0,0,417,417,439,0,0,0,
-0,0,0,417,417,417,0,0,0,
-0,0,0,0,417,446,0,0,0,
-0,0,0,0,0,440,0,0,0,
-0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0
-</data>
- </layer>
- <layer id="17" name="Tile Layer 5" width="9" height="21">
-  <properties>
-   <property name="z" type="int" value="-4"/>
-  </properties>
-  <data encoding="csv">
-0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,
-0,0,0,547,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0
-</data>
- </layer>
- <layer id="16" name="Tile Layer 4" width="9" height="21" offsetx="0" offsety="-16">
-  <properties>
-   <property name="z" type="int" value="-3"/>
-  </properties>
-  <data encoding="csv">
-0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,
-0,0,0,0,547,0,0,0,0,
-0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0
-</data>
- </layer>
- <layer id="15" name="Floor3" width="9" height="21">
-  <properties>
-   <property name="z" type="int" value="-2"/>
-  </properties>
-  <data encoding="csv">
-0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,
-0,0,443,0,0,0,0,0,0,
-0,0,417,433,0,0,0,0,0,
-0,417,417,417,437,0,0,0,0,
-0,473,417,417,440,0,0,0,0,
-0,473,448,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0
-</data>
- </layer>
- <layer id="14" name="Floor2" width="9" height="21" offsetx="0" offsety="25">
-  <properties>
-   <property name="z" type="int" value="-1"/>
-  </properties>
-  <data encoding="csv">
-0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,
-0,548,0,0,0,0,0,0,0,
-0,548,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0
-</data>
- </layer>
- <layer id="13" name="Floor" width="9" height="21">
+<map version="1.4" tiledversion="1.4.2" orientation="staggered" renderorder="right-down" width="10" height="22" tilewidth="128" tileheight="64" infinite="0" staggeraxis="y" staggerindex="odd" nextlayerid="6" nextobjectid="5">
+ <tileset firstgid="1" source="landscapeTiles_sheet.tsx"/>
+ <layer id="4" name="Tile Layer 4" width="10" height="22">
   <properties>
    <property name="z" type="int" value="0"/>
   </properties>
-  <data encoding="csv">
-0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,
-0,0,490,0,0,0,0,0,0,
-0,0,0,489,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,
-483,0,0,0,0,0,0,0,0,
-483,483,0,0,0,0,0,0,0,
-483,0,0,0,0,0,0,0,0,
-483,0,0,0,0,0,0,0,0
-</data>
+  <data encoding="base64" compression="zlib">
+   eJxjYGBgcIZiZOA8DDCx/iDGz8SGDTqgRB0uQK46SuymZthQEl/EqCFFHb3TGgCYBy1I
+  </data>
  </layer>
- <layer id="20" name="tree" width="9" height="21">
+ <layer id="3" name="Tile Layer 3" width="10" height="22" offsetx="0" offsety="-2">
   <properties>
-   <property name="z" type="int" value="100"/>
+   <property name="z" type="int" value="5"/>
   </properties>
-  <data encoding="csv">
-0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,
-0,0,0,677,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0
-</data>
+  <data encoding="base64" compression="zlib">
+   eJxjYBi+IIQEdYTUkmoWMeYRUocsj089ujg+c8lVhw+EoNH41JESjsMRAABGUAmF
+  </data>
+ </layer>
+ <layer id="2" name="Tile Layer 2" width="10" height="22" offsetx="0" offsety="31">
+  <properties>
+   <property name="z" type="int" value="10"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJxjYBg8oJhIdRFAHEiEmiAS1OFTi6wGn7pyNHW41CZgUVeBw0x0tZE41OUSoQbdTGLUEVIDA9VEqhvpAABI0w6M
+  </data>
+ </layer>
+ <layer id="1" name="Tile Layer 1" width="10" height="22">
+  <properties>
+   <property name="z" type="int" value="15"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo4B8kEeEmmAizSJG3VA3CwDhrwK0
+  </data>
  </layer>
  <objectgroup id="5" name="triggers">
-  <object id="1" name="ARENA_BOUNDARY" x="675.333" y="545.333">
-   <polygon points="-614.667,4 -605.667,138.333 -415,44.6667 -352.667,-37 -284.667,-26 -161.209,-69.8713 -30.7836,-70.6893 106.9,-135.675 23.4313,-176.076 -29.6551,-156.758 -159.322,-285.654 -31.519,-229.68 91.3857,-222.394 130.646,-243.493 108.336,-288.704 99.2493,-353.508 -33.483,-420.6 -291.028,-290.336 -234.536,-257.8 -128.894,-126.756 -172.597,-122.767 -208.04,-97.8087 -258,-109.666 -327.309,-134.51 -356.328,-168.841 -481.114,-106.033 -551,-31"/>
+  <object id="1" name="ARENA_BOUNDARY" x="90.6667" y="665.333">
+   <polygon points="0,0 37.3333,34.6667 486.667,-190.667 549.333,-253.333 745.333,-160 1121.33,-345.333 678.667,-569.333 300,-380 493.333,-288 424,-221.333"/>
   </object>
-  <object id="4" name="PLAYER_SPAWN" x="198.333" y="572">
+  <object id="2" name="EXIT" x="81.3333" y="669.333">
+   <properties>
+    <property name="next_level" value="2-spikes"/>
+   </properties>
+   <polygon points="0,0 46.6667,28 89.3333,8 30.6667,-16"/>
+  </object>
+  <object id="3" name="PLAYER_SPAWN" x="177.333" y="644">
    <point/>
   </object>
-  <object id="8" name="ENEMY_SPAWN" x="648" y="229.333">
+  <object id="4" name="ENEMY_SPAWN" x="806.667" y="274.667">
    <point/>
   </object>
  </objectgroup>
