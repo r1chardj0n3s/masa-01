@@ -1,5 +1,6 @@
 import esper
 import arcade
+import pytiled_parser
 
 from .useful_polygon import UsefulPolygon
 from .sprite import Sprite, SpriteList, SpriteFacing
@@ -98,26 +99,20 @@ class LevelProcessor(esper.Processor):
                     DebugPoly(obj.point_list, 10, arcade.color.WHITE, draw=True),
                     Level(level_name)
                 )
-        self.world.create_entity(
-            DrawLayer(
-                BACKGROUND_LAYER,
-                arcade.tilemap.process_layer(
-                    my_map,
-                    "ground"
+
+        # add all tiled layers
+        for layer in my_map.layers:
+            if isinstance(layer, pytiled_parser.objects.TileLayer):
+                self.world.create_entity(
+                    DrawLayer(
+                        layer.properties.get('z', 0),
+                        arcade.tilemap.process_layer(
+                            my_map,
+                            layer.name
+                        )
+                    ),
+                    Level(level_name)
                 )
-            ),
-            Level(level_name)
-        )
-        self.world.create_entity(
-            DrawLayer(
-                FOREGROUND_LAYER,
-                arcade.tilemap.process_layer(
-                    my_map,
-                    "foreground"
-                )
-            ),
-            Level(level_name)
-        )
 
 
 class LevelExit:
