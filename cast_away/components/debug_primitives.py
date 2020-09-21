@@ -1,10 +1,10 @@
 class DebugCircle:
-    def __init__(self, x, y, size, color):
+    def __init__(self, x, y, size, color, draw=True):
         self.x = x
         self.y = y
         self.size = size
         self.color = color
-        self.draw = False
+        self.draw = draw
 
     def __repr__(self):
         return f"<DebugCircle x={self.x} y={self.y} size={self.size} color={self.color} draw={self.draw}>"
