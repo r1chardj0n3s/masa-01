@@ -2,11 +2,17 @@
 <map version="1.4" tiledversion="1.4.2" orientation="orthogonal" renderorder="right-down" width="40" height="22" tilewidth="32" tileheight="32" infinite="0" nextlayerid="4" nextobjectid="12">
  <tileset firstgid="1" source="kenney-platformerkit2.tsx"/>
  <layer id="1" name="ground" width="40" height="22">
+  <properties>
+   <property name="z" type="int" value="0"/>
+  </properties>
   <data encoding="base64" compression="zlib">
    eJxjYBgFo2AUjIJRQE+wmHGgXUBfQKl/CekfbuFJqX9HWngRAqPhRV0wGl7UBaPhNTjBwkEeLwC1UAmb
   </data>
  </layer>
  <layer id="3" name="foreground" width="40" height="22">
+  <properties>
+   <property name="z" type="int" value="100"/>
+  </properties>
   <data encoding="base64" compression="zlib">
    eJzt07EJACAMBdG4/xRmUisxRQqxOuEe2Fgdyo+Q/pbjHJraRWysb0fr63pofTd3FLT/rahtxF1s3XbJvZJ6073qwQIOuRUD
   </data>
