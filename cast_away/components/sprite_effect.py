@@ -1,30 +1,34 @@
 import esper
 from .sprite import Sprite
 
-class SpriteEffect:
-    def __init__(self, name, play_time, speed):
+class SpriteEffects:
+    def __init__(self):
+        self.effects = []
+
+class SpinEffect:
+    def __init__(self, play_time, speed):
         self.play_time = play_time
-        self.name = name
         self.speed = speed
+    
+    def clear(self, sprite):
+        sprite._arcade_sprite.angle = 0
+        sprite._arcade_sprite.change_angle = 0
+
+    def run(self, dt, sprite):
+        a_sprite = sprite._arcade_sprite
+        a_sprite.angle = a_sprite.angle + dt * self.speed
 
 
 class SpriteEffectProcessor(esper.Processor):
-
-    def spin(self, dt, ent, sprite, effect):
-        effect.play_time -= dt
-        if effect.play_time < 0:
-            sprite._arcade_sprite.angle = 0
-            sprite._arcade_sprite.change_angle = 0
-            self.world.remove_component(ent, SpriteEffect) 
-        else:
-            sprite._arcade_sprite.angle = sprite._arcade_sprite.angle + dt * effect.speed
-
     def process(self, dt):
-        for ent, (sprite, effect) in self.world.get_components(
-            Sprite, SpriteEffect
-        ):
-            if effect.name == "spin":
-                self.spin(dt, ent, sprite, effect)
+        for ent, (sprite, effects) in self.world.get_components(Sprite, SpriteEffects):
+            for effect in list(effects.effects):
+                effect.play_time -= dt
+                if effect.play_time < 0:
+                    effect.clear(sprite)
+                    effects.effects.remove(effect)
+                else:
+                    effect.run(dt, sprite)
 
 
 def init(world):
