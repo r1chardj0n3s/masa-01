@@ -3,6 +3,7 @@ import esper
 from . import player
 from . import gun_cooldown
 from . import sprite
+from . import sprite_effect
 from . import velocity
 from . import star_thrower
 from . import player_bullet
@@ -24,6 +25,7 @@ def init_world():
     velocity.init(world)
     position_constriants.init(world)
     sprite.init(world)
+    sprite_effect.init(world)
 
     star_thrower.init(world)
     player_bullet.init(world)
