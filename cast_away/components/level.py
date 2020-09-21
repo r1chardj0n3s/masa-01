@@ -116,7 +116,8 @@ class LevelProcessor(esper.Processor):
                         layer.properties.get('z', 0),
                         arcade.tilemap.process_layer(
                             my_map,
-                            layer.name
+                            layer.name,
+                            hit_box_algorithm='None'
                         )
                     ),
                     Level(level_name)
