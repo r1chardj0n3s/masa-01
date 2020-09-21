@@ -13,7 +13,7 @@ from . import invulnerable
 from . import health
 from . import hurt
 from . import health_display
-
+from . import joystick
 
 def init_world():
     world = esper.World()
@@ -35,5 +35,6 @@ def init_world():
     level.init(world)
 
     health_display.init(world)
+    joystick.init(world)
 
     return world

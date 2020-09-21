@@ -6,7 +6,9 @@ from .debug_primitives import debug_circle
 from .facing import Facing
 from .sprite import Sprite, SpriteFacing
 from .health import Health
+from .hurt import Hurt
 from .level_marker import Level
+from .enemy import Enemy
 
 
 class PlayerSpawner:
@@ -16,7 +18,6 @@ class PlayerSpawner:
         self.level_name = level_name
 
     def spawn(self, world, input_source):
-        
         world.create_entity(
             PlayerControlled(input_source),
             Velocity(0, 0),
@@ -51,6 +52,6 @@ class EnemySpawner:
             Enemy(),
             Health(1),
             Hurt(1, [PlayerControlled]),
-            debugCircle(self.x, self.y),
+            debug_circle(self.x, self.y),
             Level(self.level_name)
         )

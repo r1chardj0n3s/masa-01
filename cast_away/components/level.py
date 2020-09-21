@@ -17,7 +17,7 @@ from .scene import Scene
 from .enemy import Enemy
 from .health import Health
 from .hurt import Hurt
-from .spawner import PlayerSpawner
+from .spawner import PlayerSpawner, EnemySpawner
 from ..tmx_fixes import load_object_layer
 from .level_marker import Level
 
