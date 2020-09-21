@@ -5,6 +5,7 @@ import os
 
 from .useful_polygon import UsefulPolygon
 from .sprite import Sprite, SpriteList, SpriteFacing
+from .input_source import KeyboardInputSource
 from .facing import Facing
 from .draw_layer import DrawLayer
 from .debug_primitives import DebugCircle, DebugPoly
@@ -67,7 +68,7 @@ class LevelProcessor(esper.Processor):
         for obj in triggers.tiled_objects:
             if obj.name == "PLAYER_SPAWN":
                 self.world.create_entity(
-                    PlayerControlled(),
+                    PlayerControlled(KeyboardInputSource()),
                     Velocity(0, 0),
                     Position(obj.location.x, obj.location.y),
                     debugCircle(obj.location.x, obj.location.y),

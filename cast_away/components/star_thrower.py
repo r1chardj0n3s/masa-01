@@ -9,7 +9,7 @@ from .facing import Facing
 from .gun_cooldown import GunCooldown
 from .sprite import Sprite
 from .player_bullet import PlayerBullet
-
+from .input_source import WEAPON
 
 class ShootingProcessor(esper.Processor):
     def process(self, dt):
@@ -18,7 +18,7 @@ class ShootingProcessor(esper.Processor):
         ):
             if self.world.has_component(ent, GunCooldown):
                 continue
-            if keyboard.state.get(arcade.key.SPACE):
+            if pc.input_source.state(WEAPON):
                 velocity = facing.velocity()
                 velocity.magnitude = 1000
                 self.world.create_entity(
