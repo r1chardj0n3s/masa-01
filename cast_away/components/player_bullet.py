@@ -1,7 +1,7 @@
 import esper
 
 from .enemy import Enemy
-from .health import Health
+from .health import Health, HealthDown
 from .position import Position
 from .sprite import Sprite
 from .invulnerable import Invulnerable
@@ -23,10 +23,7 @@ class PlayerBulletProcessor(esper.Processor):
             for enemy_ent, (enemy, sprite, health) in self.world.get_components(Enemy, Sprite, Health):
                 if sprite._arcade_sprite.collides_with_point((position.x, position.y)):
                     self.world.delete_entity(bullet_ent)
-                    # TODO this is a bit yuck that it's in multiple places
-                    if not self.world.has_component(enemy_ent, Invulnerable):
-                        health.amount -= 1
-                        break
+                    health.effects.append(HealthDown(1))
 
 
 def init(world):

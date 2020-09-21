@@ -107,7 +107,6 @@ class LevelProcessor(esper.Processor):
                     Level(level_name)
                 )
 
-
         # add all tiled layers
         for layer in my_map.layers:
             if isinstance(layer, pytiled_parser.objects.TileLayer):

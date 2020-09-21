@@ -5,6 +5,7 @@ class Invulnerable:
     def __init__(self, lifespan):
         self.lifespan = lifespan
 
+
 class InvulnerableProcessor(esper.Processor):
     def process(self, dt):
         for ent, invuln in self.world.get_component(Invulnerable):
