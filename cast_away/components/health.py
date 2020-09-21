@@ -3,7 +3,7 @@ import esper
 
 from .invulnerable import Invulnerable
 from .sprite import Sprite
-from .sprite_effect import SpriteEffects, SpinEffect
+from .sprite_effect import SpriteEffects, SpinEffect, FlashEffect
 
 
 class HealthDown:
@@ -30,6 +30,7 @@ class HealthProcessor(esper.Processor):
                         self.world.add_component(ent, SpriteEffects())
                     effects = self.world.component_for_entity(ent, SpriteEffects)
                     effects.effects.append(SpinEffect(play_time=0.3, speed=1000))
+                    effects.effects.append(FlashEffect(play_time=1, speed=10000))
                 health.effects.remove(effect)
 
             if health.amount <= 0:
