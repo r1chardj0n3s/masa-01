@@ -81,6 +81,7 @@ class LevelProcessor(esper.Processor):
                     Sprite(":resources:images/enemies/bee.png", scale=0.5),
                     Enemy(),
                     Health(1),
+                    Hurt(1, [PlayerControlled]),
                     debugCircle(obj.location.x, obj.location.y),
                     Level(level_name)
                 )
@@ -102,7 +103,7 @@ class LevelProcessor(esper.Processor):
             if obj.name == "SPIKE":
                 self.world.create_entity(
                     obj,
-                    Hurt(1),
+                    Hurt(1, [PlayerControlled]),
                     DebugPoly(obj.point_list, 10, arcade.color.WHITE, draw=True),
                     Level(level_name)
                 )
