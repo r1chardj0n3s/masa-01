@@ -33,9 +33,6 @@
   <object id="8" name="PLAYER_SPAWN" x="300" y="313">
    <point/>
   </object>
-  <object id="9" name="ENEMY_SPAWN" x="1122.33" y="227.333">
-   <point/>
-  </object>
   <object id="10" name="EXIT" x="872" y="155.667">
    <properties>
     <property name="next_level" value="second-map"/>

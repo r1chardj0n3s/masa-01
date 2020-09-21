@@ -1,12 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.4" tiledversion="1.4.2" orientation="orthogonal" renderorder="right-down" width="40" height="22" tilewidth="32" tileheight="32" infinite="0" nextlayerid="4" nextobjectid="12">
+<map version="1.4" tiledversion="1.4.2" orientation="orthogonal" renderorder="right-down" width="40" height="22" tilewidth="32" tileheight="32" infinite="0" nextlayerid="6" nextobjectid="16">
  <tileset firstgid="1" source="kenney-platformerkit2.tsx"/>
  <layer id="1" name="ground" width="40" height="22">
   <properties>
    <property name="z" type="int" value="0"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJxjYBgFo2AUjIJRQE+wmHGgXUBfQKl/CekfbuFJqX9HWngRAqPhRV0wGl7UBaPhNTjBwkEeLwC1UAmb
+   eJztzssJACAMBNHYf3dW5FFYBI0fMmDmlsOSZ5Zlf1VLtGCcuijOmSvK6XXtOr27U9fqP++O4np9p+uOS6O6NKpLo7o0qkujujSqS6O6sl4DUvI90g==
+  </data>
+ </layer>
+ <layer id="4" name="walls" width="40" height="22">
+  <properties>
+   <property name="z" type="int" value="20"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJzt0TsKADAIBFFz//vm06VOQFAiLIF5tcWwmgH1ZlMXnJbTM8SdXtdN3RmV7ezJ++her7yu3/6g3gsAANTbFjUMnw==
+  </data>
+ </layer>
+ <layer id="5" name="props" width="40" height="22">
+  <properties>
+   <property name="z" type="int" value="30"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjIJRMFKAAfNAu4A4MFTcOQrwg6ESj0PFnaNgFIyCUQACAAj/AM0=
   </data>
  </layer>
  <layer id="3" name="foreground" width="40" height="22">
@@ -14,24 +30,36 @@
    <property name="z" type="int" value="100"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJzt07EJACAMBdG4/xRmUisxRQqxOuEe2Fgdyo+Q/pbjHJraRWysb0fr63pofTd3FLT/rahtxF1s3XbJvZJ6073qwQIOuRUD
+   eJzt08EJACAIQFFp/53q3lLdJQjL0uC/Cb6lIgCAaLVEF8zRZbPb1S7P4/Ve3p23/vG089V+WTuj9n7VmeUedWeWLq0n7cI/BlPiDOQ=
   </data>
  </layer>
  <objectgroup id="2" name="triggers">
-  <object id="4" name="PLAYER_WALK" x="130" y="319">
-   <polygon points="0,0 502,250 1144,-67 893,-195 512,-8 255,-136"/>
+  <object id="4" name="ARENA_BOUNDARY" x="90" y="380.333" visible="0">
+   <polygon points="10.6667,-5.33333 450,215.333 1150.67,-133.667 903.667,-249.667 457.333,-40 255,-136"/>
   </object>
-  <object id="8" name="PLAYER_SPAWN" x="241" y="313">
+  <object id="8" name="PLAYER_SPAWN" x="289" y="349">
    <point/>
   </object>
   <object id="9" name="ENEMY_SPAWN" x="1031" y="185">
    <point/>
   </object>
-  <object id="10" name="EXIT" x="901" y="185">
+  <object id="10" name="EXIT" x="878.333" y="187.667">
    <properties>
     <property name="next_level" value="first-map"/>
    </properties>
    <polygon points="0,0 124,-64 249,-1 125,62"/>
+  </object>
+  <object id="12" name="SPIKE" x="569.333" y="421.333">
+   <polygon points="0,0 38,-22 74.6667,-1.33333 40,18.6667"/>
+  </object>
+  <object id="13" name="SPIKE" x="634" y="452">
+   <polygon points="0,0 38,-22 74.6667,-1.33333 40,18.6667"/>
+  </object>
+  <object id="14" name="SPIKE" x="698" y="292.667">
+   <polygon points="0,0 38,-22 74.6667,-1.33333 40,18.6667"/>
+  </object>
+  <object id="15" name="SPIKE" x="764.667" y="324.667">
+   <polygon points="0,0 38,-22 74.6667,-1.33333 40,18.6667"/>
   </object>
  </objectgroup>
 </map>
