@@ -69,7 +69,7 @@ class LevelProcessor(esper.Processor):
                     ),
                     Sprite(
                         "data/kenney_robot-pack_side/robot_blueDrive1.png",
-                        scale=0.5
+                        scale=0.3
                     ),
                     Health(3),
                     Level(level_name)
