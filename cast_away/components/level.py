@@ -96,7 +96,7 @@ class LevelProcessor(esper.Processor):
                 self.world.create_entity(
                     obj,
                     LevelExit(next_level),
-                    DebugPoly(obj.point_list, 10, arcade.color.WHITE, draw=True),
+                    DebugPoly(obj.point_list, 10, arcade.color.WHITE),
                     Level(level_name)
                 )
             if obj.name == "SPIKE":

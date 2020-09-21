@@ -1,43 +1,135 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.4" tiledversion="1.4.2" orientation="orthogonal" renderorder="right-down" width="40" height="22" tilewidth="32" tileheight="32" infinite="0" nextlayerid="6" nextobjectid="12">
- <tileset firstgid="1" source="kenney-platformerkit2.tsx"/>
- <tileset firstgid="833" source="kenney-spacekit2.tsx"/>
- <layer id="1" name="ground" width="40" height="22">
+<map version="1.4" tiledversion="1.4.2" orientation="staggered" renderorder="right-down" width="9" height="21" tilewidth="128" tileheight="64" infinite="0" staggeraxis="y" staggerindex="odd" nextlayerid="6" nextobjectid="5">
+ <tileset firstgid="1" source="kenney-blocks.tsx"/>
+ <tileset firstgid="783" source="kenney-fences.tsx"/>
+ <tileset firstgid="815" source="kenney-trees.tsx"/>
+ <layer id="1" name="Floor1" width="9" height="21">
   <properties>
    <property name="z" type="int" value="0"/>
   </properties>
-  <data encoding="base64" compression="zlib">
-   eJztzkEKACAIRFG7/+06UfshKMvwB/6di8FnVlWx9ZYtmKcuinPlynJ6XadO7+7WtfvPu6O4Xt/linFpVJdGdWlUl0Z1aVSXRnVpVFf1TwP3zD3S
-  </data>
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,417,
+0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,462,
+0,0,0,0,0,0,0,417,0,
+0,0,0,0,0,0,417,417,417,
+0,0,417,0,0,0,417,417,417,
+786,417,0,0,0,417,417,417,417,
+462,417,417,0,0,417,417,417,417,
+417,417,417,0,417,417,417,417,0,
+0,417,417,417,417,417,417,417,0,
+0,417,417,417,417,417,417,0,0,
+0,0,417,417,417,417,417,0,0,
+0,0,417,417,417,417,0,0,0,
+0,0,0,417,417,417,0,0,0,
+0,0,0,417,417,0,0,0,0,
+0,0,0,0,417,0,0,0,0,
+0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0
+</data>
  </layer>
- <layer id="5" name="walls" width="40" height="22">
+ <layer id="3" name="Floor2" width="9" height="21">
+  <properties>
+   <property name="z" type="int" value="10"/>
+  </properties>
+  <data encoding="csv">
+0,0,0,0,417,417,417,417,417,
+417,417,417,417,417,417,417,417,417,
+417,417,417,417,417,417,417,417,417,
+417,417,417,417,417,417,417,417,417,
+417,417,417,417,417,417,417,417,417,
+417,417,417,417,417,417,0,417,0,
+417,417,417,417,417,417,0,0,0,
+417,0,417,417,417,0,0,0,0,
+417,0,0,417,417,0,0,0,0,
+0,0,0,417,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <layer id="2" name="Fences" width="9" height="21">
+  <properties>
+   <property name="z" type="int" value="200"/>
+  </properties>
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,785,
+786,0,0,0,0,0,0,785,0,
+0,786,0,0,0,0,0,785,0,
+0,786,0,0,0,0,785,0,0,
+0,0,786,0,0,0,785,0,0,
+0,0,786,0,0,785,0,0,0,
+0,0,0,786,0,785,0,0,0,
+0,0,0,786,785,0,0,0,0,
+0,0,0,0,797,0,0,0,0,
+0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <layer id="4" name="trees" width="9" height="21">
   <properties>
    <property name="z" type="int" value="20"/>
   </properties>
-  <data encoding="base64" compression="zlib">
-   eJzt0TsKADAIBFFz//vm06VOQFBSLJJ5tcWwmqGi2dQFp+X0DHGn13VTd0ZlO3vyPrrXK6+r2h/UewEAgP9s+V4Mnw==
-  </data>
+  <data encoding="csv">
+819,819,819,819,818,818,819,819,819,
+818,819,819,819,819,819,0,0,818,
+819,819,819,819,0,0,0,0,819,
+819,0,0,819,0,0,0,0,0,
+819,0,0,819,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0
+</data>
  </layer>
- <layer id="3" name="foreground" width="40" height="22">
-  <properties>
-   <property name="z" type="int" value="100"/>
-  </properties>
-  <data encoding="base64" compression="zlib">
-   eJzt08EJACAIQFFp/53q3lLdJQjLUuK/Cb6lIgDwv1qiC+bostntapfn8Xov785b/3ja+Wq/rJ1Re7/qzHKPujNLl9aTdgFeBmI6DOQ=
-  </data>
- </layer>
- <objectgroup id="2" name="triggers">
-  <object id="4" name="ARENA_BOUNDARY" x="95.3333" y="352.333">
-   <polygon points="0,0 452.667,224.667 1152,-129.667 898.333,-263 450.667,-36 255,-136"/>
+ <objectgroup id="5" name="triggers">
+  <object id="1" name="ARENA_BOUNDARY" x="254" y="228">
+   <polygon points="0,0 -187,93 269,318 382,311 894,58 957.458,26.1287 907.883,-6.689 900.233,-65.0084 770.098,-2.74271 642,-63 257,129"/>
   </object>
-  <object id="8" name="PLAYER_SPAWN" x="300" y="313">
-   <point/>
-  </object>
-  <object id="10" name="EXIT" x="872" y="155.667">
+  <object id="2" name="EXIT" x="1149" y="172">
    <properties>
     <property name="next_level" value="second-map"/>
    </properties>
-   <polygon points="0,0 124,-64 249,-1 125,62"/>
+   <polygon points="0,0 54,81 9,106 -80,34"/>
+  </object>
+  <object id="3" name="ENEMY_SPAWN" x="996" y="284">
+   <point/>
+  </object>
+  <object id="4" name="PLAYER_SPAWN" x="229" y="316">
+   <point/>
   </object>
  </objectgroup>
 </map>
