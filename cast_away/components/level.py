@@ -87,7 +87,7 @@ class LevelProcessor(esper.Processor):
                 self.world.create_entity(
                     obj,
                     Hurt(1, [PlayerControlled]),
-                    DebugPoly(obj.point_list, 10, arcade.color.WHITE, draw=True),
+                    DebugPoly(obj.point_list, 10, arcade.color.WHITE),
                     Level(level_name)
                 )
 
