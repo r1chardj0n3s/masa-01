@@ -17,24 +17,17 @@ from .scene import Scene
 from .enemy import Enemy
 from .health import Health
 from .hurt import Hurt
+from .spawner import PlayerSpawner
 from ..tmx_fixes import load_object_layer
+from .level_marker import Level
 
 SPRITES_LAYER_Z = 50
-
-class Level:
-    def __init__(self, name):
-        self.name = name
-
 
 class CurrentLevel:
     def __init__(self, name):
         self.name = name
         self.loaded = False
         self.timestamp = None
-
-
-def debugCircle(x, y):
-    return DebugCircle(x, y, 10, (255, 0, 0, 100))
 
 
 def map_filename(name):
@@ -67,36 +60,15 @@ class LevelProcessor(esper.Processor):
         triggers = load_object_layer(my_map, "triggers")
         for obj in triggers.tiled_objects:
             if obj.name == "PLAYER_SPAWN":
-                self.world.create_entity(
-                    PlayerControlled(KeyboardInputSource()),
-                    Velocity(0, 0),
-                    Position(obj.location.x, obj.location.y),
-                    debugCircle(obj.location.x, obj.location.y),
-                    Facing(Facing.EAST),
-                    SpriteFacing(
-                        arcade.load_texture("data/kenney_robot-pack_side/robot_blueDrive1 - Butt.png"),
-                        arcade.load_texture("data/kenney_robot-pack_side/robot_blueDrive1.png"),
-                        arcade.load_texture("data/kenney_robot-pack_side/robot_blueDrive1.png", flipped_horizontally=True),
-                        arcade.load_texture("data/kenney_robot-pack_side/robot_blueDrive1 - Butt.png", flipped_horizontally=True),
-                    ),
-                    Sprite(
-                        "data/kenney_robot-pack_side/robot_blueDrive1.png",
-                        scale=0.3
-                    ),
-                    Health(3),
-                    Level(level_name)
-                )
+               player_spawner = PlayerSpawner(obj.location.x, obj.location.y, level_name)
+               self.world.create_entity(player_spawner, Level(level_name))
+               player_spawner.spawn(self.world, KeyboardInputSource())
+               
             if obj.name == "ENEMY_SPAWN":
-                self.world.create_entity(
-                    Velocity(0, 0),
-                    Position(obj.location.x, obj.location.y),
-                    Sprite(":resources:images/enemies/bee.png", scale=0.5),
-                    Enemy(),
-                    Health(1),
-                    Hurt(1, [PlayerControlled]),
-                    debugCircle(obj.location.x, obj.location.y),
-                    Level(level_name)
-                )
+                enemy_spawner = EnemySpawner(obj.location.x, obj.location.y, level_name)
+                self.world.create_entity(enemy_spawner, Level(level_name))
+                enemy_spawner.spawn(self.world)
+
             if obj.name == "ARENA_BOUNDARY":
                 self.world.create_entity(
                     obj,
