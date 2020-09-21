@@ -20,7 +20,7 @@ class ShootingProcessor(esper.Processor):
                 continue
             if keyboard.state.get(arcade.key.SPACE):
                 velocity = facing.velocity()
-                velocity.scale(1000)
+                velocity.magnitude = 1000
                 self.world.create_entity(
                     Sprite(":resources:images/items/star.png", scale=0.5),
                     Position(x=position.x, y=position.y),

@@ -40,7 +40,7 @@ class PlayerVelocityProcessor(esper.Processor):
                 dx -= PLAYER_SPEED_X
             velocity.dx = dx
             velocity.dy = dy
-
+            velocity.magnitude = PLAYER_SPEED
 
 class PlayerFacingProcessor(esper.Processor):
     def process(self, dt):
