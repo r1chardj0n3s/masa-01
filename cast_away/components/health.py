@@ -2,6 +2,8 @@ from cast_away.components.player import PlayerControlled
 import esper
 
 from .invulnerable import Invulnerable
+from .sprite import Sprite
+from .sprite_effect import SpriteEffect
 
 
 class HealthDown:
@@ -24,6 +26,8 @@ class HealthProcessor(esper.Processor):
                     health.amount -= effect.amount
                     if self.world.has_component(ent, PlayerControlled):
                         self.world.add_component(ent, Invulnerable(1))
+                    if self.world.has_component(ent, Sprite):
+                        self.world.add_component(ent, SpriteEffect(name="spin", play_time=0.3, speed=1000))
                 health.effects.remove(effect)
 
             if health.amount <= 0:
