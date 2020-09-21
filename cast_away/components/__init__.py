@@ -11,6 +11,7 @@ from . import level
 from . import invulnerable
 from . import health
 from . import hurt
+from . import health_display
 
 
 def init_world():
@@ -30,4 +31,7 @@ def init_world():
     hurt.init(world)
     health.init(world)
     level.init(world)
+
+    health_display.init(world)
+
     return world
