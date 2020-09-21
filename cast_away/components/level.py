@@ -13,13 +13,11 @@ from .velocity import Velocity
 from .player import PlayerControlled
 from .scene import Scene
 from .enemy import Enemy
+from .health import Health
+from .hurt import Hurt
 from ..tmx_fixes import load_object_layer
-from ..render_priorities import (
-    BACKGROUND_LAYER,
-    FOREGROUND_LAYER,
-    SPRITES_LAYER
-)
 
+SPRITES_LAYER_Z = 50
 
 class Level:
     def __init__(self, name):
@@ -49,7 +47,7 @@ class LevelProcessor(esper.Processor):
     def load_map(self, level_name):
         sprite_list = SpriteList()
         self.world.create_entity(
-            DrawLayer(SPRITES_LAYER, sprite_list),
+            DrawLayer(SPRITES_LAYER_Z, sprite_list),
             Level(level_name)
         )
         self.world.create_entity(Scene(), sprite_list, Level(level_name))
@@ -73,6 +71,7 @@ class LevelProcessor(esper.Processor):
                         "data/kenney_robot-pack_side/robot_blueDrive1.png",
                         scale=0.5
                     ),
+                    Health(3),
                     Level(level_name)
                 )
             if obj.name == "ENEMY_SPAWN":
@@ -81,6 +80,7 @@ class LevelProcessor(esper.Processor):
                     Position(obj.location.x, obj.location.y),
                     Sprite(":resources:images/enemies/bee.png", scale=0.5),
                     Enemy(),
+                    Health(1),
                     debugCircle(obj.location.x, obj.location.y),
                     Level(level_name)
                 )
@@ -99,6 +99,14 @@ class LevelProcessor(esper.Processor):
                     DebugPoly(obj.point_list, 10, arcade.color.WHITE, draw=True),
                     Level(level_name)
                 )
+            if obj.name == "SPIKE":
+                self.world.create_entity(
+                    obj,
+                    Hurt(1),
+                    DebugPoly(obj.point_list, 10, arcade.color.WHITE, draw=True),
+                    Level(level_name)
+                )
+
 
         # add all tiled layers
         for layer in my_map.layers:

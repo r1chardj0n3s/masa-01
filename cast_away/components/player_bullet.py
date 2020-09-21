@@ -1,8 +1,10 @@
 import esper
 
 from .enemy import Enemy
+from .health import Health
 from .position import Position
 from .sprite import Sprite
+from .invulnerable import Invulnerable
 
 
 class PlayerBullet:
@@ -18,11 +20,13 @@ class PlayerBulletProcessor(esper.Processor):
             if bullet.lifespan <= 0:
                 self.world.delete_entity(bullet_ent)
                 continue
-            for enemy_ent, (enemy, sprite) in self.world.get_components(Enemy, Sprite):
+            for enemy_ent, (enemy, sprite, health) in self.world.get_components(Enemy, Sprite, Health):
                 if sprite._arcade_sprite.collides_with_point((position.x, position.y)):
                     self.world.delete_entity(bullet_ent)
-                    self.world.delete_entity(enemy_ent)
-                    break
+                    # TODO this is a bit yuck that it's in multiple places
+                    if not self.world.has_component(enemy_ent, Invulnerable):
+                        health.amount -= 1
+                        break
 
 
 def init(world):
