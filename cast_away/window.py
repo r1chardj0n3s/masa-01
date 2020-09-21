@@ -11,7 +11,7 @@ class Game(arcade.Window):
     def __init__(self):
         super().__init__(1280, 720, "Junk Yard Wars")
         self.world = init_world()
-        self.world.create_entity(CurrentLevel("first-map"))
+        self.world.create_entity(CurrentLevel("1-movement"))
 
     def on_key_press(self, symbol, modifiers):
         keyboard.state[symbol] = True
