@@ -62,7 +62,6 @@ class LevelProcessor(esper.Processor):
             if obj.name == "PLAYER_SPAWN":
                player_spawner = PlayerSpawner(obj.location.x, obj.location.y, level_name)
                self.world.create_entity(player_spawner, Level(level_name))
-               player_spawner.spawn(self.world, KeyboardInputSource())
                
             if obj.name == "ENEMY_SPAWN":
                 enemy_spawner = EnemySpawner(obj.location.x, obj.location.y, level_name)

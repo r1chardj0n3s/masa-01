@@ -15,11 +15,12 @@ _keybinds = {
     UP: arcade.key.UP,
     DOWN: arcade.key.DOWN,
     WEAPON: arcade.key.SPACE,
+    START:  arcade.key.ENTER,
 }
 
 class KeyboardInputSource:
     def __init__(self):
-        ...
+        self.name = "keyboard"
 
     def state(self, action):
         return keyboard.state.get(_keybinds[action])

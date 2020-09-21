@@ -14,6 +14,7 @@ from . import health
 from . import hurt
 from . import health_display
 from . import joystick
+from . import keyboard_spawn
 
 def init_world():
     world = esper.World()
@@ -36,5 +37,6 @@ def init_world():
 
     health_display.init(world)
     joystick.init(world)
+    keyboard_spawn.init(world)
 
     return world

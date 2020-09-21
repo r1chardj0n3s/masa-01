@@ -5,6 +5,7 @@ from .components import init_world
 from .components.draw_layer import DrawLayer
 from .components.debug_primitives import DebugCircle, DebugPoly
 from .components.level import CurrentLevel
+from .components.input_source import KeyboardInputSource
 
 from .hud import add_health_hud
 
@@ -12,6 +13,7 @@ class Game(arcade.Window):
     def __init__(self, map_name="1-movement"):
         super().__init__(1280, 720, "Junk Yard Wars")
         self.world = init_world()
+        self.world.create_entity(KeyboardInputSource())
         self.world.create_entity(CurrentLevel(map_name))
         add_health_hud(self.world)
 
