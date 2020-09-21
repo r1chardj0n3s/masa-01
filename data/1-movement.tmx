@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.4" tiledversion="1.4.2" orientation="staggered" renderorder="right-down" width="9" height="21" tilewidth="128" tileheight="64" infinite="0" staggeraxis="y" staggerindex="odd" nextlayerid="6" nextobjectid="5">
  <tileset firstgid="1" source="kenney-blocks.tsx"/>
- <tileset firstgid="783" source="kenney-fences.tsx"/>
- <tileset firstgid="815" source="kenney-trees.tsx"/>
+ <tileset firstgid="641" source="kenney-fences.tsx"/>
+ <tileset firstgid="673" source="kenney-trees.tsx"/>
  <layer id="1" name="Floor1" width="9" height="21">
   <properties>
    <property name="z" type="int" value="0"/>
@@ -17,7 +17,7 @@
 0,0,0,0,0,0,0,417,0,
 0,0,0,0,0,0,417,417,417,
 0,0,417,0,0,0,417,417,417,
-786,417,0,0,0,417,417,417,417,
+644,417,0,0,0,417,417,417,417,
 462,417,417,0,0,417,417,417,417,
 417,417,417,0,417,417,417,417,0,
 0,417,417,417,417,417,417,417,0,
@@ -72,15 +72,15 @@
 0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,785,
-786,0,0,0,0,0,0,785,0,
-0,786,0,0,0,0,0,785,0,
-0,786,0,0,0,0,785,0,0,
-0,0,786,0,0,0,785,0,0,
-0,0,786,0,0,785,0,0,0,
-0,0,0,786,0,785,0,0,0,
-0,0,0,786,785,0,0,0,0,
-0,0,0,0,797,0,0,0,0,
+0,0,0,0,0,0,0,0,643,
+644,0,0,0,0,0,0,643,0,
+0,644,0,0,0,0,0,643,0,
+0,644,0,0,0,0,643,0,0,
+0,0,644,0,0,0,643,0,0,
+0,0,644,0,0,643,0,0,0,
+0,0,0,644,0,643,0,0,0,
+0,0,0,644,643,0,0,0,0,
+0,0,0,0,655,0,0,0,0,
 0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,
@@ -92,11 +92,11 @@
    <property name="z" type="int" value="20"/>
   </properties>
   <data encoding="csv">
-819,819,819,819,818,818,819,819,819,
-818,819,819,819,819,819,0,0,818,
-819,819,819,819,0,0,0,0,819,
-819,0,0,819,0,0,0,0,0,
-819,0,0,819,0,0,0,0,0,
+677,677,677,677,676,676,677,677,677,
+676,677,677,677,677,677,0,0,676,
+677,677,677,677,0,0,0,0,677,
+677,0,0,677,0,0,0,0,0,
+677,0,0,677,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,
@@ -121,12 +121,9 @@
   </object>
   <object id="2" name="EXIT" x="1149" y="172">
    <properties>
-    <property name="next_level" value="second-map"/>
+    <property name="next_level" value="2-spikes"/>
    </properties>
    <polygon points="0,0 54,81 9,106 -80,34"/>
-  </object>
-  <object id="3" name="ENEMY_SPAWN" x="996" y="284">
-   <point/>
   </object>
   <object id="4" name="PLAYER_SPAWN" x="229" y="316">
    <point/>
