@@ -8,10 +8,10 @@ from .components.level import CurrentLevel
 
 
 class Game(arcade.Window):
-    def __init__(self):
+    def __init__(self, map_name="1-movement"):
         super().__init__(1280, 720, "Junk Yard Wars")
         self.world = init_world()
-        self.world.create_entity(CurrentLevel("1-movement"))
+        self.world.create_entity(CurrentLevel(map_name))
 
     def on_key_press(self, symbol, modifiers):
         keyboard.state[symbol] = True
