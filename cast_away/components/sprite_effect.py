@@ -2,8 +2,8 @@ import esper
 from .sprite import Sprite
 
 class SpriteEffects:
-    def __init__(self):
-        self.effects = []
+    def __init__(self, *effects):
+        self.effects = list(effects)
 
 class SpinEffect:
     def __init__(self, play_time, speed):

@@ -10,6 +10,7 @@ from cast_away.components.level import Level
 from cast_away.components.enemy import Enemy
 from cast_away.components.inventory import InventoryItem
 from cast_away.event_dispatch import register_listener, ENTITY_DIED
+from cast_away.components.fireball_thrower import FireballThrower
 
 
 def create_enemy(world, spawner_entity, position: Position, level: Level):
@@ -22,6 +23,7 @@ def create_enemy(world, spawner_entity, position: Position, level: Level):
         Hurt(1, [Player]),
         debug_circle(position.x, position.y),
         level,
+        FireballThrower()
     )
 
 

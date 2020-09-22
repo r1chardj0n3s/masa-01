@@ -1,5 +1,6 @@
 import esper
 import math
+import euclid
 
 from .position import Position
 
@@ -26,6 +27,9 @@ class Velocity:
         if magnitude:
             self.dx /= magnitude
             self.dy /= magnitude
+
+    def vector2(self):
+        return euclid.Vector2(self.dx, self.dy)
 
 
 class VelocityPositionProcessor(esper.Processor):

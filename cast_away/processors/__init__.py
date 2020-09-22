@@ -3,7 +3,6 @@ import esper
 from ..components import sprite
 from ..components import sprite_effect
 from ..components import velocity
-from ..components import player_bullet
 from ..components import invulnerable
 from ..components import health
 from ..components import hurt
@@ -17,6 +16,8 @@ from . import timeout
 from . import player_move
 from . import follow_path
 from . import hud_display
+from . import bullet
+from . import enemy_shoot
 
 def init_world():
     world = esper.World()
@@ -36,7 +37,8 @@ def init_world():
     sprite_effect.init(world)
 
     star_thrower.init(world)
-    player_bullet.init(world)
+    bullet.init(world)
+    enemy_shoot.init(world)
 
     hurt.init(world)
     health.init(world)

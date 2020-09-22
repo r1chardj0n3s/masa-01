@@ -8,9 +8,10 @@ from cast_away.components.position import Position
 from cast_away.components.facing import Facing
 from cast_away.components.timeout import Timeout
 from cast_away.components.sprite import Sprite
-from cast_away.components.player_bullet import PlayerBullet
+from cast_away.components.bullet import Bullet
 from cast_away.components.input_source import WEAPON
 from cast_away.components.star_thrower import StarThrower
+from cast_away.components.enemy import Enemy
 
 
 class ShootingProcessor(esper.Processor):
@@ -31,7 +32,7 @@ class ShootingProcessor(esper.Processor):
                     Sprite(":resources:images/items/star.png", scale=0.5),
                     Position(x=position.x, y=position.y),
                     velocity,
-                    PlayerBullet(),
+                    Bullet(.5, Enemy),
                 )
                 self.world.add_component(item.ent, Timeout(0.5))
 
