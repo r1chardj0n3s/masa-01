@@ -5,3 +5,8 @@ class PlayerSpawner:
 
 class EnemySpawner:
     ...
+
+
+class PickupSpawner:
+    def __init__(self, type):
+        self.type = type

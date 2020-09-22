@@ -17,6 +17,7 @@ from ..entities.level import create_arena_boundary, create_exit, create_tile_lay
 from ..entities.props import create_spike
 
 from ..tmx_fixes import load_object_layer
+from cast_away.entities.spawner import create_pickup_spawner
 
 SPRITES_LAYER_Z = 50
 
@@ -62,6 +63,8 @@ class LevelProcessor(esper.Processor):
                 create_exit(self.world, obj, level_comp)
             if obj.name == "SPIKE":
                 create_spike(self.world, obj, level_comp)
+            if obj.name == "PICKUP":
+                create_pickup_spawner(self.world, obj, level_comp)
 
         # add all tiled layers
         for layer in my_map.layers:
@@ -69,7 +72,7 @@ class LevelProcessor(esper.Processor):
                 create_tile_layer(self.world, my_map, layer, level_comp)
 
         # place active players
-        for _, (current_level) in self.world.get_component(CurrentLevel):
+        for _, current_level in self.world.get_component(CurrentLevel):
             for _, (pc, position) in self.world.get_components(
                 PlayerControlled, Position
             ):

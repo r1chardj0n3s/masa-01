@@ -5,7 +5,6 @@ from ..components import gun_cooldown
 from ..components import sprite
 from ..components import sprite_effect
 from ..components import velocity
-from ..components import star_thrower
 from ..components import player_bullet
 from ..components import invulnerable
 from ..components import health
@@ -17,11 +16,14 @@ from ..components import keyboard_spawn
 from . import level
 from . import spawner
 from . import position_constriants
+from . import star_thrower
+from . import pickup
 
 def init_world():
     world = esper.World()
 
     spawner.init(world)
+    pickup.init(world)
 
     invulnerable.init(world)
     player.init(world)
