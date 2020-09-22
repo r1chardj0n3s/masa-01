@@ -24,7 +24,7 @@ def create_player(world, position, input_source):
         ),
         Sprite(
             "data/kenney_robot-pack_side/robot_blueDrive1.png",
-            scale=0.3
+            scale=0.2
         ),
         Health(3)
     )

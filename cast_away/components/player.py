@@ -28,10 +28,11 @@ class PlayerVelocityProcessor(esper.Processor):
                 up_down = 1
             if input_source.state(DOWN):
                 up_down -= 1
-            facing.set_cardinals(left_right, up_down)
+            if left_right or up_down:
+                facing.set_cardinals(left_right, up_down)
 
             velocity = facing.velocity()
-            velocity.magnitude = PLAYER_SPEED
+            velocity.magnitude = PLAYER_SPEED if left_right or up_down else 0
             self.world.add_component(ent, velocity)
 
 
