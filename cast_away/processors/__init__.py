@@ -7,7 +7,6 @@ from ..components import player_bullet
 from ..components import invulnerable
 from ..components import health
 from ..components import hurt
-from ..components import health_display
 
 from . import level
 from . import spawner
@@ -17,6 +16,7 @@ from . import pickup
 from . import timeout
 from . import player_move
 from . import follow_path
+from . import hud_display
 
 def init_world():
     world = esper.World()
@@ -42,6 +42,6 @@ def init_world():
     health.init(world)
     level.init(world)
 
-    health_display.init(world)
+    hud_display.init(world)
 
     return world
