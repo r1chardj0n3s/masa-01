@@ -1,8 +1,5 @@
 import arcade
 
-import arcade.gui
-from arcade.gui import UIFlatButton, UIGhostFlatButton, UIManager
-from arcade.gui.ui_style import UIStyle
 
 from . import keyboard
 from .processors import init_world
@@ -12,6 +9,7 @@ from .components.level import CurrentLevel
 from .components.input_source import KeyboardInputSource
 
 from .hud import add_health_hud
+from .menu import Menu
 
 class Game(arcade.Window):
     def __init__(self, map_name="1-movement"):
@@ -20,22 +18,20 @@ class Game(arcade.Window):
         self.world.create_entity(KeyboardInputSource())
         self.world.create_entity(CurrentLevel(map_name))
         add_health_hud(self.world)
-        self.paused = True
         self.menu = Menu(self, self.world)
+        self.first_update = True
 
     def on_key_press(self, symbol, modifiers):
         keyboard.state[symbol] = True
-        if symbol == arcade.key.ESCAPE:
-            self.paused = not self.paused
 
     def on_key_release(self, symbol, modifiers):
         del keyboard.state[symbol]
 
     def on_update(self, dt):
-        if not self.paused:
+        if not self.menu.show or self.first_update:
             self.world.process(dt)
-        else:
-            self.menu.update(dt)
+            self.first_update = False
+        self.menu.update(dt)
 
     def on_draw(self):
         arcade.start_render()
@@ -60,41 +56,7 @@ class Game(arcade.Window):
                     debug.size
                 )
         
-        if self.paused:
+        if self.menu.show:
             self.menu.draw()
         
 
-class Menu:
-    def __init__(self, window, world):
-        self.window = window
-        self.world = world
-    
-        self.ui_manager = UIManager(self.window)
-        
-        def style(button):
-            button.set_style_attrs(
-                font_color=arcade.color.WHITE,
-                font_color_hover=arcade.color.WHITE,
-                font_color_press=arcade.color.WHITE,
-                bg_color=(51, 139, 57),
-                bg_color_hover=(51, 139, 57),
-                bg_color_press=(28, 71, 32),
-                border_color=(51, 139, 57),
-                border_color_hover=arcade.color.WHITE,
-                border_color_press=arcade.color.WHITE
-            )
-        self.start = UIFlatButton('Play', center_x=self.window.width/2, center_y=self.window.height/2, width=200, height=40)
-        style(self.start)
-        self.ui_manager.add_ui_element(self.start)
-        self.exit = UIFlatButton('Exit', center_x=self.window.width/2, center_y=self.window.height/2-50, width=200, height=40)
-        style(self.exit)
-        self.ui_manager.add_ui_element(self.exit)
-
-    def update(self, dt):
-        if self.start.pressed:
-            self.window.paused = False
-        if self.exit.pressed:
-            arcade.close_window()
-
-    def draw(self):
-        self.ui_manager.on_draw()

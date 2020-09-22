@@ -8,6 +8,7 @@ UP = "up"
 DOWN = "down"
 WEAPON = "weapon"
 START = "start"
+MENU = "menu"
 
 _keybinds = {
     RIGHT: arcade.key.RIGHT,
@@ -16,6 +17,7 @@ _keybinds = {
     DOWN: arcade.key.DOWN,
     WEAPON: arcade.key.SPACE,
     START:  arcade.key.ENTER,
+    MENU: arcade.key.ESCAPE
 }
 
 class KeyboardInputSource:
@@ -29,6 +31,7 @@ class KeyboardInputSource:
 _buttonbinds = {
     WEAPON: 0,
     START: 7,
+    MENU: 7
 }
 
 DEAD_ZONE_X = 0.1
@@ -48,10 +51,11 @@ class JoystickInputSource:
 
     def on_joybutton_press(self, _joystick, button):
         self.buttons[button] = True
-        # print(f"button {button} down")
+        print(f"button {button} press")
 
     def on_joybutton_release(self, _joystick, button):
         self.buttons[button] = False
+        print(f"button {button} release")
 
     def on_joyhat_motion(self, _joystick, hat_x, hat_y):
         self.hat_x = hat_x

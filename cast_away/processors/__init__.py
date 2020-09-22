@@ -9,8 +9,6 @@ from ..components import invulnerable
 from ..components import health
 from ..components import hurt
 from ..components import health_display
-from ..components import joystick
-from ..components import keyboard_spawn
 
 from . import level
 from . import spawner
@@ -43,7 +41,5 @@ def init_world():
     level.init(world)
 
     health_display.init(world)
-    joystick.init(world)
-    keyboard_spawn.init(world)
 
     return world
