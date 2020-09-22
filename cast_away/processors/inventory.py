@@ -31,6 +31,7 @@ class InventoryDisplayProcessor(esper.Processor):
         # TODO this only handles one player's inventory
         for player, inventory in inventories.items():
             for i, item_ent in enumerate(inventory):
+                # TODO this is a bit terrible - finding the component that is a subclass of Pickup :(
                 item = [i for i in self.world.components_for_entity(item_ent) if isinstance(i, Pickup)][0]
                 if item.image not in self.in_list:
                     inventory_hud_sprite(item.image, i, self.sprite_list, item.hud_scale)
