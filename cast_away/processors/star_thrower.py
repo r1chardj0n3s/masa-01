@@ -23,7 +23,7 @@ class ShootingProcessor(esper.Processor):
             if self.world.has_component(item.ent, Timeout):
                 continue
 
-            if pc.input_source.state(WEAPON):
+            if pc.input_source.state.get(WEAPON):
                 velocity = facing.velocity()
                 velocity.magnitude = 1000
                 self.world.create_entity(

@@ -6,7 +6,7 @@ from .processors import init_world
 from .components.draw_layer import DrawLayer
 from .components.debug_primitives import DebugCircle, DebugPoly
 from .components.level import CurrentLevel
-from .components.input_source import KeyboardInputSource
+from .components.input_source import InputSource, KeyboardState
 
 from .hud import add_health_hud
 from .menu import Menu
@@ -16,7 +16,7 @@ class Game(arcade.Window):
     def __init__(self, map_name="1-movement"):
         super().__init__(1280, 720, "Junk Yard Wars")
         self.world = init_world()
-        self.world.create_entity(KeyboardInputSource())
+        self.world.create_entity(InputSource("Keyboard", KeyboardState()))
         self.world.create_entity(CurrentLevel(map_name))
         add_health_hud(self.world)
         self.menu = Menu(self, self.world)
@@ -29,7 +29,7 @@ class Game(arcade.Window):
         del keyboard.state[symbol]
 
     def on_update(self, dt):
-        if not self.menu.show or self.first_update:
+        if self.first_update or not self.menu.show:
             self.world.process(dt)
             self.first_update = False
         self.menu.update(dt)

@@ -11,28 +11,31 @@ START = "start"
 MENU = "menu"
 ACTIVATE = "activate"
 
+class InputSource:
+    def __init__(self, name, state):
+        self.name = name
+        self.state = state
+
 _keybinds = {
     RIGHT: arcade.key.RIGHT,
     LEFT: arcade.key.LEFT,
     UP: arcade.key.UP,
     DOWN: arcade.key.DOWN,
     WEAPON: arcade.key.SPACE,
-    START:  arcade.key.ENTER,
     MENU: arcade.key.ESCAPE,
     ACTIVATE: arcade.key.ENTER,
 }
 
-class KeyboardInputSource:
+class KeyboardState:
     def __init__(self):
         self.name = "keyboard"
 
-    def state(self, action):
+    def get(self, action):
         return keyboard.state.get(_keybinds[action])
 
 
 _buttonbinds = {
     WEAPON: 0,
-    START: 7,
     MENU: 7,
     ACTIVATE: 0,
 }
@@ -40,7 +43,7 @@ _buttonbinds = {
 DEAD_ZONE_X = 0.1
 DEAD_ZONE_Y = 0.1
 
-class JoystickInputSource:
+class JoystickState:
     def __init__(self, joystick):
         self.joystick = joystick
         self.name = joystick.device.name
@@ -64,7 +67,7 @@ class JoystickInputSource:
         self.hat_x = hat_x
         self.hat_y = hat_y
 
-    def state(self, action):
+    def get(self, action):
         # print(f"joy.x {self.joystick.x}")
         # print(f"joy.y {self.joystick.y}")
         if action == LEFT:
