@@ -1,7 +1,7 @@
 import arcade
 
 from . import keyboard
-from .components import init_world
+from .processors import init_world
 from .components.draw_layer import DrawLayer
 from .components.debug_primitives import DebugCircle, DebugPoly
 from .components.level import CurrentLevel

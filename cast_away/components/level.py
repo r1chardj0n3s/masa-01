@@ -4,20 +4,18 @@ import pytiled_parser
 import os
 
 from .useful_polygon import UsefulPolygon
-from .sprite import Sprite, SpriteList, SpriteFacing
-from .input_source import KeyboardInputSource
-from .facing import Facing
+from .sprite import  SpriteList
 from .draw_layer import DrawLayer
-from .debug_primitives import DebugCircle, DebugPoly
+from .debug_primitives import  DebugPoly
 from .position import Position
 from .position_constriants import ArenaBoundary
-from .velocity import Velocity
 from .player import PlayerControlled
 from .scene import Scene
-from .enemy import Enemy
-from .health import Health
 from .hurt import Hurt
-from .spawner import PlayerSpawner, EnemySpawner
+from .spawner import PlayerSpawner
+
+from ..entities import spawner
+
 from ..tmx_fixes import load_object_layer
 from .level_marker import Level
 
@@ -59,19 +57,14 @@ class LevelProcessor(esper.Processor):
         self.world.create_entity(Scene(), sprite_list, Level(level_name))
         my_map = arcade.tilemap.read_tmx(map_filename(level_name))
         triggers = load_object_layer(my_map, "triggers")
+        level_comp = Level(level_name)
+
         for obj in triggers.tiled_objects:
             if obj.name == "PLAYER_SPAWN":
-                player_spawner = PlayerSpawner(
-                   obj.location.x,
-                   obj.location.y,
-                   obj.properties.get("last_level")
-                )
-                self.world.create_entity(player_spawner, Level(level_name))
-               
+                spawner.create_player_spawner(self.world, obj, level_comp)
+
             if obj.name == "ENEMY_SPAWN":
-                enemy_spawner = EnemySpawner(obj.location.x, obj.location.y, level_name)
-                self.world.create_entity(enemy_spawner, Level(level_name))
-                enemy_spawner.spawn(self.world)
+                spawner.create_enemy_spawner(self.world, obj, level_comp)
 
             if obj.name == "ARENA_BOUNDARY":
                 self.world.create_entity(
@@ -110,14 +103,14 @@ class LevelProcessor(esper.Processor):
                     ),
                     Level(level_name)
                 )
-        # place players
+
+        # place active players
         for _, (current_level) in self.world.get_component(CurrentLevel):
             for _, (pc, position) in self.world.get_components(PlayerControlled, Position):
-                for _, spawner in self.world.get_component(PlayerSpawner):
-                    if spawner.last_level == current_level.last_level:
-                        position.x = spawner.x
-                        position.y = spawner.y
-
+                for _, (player_spawner, spawn_pos) in self.world.get_components(PlayerSpawner, Position):
+                    if player_spawner.last_level == current_level.last_level:
+                        position.x = spawn_pos.x
+                        position.y = spawn_pos.y
 
 
 class LevelExit:
