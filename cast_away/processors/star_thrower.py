@@ -1,4 +1,3 @@
-from cast_away.components.inventory import InventoryItem
 import esper
 
 from .. import keyboard
@@ -10,22 +9,23 @@ from cast_away.components.timeout import Timeout
 from cast_away.components.sprite import Sprite
 from cast_away.components.bullet import Bullet
 from cast_away.components.input_source import WEAPON
-from cast_away.components.star_thrower import StarThrower
+from cast_away.components.pickups import StarThrower
 from cast_away.components.enemy import Enemy
+from cast_away.components.inventory import Inventory
 
 
 class ShootingProcessor(esper.Processor):
     def process(self, dt):
-        for ent, (pc, position, facing, item) in self.world.get_components(
-            Player, Position, Facing, InventoryItem
-        ):
-            if not self.world.has_component(item.ent, StarThrower):
+        for item_ent, (item, st) in self.world.get_components(Inventory, StarThrower):
+            if self.world.has_component(item_ent, Timeout):
+                print(self.world.component_for_entity(item_ent, Timeout))
                 continue
 
-            if self.world.has_component(item.ent, Timeout):
-                continue
+            pc = self.world.component_for_entity(item.owner_ent, Player)
 
             if pc.input_source.state.get(WEAPON):
+                position = self.world.component_for_entity(item.owner_ent, Position)
+                facing = self.world.component_for_entity(item.owner_ent, Facing)
                 velocity = facing.velocity()
                 velocity.magnitude = 1000
                 self.world.create_entity(
@@ -34,7 +34,7 @@ class ShootingProcessor(esper.Processor):
                     velocity,
                     Bullet(.5, Enemy),
                 )
-                self.world.add_component(item.ent, Timeout(0.5))
+                self.world.add_component(item_ent, Timeout(0.5))
 
 
 def init(world):

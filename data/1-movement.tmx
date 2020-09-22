@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.4" tiledversion="1.4.2" orientation="staggered" renderorder="right-down" width="11" height="22" tilewidth="128" tileheight="64" infinite="0" staggeraxis="y" staggerindex="odd" nextlayerid="9" nextobjectid="5">
+<map version="1.4" tiledversion="1.4.2" orientation="staggered" renderorder="right-down" width="11" height="22" tilewidth="128" tileheight="64" infinite="0" staggeraxis="y" staggerindex="odd" nextlayerid="9" nextobjectid="6">
  <tileset firstgid="1" source="landscapeTiles_sheet.tsx"/>
  <tileset firstgid="129" source="kenney-props.tsx"/>
  <tileset firstgid="241" source="kenney-fences.tsx"/>
@@ -52,6 +52,12 @@
   <object id="4" name="PLAYER_SPAWN" x="1090.3" y="314.127">
    <properties>
     <property name="last_level" value="2-spikes"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="5" name="PICKUP" x="511.333" y="478.667">
+   <properties>
+    <property name="type" value="saw"/>
    </properties>
    <point/>
   </object>
