@@ -17,7 +17,7 @@ from .components.position import Position
 from .entities import player
 
 # from arcade.gui.ui_style import UIStyle
-MENU_SPEED = 0.3
+MENU_SPEED = 0.1
 JOYSTICK_CHECK_FREQUENCY = 5
 
 BUTTON_WIDTH = 200
@@ -121,20 +121,22 @@ class Menu:
                 check_joysticks(self.world)
                 self.joystick_check = 0
 
-            self.menu_input += dt
-            if self.menu_input > MENU_SPEED:
-                self.menu_input = 0
+            self.menu_input -= dt
+            if self.menu_input < 0:
                 for _, input_source in self.world.get_component(InputSource):
                     if input_source.state.get(DOWN):
                         self.highlight_button(1)
+                        self.menu_input = MENU_SPEED
                     if input_source.state.get(UP):
                         self.highlight_button(-1)
+                        self.menu_input = MENU_SPEED
                     if (
                         input_source.state.get(ACTIVATE)
                         and self.selected_button is not None
                     ):
                         self.buttons[BUTTONS[self.selected_button]].pressed = True
                         menu_activator = input_source
+                        self.menu_input = MENU_SPEED
 
             if self.buttons[START].pressed:
                 self.show = False
