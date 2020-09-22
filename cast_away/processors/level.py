@@ -70,7 +70,7 @@ class LevelProcessor(esper.Processor):
                 create_pickup_spawner(self.world, obj, level_comp)
 
         if level_name == "1-movement":
-            create_unique_item(self.world, level_name)
+            create_unique_item(self.world, "saw", level_name)
 
         # add all tiled layers
         for layer in my_map.layers:
