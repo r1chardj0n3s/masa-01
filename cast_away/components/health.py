@@ -22,7 +22,6 @@ class HealthProcessor(esper.Processor):
         for ent, health in self.world.get_component(Health):
             for effect in list(health.effects):
                 if not self.world.has_component(ent, Invulnerable):
-                    print('HURT!!', health.amount)
                     health.amount -= effect.amount
                     if self.world.has_component(ent, PlayerControlled):
                         self.world.add_component(ent, Invulnerable(1))
