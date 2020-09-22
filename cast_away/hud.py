@@ -1,7 +1,7 @@
 import arcade
 
 from .components.health_display import HealthDisplay
-from .components.inventory import InventoryDisplay
+from .components.inventory import InventoryDisplay, INVENTORY_X_OFFSET, INVENTORY_X_SPACING, INVENTORY_Y, inventory_hud_sprite
 from cast_away.components.draw_layer import HUDLayer
 
 def add_hud(world):
@@ -18,13 +18,8 @@ def add_health_hud(world):
 
 
 def add_inventory_hud(world):
-    x_offset = 900
-    x_spacing = 72
     sprite_list = arcade.SpriteList()
-    def sprite(num, index):
-        center_x = x_offset + x_spacing * index
-        sprite_list.append(arcade.Sprite(f"data/kenney_platformerpack_industrial/platformIndustrial_{num}.png", center_x=center_x, center_y=50, scale=.5))
-    for i, n in enumerate(["073", "074", "075"]):
-        sprite(n, i)
-    world.create_entity(InventoryDisplay(sprite_list), HUDLayer(sprite_list))
+    for i, num in enumerate(["073", "074", "075"]):
+        inventory_hud_sprite(f"data/kenney_platformerpack_industrial/platformIndustrial_{num}.png", i, sprite_list, scale=0.5)
+    world.create_entity(HUDLayer(sprite_list))
     

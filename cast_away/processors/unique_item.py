@@ -7,6 +7,8 @@ from ..components.sprite import Sprite
 from ..components.player import Player
 from ..components.position import Position
 
+INVENTORY_SIZE = 3
+
 unique_item_sprites = {
     "saw": Sprite(":resources:images/enemies/saw.png", scale=0.2)
 }
@@ -34,9 +36,10 @@ class UniqueItemProcessor(esper.Processor):
     
     def check_pickups(self, world, item):
         for _, (player, position) in world.get_components(Player, Position):
-            if item.position.distance(position) < item.size:
+            inventory = world.get_components(Player, UniqueItem)
+            if len(inventory) < INVENTORY_SIZE and item.position.distance(position) < item.size:
                 item.carried_by = player
-                #put in inventory?
+                world.create_entity(player, item)
 
 def init(world):
     world.add_processor(UniqueItemProcessor())
