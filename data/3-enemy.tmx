@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.4" tiledversion="1.4.2" orientation="staggered" renderorder="right-down" width="10" height="22" tilewidth="128" tileheight="64" infinite="0" staggeraxis="y" staggerindex="odd" nextlayerid="6" nextobjectid="5">
+<map version="1.4" tiledversion="1.4.2" orientation="staggered" renderorder="right-down" width="10" height="22" tilewidth="128" tileheight="64" infinite="0" staggeraxis="y" staggerindex="odd" nextlayerid="6" nextobjectid="6">
  <tileset firstgid="1" source="landscapeTiles_sheet.tsx"/>
  <layer id="4" name="Tile Layer 4" width="10" height="22">
   <properties>
    <property name="z" type="int" value="0"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJxjYGBgcIZiZOA8DDCx/iDGz8SGDTqgRB0uQK46SuymZthQEl/EqCFFHb3TGgCYBy1I
+   eJxjYBg8wJkEdYTUOqPRxNiJSy26OLHqcOklVh0ugOw3UtThs5sYNbjUk6oOn/nEmE2sWwmZRYy/GdDkCKnDxkYGAGGLEUc=
   </data>
  </layer>
  <layer id="3" name="Tile Layer 3" width="10" height="22" offsetx="0" offsety="-2">
@@ -44,10 +44,19 @@
    <polygon points="0,0 46.6667,28 89.3333,8 30.6667,-16"/>
   </object>
   <object id="3" name="PLAYER_SPAWN" x="177.333" y="644">
+   <properties>
+    <property name="last_level" value="2-spikes"/>
+   </properties>
    <point/>
   </object>
   <object id="4" name="ENEMY_SPAWN" x="806.667" y="274.667">
    <point/>
+  </object>
+  <object id="5" name="OBSTACLE" x="582.667" y="388">
+   <properties>
+    <property name="requires" value="ramp_traversal"/>
+   </properties>
+   <polygon points="0,0 -60,60 -8,85.3333 54.6667,26.6667"/>
   </object>
  </objectgroup>
 </map>

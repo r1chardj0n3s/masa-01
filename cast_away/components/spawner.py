@@ -12,14 +12,15 @@ from .enemy import Enemy
 
 
 class PlayerSpawner:
-    def __init__(self, x, y, level_name):
+    def __init__(self, x, y, level_name, last_level):
         self.x = x
         self.y = y
         self.level_name = level_name
+        self.last_level = last_level
 
     def spawn(self, world, input_source):
         world.create_entity(
-            PlayerControlled(input_source),
+            PlayerControlled(input_source, self.level_name),
             Velocity(0, 0),
             Position(self.x, self.y),
             debug_circle(self.x, self.y),
@@ -34,8 +35,7 @@ class PlayerSpawner:
                 "data/kenney_robot-pack_side/robot_blueDrive1.png",
                 scale=0.3
             ),
-            Health(3),
-            Level(self.level_name)
+            Health(3)
         )
 
 class EnemySpawner:

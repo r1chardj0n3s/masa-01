@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.4" tiledversion="1.4.2" orientation="staggered" renderorder="right-down" width="10" height="22" tilewidth="128" tileheight="64" infinite="0" staggeraxis="y" staggerindex="odd" nextlayerid="8" nextobjectid="9">
+<map version="1.4" tiledversion="1.4.2" orientation="staggered" renderorder="right-down" width="10" height="22" tilewidth="128" tileheight="64" infinite="0" staggeraxis="y" staggerindex="odd" nextlayerid="8" nextobjectid="10">
  <tileset firstgid="1" source="landscapeTiles_sheet.tsx"/>
  <tileset firstgid="129" source="kenney-props.tsx"/>
  <layer id="1" name="Tile Layer 1" width="10" height="22">
@@ -7,7 +7,7 @@
    <property name="z" type="int" value="0"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJyV0D8LwjAQh+Hs7uKgLuJXcNJBrkKlBf9UEFcHB8HJwYIgfnTv4II/jos2gZeW5iFNEsJ3kD6LkB6kXR3XwPtBnZgKbGGcmLVx0Xj72Or3M1cn3BLWqMDMfzjZx9txG2MIzARcred4cXd1M+N6XKlnuHA7bgGGYD3575F7cHuu5YaOi3d34046t4K9BmPlHE+Y7ztuoGtGM+LGjmt0TYKmxsW7p0Q57p/JcV1MjutipA9VWC3u
+   eJyN0T0LwkAMBuDs7uKgLuJfcNJBUkFpwY8K4urgIDg5KAjiT/c9SGgIudrAS6/lIXe5EjXF8iwoXyy5Ba4266O4ZEpjC+eS2TinJjrHTr5fkCrjlqZHacy8xaVzfAO3dYaNmRhXyRwf5CFu5lwPWcsMV2SPLIJeuu8JeSIH5IUMA6d3d0fOsu+Kmn/pbZrjbWbpB3YgPdWMkHHgaunJJlPn9O45iO/1z1lDHXuRs22Ggvec89XFpPoBTOQlSw==
   </data>
  </layer>
  <layer id="2" name="Tile Layer 2" width="10" height="22" offsetx="0" offsety="33">
@@ -31,6 +31,9 @@
    <polygon points="0,0 124,65.3333 585.333,-162.667 516,-201.333 552,-220 622.667,-184 890.667,-314.667 701.333,-414.667 829.333,-481.333 1020,-381.333 958.667,-350.667 1021.33,-318.667 1277.33,-450.667 1282.67,-573.333 1336,-610.667 1276,-632 1014.67,-508 768,-636 629.333,-636 501.333,-572 588,-517.333 582.667,-490.667 432,-416 516,-365.333 516,-336 441.333,-289.333 501.333,-248"/>
   </object>
   <object id="2" name="PLAYER_SPAWN" x="144" y="597.333">
+   <properties>
+    <property name="last_level" value="1-movement"/>
+   </properties>
    <point/>
   </object>
   <object id="3" name="EXIT" x="1280" y="5.33333">
@@ -56,6 +59,12 @@
   </object>
   <object id="8" name="SPIKE" x="922.667" y="120">
    <polygon points="0,0 38.6667,20 70.6667,2.66667 33.3333,-21.3333"/>
+  </object>
+  <object id="9" name="PLAYER_SPAWN" x="1232" y="53.3333">
+   <properties>
+    <property name="last_level" value="3-enemy"/>
+   </properties>
+   <point/>
   </object>
  </objectgroup>
  <layer id="3" name="Tile Layer 3" width="10" height="22" offsetx="0" offsety="2">

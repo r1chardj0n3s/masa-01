@@ -60,8 +60,13 @@ class LevelProcessor(esper.Processor):
         triggers = load_object_layer(my_map, "triggers")
         for obj in triggers.tiled_objects:
             if obj.name == "PLAYER_SPAWN":
-               player_spawner = PlayerSpawner(obj.location.x, obj.location.y, level_name)
-               self.world.create_entity(player_spawner, Level(level_name))
+                player_spawner = PlayerSpawner(
+                   obj.location.x,
+                   obj.location.y,
+                   level_name,
+                   obj.properties.get("last_level")
+                )
+                self.world.create_entity(player_spawner, Level(level_name))
                
             if obj.name == "ENEMY_SPAWN":
                 enemy_spawner = EnemySpawner(obj.location.x, obj.location.y, level_name)
@@ -105,6 +110,14 @@ class LevelProcessor(esper.Processor):
                     ),
                     Level(level_name)
                 )
+        # place players
+        for _, (pc, position) in self.world.get_components(PlayerControlled, Position):
+            for _, spawner in self.world.get_component(PlayerSpawner):
+                if spawner.last_level == pc.level_name:
+                    position.x = spawner.x
+                    position.y = spawner.y
+                    pc.level_name = level_name
+
 
 
 class LevelExit:
