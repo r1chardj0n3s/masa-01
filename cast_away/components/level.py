@@ -64,7 +64,6 @@ class LevelProcessor(esper.Processor):
                 player_spawner = PlayerSpawner(
                    obj.location.x,
                    obj.location.y,
-                   level_name,
                    obj.properties.get("last_level")
                 )
                 self.world.create_entity(player_spawner, Level(level_name))
@@ -112,12 +111,12 @@ class LevelProcessor(esper.Processor):
                     Level(level_name)
                 )
         # place players
-        for _, (pc, position) in self.world.get_components(PlayerControlled, Position):
-            for _, spawner in self.world.get_component(PlayerSpawner):
-                if spawner.last_level == pc.level_name:
-                    position.x = spawner.x
-                    position.y = spawner.y
-                    pc.level_name = level_name
+        for _, (current_level) in self.world.get_component(CurrentLevel):
+            for _, (pc, position) in self.world.get_components(PlayerControlled, Position):
+                for _, spawner in self.world.get_component(PlayerSpawner):
+                    if spawner.last_level == current_level.last_level:
+                        position.x = spawner.x
+                        position.y = spawner.y
 
 
 

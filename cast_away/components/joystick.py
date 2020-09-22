@@ -5,6 +5,7 @@ import esper
 from .input_source import JoystickInputSource, START
 from .spawner import PlayerSpawner
 from .player import PlayerControlled
+from .level import CurrentLevel
 from .. import keyboard
 
 CHECK_FREQUENCY = 1

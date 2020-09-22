@@ -12,15 +12,14 @@ from .enemy import Enemy
 
 
 class PlayerSpawner:
-    def __init__(self, x, y, level_name, last_level):
+    def __init__(self, x, y, last_level):
         self.x = x
         self.y = y
-        self.level_name = level_name
         self.last_level = last_level
 
     def spawn(self, world, input_source):
         world.create_entity(
-            PlayerControlled(input_source, self.level_name),
+            PlayerControlled(input_source),
             Velocity(0, 0),
             Position(self.x, self.y),
             debug_circle(self.x, self.y),

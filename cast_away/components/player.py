@@ -11,9 +11,8 @@ from .input_source import LEFT, RIGHT, UP, DOWN
 PLAYER_SPEED = 550
 
 class PlayerControlled:
-    def __init__(self, input_source, level_name):
+    def __init__(self, input_source):
         self.input_source = input_source
-        self.level_name = level_name
 
 
 class PlayerVelocityProcessor(esper.Processor):
