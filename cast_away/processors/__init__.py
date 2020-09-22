@@ -16,6 +16,7 @@ from . import star_thrower
 from . import pickup
 from . import timeout
 from . import player_move
+from . import follow_path
 
 def init_world():
     world = esper.World()
@@ -27,6 +28,7 @@ def init_world():
 
     invulnerable.init(world)
     player_move.init(world)
+    follow_path.init(world)
 
     velocity.init(world)
     position_constriants.init(world)

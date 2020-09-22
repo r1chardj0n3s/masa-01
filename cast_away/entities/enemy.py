@@ -13,7 +13,7 @@ from cast_away.event_dispatch import register_listener, ENTITY_DIED
 
 
 def create_enemy(world, spawner_entity, position: Position, level: Level):
-    world.create_entity(
+    return world.create_entity(
         Velocity(0, 0),
         Position(position.x, position.y),
         Sprite(":resources:images/enemies/bee.png", scale=0.5),

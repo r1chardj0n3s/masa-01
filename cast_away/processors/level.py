@@ -12,7 +12,7 @@ from ..components.scene import Scene
 from ..components.level import CurrentLevel, Level, LevelExit
 from ..components.spawner import PlayerSpawner
 
-from ..entities.spawner import create_enemy_spawner, create_player_spawner
+from ..entities.spawner import create_enemy_spawner, create_player_spawner, create_enemy_path
 from ..entities.level import create_arena_boundary, create_exit, create_tile_layer
 from ..entities.props import create_spike
 
@@ -57,6 +57,8 @@ class LevelProcessor(esper.Processor):
                 create_player_spawner(self.world, obj, level_comp)
             if obj.name == "ENEMY_SPAWN":
                 create_enemy_spawner(self.world, obj, level_comp)
+            if obj.name == "ENEMY_PATH":
+                create_enemy_path(self.world, obj, level_comp)
             if obj.name == "ARENA_BOUNDARY":
                 create_arena_boundary(self.world, obj, level_comp)
             if obj.name == "EXIT":
