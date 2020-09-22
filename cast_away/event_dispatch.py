@@ -1,5 +1,3 @@
-from typing import Protocol, List
-
 
 ENTITY_DIED = 'ENTITY_DIED'
 
