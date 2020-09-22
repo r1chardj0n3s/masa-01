@@ -4,7 +4,7 @@ class PlayerSpawner:
 
 
 class EnemySpawner:
-    ...
+    spawning = False
 
 
 class PickupSpawner:

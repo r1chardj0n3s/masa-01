@@ -1,4 +1,3 @@
-import arcade
 import esper
 
 from .. import keyboard
@@ -6,7 +5,7 @@ from .. import keyboard
 from cast_away.components.player import PlayerControlled
 from cast_away.components.position import Position
 from cast_away.components.facing import Facing
-from cast_away.components.gun_cooldown import GunCooldown
+from cast_away.components.timeout import Timeout
 from cast_away.components.sprite import Sprite
 from cast_away.components.player_bullet import PlayerBullet
 from cast_away.components.input_source import WEAPON
@@ -17,7 +16,7 @@ class ShootingProcessor(esper.Processor):
         for ent, (pc, position, facing, st) in self.world.get_components(
             PlayerControlled, Position, Facing, StarThrower
         ):
-            if self.world.has_component(ent, GunCooldown):
+            if self.world.has_component(ent, Timeout):
                 continue
             if pc.input_source.state(WEAPON):
                 velocity = facing.velocity()
@@ -28,7 +27,8 @@ class ShootingProcessor(esper.Processor):
                     velocity,
                     PlayerBullet()
                 )
-                self.world.add_component(ent, GunCooldown(.5))
+                # TODO yikes, the player can have only one timeout!!
+                self.world.add_component(ent, Timeout(.5))
 
 
 def init(world):

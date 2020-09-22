@@ -1,4 +1,3 @@
-import arcade
 import esper
 
 from cast_away import keyboard
