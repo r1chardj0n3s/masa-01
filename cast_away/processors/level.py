@@ -7,7 +7,7 @@ from ..components.useful_polygon import UsefulPolygon
 from ..components.sprite import SpriteList
 from ..components.draw_layer import DrawLayer
 from ..components.position import Position
-from ..components.player import PlayerControlled
+from ..components.player import Player
 from ..components.scene import Scene
 from ..components.level import CurrentLevel, Level, LevelExit
 from ..components.spawner import PlayerSpawner
@@ -73,9 +73,7 @@ class LevelProcessor(esper.Processor):
 
         # place active players
         for _, current_level in self.world.get_component(CurrentLevel):
-            for _, (pc, position) in self.world.get_components(
-                PlayerControlled, Position
-            ):
+            for _, (pc, position) in self.world.get_components(Player, Position):
                 for _, (player_spawner, spawn_pos) in self.world.get_components(
                     PlayerSpawner, Position
                 ):
@@ -86,9 +84,7 @@ class LevelProcessor(esper.Processor):
 
 class LevelExitProcessor(esper.Processor):
     def process(self, dt):
-        for ent, (pc, position) in self.world.get_components(
-            PlayerControlled, Position
-        ):
+        for ent, (pc, position) in self.world.get_components(Player, Position):
             for ent, (poly, level_exit) in self.world.get_components(
                 UsefulPolygon, LevelExit
             ):

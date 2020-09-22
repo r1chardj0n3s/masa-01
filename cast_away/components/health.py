@@ -1,4 +1,4 @@
-from cast_away.components.player import PlayerControlled
+from cast_away.components.player import Player
 import esper
 
 from .invulnerable import Invulnerable
@@ -24,7 +24,7 @@ class HealthProcessor(esper.Processor):
             for effect in list(health.effects):
                 if not self.world.has_component(ent, Invulnerable):
                     health.amount -= effect.amount
-                    if self.world.has_component(ent, PlayerControlled):
+                    if self.world.has_component(ent, Player):
                         self.world.add_component(ent, Invulnerable(1))
                     if not self.world.has_component(ent, SpriteEffects):
                         self.world.add_component(ent, SpriteEffects())

@@ -8,13 +8,14 @@ from ..components.position import Position
 
 from ..entities.enemy import create_enemy
 from ..entities.weapon import create_weapon
-from cast_away.components.player import PlayerControlled
+from cast_away.components.player import Player
 from cast_away.components.star_thrower import StarThrower
+
 
 class PickupProcessor(esper.Processor):
     def process(self, dt):
         for _, (pickup, spos) in self.world.get_components(PickupSpawner, Position):
-            for player_ent, (pc, ppos) in self.world.get_components(PlayerControlled, Position):
+            for player_ent, (pc, ppos) in self.world.get_components(Player, Position):
                 if spos.distance(ppos) < 50:
                     for item in self.world.try_component(player_ent, InventoryItem):
                         if self.world.has_component(item.ent, StarThrower):

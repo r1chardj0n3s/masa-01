@@ -1,6 +1,6 @@
 import arcade
 
-from cast_away.components.player import PlayerControlled
+from cast_away.components.player import Player
 from cast_away.components.velocity import Velocity
 from cast_away.components.position import Position
 from cast_away.components.debug_primitives import debug_circle
@@ -13,29 +13,34 @@ from cast_away.event_dispatch import ENTITY_DIED, register_listener
 
 def create_player(world, position, input_source):
     world.create_entity(
-        PlayerControlled(input_source),
+        Player(input_source),
         Velocity(0, 0),
         Position(position.x, position.y),
         debug_circle(position.x, position.y),
         Facing(Facing.EAST),
         SpriteFacing(
-            arcade.load_texture("data/kenney_robot-pack_side/robot_blueDrive1 - Butt.png"),
+            arcade.load_texture(
+                "data/kenney_robot-pack_side/robot_blueDrive1 - Butt.png"
+            ),
             arcade.load_texture("data/kenney_robot-pack_side/robot_blueDrive1.png"),
-            arcade.load_texture("data/kenney_robot-pack_side/robot_blueDrive1.png", flipped_horizontally=True),
-            arcade.load_texture("data/kenney_robot-pack_side/robot_blueDrive1 - Butt.png", flipped_horizontally=True),
+            arcade.load_texture(
+                "data/kenney_robot-pack_side/robot_blueDrive1.png",
+                flipped_horizontally=True,
+            ),
+            arcade.load_texture(
+                "data/kenney_robot-pack_side/robot_blueDrive1 - Butt.png",
+                flipped_horizontally=True,
+            ),
         ),
-        Sprite(
-            "data/kenney_robot-pack_side/robot_blueDrive1.png",
-            scale=0.2
-        ),
-        Health(3)
+        Sprite("data/kenney_robot-pack_side/robot_blueDrive1.png", scale=0.2),
+        Health(3),
     )
 
 
 def player_died(world, message):
     ent = message.payload
 
-    if not world.has_component(ent, PlayerControlled):
+    if not world.has_component(ent, Player):
         return
 
     for item in world.try_component(ent, InventoryItem):

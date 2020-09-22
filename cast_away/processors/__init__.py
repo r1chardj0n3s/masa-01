@@ -1,6 +1,5 @@
 import esper
 
-from ..components import player
 from ..components import sprite
 from ..components import sprite_effect
 from ..components import velocity
@@ -16,6 +15,7 @@ from . import position_constriants
 from . import star_thrower
 from . import pickup
 from . import timeout
+from . import player_move
 
 def init_world():
     world = esper.World()
@@ -26,7 +26,7 @@ def init_world():
     pickup.init(world)
 
     invulnerable.init(world)
-    player.init(world)
+    player_move.init(world)
 
     velocity.init(world)
     position_constriants.init(world)
