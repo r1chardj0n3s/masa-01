@@ -1,29 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.4" tiledversion="1.4.2" orientation="staggered" renderorder="right-down" width="10" height="22" tilewidth="128" tileheight="64" infinite="0" staggeraxis="y" staggerindex="odd" nextlayerid="8" nextobjectid="10">
+<map version="1.4" tiledversion="1.4.2" orientation="staggered" renderorder="right-down" width="11" height="22" tilewidth="128" tileheight="64" infinite="0" staggeraxis="y" staggerindex="odd" nextlayerid="8" nextobjectid="10">
  <tileset firstgid="1" source="landscapeTiles_sheet.tsx"/>
  <tileset firstgid="129" source="kenney-props.tsx"/>
- <layer id="1" name="Tile Layer 1" width="10" height="22">
+ <layer id="1" name="Tile Layer 1" width="11" height="22">
   <properties>
    <property name="z" type="int" value="0"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJyN0T0LwkAMBuDs7uKgLuJfcNJBUkFpwY8K4urgIDg5KAjiT/c9SGgIudrAS6/lIXe5EjXF8iwoXyy5Ba4266O4ZEpjC+eS2TinJjrHTr5fkCrjlqZHacy8xaVzfAO3dYaNmRhXyRwf5CFu5lwPWcsMV2SPLIJeuu8JeSIH5IUMA6d3d0fOsu+Kmn/pbZrjbWbpB3YgPdWMkHHgaunJJlPn9O45iO/1z1lDHXuRs22Ggvec89XFpPoBTOQlSw==
+   eJyV0T0LwkAMBuDs7uKgLuJfcNJBroJSwY8K4urgIDg5KAjiT/cN5GgISa2Bl3L0ISR3RHUl+RbUXElydWxlzgex7ErlC8eyWxmbXTTTVv6dkbWyU+Pmqldp3KjB8kyfwG6MS4EjmY13eyN3sRPHdpCl7HVBdsgs6JlnOCIPZI88kX5g893ekJPMsKD63T3Pu73Uft3A96R3dgNkGNhKeieVsWPzGyUnXs82Vjv6oycZ/8uRc26yXrV1XF/WhCXN
   </data>
  </layer>
- <layer id="2" name="Tile Layer 2" width="10" height="22" offsetx="0" offsety="33">
+ <layer id="2" name="Tile Layer 2" width="11" height="22" offsetx="0" offsety="33">
   <properties>
    <property name="z" type="int" value="5"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJwLYWBgCIFidIAsjksNA5p4CBrGBYhRQ446QoBW5lFbHbXDZSD8SwwgVt1wAQBkbg5x
+   eJwLYWBgCIFidIAujksdAxbxEDSMDxCrjly1xABam0srtbQKs4EOB2IBKWqHMwAA3DMOcQ==
   </data>
  </layer>
- <layer id="4" name="spikes" width="10" height="22" offsetx="0" offsety="23">
+ <layer id="4" name="spikes" width="11" height="22" offsetx="0" offsety="23">
   <properties>
    <property name="z" type="int" value="10"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJxjYMAE77GIkaOGGnqGI6BFOIyG7dAAAF8oBKw=
+   eJxjYMAE77GIYQPEqqOWvpEEaBlGo+E//AAApHMErA==
   </data>
  </layer>
  <objectgroup id="5" name="triggers">
@@ -67,28 +67,28 @@
    <point/>
   </object>
  </objectgroup>
- <layer id="3" name="Tile Layer 3" width="10" height="22" offsetx="0" offsety="2">
+ <layer id="3" name="Tile Layer 3" width="11" height="22" offsetx="0" offsety="2">
   <properties>
    <property name="z" type="int" value="15"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJyzYWBgsIFidIAsjksNA5q4DRrGBYhRQ446QoBW5lFbHbXDZSD8SwwgVt1wAQCR2ApR
+   eJyzYWBgsIFidIAujksdAxZxGzSMDxCrjly1xABam0srtbQKs4EOB2IBKWqHMwAADB0KUQ==
   </data>
  </layer>
- <layer id="6" name="props" width="10" height="22">
+ <layer id="6" name="props" width="11" height="22">
   <properties>
    <property name="z" type="int" value="20"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJxjYKA+2AfEt3HINdPAvqEC9lHRrDtUNGsU0A8AAHpfA7c=
+   eJxjYKAd2AfEt3HINdPQ3qEM9tHAzDs0MHMUDC4AAG/uA7c=
   </data>
  </layer>
- <layer id="7" name="Tile Layer 6" width="10" height="22" offsetx="0" offsety="-36">
+ <layer id="7" name="Tile Layer 6" width="11" height="22" offsetx="0" offsety="-36">
   <properties>
    <property name="z" type="int" value="25"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJxjYKAcXKSCGaNgFIwEAACaegDS
+   eJxjYKAOuEglc0bBKBgFpAMA32YA0g==
   </data>
  </layer>
 </map>
