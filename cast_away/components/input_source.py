@@ -57,11 +57,11 @@ class JoystickState:
 
     def on_joybutton_press(self, _joystick, button):
         self.buttons[button] = True
-        print(f"button {button} press")
+        # print(f"button {button} press")
 
     def on_joybutton_release(self, _joystick, button):
         self.buttons[button] = False
-        print(f"button {button} release")
+        # print(f"button {button} release")
 
     def on_joyhat_motion(self, _joystick, hat_x, hat_y):
         self.hat_x = hat_x
