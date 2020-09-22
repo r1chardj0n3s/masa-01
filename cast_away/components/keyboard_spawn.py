@@ -5,6 +5,7 @@ import esper
 from .input_source import KeyboardInputSource, START
 from .spawner import PlayerSpawner
 from .player import PlayerControlled
+from .level import CurrentLevel
 
 class KeyboardSpawnProcessor(esper.Processor):
     
@@ -20,8 +21,10 @@ class KeyboardSpawnProcessor(esper.Processor):
             is_started = self.is_started(input_source)
             wants_to_start = input_source.state(START)
             if wants_to_start and not is_started:
-                for  _, spawner in self.world.get_component(PlayerSpawner):
-                    spawner.spawn(self.world, input_source)
+                for  _, current_level in self.world.get_component(CurrentLevel):
+                    for  _, spawner in self.world.get_component(PlayerSpawner):
+                        if spawner.last_level == current_level.last_level:
+                            spawner.spawn(self.world, input_source)
 
 
 def init(world):

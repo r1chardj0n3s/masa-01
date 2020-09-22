@@ -32,8 +32,10 @@ class JoystickDetectionProcessor(esper.Processor):
             wants_to_start = input_source.state(START)
             # print(f"joystick {name} is started {is_started} wants to start {wants_to_start}")
             if wants_to_start and not is_started:
-                for  _, spawner in self.world.get_component(PlayerSpawner):
-                    spawner.spawn(self.world, input_source)
+                for  _, current_level in self.world.get_component(CurrentLevel):
+                    for  _, spawner in self.world.get_component(PlayerSpawner):
+                        if spawner.last_level == current_level.last_level:
+                            spawner.spawn(self.world, input_source)
         #arcade.get_joysticks is a time consuming operation and will skip frames
         if not keyboard.state.get(arcade.key.J):
             return

@@ -26,6 +26,7 @@ SPRITES_LAYER_Z = 50
 class CurrentLevel:
     def __init__(self, name):
         self.name = name
+        self.last_level = name
         self.loaded = False
         self.timestamp = None
 
@@ -133,14 +134,15 @@ class LevelExitProcessor(esper.Processor):
         for ent, (pc, position) in self.world.get_components(
             PlayerControlled, Position
         ):
-            for ent, (poly, levelExit) in self.world.get_components(
+            for ent, (poly, level_exit) in self.world.get_components(
                 UsefulPolygon, LevelExit
             ):
                 if poly.is_point_inside(position.x, position.y):
                     # import pdb; pdb.set_trace()
-                    for _, (currentLevel,) in self.world.get_components(CurrentLevel):
-                        currentLevel.name = levelExit.next_level
-                        currentLevel.loaded = False
+                    for _, (current_level,) in self.world.get_components(CurrentLevel):
+                        current_level.last_level = current_level.name
+                        current_level.name = level_exit.next_level
+                        current_level.loaded = False
 
 
 def init(world):
