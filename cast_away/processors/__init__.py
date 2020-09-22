@@ -7,8 +7,6 @@ from ..components import sprite_effect
 from ..components import velocity
 from ..components import star_thrower
 from ..components import player_bullet
-from ..components import position_constriants
-from ..components import level
 from ..components import invulnerable
 from ..components import health
 from ..components import hurt
@@ -16,7 +14,9 @@ from ..components import health_display
 from ..components import joystick
 from ..components import keyboard_spawn
 
+from . import level
 from . import spawner
+from . import position_constriants
 
 def init_world():
     world = esper.World()

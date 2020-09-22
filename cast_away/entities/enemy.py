@@ -7,7 +7,7 @@ from ..components.debug_primitives import debug_circle
 from ..components.sprite import Sprite
 from ..components.health import Health
 from ..components.hurt import Hurt
-from ..components.level_marker import Level
+from ..components.level import Level
 from ..components.enemy import Enemy
 
 

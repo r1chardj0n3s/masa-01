@@ -1,4 +1,5 @@
 import arcade
+
 from ..components.player import PlayerControlled
 from ..components.velocity import Velocity
 from ..components.position import Position
