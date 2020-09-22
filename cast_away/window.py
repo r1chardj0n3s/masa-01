@@ -64,5 +64,3 @@ class Game(arcade.Window):
             layer.draw()
         if self.menu.show:
             self.menu.draw()
-        
-
