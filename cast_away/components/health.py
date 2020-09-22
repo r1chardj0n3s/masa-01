@@ -4,6 +4,7 @@ import esper
 from .invulnerable import Invulnerable
 from .sprite import Sprite
 from .sprite_effect import SpriteEffects, SpinEffect, FlashEffect
+from cast_away.event_dispatch import dispatch, Message, ENTITY_DIED
 
 
 class HealthDown:
@@ -33,8 +34,7 @@ class HealthProcessor(esper.Processor):
                 health.effects.remove(effect)
 
             if health.amount <= 0:
-                # TODO player game over if has component PlayerControlled
-                self.world.delete_entity(ent)
+                dispatch(self.world, Message(ENTITY_DIED, ent))
 
 
 def init(world):

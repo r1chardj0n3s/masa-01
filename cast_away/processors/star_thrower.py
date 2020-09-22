@@ -1,3 +1,4 @@
+from cast_away.components.inventory import InventoryItem
 import esper
 
 from .. import keyboard
@@ -13,11 +14,15 @@ from cast_away.components.star_thrower import StarThrower
 
 class ShootingProcessor(esper.Processor):
     def process(self, dt):
-        for ent, (pc, position, facing, st) in self.world.get_components(
-            PlayerControlled, Position, Facing, StarThrower
+        for ent, (pc, position, facing, item) in self.world.get_components(
+            PlayerControlled, Position, Facing, InventoryItem
         ):
-            if self.world.has_component(ent, Timeout):
+            if not self.world.has_component(item.ent, StarThrower):
                 continue
+
+            if self.world.has_component(item.ent, Timeout):
+                continue
+
             if pc.input_source.state(WEAPON):
                 velocity = facing.velocity()
                 velocity.magnitude = 1000
@@ -27,8 +32,7 @@ class ShootingProcessor(esper.Processor):
                     velocity,
                     PlayerBullet()
                 )
-                # TODO yikes, the player can have only one timeout!!
-                self.world.add_component(ent, Timeout(.5))
+                self.world.add_component(item.ent, Timeout(.5))
 
 
 def init(world):

@@ -1,12 +1,14 @@
 import arcade
 
-from ..components.player import PlayerControlled
-from ..components.velocity import Velocity
-from ..components.position import Position
-from ..components.debug_primitives import debug_circle
-from ..components.facing import Facing
-from ..components.sprite import Sprite, SpriteFacing
-from ..components.health import Health
+from cast_away.components.player import PlayerControlled
+from cast_away.components.velocity import Velocity
+from cast_away.components.position import Position
+from cast_away.components.debug_primitives import debug_circle
+from cast_away.components.facing import Facing
+from cast_away.components.sprite import Sprite, SpriteFacing
+from cast_away.components.health import Health
+from cast_away.components.inventory import InventoryItem
+from cast_away.event_dispatch import ENTITY_DIED, register_listener
 
 
 def create_player(world, position, input_source):
@@ -28,3 +30,18 @@ def create_player(world, position, input_source):
         ),
         Health(3)
     )
+
+
+def player_died(world, message):
+    ent = message.payload
+
+    if not world.has_component(ent, PlayerControlled):
+        return
+
+    for item in world.try_component(ent, InventoryItem):
+        world.delete_entity(item.ent)
+    world.delete_entity(ent)
+
+
+def init():
+    register_listener(ENTITY_DIED, player_died)
