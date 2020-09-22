@@ -15,6 +15,7 @@ from ..components.spawner import PlayerSpawner
 from ..entities.spawner import create_enemy_spawner, create_player_spawner, create_enemy_path
 from ..entities.level import create_arena_boundary, create_exit, create_tile_layer
 from ..entities.props import create_spike
+from ..entities.unique_item import create_unique_item
 
 from ..tmx_fixes import load_object_layer
 from cast_away.entities.spawner import create_pickup_spawner
@@ -67,6 +68,9 @@ class LevelProcessor(esper.Processor):
                 create_spike(self.world, obj, level_comp)
             if obj.name == "PICKUP":
                 create_pickup_spawner(self.world, obj, level_comp)
+
+        if level_name == "1-movement":
+            create_unique_item(self.world, level_name)
 
         # add all tiled layers
         for layer in my_map.layers:

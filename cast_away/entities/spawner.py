@@ -7,6 +7,7 @@ from cast_away.components.enemy import Enemy
 from cast_away.entities.enemy import create_enemy
 
 
+
 def create_player_spawner(world, obj, level_comp):
     world.create_entity(
         PlayerSpawner(obj.properties.get("last_level")),
