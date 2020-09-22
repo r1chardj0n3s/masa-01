@@ -9,6 +9,7 @@ DOWN = "down"
 WEAPON = "weapon"
 START = "start"
 MENU = "menu"
+ACTIVATE = "activate"
 
 _keybinds = {
     RIGHT: arcade.key.RIGHT,
@@ -17,7 +18,8 @@ _keybinds = {
     DOWN: arcade.key.DOWN,
     WEAPON: arcade.key.SPACE,
     START:  arcade.key.ENTER,
-    MENU: arcade.key.ESCAPE
+    MENU: arcade.key.ESCAPE,
+    ACTIVATE: arcade.key.ENTER,
 }
 
 class KeyboardInputSource:
@@ -31,7 +33,8 @@ class KeyboardInputSource:
 _buttonbinds = {
     WEAPON: 0,
     START: 7,
-    MENU: 7
+    MENU: 7,
+    ACTIVATE: 0,
 }
 
 DEAD_ZONE_X = 0.1
