@@ -13,7 +13,7 @@ from ..components.level import CurrentLevel, Level, LevelExit
 from ..components.spawner import PlayerSpawner
 
 from ..entities.spawner import create_enemy_spawner, create_player_spawner
-from ..entities.level import create_arena_boundary, create_exit
+from ..entities.level import create_arena_boundary, create_exit, create_tile_layer
 from ..entities.props import create_spike
 
 from ..tmx_fixes import load_object_layer
@@ -54,31 +54,19 @@ class LevelProcessor(esper.Processor):
         for obj in triggers.tiled_objects:
             if obj.name == "PLAYER_SPAWN":
                 create_player_spawner(self.world, obj, level_comp)
-
             if obj.name == "ENEMY_SPAWN":
                 create_enemy_spawner(self.world, obj, level_comp)
-
             if obj.name == "ARENA_BOUNDARY":
                 create_arena_boundary(self.world, obj, level_comp)
-
             if obj.name == "EXIT":
                 create_exit(self.world, obj, level_comp)
-
             if obj.name == "SPIKE":
                 create_spike(self.world, obj, level_comp)
 
         # add all tiled layers
         for layer in my_map.layers:
             if isinstance(layer, pytiled_parser.objects.TileLayer):
-                self.world.create_entity(
-                    DrawLayer(
-                        layer.properties.get("z", 0),
-                        arcade.tilemap.process_layer(
-                            my_map, layer.name, hit_box_algorithm="None"
-                        ),
-                    ),
-                    Level(level_name),
-                )
+                create_tile_layer(self.world, my_map, layer, level_comp)
 
         # place active players
         for _, (current_level) in self.world.get_component(CurrentLevel):
