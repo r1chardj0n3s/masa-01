@@ -81,7 +81,7 @@ class CollisionProcessor(esper.Processor):
                     for eb, cb in collidables:
                         if ea == eb: continue
                         if does_collide(self.world, ea, ca, eb, cb):
-                            print(f"found collision! {ca} {cb}")
+                            # print(f"found collision! {ca} {cb}")
                             collisions.setdefault(ea, []).append(eb)
         #resolution
         for ea, collisions in collisions.items():
