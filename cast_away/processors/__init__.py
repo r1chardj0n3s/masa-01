@@ -20,6 +20,7 @@ from . import hud_display
 from . import bullet
 from . import enemy_shoot
 from . import inventory
+from . import collisions
 
 def init_world():
     world = esper.World()
@@ -49,5 +50,6 @@ def init_world():
     level.init(world)
 
     hud_display.init(world)
+    collisions.init(world)
 
     return world

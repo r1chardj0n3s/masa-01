@@ -3,6 +3,7 @@ import arcade
 from cast_away.components.player import Player
 from cast_away.components.velocity import Velocity
 from cast_away.components.position import Position
+from cast_away.components.collidable import HitCircle, Collidable
 from cast_away.components.debug_primitives import debug_circle
 from cast_away.components.facing import Facing
 from cast_away.components.sprite import Sprite, SpriteFacing
@@ -16,6 +17,8 @@ def create_player(world, position, input_source):
         Player(input_source),
         Velocity(0, 0),
         Position(position.x, position.y),
+        HitCircle(radius=25),
+        Collidable(),
         debug_circle(position.x, position.y),
         Facing(Facing.EAST),
         SpriteFacing(

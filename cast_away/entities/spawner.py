@@ -1,10 +1,13 @@
 from cast_away.components.sprite import Sprite
 from cast_away.components.position import Position
+from cast_away.components.collidable import HitCircle
 from cast_away.components.spawner import PlayerSpawner, EnemySpawner
 from cast_away.components.spawner import PickupSpawner
+from cast_away.components.player import Player
 from cast_away.components.follow_path import FollowPath
 from cast_away.entities.enemy import create_enemy
 
+from cast_away.components.collidable import Collidable
 
 def create_player_spawner(world, obj, level_comp):
     world.create_entity(
@@ -31,6 +34,8 @@ def create_pickup_spawner(world, obj, level_comp):
     world.create_entity(
         spawner,
         Position(obj.location.x, obj.location.y),
+        HitCircle(radius=25),
         level_comp,
         Sprite(spawner.component.image, scale=spawner.component.scale),
+        Collidable(match_components=[Player])
     )

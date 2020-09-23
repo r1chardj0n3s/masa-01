@@ -1,6 +1,6 @@
 
 ENTITY_DIED = 'ENTITY_DIED'
-
+COLLISION = 'COLLISION'
 
 class Message:
     def __init__(self, type, payload):
