@@ -11,14 +11,14 @@ from cast_away.components.bullet import Bullet
 from cast_away.components.input_source import WEAPON
 from cast_away.components.pickups import StarThrower
 from cast_away.components.enemy import Enemy
-from cast_away.components.inventory import Inventory
+from cast_away.components.inventory import InventoryItem
 
 
 class ShootingProcessor(esper.Processor):
     def process(self, dt):
-        for item_ent, (item, st) in self.world.get_components(Inventory, StarThrower):
+        for item_ent, (item, st) in self.world.get_components(InventoryItem, StarThrower):
             if self.world.has_component(item_ent, Timeout):
-                print(self.world.component_for_entity(item_ent, Timeout))
+                print(f"timout: {self.world.component_for_entity(item_ent, Timeout)}")
                 continue
 
             pc = self.world.component_for_entity(item.owner_ent, Player)
