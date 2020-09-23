@@ -170,4 +170,4 @@ class Menu:
         name = input_source.name
         is_started = self.is_started(input_source)
         if not is_started:
-            player.create_player(self.world, True, Position(0,0,None), input_source)
+            player.create_player(self.world, input_source)
