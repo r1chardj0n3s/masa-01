@@ -63,12 +63,13 @@ class Game(arcade.Window):
                     5
                 )
 
-        for _, boundary in self.world.get_component(ArenaBoundary):
-            arcade.draw_polygon_outline(
-                boundary.poly.point_list,
-                arcade.color.WHITE,
-                5
-            )
+        for _, (boundary, level) in self.world.get_components(ArenaBoundary, Level):
+            if level.loaded:
+                arcade.draw_polygon_outline(
+                    boundary.poly.point_list,
+                    arcade.color.WHITE,
+                    5
+                )
         
         arcade.set_viewport(0, 1280, 0, 720)
         for _, layer in self.world.get_component(HUDLayer):
