@@ -21,7 +21,7 @@ from cast_away.components.level import CurrentLevel, Level
 from cast_away.components.level.player_spawn import PlayerSpawns
 
 
-def create_player(world, input_source):
+def create_player(world, input_source, mp=None):
     _, current_level = world.get_component(CurrentLevel)[0]
     level_ent = current_level.level_ent
 
@@ -32,15 +32,17 @@ def create_player(world, input_source):
 
     players = [mp for _, mp in world.get_component(MultiplayerIdentifier)]
 
-    this_player = MultiplayerIdentifier.select(players)
+    if mp is None:
+        mp = MultiplayerIdentifier.select(players)
+
     player_ent = world.create_entity(
-        this_player,
+        mp,
         Position(spawner.x, spawner.y, level_ent),
         Velocity(0, 0),
         HitCircle(radius=25),
         Collidable(),
         Facing(Facing.EAST),
-        player_sprite_for(this_player.colour, Facing.EAST),
+        player_sprite_for(mp.colour, Facing.EAST),
         Health(3),
         Inventory([]),
     )
