@@ -6,7 +6,7 @@ from cast_away.components.sprite import Sprite, SpriteList
 from cast_away.components.facing import Facing
 
 
-COLOURS = "blue green red yellow".split()
+COLOURS = "blue green yellow red".split()
 
 
 @dataclass
@@ -26,6 +26,7 @@ def player_sprite_for(colour, facing):
     s = Sprite("data/kenney_robot-pack_side/robot_blueDrive1.png", scale=0.25)
     s._arcade_sprite.texture = player_texture_for(colour, facing)
     return s
+
 
 def player_texture_for(colour, facing):
     if facing in (Facing.NORTH, Facing.NORTH_EAST):

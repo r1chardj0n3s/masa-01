@@ -145,6 +145,7 @@ class Menu:
                         if input_source.name == "Keyboard":
                             menu_activator = input_source
                 self.spawn_player(menu_activator)
+
                 self.buttons[START].pressed = False
             if self.buttons[EXIT].pressed:
                 arcade.close_window()

@@ -33,18 +33,13 @@ class InventoryDisplayProcessor(esper.Processor):
                     sprite_list[i].texture = arcade.load_texture(image)
                 else:
                     sprite_list.append(inventory_hud_sprite(image, i, scale=0.5))
-                    
+
             inventory = self.world.component_for_entity(display.player_entity, Inventory)
             for i, item_entity in enumerate(inventory.items):
                 inventoryItem = self.world.component_for_entity(item_entity, InventoryItem)
                 set_sprite_at(i, inventoryItem.hud_image)
             while len(inventory.items) < len(sprite_list):
                 sprite_list.pop()
-            if inventory.selection is None:
-                hud_layer.drawable.selection_sprite.alpha = 0
-            else:
-                hud_layer.drawable.selection_sprite.alpha = 150
-                hud_layer.drawable.selection_sprite.center_x = x_for_hud_sprite(inventory.selection)
 
 def init(world):
     world.add_processor(HealthDisplayProcessor())
