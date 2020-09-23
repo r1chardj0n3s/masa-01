@@ -5,6 +5,6 @@ class InventoryItem:
 
 
 class Inventory:
-    def __init__(self, items, selection=None):
-        self.items = items
+    def __init__(self, item_ents, selection=None):
+        self.item_ents = item_ents
         self.drop_debounce = 0

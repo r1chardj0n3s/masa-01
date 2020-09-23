@@ -37,12 +37,12 @@ class InventoryDisplayProcessor(esper.Processor):
 
             inventory = self.world.component_for_entity(display.player_entity, Inventory)
             mp = self.world.component_for_entity(display.player_entity, MultiplayerIdentifier)
-            for i, item_entity in enumerate(inventory.items):
+            for i, item_entity in enumerate(inventory.item_ents):
                 inventoryItem = self.world.component_for_entity(item_entity, InventoryItem)
                 index = COLOURS.index(mp.colour)
                 base_x = index * 300
                 set_sprite_at(i, base_x, inventoryItem.hud_image)
-            while len(inventory.items) < len(sprite_list):
+            while len(inventory.item_ents) < len(sprite_list):
                 sprite_list.pop()
 
 def init(world):

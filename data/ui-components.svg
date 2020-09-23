@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 210 297"
+   version="1.1"
+   id="svg8"
+   inkscape:version="0.92.4 (5da689c313, 2019-01-14)"
+   sodipodi:docname="ui-components.svg">
+  <defs
+     id="defs2" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.98994949"
+     inkscape:cx="325.32602"
+     inkscape:cy="345.36042"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="2339"
+     inkscape:window-height="1194"
+     inkscape:window-x="211"
+     inkscape:window-y="110"
+     inkscape:window-maximized="0" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <rect
+       style="opacity:0.5;fill:#71808c;fill-opacity:0.89393938;stroke:#25210e;stroke-width:0.48887303;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.86868685"
+       id="rect815"
+       width="65.65696"
+       height="12.740294"
+       x="26.438185"
+       y="115.32449"
+       ry="2.9600172"
+       inkscape:export-xdpi="103.61"
+       inkscape:export-ydpi="103.61" />
+    <rect
+       style="opacity:0.5;fill:#71808c;fill-opacity:0.89393939;stroke:#25210e;stroke-width:0.87376487;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.86868687"
+       id="rect815-3"
+       width="231.91356"
+       height="88.392525"
+       x="-4.6390209"
+       y="161.79846"
+       ry="5.856811"
+       inkscape:export-xdpi="103.61"
+       inkscape:export-ydpi="103.61" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:14.11111069px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="80.715408"
+       y="177.93143"
+       id="text834"
+       inkscape:export-xdpi="103.61"
+       inkscape:export-ydpi="103.61"><tspan
+         sodipodi:role="line"
+         id="tspan832"
+         x="80.715408"
+         y="177.93143"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:14.11111069px;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';stroke-width:0.26458332">Controls</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="3.535017"
+       y="208.84219"
+       id="text838"
+       inkscape:export-xdpi="103.61"
+       inkscape:export-ydpi="103.61"><tspan
+         sodipodi:role="line"
+         id="tspan836"
+         x="3.535017"
+         y="208.84219"
+         style="stroke-width:0.26458332">PC</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="49.563881"
+       y="193.87616"
+       id="text842-0"
+       inkscape:export-xdpi="103.61"
+       inkscape:export-ydpi="103.61"><tspan
+         sodipodi:role="line"
+         x="49.563881"
+         y="193.87616"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';stroke-width:0.26458332"
+         id="tspan846-8">move</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="97.20388"
+       y="193.87616"
+       id="text842-0-8"
+       inkscape:export-xdpi="103.61"
+       inkscape:export-ydpi="103.61"><tspan
+         sodipodi:role="line"
+         x="97.20388"
+         y="193.87616"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';stroke-width:0.26458332"
+         id="tspan846-8-5">use item</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="164.39093"
+       y="193.87616"
+       id="text842-0-8-6"
+       inkscape:export-xdpi="103.61"
+       inkscape:export-ydpi="103.61"><tspan
+         sodipodi:role="line"
+         x="164.39093"
+         y="193.87616"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';stroke-width:0.26458332"
+         id="tspan846-8-5-3">drop item</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="46.957214"
+       y="208.84219"
+       id="text842-0-6"
+       inkscape:export-xdpi="103.61"
+       inkscape:export-ydpi="103.61"><tspan
+         sodipodi:role="line"
+         x="46.957214"
+         y="208.84219"
+         style="stroke-width:0.26458332"
+         id="tspan846-8-4">arrows</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="105.57146"
+       y="208.84219"
+       id="text939"
+       inkscape:export-xdpi="103.61"
+       inkscape:export-ydpi="103.61"><tspan
+         sodipodi:role="line"
+         id="tspan937"
+         x="105.57146"
+         y="208.84219"
+         style="stroke-width:0.26458332">Z, X, C</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="163.3017"
+       y="208.84219"
+       id="text943"
+       inkscape:export-xdpi="103.61"
+       inkscape:export-ydpi="103.61"><tspan
+         sodipodi:role="line"
+         id="tspan941"
+         x="163.3017"
+         y="208.84219"
+         style="stroke-width:0.26458332">shift-Z,X,C</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="4.2171459"
+       y="225.64763"
+       id="text947"
+       inkscape:export-xdpi="103.61"
+       inkscape:export-ydpi="103.61"><tspan
+         sodipodi:role="line"
+         id="tspan945"
+         x="4.2171459"
+         y="225.64763"
+         style="stroke-width:0.26458332">XBox</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="46.772163"
+       y="225.64763"
+       id="text951"
+       inkscape:export-xdpi="103.61"
+       inkscape:export-ydpi="103.61"><tspan
+         sodipodi:role="line"
+         id="tspan949"
+         x="46.772163"
+         y="225.64763"
+         style="stroke-width:0.26458332">left stick</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="104.15711"
+       y="225.64763"
+       id="text951-5"
+       inkscape:export-xdpi="103.61"
+       inkscape:export-ydpi="103.61"><tspan
+         sodipodi:role="line"
+         id="tspan949-3"
+         x="104.15711"
+         y="225.64763"
+         style="stroke-width:0.26458332">X, A, B</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="167.31073"
+       y="225.64763"
+       id="text973"
+       inkscape:export-xdpi="103.61"
+       inkscape:export-ydpi="103.61"><tspan
+         sodipodi:role="line"
+         id="tspan971"
+         x="167.31073"
+         y="225.64763"
+         style="stroke-width:0.26458332">LT-X, A, B</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="3.535017"
+       y="241.44908"
+       id="text947-0"
+       inkscape:export-xdpi="103.61"
+       inkscape:export-ydpi="103.61"><tspan
+         sodipodi:role="line"
+         id="tspan945-3"
+         x="3.535017"
+         y="241.44908"
+         style="stroke-width:0.26458332">PS4</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="47.306702"
+       y="241.44908"
+       id="text995"
+       inkscape:export-xdpi="103.61"
+       inkscape:export-ydpi="103.61"><tspan
+         sodipodi:role="line"
+         id="tspan993"
+         x="47.306702"
+         y="241.44908"
+         style="stroke-width:0.26458332">left stick</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="107.44234"
+       y="241.44908"
+       id="text999"
+       inkscape:export-xdpi="103.61"
+       inkscape:export-ydpi="103.61"><tspan
+         sodipodi:role="line"
+         id="tspan997"
+         x="107.44234"
+         y="241.44908"
+         style="stroke-width:0.26458332">X, O, </tspan></text>
+    <path
+       sodipodi:type="star"
+       style="opacity:0.5;fill:none;fill-opacity:0.89393939;stroke:#000000;stroke-width:1.19867444;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="path1001"
+       sodipodi:sides="3"
+       sodipodi:cx="181.74326"
+       sodipodi:cy="234.99347"
+       sodipodi:r1="7.1914873"
+       sodipodi:r2="3.5957439"
+       sodipodi:arg1="0.83798123"
+       sodipodi:arg2="1.8851788"
+       inkscape:flatsided="false"
+       inkscape:rounded="0"
+       inkscape:randomized="0"
+       d="m 186.55411,240.33886 -5.92276,-1.92588 -5.92276,-1.92589 4.62924,-4.16632 4.62924,-4.16632 1.29352,6.09221 z"
+       inkscape:transform-center-x="-0.79307151"
+       inkscape:transform-center-y="-1.5480285"
+       transform="matrix(0.81809423,-0.26582053,0.26532493,0.81962236,-70.270992,93.888365)"
+       inkscape:export-xdpi="103.61"
+       inkscape:export-ydpi="103.61" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="158.76595"
+       y="241.44908"
+       id="text999-3"
+       inkscape:export-xdpi="103.61"
+       inkscape:export-ydpi="103.61"><tspan
+         sodipodi:role="line"
+         id="tspan997-9"
+         x="158.76595"
+         y="241.44908"
+         style="stroke-width:0.26458332">L1 - X, O, </tspan></text>
+    <path
+       sodipodi:type="star"
+       style="opacity:0.5;fill:none;fill-opacity:0.89393939;stroke:#000000;stroke-width:1.19867444;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="path1001-9"
+       sodipodi:sides="3"
+       sodipodi:cx="181.74326"
+       sodipodi:cy="234.99347"
+       sodipodi:r1="7.1914873"
+       sodipodi:r2="3.5957439"
+       sodipodi:arg1="0.83798123"
+       sodipodi:arg2="1.8851788"
+       inkscape:flatsided="false"
+       inkscape:rounded="0"
+       inkscape:randomized="0"
+       d="m 186.55411,240.33886 -5.92276,-1.92588 -5.92276,-1.92589 4.62924,-4.16632 4.62924,-4.16632 1.29352,6.09221 z"
+       inkscape:transform-center-x="-0.79307151"
+       inkscape:transform-center-y="-1.5480285"
+       transform="matrix(0.81809423,-0.26582052,0.26532493,0.81962236,6.4432056,94.025778)"
+       inkscape:export-xdpi="103.61"
+       inkscape:export-ydpi="103.61" />
+  </g>
+</svg>

@@ -10,6 +10,9 @@ WEAPON = "weapon"
 START = "start"
 MENU = "menu"
 ACTIVATE = "activate"
+ITEM_1 = "item 1"
+ITEM_2 = "item 2"
+ITEM_3 = "item 3"
 DROP = "drop"
 SELECT_NEXT = "select next"
 SELECT_PREV = "select prev"
@@ -27,9 +30,10 @@ _keybinds = {
     WEAPON: arcade.key.SPACE,
     MENU: arcade.key.ESCAPE,
     ACTIVATE: arcade.key.ENTER,
-    DROP: arcade.key.Z,
-    SELECT_NEXT: arcade.key.C,
-    SELECT_PREV: arcade.key.X
+    ITEM_1: arcade.key.Z,
+    ITEM_2: arcade.key.C,
+    ITEM_3: arcade.key.X,
+    DROP: arcade.key.LSHIFT
 }
 
 class KeyboardState:
@@ -44,7 +48,10 @@ _buttonbinds = {
     WEAPON: 0,
     MENU: 7,
     ACTIVATE: 0,
-    DROP: 1
+    ITEM_1: 1,
+    ITEM_2: 2,
+    ITEM_3: 4,
+    DROP: 9  # TODO PROBABLY NOT LEFT BUMPER
     # SELECT_NEXT: arcade.key.BRACKETLEFT,
     # SELECT_PREV: arcade.key.BRACKETRIGHT
 }

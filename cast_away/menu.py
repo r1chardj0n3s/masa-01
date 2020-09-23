@@ -39,7 +39,7 @@ def check_joysticks(world):
         for joystick in joysticks:
             name = joystick.device.name
             if name not in all_joysticks:
-                print("new joystick! {name}")
+                print(f"new joystick! {name}")
                 world.create_entity(InputSource(name, JoystickState(joystick)))
                 all_joysticks.append(name)
         # TODO: clean up removed joysticks
@@ -55,6 +55,7 @@ class Menu:
         self.show = True
 
         self.ui_manager = UIManager(self.window)
+        self.sprite_list = arcade.SpriteList()
 
         def style(button):
             button.set_style_attrs(
@@ -90,6 +91,11 @@ class Menu:
         self.buttons = {}
         for num, name in enumerate(BUTTONS):
             self.buttons[name] = button(num, name)
+
+        s = arcade.Sprite('data/images/help-image.png')
+        s.center_x = 640
+        s.center_y = 150
+        self.sprite_list.append(s)
 
     def highlight_button(self, direction):
         button_count = len(BUTTONS)
@@ -152,6 +158,7 @@ class Menu:
 
     def draw(self):
         self.ui_manager.on_draw()
+        self.sprite_list.draw()
 
     def is_started(self, input_source):
         for _, pc in self.world.get_component(Player):

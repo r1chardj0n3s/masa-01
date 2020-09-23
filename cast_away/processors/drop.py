@@ -1,7 +1,7 @@
 import esper
 
 from cast_away.components.player import Player
-from cast_away.components.input_source import DROP 
+from cast_away.components.input_source import DROP, ITEM_1, ITEM_2, ITEM_3
 from cast_away.components.inventory import Inventory
 from cast_away.entities.inventory_item import drop_inventory_item
 
@@ -12,9 +12,10 @@ class DropProcessor(esper.Processor):
         for player, (player, inventory) in self.world.get_components(Player, Inventory):
             inventory.drop_debounce -= dt
             if inventory.drop_debounce < 0 and player.input_source.state.get(DROP):
-                if len(inventory.items) > 0:
-                    drop_inventory_item(self.world, inventory.items[inventory.selection])
-                    inventory.drop_debounce = DROP_DEBOUNCE
+                for i, butt in enumerate([ITEM_1, ITEM_2, ITEM_3]):
+                    if player.input_source.state.get(butt):
+                        drop_inventory_item(self.world, inventory.item_ents[i])
+                        inventory.drop_debounce = DROP_DEBOUNCE
 
 
 def init(world):

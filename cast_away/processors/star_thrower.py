@@ -8,7 +8,7 @@ from cast_away.components.facing import Facing
 from cast_away.components.timeout import Timeout
 from cast_away.components.sprite import Sprite
 from cast_away.components.bullet import Bullet
-from cast_away.components.input_source import WEAPON
+from cast_away.components.input_source import ITEM_1
 from cast_away.components.pickups import StarThrower
 from cast_away.components.enemy import Enemy
 from cast_away.components.inventory import InventoryItem
@@ -22,7 +22,7 @@ class ShootingProcessor(esper.Processor):
 
             pc = self.world.component_for_entity(item.owner_ent, Player)
 
-            if pc.input_source.state.get(WEAPON):
+            if pc.input_source.state.get(ITEM_1):
                 position = self.world.component_for_entity(item.owner_ent, Position)
                 facing = self.world.component_for_entity(item.owner_ent, Facing)
                 velocity = facing.velocity()
