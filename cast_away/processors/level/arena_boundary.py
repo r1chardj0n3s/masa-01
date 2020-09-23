@@ -6,14 +6,16 @@ from cast_away.components.debug_primitives import DebugCircle
 from cast_away.components.useful_polygon import UsefulPolygon
 from cast_away.components.level.arena_boundary import ArenaBoundary
 from cast_away.components.level import Level
+from cast_away.components.player import Player
 
 class ArenaBoundaryProcessor(esper.Processor):
     def process(self, dt):
         for level_ent, (boundary, level) in self.world.get_components(ArenaBoundary, Level):
             if level.loaded:
-                for ent, (position, velocity) in self.world.get_components(
+                for ent, (position, velocity, player) in self.world.get_components(
                     Position,
-                    Velocity
+                    Velocity,
+                    Player
                 ):
                     if not boundary.poly.is_point_inside(
                         position.x,

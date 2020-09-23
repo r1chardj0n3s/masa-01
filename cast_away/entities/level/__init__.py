@@ -42,15 +42,18 @@ def load_map(world, current_level):
     level_ent = None
     for e, level in world.get_component(Level):
         if level.name == level_name:
+            print(f"level found in world: {level_name}:{e}")
             level.loaded = True
             level_ent = e
             break
     else:
+        
         sprite_list = SpriteList()
         tile_map = arcade.tilemap.read_tmx(map_filename(level_name))
         level_comp = Level(level_name, tile_map, True)
         level_ent = world.create_entity(level_comp)
-
+        print(f"loading level from disk: {level_name}: {level_ent}")
+        
         for obj in load_object_layer(tile_map, "OnLoad").tiled_objects:
             getattr(cast_away.entities.level.on_load, obj.name)(world, level_ent, obj)
 
