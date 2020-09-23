@@ -12,19 +12,21 @@ class SpriteProcessor(esper.Processor):
         for _, (sprite, position) in self.world.get_components(Sprite, Position):
             sprite._arcade_sprite.center_x = position.x
             sprite._arcade_sprite.center_y = position.y
-            if position.level is not None:
-                level = self.world.component_for_entity(position.level, Level)
-                if level.loaded:
-                    sprite._arcade_sprite.alpha = 255
-                else:
-                    sprite._arcade_sprite.alpha = 0
-            
 
 
 # make the arcade sprite list (a singleton, hopefully) reflect the ECS sprites
 class SpriteListProcessor(esper.Processor):
     def process(self, dt):
-        all_sprites = set(sprite for _, sprite in self.world.get_component(Sprite))
+        all_sprites = set()
+        for e, sprite in self.world.get_component(Sprite):
+            if self.world.has_component(e, Position):
+                position = self.world.component_for_entity(e, Position)
+                if position.level is not None:
+                    level = self.world.component_for_entity(position.level, Level)
+                    if level.loaded:
+                        all_sprites.add(sprite)
+            else:
+                all_sprites.add(sprite)
 
         for _, sprite_list in self.world.get_component(SpriteList):
             for sprite in list(sprite_list._arcade_sprite_list):
