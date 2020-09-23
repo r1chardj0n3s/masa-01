@@ -7,7 +7,7 @@ from .components.draw_layer import DrawLayer
 from .components.debug_primitives import DebugCircle, DebugPoly
 from .components.collidable import HitCircle, HitPoly
 from .components.position import Position
-from .components.level import CurrentLevel
+from .components.level import CurrentLevel, Level
 from .components.level.arena_boundary import ArenaBoundary
 from .components.input_source import InputSource, KeyboardState
 
@@ -45,18 +45,23 @@ class Game(arcade.Window):
             layer.draw()
 
         for _, (position, hitCircle) in self.world.get_components(Position, HitCircle):
-            arcade.draw_circle_filled(
-                position.x,
-                position.y,
-                hitCircle.radius,
-                (255,0,0,100)
-            )
+            if position.level is not None:
+                level = self.world.component_for_entity(position.level, Level)
+                if level.loaded:
+                    arcade.draw_circle_filled(
+                        position.x,
+                        position.y,
+                        hitCircle.radius,
+                        (255,0,0,100)
+                    )
         for _, (position, hitPoly) in self.world.get_components(Position, HitPoly):
-            arcade.draw_polygon_outline(
-                hitPoly.point_list,
-                (255,255,255,100),
-                5
-            )
+            level = self.world.component_for_entity(position.level, Level)
+            if level.loaded:
+                arcade.draw_polygon_outline(
+                    hitPoly.point_list,
+                    (255,255,255,100),
+                    5
+                )
 
         for _, boundary in self.world.get_component(ArenaBoundary):
             arcade.draw_polygon_outline(

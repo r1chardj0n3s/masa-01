@@ -4,6 +4,7 @@ import random
 
 from cast_away.components.collidable import Collidable, HitPoly, HitCircle
 from cast_away.components.position import Position
+from cast_away.components.level import Level
 from cast_away.components.useful_polygon import is_point_in_polygon
 
 from cast_away.event_dispatch import dispatch, Message, COLLISION
@@ -71,14 +72,17 @@ class CollisionProcessor(esper.Processor):
     def process(self, dt):
         #collisions will have a complete bidirectional map of entity -> collisions (two entries per collision)
         collisions = {}
-        collidables = self.world.get_component(Collidable)
+        collidables = self.world.get_components(Collidable, Position)
         #detection
-        for ea, ca in collidables:
-            for eb, cb in collidables:
-                if ea == eb: continue
-                if does_collide(self.world, ea, ca, eb, cb):
-                    print(f"found collision! {ca} {cb}")
-                    collisions.setdefault(ea, []).append(eb)
+        for ea, (ca, position) in collidables:
+            if position.level is not None:
+                level = self.world.component_for_entity(position.level, Level)
+                if level.loaded:
+                    for eb, cb in collidables:
+                        if ea == eb: continue
+                        if does_collide(self.world, ea, ca, eb, cb):
+                            print(f"found collision! {ca} {cb}")
+                            collisions.setdefault(ea, []).append(eb)
         #resolution
         for ea, collisions in collisions.items():
             for eb in collisions:
