@@ -5,7 +5,10 @@ from . import keyboard
 from .processors import init_world
 from .components.draw_layer import DrawLayer
 from .components.debug_primitives import DebugCircle, DebugPoly
+from .components.collidable import HitCircle, HitPoly
+from .components.position import Position
 from .components.level import CurrentLevel
+from .components.level.arena_boundary import ArenaBoundary
 from .components.input_source import InputSource, KeyboardState
 
 from .menu import Menu
@@ -41,21 +44,26 @@ class Game(arcade.Window):
         for layer in draw_layers:
             layer.draw()
 
-        for _, debug_circle in self.world.get_component(DebugCircle):
-            if debug_circle.draw:
-                arcade.draw_circle_filled(
-                    debug_circle.x,
-                    debug_circle.y,
-                    debug_circle.size,
-                    debug_circle.color
-                )
-        for _, debug in self.world.get_component(DebugPoly):
-            if debug.draw:
-                arcade.draw_polygon_outline(
-                    debug.poly,
-                    debug.color,
-                    debug.size
-                )
+        for _, (position, hitCircle) in self.world.get_components(Position, HitCircle):
+            arcade.draw_circle_filled(
+                position.x,
+                position.y,
+                hitCircle.radius,
+                (255,0,0,100)
+            )
+        for _, (position, hitPoly) in self.world.get_components(Position, HitPoly):
+            arcade.draw_polygon_outline(
+                hitPoly.point_list,
+                (255,255,255,100),
+                5
+            )
+
+        for _, boundary in self.world.get_component(ArenaBoundary):
+            arcade.draw_polygon_outline(
+                boundary.poly.point_list,
+                arcade.color.WHITE,
+                5
+            )
         
         arcade.set_viewport(0, 1280, 0, 720)
         for _, layer in self.world.get_component(HUDLayer):

@@ -25,7 +25,7 @@ def create_player(world, spawner, position, input_source):
     player_ent = world.create_entity(
         this_player,
         Velocity(0, 0),
-        Position(position.x, position.y),
+        Position(position.x, position.y, position.level_ent),
         HitCircle(radius=25),
         Collidable(),
         debug_circle(position.x, position.y),

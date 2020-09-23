@@ -1,11 +1,12 @@
 import math
 import euclid
+from dataclasses import dataclass
 
-
+@dataclass
 class Position:
-    def __init__(self, x, y):
-        self.x = x
-        self.y = y
+    x: float
+    y: float
+    level_ent: int
     
     def __repr__(self):
         return f'<Position x={self.x} y={self.y}>'

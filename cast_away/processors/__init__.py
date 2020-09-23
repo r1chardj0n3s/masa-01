@@ -7,7 +7,6 @@ from ..components import hurt
 
 from . import level
 from . import spawner
-from . import position_constriants
 from . import star_thrower
 from . import pickup
 from . import drop
@@ -22,6 +21,8 @@ from . import collisions
 from . import sprite_effect
 from . import sequence
 from . import sprite
+from cast_away.processors.level import trigger_event_listener
+from cast_away.processors.level import arena_boundary
 
 def init_world():
     world = esper.World()
@@ -39,7 +40,6 @@ def init_world():
     follow_path.init(world)
 
     velocity.init(world)
-    position_constriants.init(world)
     sprite.init(world)
     sprite_effect.init(world)
 
@@ -50,8 +50,11 @@ def init_world():
     hurt.init(world)
     health.init(world)
     level.init(world)
+    arena_boundary.init(world)
 
     hud_display.init(world)
     collisions.init(world)
+
+    trigger_event_listener.init()
 
     return world

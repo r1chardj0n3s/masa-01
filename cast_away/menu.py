@@ -11,8 +11,8 @@ from .components.input_source import (
     ACTIVATE,
 )
 from .components.player import Player
-from .components.level import CurrentLevel
-from .components.spawner import PlayerSpawner
+from .components.level import CurrentLevel, Level
+from .components.level.player_spawn import PlayerSpawns 
 from .components.position import Position
 from .entities import player
 
@@ -163,16 +163,18 @@ class Menu:
         is_started = self.is_started(input_source)
         if not is_started:
             for _, current_level in self.world.get_component(CurrentLevel):
-                for _, (spawner, position) in self.world.get_components(
-                    PlayerSpawner, Position
-                ):
-                    if spawner.last_level == current_level.last_level:
-                        player.create_player(self.world, spawner, position, input_source)
-                        break
-                else:
-                    # just go with the first spawn (prolly a dev loading straight in)
-                    for _, (spawner, position) in self.world.get_components(
-                        PlayerSpawner, Position
-                    ):
-                        player.create_player(self.world, spawner, position, input_source)
-                        break
+                for level, (level_component, player_spawns) in self.world.get_components(Level, PlayerSpawns):
+                    if level_component.name == current_level.name:
+                        spawns = player_spawns.spawns
+                        spawner = None
+                        if current_level.last_level in spawns:
+                            spawner = spawns[current_level.last_level]
+                        else:
+                            for s in spawns:
+                                if s.first:
+                                    spawner = s
+                                    break
+                        if spawner is None:
+                            _, spawner = spawns.items()[0]
+                        player.create_player(self.world, Position(spawner.x, spawner.y, level), input_source)
+                        return

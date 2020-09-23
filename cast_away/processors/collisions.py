@@ -85,6 +85,6 @@ class CollisionProcessor(esper.Processor):
                 # print(f"collision! {ea} {eb}")
                 dispatch(self.world, Message(COLLISION, (ea, eb)))
 
-
 def init(world):
     world.add_processor(CollisionProcessor())
+
