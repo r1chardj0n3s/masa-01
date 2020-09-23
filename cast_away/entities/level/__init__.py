@@ -66,4 +66,5 @@ def load_map(world, current_level):
             if isinstance(layer, (pytiled_parser.objects.TileLayer, pytiled_parser.objects.ImageLayer)):
                 create_image_layer(world, tile_map, layer, level_comp)
 
+    current_level.last_level = current_level.level_ent
     current_level.level_ent = level_ent
