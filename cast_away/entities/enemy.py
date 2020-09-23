@@ -1,4 +1,3 @@
-from cast_away.components.spawner import EnemySpawner
 from cast_away.components.player import Player
 from cast_away.components.velocity import Velocity
 from cast_away.components.position import Position
