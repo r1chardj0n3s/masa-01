@@ -11,6 +11,8 @@ START = "start"
 MENU = "menu"
 ACTIVATE = "activate"
 DROP = "drop"
+SELECT_NEXT = "select next"
+SELECT_PREV = "select prev"
 
 class InputSource:
     def __init__(self, name, state):
@@ -25,7 +27,9 @@ _keybinds = {
     WEAPON: arcade.key.SPACE,
     MENU: arcade.key.ESCAPE,
     ACTIVATE: arcade.key.ENTER,
-    DROP: arcade.key.Z
+    DROP: arcade.key.Z,
+    SELECT_NEXT: arcade.key.C,
+    SELECT_PREV: arcade.key.X
 }
 
 class KeyboardState:
@@ -41,6 +45,8 @@ _buttonbinds = {
     MENU: 7,
     ACTIVATE: 0,
     DROP: 1
+    # SELECT_NEXT: arcade.key.BRACKETLEFT,
+    # SELECT_PREV: arcade.key.BRACKETRIGHT
 }
 
 DEAD_ZONE_X = 0.1
