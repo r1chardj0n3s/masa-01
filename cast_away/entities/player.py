@@ -13,11 +13,12 @@ from cast_away.components.inventory import Inventory, InventoryItem
 from cast_away.event_dispatch import ENTITY_DIED, register_listener
 from cast_away.entities.hud.health_display import create_health_display
 from cast_away.entities.hud.inventory_display import create_player_inventory_hud
+from cast_away.components.sprite_effect import SpinEffect, SpriteEffects, ThrowToEffect
+from cast_away.components.sequence import Sequence
 
 
-def create_player(world, position, input_source):
+def create_player(world, spawner, position, input_source):
     player_ent = world.create_entity(
-        Player(input_source),
         Velocity(0, 0),
         Position(position.x, position.y),
         HitCircle(radius=25),
@@ -40,14 +41,28 @@ def create_player(world, position, input_source):
         ),
         Sprite("data/kenney_robot-pack_side/robot_blueDrive1.png", scale=0.2),
         Health(3),
-        Inventory([])
+        Inventory([]),
     )
+    if spawner.type == "first":
+        world.create_entity(
+            Sequence(
+                player_ent,
+                SpriteEffects(
+                    ThrowToEffect(1, Position(-100, 0), position, 400), SpinEffect(1, 720)
+                ),
+                Player(input_source),
+            )
+        )
+    else:
+        world.add_component(player_ent, Player(input_source))
+
     create_hud(world, player_ent)
+
 
 def create_hud(world, player_ent):
     create_health_display(world, player_ent)
     create_player_inventory_hud(world, player_ent)
-    
+
 
 def player_died(world, message):
     player_entity = message.payload

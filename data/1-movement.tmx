@@ -44,6 +44,7 @@
   <object id="1" name="PLAYER_SPAWN" x="278.667" y="421.333">
    <properties>
     <property name="last_level" value="1-movement"/>
+    <property name="type" value="first"/>
    </properties>
    <point/>
   </object>

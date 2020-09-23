@@ -1,9 +1,11 @@
-import esper
-from .sprite import Sprite
+import arcade
+import math
+
 
 class SpriteEffects:
     def __init__(self, *effects):
         self.effects = list(effects)
+
 
 class SpinEffect:
     def __init__(self, play_time, speed):
@@ -20,6 +22,7 @@ class SpinEffect:
             self.initial_angle = a_sprite.angle
         a_sprite.angle = a_sprite.angle + dt * self.speed
 
+
 class FlashEffect:
     def __init__(self, play_time, speed):
         self.play_time = play_time
@@ -35,7 +38,7 @@ class FlashEffect:
         self.last_alpha = a_sprite.alpha
         if self.initial_alpha is None:
             self.initial_alpha = self.last_alpha
-        new_alpha = self.last_alpha - self.direction*self.speed*dt
+        new_alpha = self.last_alpha - self.direction * self.speed * dt
         if new_alpha < 0:
             new_alpha = 0
             self.direction *= -1
@@ -44,17 +47,29 @@ class FlashEffect:
             self.direction *= -1
         a_sprite.alpha = new_alpha
 
-class SpriteEffectProcessor(esper.Processor):
-    def process(self, dt):
-        for ent, (sprite, effects) in self.world.get_components(Sprite, SpriteEffects):
-            for effect in list(effects.effects):
-                effect.play_time -= dt
-                if effect.play_time < 0:
-                    effect.clear(sprite)
-                    effects.effects.remove(effect)
-                else:
-                    effect.run(dt, sprite)
 
+class ThrowToEffect:
+    def __init__(self, play_time, start_pos, end_pos, height):
+        self._play_time = play_time
+        self.play_time = play_time
+        self.start_pos = start_pos
+        self.end_pos = end_pos
+        self.height = height
 
-def init(world):
-    world.add_processor(SpriteEffectProcessor())
+    def clear(self, sprite):
+        bx, by = self.end_pos.x, self.end_pos.y
+        sprite._arcade_sprite.center_x = bx
+        sprite._arcade_sprite.center_y = by
+    
+    def run(self, dt, sprite):
+        ax, ay = self.start_pos.x, self.start_pos.y
+        bx, by = self.end_pos.x, self.end_pos.y
+        dx = bx - ax
+        dy = by - ay
+
+        u = min(1, (self._play_time - self.play_time) / self._play_time)
+        uy = self.height * math.sin(u * math.pi) + dy * u
+        ux = dx * u
+
+        sprite._arcade_sprite.center_x = ax + ux
+        sprite._arcade_sprite.center_y = ay + uy

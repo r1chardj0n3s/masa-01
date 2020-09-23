@@ -10,6 +10,9 @@ class Position:
     def __repr__(self):
         return f'<Position x={self.x} y={self.y}>'
 
+    def __iter__(self):
+        return self.x, self.y
+
     def point2(self):
         return euclid.Point2(self.x, self.y)
 

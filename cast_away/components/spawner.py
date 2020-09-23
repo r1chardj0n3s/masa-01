@@ -1,11 +1,14 @@
 from cast_away.components.pickups import PICKUP_DATA
 
 class PlayerSpawner:
-    def __init__(self, last_level):
+    def __init__(self, last_level, type):
         self.last_level = last_level
+        self.type = type
+
 
 class EnemySpawner:
     spawning = False
+
 
 class PickupSpawner:
     def __init__(self, type):

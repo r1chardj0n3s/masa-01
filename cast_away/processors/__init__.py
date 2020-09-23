@@ -1,7 +1,6 @@
 import esper
 
 from ..components import sprite
-from ..components import sprite_effect
 from ..components import velocity
 from ..components import invulnerable
 from ..components import health
@@ -20,11 +19,14 @@ from . import hud_display
 from . import bullet
 from . import enemy_shoot
 from . import collisions
+from . import sprite_effect
+from . import sequence
 
 def init_world():
     world = esper.World()
 
     timeout.init(world)
+    sequence.init(world)
 
     spawner.init(world)
     pickup.init(world)

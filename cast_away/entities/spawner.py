@@ -11,7 +11,7 @@ from cast_away.components.collidable import HitCircle
 
 def create_player_spawner(world, obj, level_comp):
     world.create_entity(
-        PlayerSpawner(obj.properties.get("last_level")),
+        PlayerSpawner(obj.properties.get("last_level"), obj.properties.get("type", "instant")),
         Position(obj.location.x, obj.location.y),
         level_comp,
     )
