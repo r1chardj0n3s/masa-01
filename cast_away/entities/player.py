@@ -22,13 +22,20 @@ from cast_away.components.level.player_spawn import PlayerSpawns
 
 
 def create_player(world, input_source):
+    _, current_level = world.get_component(CurrentLevel)[0]
+    level_ent = current_level.level_ent
+
+    spawners = world.component_for_entity(level_ent, PlayerSpawns).spawns
+    for spawner in spawners.values():
+        if spawner.first:
+            break
+
     players = [mp for _, mp in world.get_component(MultiplayerIdentifier)]
 
     this_player = MultiplayerIdentifier.select(players)
-    _, current_level = world.get_component(CurrentLevel)[0]
-    level_ent = current_level.level_ent
     player_ent = world.create_entity(
         this_player,
+        Position(spawner.x, spawner.y, level_ent),
         Velocity(0, 0),
         HitCircle(radius=25),
         Collidable(),
@@ -37,11 +44,6 @@ def create_player(world, input_source):
         Health(3),
         Inventory([]),
     )
-
-    spawners = world.component_for_entity(level_ent, PlayerSpawns).spawns
-    for spawner in spawners.values():
-        if spawner.first:
-            break
 
     world.create_entity(
         Sequence(

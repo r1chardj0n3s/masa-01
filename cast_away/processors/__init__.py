@@ -1,6 +1,5 @@
 import esper
 
-from ..components import velocity
 from ..components import invulnerable
 
 from . import health
@@ -19,7 +18,8 @@ from . import collisions
 from . import sprite_effect
 from . import sequence
 from . import sprite
-from cast_away.processors.level import arena_boundary
+from .level import arena_boundary
+from . import velocity
 
 def init_world():
     world = esper.World()

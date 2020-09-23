@@ -49,7 +49,7 @@ class KeyboardState:
 # O = 2
 # tri = 3
 # LT = 4
-
+# PS button = 12
 
 _buttonbinds = {
     WEAPON: 0,
