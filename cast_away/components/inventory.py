@@ -10,9 +10,14 @@ class InventoryDisplay:
         self.sprite_list = sprite_list
 
 
-class Inventory:
+class InventoryItem:
     def __init__(self, owner_ent):
         self.owner_ent = owner_ent
+
+
+class Inventory:
+    def __init__(self, items):
+        self.items = items
 
 
 def inventory_hud_sprite(path, index, sprite_list, scale):

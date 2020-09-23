@@ -82,6 +82,7 @@ class CollisionProcessor(esper.Processor):
         #resolution
         for ea, collisions in collisions.items():
             for eb in collisions:
+                # print(f"collision! {ea} {eb}")
                 dispatch(self.world, Message(COLLISION, (ea, eb)))
 
 

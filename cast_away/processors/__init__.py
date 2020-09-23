@@ -19,7 +19,6 @@ from . import follow_path
 from . import hud_display
 from . import bullet
 from . import enemy_shoot
-from . import inventory
 from . import collisions
 
 def init_world():
@@ -30,7 +29,6 @@ def init_world():
     spawner.init(world)
     pickup.init(world)
     unique_item.init(world)
-    inventory.init(world)
 
     invulnerable.init(world)
     player_move.init(world)
