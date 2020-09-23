@@ -12,7 +12,6 @@ from . import spawner
 from . import position_constriants
 from . import star_thrower
 from . import pickup
-from . import unique_item
 from . import timeout
 from . import player_move
 from . import follow_path
@@ -28,7 +27,6 @@ def init_world():
 
     spawner.init(world)
     pickup.init(world)
-    unique_item.init(world)
 
     invulnerable.init(world)
     player_move.init(world)

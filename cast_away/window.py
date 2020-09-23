@@ -8,9 +8,8 @@ from .components.debug_primitives import DebugCircle, DebugPoly
 from .components.level import CurrentLevel
 from .components.input_source import InputSource, KeyboardState
 
-from .hud import add_hud
 from .menu import Menu
-from cast_away.components.draw_layer import HUDLayer
+from cast_away.components.hud.hud_layer import HUDLayer
 
 class Game(arcade.Window):
     def __init__(self, map_name="1-movement"):
@@ -18,7 +17,6 @@ class Game(arcade.Window):
         self.world = init_world()
         self.world.create_entity(InputSource("Keyboard", KeyboardState()))
         self.world.create_entity(CurrentLevel(map_name))
-        add_hud(self.world)
         self.menu = Menu(self, self.world)
         self.first_update = True
 

@@ -12,6 +12,7 @@ class PickupSpawner:
         self.type = type
         pickup_spawner_data = PICKUP_DATA[type]
         self.image = pickup_spawner_data.image
+        self.hud_image = pickup_spawner_data.hud_image
         self.scale = pickup_spawner_data.scale
         self.radius = pickup_spawner_data.radius
         self.inventory_item_component_classes = pickup_spawner_data.inventory_item_component_classes
