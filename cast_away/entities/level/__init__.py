@@ -6,6 +6,7 @@ import cast_away.entities.level.on_load
 
 from cast_away.entities.level.triggers import create_trigger
 from cast_away.components.sprite import SpriteList
+from cast_away.components.bullet import Bullet
 from cast_away.components.level import Level, CurrentLevel
 from cast_away.components.scene import Scene
 from cast_away.components.player import Player
@@ -31,6 +32,8 @@ def map_filename(name):
     return f"data/{name}.tmx"
 
 def unload_map(world, level_ent):
+    for bullet_ent, _ in world.get_component(Bullet):
+        world.delete_entity(bullet_ent)
     level_comp = world.component_for_entity(level_ent, Level)
     level_comp.loaded = False
 
