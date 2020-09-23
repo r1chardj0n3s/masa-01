@@ -13,6 +13,7 @@ class EnemySpawner:
 class PickupSpawner:
     def __init__(self, type):
         self.type = type
+        self.cooldown = 0
         pickup_spawner_data = PICKUP_DATA[type]
         self.image = pickup_spawner_data.image
         self.hud_image = pickup_spawner_data.hud_image
