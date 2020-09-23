@@ -44,14 +44,21 @@ class KeyboardState:
         return keyboard.state.get(_keybinds[action])
 
 
+# PS4 buttons:
+# X = 1
+# O = 2
+# tri = 3
+# LT = 4
+
+
 _buttonbinds = {
     WEAPON: 0,
     MENU: 7,
     ACTIVATE: 0,
     ITEM_1: 1,
     ITEM_2: 2,
-    ITEM_3: 4,
-    DROP: 9  # TODO PROBABLY NOT LEFT BUMPER
+    ITEM_3: 3,
+    DROP: 4  # TODO PROBABLY NOT LEFT BUMPER
     # SELECT_NEXT: arcade.key.BRACKETLEFT,
     # SELECT_PREV: arcade.key.BRACKETRIGHT
 }
@@ -73,7 +80,7 @@ class JoystickState:
 
     def on_joybutton_press(self, _joystick, button):
         self.buttons[button] = True
-        # print(f"button {button} press")
+        print(f"button {button} press")
 
     def on_joybutton_release(self, _joystick, button):
         self.buttons[button] = False
