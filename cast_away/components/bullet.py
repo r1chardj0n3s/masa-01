@@ -3,5 +3,5 @@ from dataclasses import dataclass
 
 @dataclass
 class Bullet:
-    lifespan: int
+    lifespan: float
     target: object
