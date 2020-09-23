@@ -15,10 +15,6 @@ class BulletProcessor(esper.Processor):
             if bullet.lifespan <= 0:
                 self.world.delete_entity(bullet_ent)
                 continue
-            for enemy_ent, (enemy, sprite, health) in self.world.get_components(bullet.target, Sprite, Health):
-                if sprite._arcade_sprite.collides_with_point((position.x, position.y)):
-                    self.world.delete_entity(bullet_ent)
-                    health.effects.append(HealthDown(1))
 
 
 def init(world):

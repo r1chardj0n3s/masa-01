@@ -2,9 +2,10 @@ import esper
 
 from ..components import velocity
 from ..components import invulnerable
-from ..components import health
+
 from ..components import hurt
 
+from . import health
 from . import level
 from . import spawner
 from . import star_thrower
@@ -20,7 +21,6 @@ from . import collisions
 from . import sprite_effect
 from . import sequence
 from . import sprite
-from cast_away.processors.level import trigger_event_listener
 from cast_away.processors.level import arena_boundary
 
 def init_world():
@@ -52,7 +52,5 @@ def init_world():
 
     hud_display.init(world)
     collisions.init(world)
-
-    trigger_event_listener.init()
 
     return world

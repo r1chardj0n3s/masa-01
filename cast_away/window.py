@@ -1,15 +1,16 @@
 import arcade
 
 
-from . import keyboard
-from .processors import init_world
-from .components.draw_layer import DrawLayer
-from .components.debug_primitives import DebugCircle, DebugPoly
-from .components.collidable import HitCircle, HitPoly
-from .components.position import Position
-from .components.level import CurrentLevel, Level
-from .components.level.arena_boundary import ArenaBoundary
-from .components.input_source import InputSource, KeyboardState
+from cast_away import keyboard
+from cast_away.processors import init_world
+from cast_away.event_handlers import init_event_handlers
+from cast_away.components.draw_layer import DrawLayer
+from cast_away.components.debug_primitives import DebugCircle, DebugPoly
+from cast_away.components.collidable import HitCircle, HitPoly
+from cast_away.components.position import Position
+from cast_away.components.level import CurrentLevel, Level
+from cast_away.components.level.arena_boundary import ArenaBoundary
+from cast_away.components.input_source import InputSource, KeyboardState
 
 from .menu import Menu
 from cast_away.components.hud.hud_layer import HUDLayer
@@ -18,6 +19,7 @@ class Game(arcade.Window):
     def __init__(self, map_name="1-movement"):
         super().__init__(1280, 720, "Junk Yard Wars")
         self.world = init_world()
+        init_event_handlers()
         self.world.create_entity(InputSource("Keyboard", KeyboardState()))
         self.world.create_entity(CurrentLevel(next_level = map_name))
         self.menu = Menu(self, self.world)

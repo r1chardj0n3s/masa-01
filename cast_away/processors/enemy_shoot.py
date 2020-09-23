@@ -7,7 +7,8 @@ from cast_away.components.position import Position
 from cast_away.components.timeout import Timeout
 from cast_away.components.sprite import Sprite
 from cast_away.components.bullet import Bullet
-from cast_away.components.fireball_thrower import FireballThrower
+from cast_away.components.collidable import Collidable, HitCircle
+from cast_away.components.items.fireball_thrower import FireballThrower
 from cast_away.components.enemy import Enemy
 from cast_away.components.velocity import Velocity
 from cast_away.components.sprite_effect import SpinEffect, SpriteEffects
@@ -31,6 +32,8 @@ class EnemyShootingProcessor(esper.Processor):
                 Sprite("data/kenney_platformerpack_redux/Particles/fireball.png", scale=0.5),
                 Position(x=thrower_pos.x, y=thrower_pos.y, level=thrower_pos.level),
                 Velocity(v.x, v.y),
+                Collidable(match_components=[Player]),
+                HitCircle(radius=10),
                 Bullet(1, Player),
                 SpriteEffects(SpinEffect(play_time=1, speed=-400))
             )
