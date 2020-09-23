@@ -77,7 +77,7 @@ class Game(arcade.Window):
                 )
         
         arcade.set_viewport(0, 1280, 0, 720)
-        for _, layer in self.world.get_component(HUDLayer):
+        for _, layer in sorted(self.world.get_component(HUDLayer), key=draw_layer_priority):
             layer.draw()
         if self.menu.show:
             self.menu.draw()

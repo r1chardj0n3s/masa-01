@@ -37,6 +37,6 @@ def create_health_display(world, player_entity):
     )
 
     health_bar_entity = world.create_entity(
-        HealthDisplay(player_entity), HUDLayer(sprite_list)
+        HealthDisplay(player_entity), HUDLayer(sprite_list, priority=2)
     )
     return health_bar_entity

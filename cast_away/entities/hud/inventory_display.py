@@ -61,5 +61,5 @@ def inventory_hud_sprite(path, index, x, scale):
 def create_player_inventory_hud(world, player_ent):
     return world.create_entity(
         InventoryHudDisplay(player_ent),
-        HUDLayer(InventoryHudDrawable(world, player_ent)),
+        HUDLayer(InventoryHudDrawable(world, player_ent), priority=1),
     )
