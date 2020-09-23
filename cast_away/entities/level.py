@@ -25,13 +25,13 @@ def create_exit(world, obj, level_comp):
     )
 
 
-def create_tile_layer(world, tmx_map, layer, level_comp):
+def create_image_layer(world, tmx_map, layer, level_comp):
     world.create_entity(
-                    DrawLayer(
-                        layer.properties.get("z", 0),
-                        arcade.tilemap.process_layer(
-                            tmx_map, layer.name, hit_box_algorithm="None"
-                        ),
-                    ),
-                    level_comp,
-                )
+        DrawLayer(
+            layer.properties.get("z", 0),
+            arcade.tilemap.process_layer(
+                tmx_map, layer.name, hit_box_algorithm="None"
+            ),
+        ),
+        level_comp,
+    )

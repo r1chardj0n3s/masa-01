@@ -13,7 +13,7 @@ from ..components.level import CurrentLevel, Level, LevelExit
 from ..components.spawner import PlayerSpawner
 
 from ..entities.spawner import create_enemy_spawner, create_player_spawner, create_enemy_path
-from ..entities.level import create_arena_boundary, create_exit, create_tile_layer
+from ..entities.level import create_arena_boundary, create_exit, create_image_layer
 from ..entities.props import create_spike
 
 from ..tmx_fixes import load_object_layer
@@ -70,8 +70,8 @@ class LevelProcessor(esper.Processor):
 
         # add all tiled layers
         for layer in my_map.layers:
-            if isinstance(layer, pytiled_parser.objects.TileLayer):
-                create_tile_layer(self.world, my_map, layer, level_comp)
+            if isinstance(layer, (pytiled_parser.objects.TileLayer, pytiled_parser.objects.ImageLayer)):
+                create_image_layer(self.world, my_map, layer, level_comp)
 
         # place active players
         for _, current_level in self.world.get_component(CurrentLevel):
@@ -91,7 +91,6 @@ class LevelExitProcessor(esper.Processor):
                 UsefulPolygon, LevelExit
             ):
                 if poly.is_point_inside(position.x, position.y):
-                    # import pdb; pdb.set_trace()
                     for _, (current_level,) in self.world.get_components(CurrentLevel):
                         current_level.last_level = current_level.name
                         current_level.name = level_exit.next_level

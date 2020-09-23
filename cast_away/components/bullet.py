@@ -1,4 +1,7 @@
+from dataclasses import dataclass
+
+
+@dataclass
 class Bullet:
-    def __init__(self, lifespan, target):
-        self.lifespan = lifespan
-        self.target = target
+    lifespan: int
+    target: object
