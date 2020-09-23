@@ -2,7 +2,6 @@ from cast_away.components.spawner import EnemySpawner
 from cast_away.components.player import Player
 from cast_away.components.velocity import Velocity
 from cast_away.components.position import Position
-from cast_away.components.debug_primitives import debug_circle
 from cast_away.components.sprite import Sprite
 from cast_away.components.health import Health
 from cast_away.components.hurt import Hurt
@@ -13,16 +12,14 @@ from cast_away.event_dispatch import register_listener, ENTITY_DIED
 from cast_away.components.fireball_thrower import FireballThrower
 
 
-def create_enemy(world, spawner_entity, position: Position, level: Level):
+def create_enemy(world, spawner_entity, position: Position):
     return world.create_entity(
         Velocity(0, 0),
-        Position(position.x, position.y),
+        Position(position.x, position.y, position.level),
         Sprite(":resources:images/enemies/bee.png", scale=0.5),
         Enemy(spawner_entity),
         Health(1),
         Hurt(1, [Player]),
-        debug_circle(position.x, position.y),
-        level,
         FireballThrower(),
     )
 

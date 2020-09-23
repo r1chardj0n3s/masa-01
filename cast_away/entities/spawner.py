@@ -15,7 +15,7 @@ def create_enemy_spawner(world, obj, level_ent):
 
 def create_enemy_path(world, obj, level_ent):
     x, y = obj.point_list[0]
-    ent = create_enemy(world, None, Position(x, ym, level_ent))
+    ent = create_enemy(world, None, Position(x, y, level_ent))
     world.add_component(ent, FollowPath(obj.point_list))
 
 

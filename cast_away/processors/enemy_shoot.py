@@ -29,7 +29,7 @@ class EnemyShootingProcessor(esper.Processor):
 
             self.world.create_entity(
                 Sprite("data/kenney_platformerpack_redux/Particles/fireball.png", scale=0.5),
-                Position(x=thrower_pos.x, y=thrower_pos.y),
+                Position(x=thrower_pos.x, y=thrower_pos.y, level=thrower_pos.level),
                 Velocity(v.x, v.y),
                 Bullet(1, Player),
                 SpriteEffects(SpinEffect(play_time=1, speed=-400))

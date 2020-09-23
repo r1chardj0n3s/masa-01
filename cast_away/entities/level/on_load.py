@@ -23,7 +23,7 @@ def PICKUP(world, level_ent, obj):
     create_pickup_spawner(world, obj, level_ent)
 
 def ENEMY_SPAWN(world, level_ent, obj):
-    create_enemy_spawner(self.world, obj, level_ent)
+    create_enemy_spawner(world, obj, level_ent)
 
 def ENEMY_PATH(world, level_ent, obj):
-    create_enemy_path(self.world, obj, level_ent)
+    create_enemy_path(world, obj, level_ent)
