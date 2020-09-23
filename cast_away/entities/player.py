@@ -6,7 +6,6 @@ from cast_away.components.position import Position
 from cast_away.components.collidable import HitCircle, Collidable
 from cast_away.components.debug_primitives import debug_circle
 from cast_away.components.facing import Facing
-from cast_away.components.sprite import Sprite, SpriteFacing
 from cast_away.components.health import Health
 from cast_away.components.hud.health_display import HealthDisplay
 from cast_away.components.inventory import Inventory, InventoryItem
@@ -15,31 +14,23 @@ from cast_away.entities.hud.health_display import create_health_display
 from cast_away.entities.hud.inventory_display import create_player_inventory_hud
 from cast_away.components.sprite_effect import SpinEffect, SpriteEffects, ThrowToEffect
 from cast_away.components.sequence import Sequence
+from cast_away.components.multiplayer_identifier import MultiplayerIdentifier, player_sprite_for
 
 
 def create_player(world, spawner, position, input_source):
+    players = [mp for _, mp in world.get_component(MultiplayerIdentifier)]
+
+    this_player = MultiplayerIdentifier.select(players)
+
     player_ent = world.create_entity(
+        this_player,
         Velocity(0, 0),
         Position(position.x, position.y),
         HitCircle(radius=25),
         Collidable(),
         debug_circle(position.x, position.y),
         Facing(Facing.EAST),
-        SpriteFacing(
-            arcade.load_texture(
-                "data/kenney_robot-pack_side/robot_blueDrive1 - Butt.png"
-            ),
-            arcade.load_texture("data/kenney_robot-pack_side/robot_blueDrive1.png"),
-            arcade.load_texture(
-                "data/kenney_robot-pack_side/robot_blueDrive1.png",
-                flipped_horizontally=True,
-            ),
-            arcade.load_texture(
-                "data/kenney_robot-pack_side/robot_blueDrive1 - Butt.png",
-                flipped_horizontally=True,
-            ),
-        ),
-        Sprite("data/kenney_robot-pack_side/robot_blueDrive1.png", scale=0.2),
+        player_sprite_for(this_player.colour, Facing.EAST),
         Health(3),
         Inventory([]),
     )

@@ -6,11 +6,10 @@ from cast_away.components.inventory import InventoryItem, Inventory
 
 SELECTION_DEBOUNCE = 0.1
 
+
 class ItemSelectionProcessor(esper.Processor):
     def process(self, dt):
-        for player_ent, (pc, inventory) in self.world.get_components(
-            Player, Inventory
-        ):
+        for player_ent, (pc, inventory) in self.world.get_components(Player, Inventory):
             inventory.selection_debounce -= dt
             input_source = pc.input_source
             items = inventory.items
@@ -31,10 +30,7 @@ class ItemSelectionProcessor(esper.Processor):
                     inventory.selection_debounce = SELECTION_DEBOUNCE
                     inventory.selection -= 1
                     if inventory.selection < 0:
-                        inventory.selection = item_count-1
-                    
-                
-
+                        inventory.selection = item_count - 1
 
 
 def init(world):

@@ -2,6 +2,7 @@ import arcade
 from cast_away.components.hud.inventory_display import InventoryHudDisplay, INVENTORY_X_OFFSET, INVENTORY_X_SPACING, INVENTORY_Y
 from cast_away.components.hud.hud_layer import HUDLayer
 
+
 class InventoryHudDrawable:
     def __init__(self):
         self.background_sprite_list = arcade.SpriteList()
@@ -15,8 +16,10 @@ class InventoryHudDrawable:
         self.item_sprite_list.draw()
         self.selection_sprite.draw()
 
+
 def x_for_hud_sprite(index):
     return INVENTORY_X_OFFSET + INVENTORY_X_SPACING * index
+
 
 def inventory_hud_sprite(path, index, scale):
     return arcade.Sprite(path, center_x=x_for_hud_sprite(index), center_y=INVENTORY_Y, scale=scale)

@@ -1,6 +1,5 @@
 import esper
 
-from ..components import sprite
 from ..components import velocity
 from ..components import invulnerable
 from ..components import health
@@ -22,6 +21,7 @@ from . import enemy_shoot
 from . import collisions
 from . import sprite_effect
 from . import sequence
+from . import sprite
 
 def init_world():
     world = esper.World()
