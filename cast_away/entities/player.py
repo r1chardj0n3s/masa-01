@@ -12,6 +12,7 @@ from cast_away.components.hud.health_display import HealthDisplay
 from cast_away.components.inventory import Inventory, InventoryItem
 from cast_away.event_dispatch import ENTITY_DIED, register_listener
 from cast_away.entities.hud.health_display import create_health_display
+from cast_away.entities.hud.inventory_display import create_player_inventory_hud
 
 
 def create_player(world, position, input_source):
@@ -41,7 +42,12 @@ def create_player(world, position, input_source):
         Health(3),
         Inventory([])
     )
+    create_hud(world, player_ent)
+
+def create_hud(world, player_ent):
     create_health_display(world, player_ent)
+    create_player_inventory_hud(world, player_ent)
+    
 
 def player_died(world, message):
     player_entity = message.payload
