@@ -39,9 +39,14 @@ class Game(arcade.Window):
         arcade.start_render()
 
         arcade.set_viewport(64, 1280+64, -32, 720-32)
-        draw_layers = [c for (_, c) in self.world.get_component(DrawLayer)]
-        draw_layers.sort(key=lambda layer: layer.priority)
-        for layer in draw_layers:
+        draw_layers = self.world.get_component(DrawLayer)
+        draw_layers.sort(key=draw_layer_priority)
+        for pair in draw_layers:
+            entity, layer = pair
+            if self.world.has_component(entity, Level):
+                level = self.world.component_for_entity(entity, Level)
+                if not level.loaded:
+                    continue
             layer.draw()
 
         for _, (position, hitCircle) in self.world.get_components(Position, HitCircle):
@@ -76,3 +81,7 @@ class Game(arcade.Window):
             layer.draw()
         if self.menu.show:
             self.menu.draw()
+
+def draw_layer_priority(pair):
+    e, layer = pair
+    return layer.priority
