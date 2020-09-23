@@ -9,6 +9,7 @@ from cast_away.components.enemy import Enemy
 from cast_away.components.inventory import InventoryItem
 from cast_away.event_dispatch import register_listener, ENTITY_DIED
 from cast_away.components.items.fireball_thrower import FireballThrower
+from cast_away.components.collidable import Collidable, HitCircle
 
 
 def create_enemy(world, spawner_entity, position: Position):
@@ -20,5 +21,7 @@ def create_enemy(world, spawner_entity, position: Position):
         Health(1),
         Hurt(1, [Player]),
         FireballThrower(),
+        Collidable(match_components=[Player]),
+        HitCircle(radius=25)
     )
 

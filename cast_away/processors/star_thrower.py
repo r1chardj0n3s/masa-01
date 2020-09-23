@@ -12,7 +12,8 @@ from cast_away.components.input_source import ITEM_1
 from cast_away.components.pickups import StarThrower
 from cast_away.components.enemy import Enemy
 from cast_away.components.inventory import InventoryItem
-
+from cast_away.components.enemy import Enemy
+from cast_away.components.collidable import Collidable, HitCircle
 
 class ShootingProcessor(esper.Processor):
     def process(self, dt):
@@ -32,6 +33,8 @@ class ShootingProcessor(esper.Processor):
                     Position(x=position.x, y=position.y, level=position.level),
                     velocity,
                     Bullet(.5, Enemy),
+                    Collidable(match_components=[Enemy]),
+                    HitCircle(radius=20)
                 )
                 self.world.add_component(item_ent, Timeout(0.5))
 

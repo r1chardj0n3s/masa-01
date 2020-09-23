@@ -1,12 +1,14 @@
 
-from cast_away.event_handlers.level import bullet
-from cast_away.event_handlers.level import trigger
-from cast_away.event_handlers import player_death
-from cast_away.event_handlers import enemy
+from .level import bullet
+from .level import trigger
+from . import player_death
+from . import enemy
+from . import hurt
 
 def init_event_handlers():
     bullet.init()
     trigger.init()
     player_death.init()
     enemy.init()
+    hurt.init()
 

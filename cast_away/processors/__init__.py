@@ -3,8 +3,6 @@ import esper
 from ..components import velocity
 from ..components import invulnerable
 
-from ..components import hurt
-
 from . import health
 from . import level
 from . import spawner
@@ -45,7 +43,6 @@ def init_world():
     bullet.init(world)
     enemy_shoot.init(world)
 
-    hurt.init(world)
     health.init(world)
     level.init(world)
     arena_boundary.init(world)
