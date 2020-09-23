@@ -23,11 +23,11 @@ def create_player(world, first, position, input_source):
     this_player = MultiplayerIdentifier.select(players)
     _, current_level = world.get_component(CurrentLevel)[0]
     level_ent = current_level.level_ent
-
+    player_pos = Position(position.x, position.y, level_ent)
     player_ent = world.create_entity(
         this_player,
         Velocity(0, 0),
-        Position(position.x, position.y, level_ent),
+        player_pos,
         HitCircle(radius=25),
         Collidable(),
         Facing(Facing.EAST),
@@ -44,12 +44,15 @@ def create_player(world, first, position, input_source):
                 break
         else:
             spawner = next(iter(spawners.values()))
-        target_pos = Position(spawner.x, spawner.y, level_ent)
+        player_pos.x = spawner.x
+        player_pos.y = spawner.y
+        player_pos.level = level_ent
+        
         world.create_entity(
             Sequence(
                 player_ent,
                 SpriteEffects(
-                    ThrowToEffect(1, Position(-100, 0, level_ent), target_pos, 400), SpinEffect(1, 720)
+                    ThrowToEffect(1, Position(-100, 0, level_ent), player_pos, 400), SpinEffect(1, 720)
                 ),
                 Player(input_source),
             )
