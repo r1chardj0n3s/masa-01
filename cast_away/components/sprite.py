@@ -6,6 +6,7 @@ class Sprite:
         self._arcade_sprite = arcade.Sprite(path, scale=scale)
 
 
+
 class SpriteList:
     def __init__(self):
         self._arcade_sprite_list = arcade.SpriteList()

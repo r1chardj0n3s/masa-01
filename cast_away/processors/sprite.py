@@ -37,7 +37,7 @@ def init(world):
     world.add_processor(SpriteListProcessor())
 
 
-class SpriteFacingProcessor(esper.Processor):
+class PlayerFacingProcessor(esper.Processor):
     def process(self, dt):
         for _, (mp, sprite, facing) in self.world.get_components(
             MultiplayerIdentifier, Sprite, Facing
@@ -48,4 +48,4 @@ class SpriteFacingProcessor(esper.Processor):
 def init(world):
     world.add_processor(SpriteProcessor())
     world.add_processor(SpriteListProcessor())
-    world.add_processor(SpriteFacingProcessor())
+    world.add_processor(PlayerFacingProcessor())
