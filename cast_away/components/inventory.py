@@ -7,3 +7,4 @@ class InventoryItem:
 class Inventory:
     def __init__(self, items):
         self.items = items
+        self.drop_debounce = 0

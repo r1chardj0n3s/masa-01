@@ -10,6 +10,7 @@ WEAPON = "weapon"
 START = "start"
 MENU = "menu"
 ACTIVATE = "activate"
+DROP = "drop"
 
 class InputSource:
     def __init__(self, name, state):
@@ -24,6 +25,7 @@ _keybinds = {
     WEAPON: arcade.key.SPACE,
     MENU: arcade.key.ESCAPE,
     ACTIVATE: arcade.key.ENTER,
+    DROP: arcade.key.Z
 }
 
 class KeyboardState:
@@ -38,6 +40,7 @@ _buttonbinds = {
     WEAPON: 0,
     MENU: 7,
     ACTIVATE: 0,
+    DROP: 1
 }
 
 DEAD_ZONE_X = 0.1
