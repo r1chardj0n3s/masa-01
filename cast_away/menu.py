@@ -11,8 +11,8 @@ from .components.input_source import (
     ACTIVATE,
 )
 from .components.player import Player
-from .components.level import CurrentLevel
-from .components.spawner import PlayerSpawner
+from .components.level import CurrentLevel, Level
+from .components.level.player_spawn import PlayerSpawns 
 from .components.position import Position
 from .entities import player
 
@@ -163,17 +163,4 @@ class Menu:
         name = input_source.name
         is_started = self.is_started(input_source)
         if not is_started:
-            for _, current_level in self.world.get_component(CurrentLevel):
-                for _, (spawner, position) in self.world.get_components(
-                    PlayerSpawner, Position
-                ):
-                    if spawner.last_level == current_level.last_level:
-                        player.create_player(self.world, spawner, position, input_source)
-                        break
-                else:
-                    # just go with the first spawn (prolly a dev loading straight in)
-                    for _, (spawner, position) in self.world.get_components(
-                        PlayerSpawner, Position
-                    ):
-                        player.create_player(self.world, spawner, position, input_source)
-                        break
+            player.create_player(self.world, True, Position(0,0,None), input_source)

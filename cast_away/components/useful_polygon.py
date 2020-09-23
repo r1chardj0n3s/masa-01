@@ -6,6 +6,7 @@ class UsefulPolygon:
         self.obj = obj
         self.name = obj.name
         self.location = obj.location
+        self.properties = obj.properties
         px = obj.location.x
         py = obj.location.y
         self.point_list = [(px + p.x, py + p.y*-1) for p in obj.points]

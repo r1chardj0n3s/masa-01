@@ -17,7 +17,7 @@ from cast_away.components.sequence import Sequence
 from cast_away.components.multiplayer_identifier import MultiplayerIdentifier, player_sprite_for
 
 
-def create_player(world, spawner, position, input_source):
+def create_player(world, first, position, input_source):
     players = [mp for _, mp in world.get_component(MultiplayerIdentifier)]
 
     this_player = MultiplayerIdentifier.select(players)
@@ -25,7 +25,7 @@ def create_player(world, spawner, position, input_source):
     player_ent = world.create_entity(
         this_player,
         Velocity(0, 0),
-        Position(position.x, position.y),
+        Position(position.x, position.y, position.level),
         HitCircle(radius=25),
         Collidable(),
         debug_circle(position.x, position.y),
@@ -34,12 +34,12 @@ def create_player(world, spawner, position, input_source):
         Health(3),
         Inventory([]),
     )
-    if spawner.type == "first":
+    if first:
         world.create_entity(
             Sequence(
                 player_ent,
                 SpriteEffects(
-                    ThrowToEffect(1, Position(-100, 0), position, 400), SpinEffect(1, 720)
+                    ThrowToEffect(1, Position(-100, 0, None), position, 400), SpinEffect(1, 720)
                 ),
                 Player(input_source),
             )

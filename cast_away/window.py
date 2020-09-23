@@ -5,7 +5,10 @@ from . import keyboard
 from .processors import init_world
 from .components.draw_layer import DrawLayer
 from .components.debug_primitives import DebugCircle, DebugPoly
-from .components.level import CurrentLevel
+from .components.collidable import HitCircle, HitPoly
+from .components.position import Position
+from .components.level import CurrentLevel, Level
+from .components.level.arena_boundary import ArenaBoundary
 from .components.input_source import InputSource, KeyboardState
 
 from .menu import Menu
@@ -16,7 +19,7 @@ class Game(arcade.Window):
         super().__init__(1280, 720, "Junk Yard Wars")
         self.world = init_world()
         self.world.create_entity(InputSource("Keyboard", KeyboardState()))
-        self.world.create_entity(CurrentLevel(map_name))
+        self.world.create_entity(CurrentLevel(next_level = map_name))
         self.menu = Menu(self, self.world)
         self.first_update = True
 
@@ -36,25 +39,41 @@ class Game(arcade.Window):
         arcade.start_render()
 
         arcade.set_viewport(64, 1280+64, -32, 720-32)
-        draw_layers = [c for (_, c) in self.world.get_component(DrawLayer)]
-        draw_layers.sort(key=lambda layer: layer.priority)
-        for layer in draw_layers:
+        draw_layers = self.world.get_component(DrawLayer)
+        draw_layers.sort(key=draw_layer_priority)
+        for pair in draw_layers:
+            entity, layer = pair
+            if self.world.has_component(entity, Level):
+                level = self.world.component_for_entity(entity, Level)
+                if not level.loaded:
+                    continue
             layer.draw()
 
-        for _, debug_circle in self.world.get_component(DebugCircle):
-            if debug_circle.draw:
-                arcade.draw_circle_filled(
-                    debug_circle.x,
-                    debug_circle.y,
-                    debug_circle.size,
-                    debug_circle.color
-                )
-        for _, debug in self.world.get_component(DebugPoly):
-            if debug.draw:
+        for _, (position, hitCircle) in self.world.get_components(Position, HitCircle):
+            if position.level is not None:
+                level = self.world.component_for_entity(position.level, Level)
+                if level.loaded:
+                    arcade.draw_circle_filled(
+                        position.x,
+                        position.y,
+                        hitCircle.radius,
+                        (255,0,0,100)
+                    )
+        for _, (position, hitPoly) in self.world.get_components(Position, HitPoly):
+            level = self.world.component_for_entity(position.level, Level)
+            if level.loaded:
                 arcade.draw_polygon_outline(
-                    debug.poly,
-                    debug.color,
-                    debug.size
+                    hitPoly.point_list,
+                    (255,255,255,100),
+                    5
+                )
+
+        for _, (boundary, level) in self.world.get_components(ArenaBoundary, Level):
+            if level.loaded:
+                arcade.draw_polygon_outline(
+                    boundary.poly.point_list,
+                    arcade.color.WHITE,
+                    5
                 )
         
         arcade.set_viewport(0, 1280, 0, 720)
@@ -62,3 +81,7 @@ class Game(arcade.Window):
             layer.draw()
         if self.menu.show:
             self.menu.draw()
+
+def draw_layer_priority(pair):
+    e, layer = pair
+    return layer.priority

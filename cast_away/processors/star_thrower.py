@@ -29,7 +29,7 @@ class ShootingProcessor(esper.Processor):
                 velocity.magnitude = 1000
                 self.world.create_entity(
                     Sprite(":resources:images/items/star.png", scale=0.5),
-                    Position(x=position.x, y=position.y),
+                    Position(x=position.x, y=position.y, level=position.level),
                     velocity,
                     Bullet(.5, Enemy),
                 )

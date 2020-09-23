@@ -1,9 +1,10 @@
 from arcade.geometry import is_point_in_polygon
+from dataclasses import dataclass, field
 
+@dataclass
 class Collidable:
-    def __init__(self, match_components=[], avoid_components=[]):
-        self.match_components = match_components
-        self.avoid_components = avoid_components
+    match_components: object = field(default_factory=lambda: [])
+    avoid_components: object = field(default_factory=lambda: [])
 
 # collidable entity will have a Position (center) and this polygon is relative to that position
 class HitPoly:

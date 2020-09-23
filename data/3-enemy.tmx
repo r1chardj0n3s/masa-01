@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.4" tiledversion="1.4.2" orientation="staggered" renderorder="right-down" width="11" height="22" tilewidth="128" tileheight="64" infinite="0" staggeraxis="y" staggerindex="odd" nextlayerid="6" nextobjectid="9">
+<map version="1.4" tiledversion="1.4.2" orientation="staggered" renderorder="right-down" width="11" height="22" tilewidth="128" tileheight="64" infinite="0" staggeraxis="y" staggerindex="odd" nextlayerid="7" nextobjectid="9">
  <tileset firstgid="1" source="landscapeTiles_sheet.tsx"/>
  <layer id="4" name="Tile Layer 4" width="11" height="22">
   <properties>
@@ -33,30 +33,27 @@
    eJxjYBgFo4D+II9IdcEkmEms2uFoJgAUJgK0
   </data>
  </layer>
- <objectgroup id="5" name="triggers">
-  <object id="1" name="ARENA_BOUNDARY" x="90.6667" y="665.333" visible="0">
-   <polygon points="0,0 37.3333,34.6667 486.667,-190.667 549.333,-253.333 745.333,-160 1121.33,-345.333 678.667,-569.333 300,-380 493.333,-288 424,-221.333"/>
-  </object>
+ <objectgroup id="5" name="Triggers">
   <object id="2" name="EXIT" x="81.3333" y="669.333">
    <properties>
+    <property name="match_components" value="cast_away.components.player.Player"/>
     <property name="next_level" value="2-spikes"/>
    </properties>
    <polygon points="0,0 46.6667,28 89.3333,8 30.6667,-16"/>
   </object>
+ </objectgroup>
+ <objectgroup id="6" name="OnLoad">
   <object id="3" name="PLAYER_SPAWN" x="177.333" y="644">
    <properties>
     <property name="last_level" value="2-spikes"/>
    </properties>
    <point/>
   </object>
+  <object id="1" name="ARENA_BOUNDARY" x="90.6667" y="665.333" visible="0">
+   <polygon points="0,0 37.3333,34.6667 486.667,-190.667 549.333,-253.333 745.333,-160 1121.33,-345.333 678.667,-569.333 300,-380 493.333,-288 424,-221.333"/>
+  </object>
   <object id="4" name="ENEMY_SPAWN" x="806.667" y="274.667">
    <point/>
-  </object>
-  <object id="5" name="OBSTACLE" x="582.667" y="388">
-   <properties>
-    <property name="requires" value="ramp_traversal"/>
-   </properties>
-   <polygon points="0,0 -60,60 -8,85.3333 54.6667,26.6667"/>
   </object>
   <object id="6" name="PICKUP" x="410.667" y="524">
    <properties>
