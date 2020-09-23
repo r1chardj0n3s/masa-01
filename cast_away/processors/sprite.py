@@ -5,13 +5,20 @@ from cast_away.components.position import Position
 from cast_away.components.facing import Facing
 from cast_away.components.sprite import Sprite, SpriteList
 from cast_away.components.multiplayer_identifier import MultiplayerIdentifier, player_texture_for
-
+from cast_away.components.level import Level
 
 class SpriteProcessor(esper.Processor):
     def process(self, dt):
         for _, (sprite, position) in self.world.get_components(Sprite, Position):
             sprite._arcade_sprite.center_x = position.x
             sprite._arcade_sprite.center_y = position.y
+            if position.level is not None:
+                level = self.world.component_for_entity(position.level, Level)
+                if level.loaded:
+                    sprite._arcade_sprite.alpha = 255
+                else:
+                    sprite._arcade_sprite.alpha = 0
+            
 
 
 # make the arcade sprite list (a singleton, hopefully) reflect the ECS sprites
