@@ -10,8 +10,8 @@ def create_trigger(world, level_ent, obj):
         collision_shape = HitPoly(obj.point_list)
     else: 
         #assume circle
-        collision_shapw = HitCircle(obj.properties.get("radius"))
-    match_components = [locate(class_name) for class_name in obj.properties.get("match_components", [])]
+        collision_shape = HitCircle(obj.properties.get("radius"))
+    match_components = [locate(class_name) for class_name in obj.properties.get("match_components", []).split(",")]
     avoid_components = [locate(class_name) for class_name in obj.properties.get("avoid_components", [])]
     
     world.create_entity(

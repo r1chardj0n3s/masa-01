@@ -17,7 +17,7 @@ from cast_away.components.sequence import Sequence
 from cast_away.components.multiplayer_identifier import MultiplayerIdentifier, player_sprite_for
 
 
-def create_player(world, spawner, position, input_source):
+def create_player(world, first, position, input_source):
     players = [mp for _, mp in world.get_component(MultiplayerIdentifier)]
 
     this_player = MultiplayerIdentifier.select(players)
@@ -34,7 +34,7 @@ def create_player(world, spawner, position, input_source):
         Health(3),
         Inventory([]),
     )
-    if spawner.type == "first":
+    if first:
         world.create_entity(
             Sequence(
                 player_ent,

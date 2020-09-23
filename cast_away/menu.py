@@ -167,6 +167,7 @@ class Menu:
                     if level_component.name == current_level.name:
                         spawns = player_spawns.spawns
                         spawner = None
+                        first = False
                         if current_level.last_level in spawns:
                             spawner = spawns[current_level.last_level]
                         else:
@@ -176,5 +177,6 @@ class Menu:
                                     break
                         if spawner is None:
                             _, spawner = spawns.items()[0]
-                        player.create_player(self.world, Position(spawner.x, spawner.y, level), input_source)
+                            first = True
+                        player.create_player(self.world, first, Position(spawner.x, spawner.y, level), input_source)
                         return

@@ -10,6 +10,7 @@ from cast_away.components.level import Level, CurrentLevel
 from cast_away.components.scene import Scene
 from cast_away.components.player import Player
 from cast_away.components.position import Position
+from cast_away.components.level.player_spawn import PlayerSpawns
 
 from cast_away.tmx_fixes import load_object_layer
 
@@ -57,9 +58,10 @@ def load_map(world, level_name):
     # place active players
     for _, current_level in world.get_component(CurrentLevel):
         for _, (pc, position) in world.get_components(Player, Position):
-            for _, (player_spawner, spawn_pos) in world.get_components(
-                PlayerSpawner, Position
+            for level_ent, (level, spawners) in world.get_components(
+                Level, PlayerSpawns
             ):
-                if player_spawner.last_level == current_level.last_level:
-                    position.x = spawn_pos.x
-                    position.y = spawn_pos.y
+                if level.name == current_level.name:
+                    spawn = spawners.spawns[current_level.last_level]
+                    position.x = spawn.x
+                    position.y = spawn.y

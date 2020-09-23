@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.4" tiledversion="1.4.2" orientation="staggered" renderorder="right-down" width="11" height="22" tilewidth="128" tileheight="64" infinite="0" staggeraxis="y" staggerindex="odd" nextlayerid="11" nextobjectid="6">
+<map version="1.4" tiledversion="1.4.2" orientation="staggered" renderorder="right-down" width="11" height="22" tilewidth="128" tileheight="64" infinite="0" staggeraxis="y" staggerindex="odd" nextlayerid="12" nextobjectid="6">
  <tileset firstgid="1" source="landscapeTiles_sheet.tsx"/>
  <tileset firstgid="129" source="kenney-props.tsx"/>
  <tileset firstgid="241" source="kenney-fences.tsx"/>
@@ -40,22 +40,24 @@
 0,0,0,0,297,0,0,0,0,0,0
 </data>
  </layer>
- <objectgroup id="2" name="triggers">
-  <object id="1" name="PLAYER_SPAWN" x="278.667" y="421.333">
+ <objectgroup id="2" name="Triggers">
+  <object id="3" name="EXIT" x="1150.67" y="252">
    <properties>
-    <property name="last_level" value="1-movement"/>
-    <property name="type" value="first"/>
+    <property name="match_components" value="cast_away.components.player.Player"/>
+    <property name="next_level" value="2-spikes"/>
+   </properties>
+   <polygon points="0,0 -48,25.3333 12,57.3333 61.3333,34.6667"/>
+  </object>
+ </objectgroup>
+ <objectgroup id="11" name="OnLoad">
+  <object id="5" name="PICKUP" x="511.333" y="478.667">
+   <properties>
+    <property name="type" value="saw"/>
    </properties>
    <point/>
   </object>
   <object id="2" name="ARENA_BOUNDARY" x="320" y="356">
    <polygon points="0,0 -184,88 276,309.333 365.333,309.333 818.667,86.6667 702.667,22.6667 893.333,-69.3333 830.667,-102.667 322.667,156"/>
-  </object>
-  <object id="3" name="EXIT" x="1150.67" y="252">
-   <properties>
-    <property name="next_level" value="2-spikes"/>
-   </properties>
-   <polygon points="0,0 -48,25.3333 12,57.3333 61.3333,34.6667"/>
   </object>
   <object id="4" name="PLAYER_SPAWN" x="1090.3" y="314.127">
    <properties>
@@ -63,9 +65,10 @@
    </properties>
    <point/>
   </object>
-  <object id="5" name="PICKUP" x="511.333" y="478.667">
+  <object id="1" name="PLAYER_SPAWN" x="278.667" y="421.333">
    <properties>
-    <property name="type" value="saw"/>
+    <property name="last_level" value="1-movement"/>
+    <property name="type" value="first"/>
    </properties>
    <point/>
   </object>

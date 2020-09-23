@@ -40,12 +40,11 @@ def test_circles(world, ea, eb):
 def test_polys(world, ea, eb):
     raise NotImplementedError("processors/collisions.py")
 
-def test_circle_v_poly(world, ea, eb):
-    raise NotImplementedError("processors/collisions.py")
-    # circle = world.get_component(ea, HitCircle)
-    # poly = world.get_component(eb, HitPoly)
-    # print("NAG! do proper circle hits, not point hits!")
-    # return poly.is_point_inside(circle)
+def test_circle_v_poly(world, circleEntity, polyEntity):
+    circle = world.component_for_entity(circleEntity, HitCircle)
+    pos = world.component_for_entity(circleEntity, Position)
+    poly = world.component_for_entity(polyEntity, HitPoly)
+    return poly.is_point_inside(pos.x, pos.y)
 
 def test(world, ea, eb):
     def hit_poly(e):
@@ -58,7 +57,7 @@ def test(world, ea, eb):
     if hit_poly(ea) and hit_circle(eb):
         return test_circle_v_poly(world, eb, ea)
     if hit_circle(ea) and hit_poly(eb):
-        return test_circle_v_poly(world, eb, ea)
+        return test_circle_v_poly(world, ea, eb)
     if hit_circle(ea) and hit_circle(eb):
         return test_circles(world, eb, ea)
     raise CollisionDetectionError(f"I don't know how to test these two things for collisions {ea}, {eb}")
@@ -78,6 +77,7 @@ class CollisionProcessor(esper.Processor):
             for eb, cb in collidables:
                 if ea == eb: continue
                 if does_collide(self.world, ea, ca, eb, cb):
+                    print(f"found collision! {ca} {cb}")
                     collisions.setdefault(ea, []).append(eb)
         #resolution
         for ea, collisions in collisions.items():
