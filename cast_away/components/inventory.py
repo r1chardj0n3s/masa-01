@@ -1,10 +1,14 @@
+from dataclasses import dataclass
+
+@dataclass
 class InventoryItem:
-    def __init__(self, owner_ent, hud_image):
-        self.owner_ent = owner_ent
-        self.hud_image = hud_image
+    owner_ent: int
+    hud_image: str
+    pickup_ent: int
 
 
+@dataclass
 class Inventory:
-    def __init__(self, item_ents, selection=None):
-        self.item_ents = item_ents
-        self.drop_debounce = 0
+    item_ents: object
+    drop_debounce: int = 0
+    selection: int = None
