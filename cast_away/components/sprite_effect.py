@@ -73,3 +73,4 @@ class ThrowToEffect:
 
         sprite._arcade_sprite.center_x = ax + ux
         sprite._arcade_sprite.center_y = ay + uy
+        print(f"throwingto setpos {sprite._arcade_sprite.center_x} {sprite._arcade_sprite.center_y}")

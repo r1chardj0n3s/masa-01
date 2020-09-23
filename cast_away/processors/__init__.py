@@ -10,7 +10,7 @@ from . import star_thrower
 from . import pickup
 from . import drop
 from . import timeout
-from . import player_move
+from .player import move
 from . import follow_path
 from . import hud_display
 from . import bullet
@@ -32,7 +32,7 @@ def init_world():
     drop.init(world)
 
     invulnerable.init(world)
-    player_move.init(world)
+    move.init(world)
     follow_path.init(world)
 
     velocity.init(world)

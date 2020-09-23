@@ -45,6 +45,7 @@
  <objectgroup id="6" name="OnLoad">
   <object id="3" name="PLAYER_SPAWN" x="177.333" y="644">
    <properties>
+    <property name="first" type="bool" value="true"/>
     <property name="last_level" value="2-spikes"/>
    </properties>
    <point/>
