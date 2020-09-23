@@ -12,6 +12,7 @@ from . import position_constriants
 from . import star_thrower
 from . import pickup
 from . import drop
+from . import inventory
 from . import timeout
 from . import player_move
 from . import follow_path
@@ -31,6 +32,7 @@ def init_world():
     spawner.init(world)
     pickup.init(world)
     drop.init(world)
+    inventory.init(world)
 
     invulnerable.init(world)
     player_move.init(world)

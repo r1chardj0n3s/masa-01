@@ -13,7 +13,7 @@ class DropProcessor(esper.Processor):
             inventory.drop_debounce -= dt
             if inventory.drop_debounce < 0 and player.input_source.state.get(DROP):
                 if len(inventory.items) > 0:
-                    drop_inventory_item(self.world, inventory.items[0])
+                    drop_inventory_item(self.world, inventory.items[inventory.selection])
                     inventory.drop_debounce = DROP_DEBOUNCE
 
 
