@@ -10,10 +10,12 @@ def PLAYER_SPAWN(world, level_ent, obj):
     if not world.has_component(level_ent, PlayerSpawns):
         world.add_component(level_ent, PlayerSpawns({}))
     spawns = world.component_for_entity(level_ent, PlayerSpawns)
-    spawns.spawns[obj.properties.get("last_level")] = PlayerSpawn(
+    last_level = obj.properties.get("last_level")
+    print(f"last_level = {last_level}")
+    spawns.spawns[last_level] = PlayerSpawn(
         x = obj.location.x, 
         y = obj.location.y, 
-        last_level = obj.properties.get("last_level"),
+        last_level = last_level,
         first = obj.properties.get("first")
     )
 

@@ -1,11 +1,14 @@
-class Level:
-    def __init__(self, name, tile_map):
-        self.name = name
-        self.tile_map = tile_map
+from dataclasses import dataclass
 
+@dataclass
+class Level:
+    name: str
+    tile_map: object
+    loaded: bool = False
+
+@dataclass
 class CurrentLevel:
-    def __init__(self, name):
-        self.name = name
-        self.last_level = name
-        self.loaded = False
-        self.timestamp = None
+    next_level: str
+    name: str = None
+    level_ent: int = None
+    last_level: int = None

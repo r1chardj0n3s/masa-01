@@ -6,7 +6,7 @@ from dataclasses import dataclass
 class Position:
     x: float
     y: float
-    level_ent: int
+    level: int
     
     def __repr__(self):
         return f'<Position x={self.x} y={self.y}>'

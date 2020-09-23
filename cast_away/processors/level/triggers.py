@@ -6,9 +6,7 @@ def EXIT(world, level_ent, obj, target):
     if world.has_component(target, Player):
         next_level = obj.properties["next_level"]
         for _, (current_level,) in world.get_components(CurrentLevel):
-            current_level.last_level = current_level.name
-            current_level.name = next_level
-            current_level.loaded = False
+            current_level.next_level = next_level
 
 def SPIKE(world, level_ent, obj, target):
     if world.has_component(target, Player): 

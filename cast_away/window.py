@@ -19,7 +19,7 @@ class Game(arcade.Window):
         super().__init__(1280, 720, "Junk Yard Wars")
         self.world = init_world()
         self.world.create_entity(InputSource("Keyboard", KeyboardState()))
-        self.world.create_entity(CurrentLevel(map_name))
+        self.world.create_entity(CurrentLevel(next_level = map_name))
         self.menu = Menu(self, self.world)
         self.first_update = True
 

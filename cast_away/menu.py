@@ -162,21 +162,4 @@ class Menu:
         name = input_source.name
         is_started = self.is_started(input_source)
         if not is_started:
-            for _, current_level in self.world.get_component(CurrentLevel):
-                for level, (level_component, player_spawns) in self.world.get_components(Level, PlayerSpawns):
-                    if level_component.name == current_level.name:
-                        spawns = player_spawns.spawns
-                        spawner = None
-                        first = False
-                        if current_level.last_level in spawns:
-                            spawner = spawns[current_level.last_level]
-                        else:
-                            for s in spawns:
-                                if s.first:
-                                    spawner = s
-                                    break
-                        if spawner is None:
-                            _, spawner = spawns.items()[0]
-                            first = True
-                        player.create_player(self.world, first, Position(spawner.x, spawner.y, level), input_source)
-                        return
+            player.create_player(self.world, True, Position(0,0,None), input_source)
