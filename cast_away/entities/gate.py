@@ -7,10 +7,12 @@ from cast_away.components.collidable import Collidable, HitCircle, HitPoly
 from cast_away.components.velocity import Velocity
 
 SW = "SW"
+SE = "SE"
 
 GATE_SPRITES = {
     "wooden": {
-        SW: ("data/gate_wooden_closed_sw.png", "data/gate_wooden_open_sw.png", 0.5)
+        SW: ("data/gate_wooden_closed_sw.png", "data/gate_wooden_open_sw.png", 0.5),
+        SE: ("data/gate_wooden_closed_se.png", "data/gate_wooden_open_se.png", 0.5)
     }
 }
 
