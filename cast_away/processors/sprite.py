@@ -4,8 +4,12 @@ import esper
 from cast_away.components.position import Position
 from cast_away.components.facing import Facing
 from cast_away.components.sprite import Sprite, SpriteList
-from cast_away.components.multiplayer_identifier import MultiplayerIdentifier, player_texture_for
+from cast_away.components.multiplayer_identifier import (
+    MultiplayerIdentifier,
+    player_texture_for,
+)
 from cast_away.components.level import Level
+
 
 class SpriteProcessor(esper.Processor):
     def process(self, dt):
@@ -23,7 +27,7 @@ class SpriteListProcessor(esper.Processor):
                 position = self.world.component_for_entity(e, Position)
                 if position.level is not None:
                     level = self.world.component_for_entity(position.level, Level)
-                    if level.loaded:
+                    if level.active:
                         all_sprites.add(sprite)
             else:
                 all_sprites.add(sprite)
@@ -51,7 +55,9 @@ class PlayerFacingProcessor(esper.Processor):
         for _, (mp, sprite, facing) in self.world.get_components(
             MultiplayerIdentifier, Sprite, Facing
         ):
-            sprite._arcade_sprite.texture = player_texture_for(mp.colour, facing.direction)
+            sprite._arcade_sprite.texture = player_texture_for(
+                mp.colour, facing.direction
+            )
 
 
 def init(world):

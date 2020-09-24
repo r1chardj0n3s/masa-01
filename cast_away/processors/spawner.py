@@ -8,11 +8,12 @@ from cast_away.components.position import Position
 
 from cast_away.entities.enemy import create_enemy
 
+
 class EnemySpawnProcessor(esper.Processor):
     def process(self, dt):
         for ent, (es, position) in self.world.get_components(EnemySpawner, Position):
             level = self.world.component_for_entity(position.level, Level)
-            if not level.loaded:
+            if not level.active:
                 continue
             if es.spawning:
                 if self.world.has_component(ent, Timeout):

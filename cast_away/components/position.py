@@ -18,4 +18,4 @@ class Position:
         return euclid.Point2(self.x, self.y)
 
     def distance(self, other: 'Position'):
-         return math.sqrt((self.x - other.x) ** 2 + (self.y - other.y) ** 2)
+        return math.sqrt((self.x - other.x) ** 2 + (self.y - other.y) ** 2)

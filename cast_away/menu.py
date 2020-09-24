@@ -4,16 +4,12 @@ from arcade.gui import UIFlatButton, UIManager
 from .components.input_source import (
     InputSource,
     JoystickState,
-    KeyboardState,
     MENU,
     UP,
     DOWN,
     ACTIVATE,
 )
 from .components.player import Player
-from .components.level import CurrentLevel, Level
-from .components.level.player_spawn import PlayerSpawns 
-from .components.position import Position
 from .entities import player
 
 # from arcade.gui.ui_style import UIStyle
@@ -92,7 +88,7 @@ class Menu:
         for num, name in enumerate(BUTTONS):
             self.buttons[name] = button(num, name)
 
-        s = arcade.Sprite('data/images/help-image.png')
+        s = arcade.Sprite("data/images/help-image.png")
         s.center_x = 640
         s.center_y = 150
         self.sprite_list.append(s)
