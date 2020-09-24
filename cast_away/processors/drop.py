@@ -14,7 +14,11 @@ class DropProcessor(esper.Processor):
             if inventory.drop_debounce < 0 and player.input_source.state.get(DROP):
                 for i, butt in enumerate([ITEM_1, ITEM_2, ITEM_3]):
                     if player.input_source.state.get(butt):
-                        drop_inventory_item(self.world, inventory.item_ents[i])
+                        try:
+                            dropped_ent = inventory.item_ents[i]
+                        except IndexError:
+                            return
+                        drop_inventory_item(self.world, dropped_ent)
                         inventory.drop_debounce = DROP_DEBOUNCE
 
 
