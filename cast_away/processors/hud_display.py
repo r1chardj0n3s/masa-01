@@ -5,7 +5,8 @@ from cast_away.components.health import Health
 from cast_away.components.hud.health_display import HealthDisplay
 from cast_away.components.hud.inventory_display import InventoryHudDisplay
 from cast_away.components.player import Player
-from cast_away.components.inventory import Inventory, InventoryItem
+from cast_away.components.inventory import Inventory
+from cast_away.components.items import InventoryItem, ITEM_DATA
 
 from cast_away.components.hud.hud_layer import HUDLayer
 from cast_away.entities.hud.inventory_display import inventory_hud_sprite
@@ -38,10 +39,11 @@ class InventoryDisplayProcessor(esper.Processor):
             inventory = self.world.component_for_entity(display.player_entity, Inventory)
             mp = self.world.component_for_entity(display.player_entity, MultiplayerIdentifier)
             for i, item_entity in enumerate(inventory.item_ents):
-                inventoryItem = self.world.component_for_entity(item_entity, InventoryItem)
+                inventory_item = self.world.component_for_entity(item_entity, InventoryItem)
+                _, inventory_item_data = ITEM_DATA[inventory_item.name]
                 index = COLOURS.index(mp.colour)
                 base_x = index * 300
-                set_sprite_at(i, base_x, inventoryItem.hud_image)
+                set_sprite_at(i, base_x, inventory_item_data.image)
             while len(inventory.item_ents) < len(sprite_list):
                 sprite_list.pop()
 

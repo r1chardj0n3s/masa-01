@@ -5,7 +5,6 @@ from ..components import invulnerable
 from . import health
 from . import level
 from . import spawner
-from . import pickup
 from . import drop
 from . import timeout
 from .player import move
@@ -30,7 +29,6 @@ def init_world():
     sequence.init(world)
 
     spawner.init(world)
-    pickup.init(world)
     drop.init(world)
 
     invulnerable.init(world)

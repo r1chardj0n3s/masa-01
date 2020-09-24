@@ -56,7 +56,7 @@
   <object id="4" name="ENEMY_SPAWN" x="806.667" y="274.667">
    <point/>
   </object>
-  <object id="6" name="PICKUP" x="410.667" y="524">
+  <object id="6" name="ITEM" x="410.667" y="524">
    <properties>
     <property name="type" value="lazorgun"/>
    </properties>

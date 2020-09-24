@@ -1,10 +1,10 @@
 from cast_away.event_dispatch import register_listener, ENTITY_DIED
 
 from cast_away.components.player import Player
-from cast_away.components.inventory import InventoryItem
+from cast_away.components.items import InventoryItem
 from cast_away.components.hud.health_display import HealthDisplay
 from cast_away.components.hud.inventory_display import InventoryHudDisplay
-from cast_away.entities.inventory_item import drop_inventory_item
+from cast_away.entities.item import drop_inventory_item
 from cast_away.entities.player import create_player
 from cast_away.components.multiplayer_identifier import MultiplayerIdentifier
 

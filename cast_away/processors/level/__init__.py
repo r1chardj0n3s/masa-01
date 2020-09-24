@@ -13,8 +13,6 @@ from cast_away.components.level import LevelProgression, Level
 
 from cast_away.entities.level import activate_map, deactivate_map
 
-from cast_away.entities.spawner import create_pickup_spawner
-
 
 def map_filename(name):
     return f"data/{name}.tmx"

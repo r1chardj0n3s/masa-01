@@ -1,5 +1,5 @@
 from cast_away.components.input_source import ITEM_1, ITEM_2, ITEM_3
-from cast_away.components.inventory import Inventory, InventoryItem
+from cast_away.components.inventory import Inventory
 from cast_away.event_dispatch import Message, INPUT, USE_ITEM, USE_SLOT, dispatch, register_listener
 
 

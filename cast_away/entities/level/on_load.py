@@ -1,9 +1,10 @@
 from cast_away.components.level.arena_boundary import ArenaBoundary
 from cast_away.components.level.player_spawn import PlayerSpawns, PlayerSpawn
 
-from cast_away.entities.spawner import create_enemy_spawner, create_enemy_path, create_pickup_spawner
+from cast_away.entities.spawner import create_enemy_spawner, create_enemy_path
 from cast_away.entities.button import create_button
 from cast_away.entities.gate import create_gate
+from cast_away.entities.item import create_level_item
 
 def ARENA_BOUNDARY(world, level_ent, obj):
     world.add_component(level_ent, ArenaBoundary(obj))
@@ -20,8 +21,9 @@ def PLAYER_SPAWN(world, level_ent, obj):
         first = obj.properties.get("first")
     )
 
-def PICKUP(world, level_ent, obj):
-    create_pickup_spawner(world, obj, level_ent)
+def ITEM(world, level_ent, obj):
+    name = obj.properties["type"]
+    create_level_item(world, name, obj.location.x, obj.location.y, level_ent)
 
 def ENEMY_SPAWN(world, level_ent, obj):
     create_enemy_spawner(world, obj, level_ent)
