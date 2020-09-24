@@ -12,6 +12,7 @@ from . import hud_display
 from . import bullet
 from . import enemy_shoot
 from . import collisions
+from . import position_effects
 from . import sprite_effect
 from . import sequence
 from . import sprite
@@ -39,6 +40,7 @@ def init_world():
     desired_velocity.init(world)
     sprite.init(world)
     sprite_effect.init(world)
+    position_effects.init(world)
 
     bullet.init(world)
     enemy_shoot.init(world)

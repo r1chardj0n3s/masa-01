@@ -3,7 +3,8 @@ from cast_away.components.position import Position
 from cast_away.components.facing import Facing
 from cast_away.components.items.uses import Throwable
 from cast_away.entities.item import drop_inventory_item, InventoryItem
-from cast_away.components.sprite_effect import SpriteEffects, ThrowToEffect, SpinEffect
+from cast_away.components.sprite_effect import SpriteEffects, SpinEffect
+from cast_away.components.position_effects import PositionEffects, ThrowToEffect
 
 def use_throwable(world, message):
     inventory_item_ent = message.payload['item_ent']
@@ -21,17 +22,19 @@ def use_throwable(world, message):
 
         level_item_entity = drop_inventory_item(world, inventory_item_ent)
         world.add_component(level_item_entity, SpriteEffects(
-                ThrowToEffect(
-                    play_time = throwable.throw_speed,
-                    start_pos = Position(position.x, position.y, level_ent),
-                    end_pos = Position(target_x, target_y, level_ent),
-                    height = throwable.throw_distance / 3,
-                ),
-                SpinEffect(
-                    play_time = throwable.throw_speed, 
-                    speed = throwable.throw_speed * throwable.throw_distance
-                ),
-            ),)
+            SpinEffect(
+                play_time = throwable.throw_speed, 
+                speed = throwable.throw_speed * throwable.throw_distance
+            )
+        ))
+        world.add_component(level_item_entity, PositionEffects([
+            ThrowToEffect(
+                play_time = throwable.throw_speed,
+                start_pos = Position(position.x, position.y, level_ent),
+                end_pos = Position(target_x, target_y, level_ent),
+                height = throwable.throw_distance / 3,
+            )]
+        ))
         
 
 
