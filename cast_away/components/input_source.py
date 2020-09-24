@@ -1,6 +1,5 @@
+from dataclasses import dataclass
 import arcade
-
-from .. import keyboard
 
 RIGHT = "right"
 LEFT = "left"
@@ -17,10 +16,17 @@ DROP = "drop"
 SELECT_NEXT = "select next"
 SELECT_PREV = "select prev"
 
+
+@dataclass
+class InputEvent:
+    input: str
+
+
 class InputSource:
     def __init__(self, name, state):
         self.name = name
         self.state = state
+
 
 _keybinds = {
     RIGHT: arcade.key.RIGHT,
@@ -33,15 +39,20 @@ _keybinds = {
     ITEM_1: arcade.key.Z,
     ITEM_2: arcade.key.C,
     ITEM_3: arcade.key.X,
-    DROP: arcade.key.LSHIFT
+    DROP: arcade.key.LSHIFT,
 }
+
+KEYBOARD_MAP = dict((v, k) for k, v in _keybinds.items())
+
 
 class KeyboardState:
     def __init__(self):
         self.name = "keyboard"
+        self.keys = dict()
+        self.events = []
 
     def get(self, action):
-        return keyboard.state.get(_keybinds[action])
+        return self.keys.get(_keybinds[action])
 
 
 # PS4 buttons:
@@ -63,14 +74,18 @@ _buttonbinds = {
     # SELECT_PREV: arcade.key.BRACKETRIGHT
 }
 
+_button_lookup = dict((v, k) for k, v in _buttonbinds.items())
+
 DEAD_ZONE_X = 0.1
 DEAD_ZONE_Y = 0.1
+
 
 class JoystickState:
     def __init__(self, joystick):
         self.joystick = joystick
         self.name = joystick.device.name
         self.buttons = dict()
+        self.events = []
         self.hat_x = 0
         self.hat_y = 0
         joystick.open()
@@ -79,8 +94,10 @@ class JoystickState:
         joystick.on_joyhat_motion = self.on_joyhat_motion
 
     def on_joybutton_press(self, _joystick, button):
+        # print(f"button {button} press")
         self.buttons[button] = True
-        print(f"button {button} press")
+        if button in _button_lookup:
+            self.events.append(InputEvent(_button_lookup[button]))
 
     def on_joybutton_release(self, _joystick, button):
         self.buttons[button] = False
@@ -94,11 +111,11 @@ class JoystickState:
         # print(f"joy.x {self.joystick.x}")
         # print(f"joy.y {self.joystick.y}")
         if action == LEFT:
-            return self.joystick.x < DEAD_ZONE_X*-1
+            return self.joystick.x < DEAD_ZONE_X * -1
         elif action == RIGHT:
             return self.joystick.x > DEAD_ZONE_X
         elif action == UP:
-            return self.joystick.y < DEAD_ZONE_Y*-1
+            return self.joystick.y < DEAD_ZONE_Y * -1
         elif action == DOWN:
             return self.joystick.y > DEAD_ZONE_Y
         else:

@@ -1,11 +1,17 @@
+from dataclasses import dataclass
+
 BUTTON = 'BUTTON'
 ENTITY_DIED = 'ENTITY_DIED'
 COLLISION = 'COLLISION'
+INPUT = 'INPUT'
+USE_SLOT = 'USE_SLOT'
+USE_ITEM = 'USE_ITEM'
 
+
+@dataclass
 class Message:
-    def __init__(self, type, payload):
-        self.type = type
-        self.payload = payload
+    type: str
+    payload: object
 
 
 listeners = {}

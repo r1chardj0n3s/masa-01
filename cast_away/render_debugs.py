@@ -8,7 +8,7 @@ from cast_away.components.level.arena_boundary import ArenaBoundary
 def render_debugs(world):
     for _, (position, hitCircle) in world.get_components(Position, HitCircle):
         if position.level is not None:
-            level_ent = world.component_for_entity(position.level, Level)
+            level = world.component_for_entity(position.level, Level)
             if level.active:
                 arcade.draw_circle_filled(
                     position.x, position.y, hitCircle.radius, (255, 0, 0, 100)

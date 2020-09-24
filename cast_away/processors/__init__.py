@@ -5,7 +5,6 @@ from ..components import invulnerable
 from . import health
 from . import level
 from . import spawner
-from . import star_thrower
 from . import pickup
 from . import drop
 from . import timeout
@@ -42,7 +41,6 @@ def init_world():
     sprite.init(world)
     sprite_effect.init(world)
 
-    star_thrower.init(world)
     bullet.init(world)
     enemy_shoot.init(world)
 

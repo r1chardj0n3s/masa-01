@@ -1,5 +1,6 @@
 from dataclasses import dataclass
 
+
 @dataclass
 class InventoryItem:
     owner_ent: int

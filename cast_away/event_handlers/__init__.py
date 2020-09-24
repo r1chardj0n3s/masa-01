@@ -1,9 +1,11 @@
 
 from .level import bullet
 from .level import trigger
+from .items import lazorgun
 from . import entity_death
 from . import hurt
 from . import button
+from . import input_event
 
 def init_event_handlers():
     bullet.init()
@@ -11,3 +13,5 @@ def init_event_handlers():
     trigger.init()
     entity_death.init()
     hurt.init()
+    input_event.init()
+    lazorgun.init()
