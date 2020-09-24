@@ -84,7 +84,7 @@
     <property name="orientation" value="SW"/>
     <property name="sprite" value="wooden"/>
    </properties>
-   <polygon points="0,0 56.5097,31.5789 11.6343,53.1856 -41.5512,24.9307"/>
+   <polygon points="-8.31025,-16.6205 89.7507,38.2271 46.5373,73.1302 -68.144,9.97225"/>
   </object>
  </objectgroup>
  <layer id="3" name="Tile Layer 2" width="11" height="22" offsetx="0" offsety="33">
