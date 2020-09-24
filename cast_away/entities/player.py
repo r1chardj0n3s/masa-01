@@ -17,12 +17,12 @@ from cast_away.components.multiplayer_identifier import (
     MultiplayerIdentifier,
     player_sprite_for,
 )
-from cast_away.components.level import CurrentLevel, Level
+from cast_away.components.level import LevelProgression
 from cast_away.components.level.player_spawn import PlayerSpawns
 
 
 def create_player(world, input_source, mp=None):
-    _, current_level = world.get_component(CurrentLevel)[0]
+    _, current_level = world.get_component(LevelProgression)[0]
     level_ent = current_level.level_ent
 
     spawners = world.component_for_entity(level_ent, PlayerSpawns).spawns

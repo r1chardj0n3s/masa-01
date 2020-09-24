@@ -7,14 +7,14 @@ class Collidable:
     avoid_components: object = field(default_factory=lambda: [])
 
 # collidable entity will have a Position (center) and this polygon is relative to that position
+@dataclass
 class HitPoly:
-    def __init__(self, point_list):
-        self.point_list = point_list
+    point_list: object
 
     def is_point_inside(self, x, y):
         return is_point_in_polygon(x, y, self.point_list)
 
 # collidable entity will have a Position (center) and this circle will be relative to that position
+@dataclass
 class HitCircle:
-    def __init__(self, radius):
-        self.radius = radius
+    radius: float

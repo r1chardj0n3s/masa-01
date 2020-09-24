@@ -4,7 +4,7 @@ from cast_away import keyboard
 from cast_away.processors import init_world
 from cast_away.event_handlers import init_event_handlers
 from cast_away.components.draw_layer import DrawLayer
-from cast_away.components.level import CurrentLevel, Level
+from cast_away.components.level import InLevel, Level, LevelProgression
 from cast_away.components.input_source import InputSource, KeyboardState
 from cast_away.components.hud.hud_layer import HUDLayer
 
@@ -18,7 +18,7 @@ class Game(arcade.Window):
         self.world = init_world()
         init_event_handlers()
         self.world.create_entity(InputSource("Keyboard", KeyboardState()))
-        self.world.create_entity(CurrentLevel(next_level = map_name))
+        self.world.create_entity(LevelProgression(next_level=map_name))
         self.menu = Menu(self, self.world)
         self.first_update = True
         self.render_debugs = False
@@ -40,27 +40,25 @@ class Game(arcade.Window):
     def on_draw(self):
         arcade.start_render()
 
-        arcade.set_viewport(64, 1280+64, -32, 720-32)
-        draw_layers = self.world.get_component(DrawLayer)
-        draw_layers.sort(key=draw_layer_priority)
-        for pair in draw_layers:
-            entity, layer = pair
-            if self.world.has_component(entity, Level):
-                level = self.world.component_for_entity(entity, Level)
-                if not level.loaded:
-                    continue
-            layer.draw()
+        # set viewport to shift play area and center on map center
+        arcade.set_viewport(64, 1280 + 64, -32, 720 - 32)
 
+        draw_layers = [
+            dl
+            for _, (dl, il) in self.world.get_components(DrawLayer, InLevel)
+                if self.world.component_for_entity(il.level_ent, Level).active
+        ]
+        for layer in sorted(draw_layers, key=lambda l: l.priority):
+            layer.draw()
+            
         if self.render_debugs:
             render_debugs(self.world)
-        
+
+        # reset viewport so HUD is rendered straight up
         arcade.set_viewport(0, 1280, 0, 720)
-        for _, layer in sorted(self.world.get_component(HUDLayer), key=draw_layer_priority):
+
+        for layer in sorted([l for _, l in self.world.get_component(HUDLayer)], key=lambda l: l.priority):
             layer.draw()
+
         if self.menu.show:
             self.menu.draw()
-
-
-def draw_layer_priority(pair):
-    e, layer = pair
-    return layer.priority

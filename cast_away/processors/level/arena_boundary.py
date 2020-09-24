@@ -8,19 +8,17 @@ from cast_away.components.level.arena_boundary import ArenaBoundary
 from cast_away.components.level import Level
 from cast_away.components.player import Player
 
+
 class ArenaBoundaryProcessor(esper.Processor):
     def process(self, dt):
-        for level_ent, (boundary, level) in self.world.get_components(ArenaBoundary, Level):
-            if level.loaded:
+        for level_ent, (boundary, level) in self.world.get_components(
+            ArenaBoundary, Level
+        ):
+            if level.active:
                 for ent, (position, velocity, player) in self.world.get_components(
-                    Position,
-                    Velocity,
-                    Player
+                    Position, Velocity, Player
                 ):
-                    if not boundary.poly.is_point_inside(
-                        position.x,
-                        position.y
-                    ):
+                    if not boundary.poly.is_point_inside(position.x, position.y):
                         position.x -= velocity.dx * dt
                         position.y -= velocity.dy * dt
 

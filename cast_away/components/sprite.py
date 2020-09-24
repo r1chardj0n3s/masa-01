@@ -8,8 +8,5 @@ class Sprite:
 
 
 class SpriteList:
-    def __init__(self):
-        self._arcade_sprite_list = arcade.SpriteList()
-
-    def draw(self):
-        self._arcade_sprite_list.draw()
+    def __init__(self, _arcade_sprite_list):
+        self._arcade_sprite_list = _arcade_sprite_list
