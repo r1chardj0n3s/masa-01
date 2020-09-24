@@ -3,7 +3,7 @@ import esper
 from cast_away.components.player import Player
 from cast_away.components.input_source import DROP, ITEM_1, ITEM_2, ITEM_3
 from cast_away.components.inventory import Inventory
-from cast_away.entities.inventory_item import drop_inventory_item
+from cast_away.entities.item import drop_inventory_item
 
 DROP_DEBOUNCE = 1
 

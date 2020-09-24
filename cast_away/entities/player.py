@@ -7,7 +7,7 @@ from cast_away.components.collidable import HitCircle, Collidable
 from cast_away.components.facing import Facing
 from cast_away.components.health import Health
 from cast_away.components.hud.health_display import HealthDisplay
-from cast_away.components.inventory import Inventory, InventoryItem
+from cast_away.components.inventory import Inventory
 from cast_away.event_dispatch import ENTITY_DIED, register_listener
 from cast_away.entities.hud.health_display import create_health_display
 from cast_away.entities.hud.inventory_display import create_player_inventory_hud

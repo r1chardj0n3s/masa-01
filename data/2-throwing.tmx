@@ -57,7 +57,7 @@
   </object>
  </objectgroup>
  <objectgroup id="11" name="OnLoad">
-  <object id="5" name="PICKUP" x="544.574" y="450.412">
+  <object id="5" name="ITEM" x="544.574" y="450.412">
    <properties>
     <property name="type" value="saw"/>
    </properties>

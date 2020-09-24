@@ -7,7 +7,6 @@ from cast_away.components.health import Health
 from cast_away.components.hurt import Hurt
 from cast_away.components.level import Level
 from cast_away.components.enemy import Enemy
-from cast_away.components.inventory import InventoryItem
 from cast_away.event_dispatch import register_listener, ENTITY_DIED
 from cast_away.components.items.fireball_thrower import FireballThrower
 from cast_away.components.collidable import Collidable, HitCircle
