@@ -62,6 +62,6 @@ class PlayerFacingProcessor(esper.Processor):
 
 
 def init(world):
+    world.add_processor(PlayerFacingProcessor())
     world.add_processor(SpriteProcessor())
     world.add_processor(SpriteListProcessor())
-    world.add_processor(PlayerFacingProcessor())

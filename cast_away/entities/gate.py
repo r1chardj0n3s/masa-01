@@ -10,7 +10,7 @@ SW = "SW"
 
 GATE_SPRITES = {
     "wooden": {
-        SW: ("data/wooden_gate_sw.png", "data/wooden_gate_sw.png", 0.5)
+        SW: ("data/gate_wooden_closed_sw.png", "data/gate_wooden_open_sw.png", 0.5)
     }
 }
 
@@ -20,14 +20,16 @@ def toggle_gate(world, gate_entity, button_presser_ent):
     if(world.has_component(gate_entity, Barrier)):
         world.remove_component(gate_entity, Barrier)
         sprite.alpha = 100
+        sprite.path = gate.open_texture
         print(f"gate opened by {button_presser_ent}!")
     else:
         world.add_component(gate_entity, Barrier())
         sprite.alpha = 255
+        sprite.path = gate.closed_texture
         print(f"gate closed by {button_presser_ent}!")
 
 def create_gate(world, obj, level_ent):
-    open_path, closed_path, scale = GATE_SPRITES[obj.properties.get("sprite")][obj.properties.get("orientation")]
+    closed_path, open_path, scale = GATE_SPRITES[obj.properties.get("sprite")][obj.properties.get("orientation")]
     world.create_entity(
         Position(obj.x, obj.y, level_ent),
         Collidable(match_components=[Velocity]),
