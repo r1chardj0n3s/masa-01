@@ -26,8 +26,8 @@ class FollowPathProcessor(esper.Processor):
             # TODO don't set Vector, set DesiredVector, and add a processor to align Vector to
             # DesiredVector
 
-            vel_x = step_x * path.u / step
-            vel_y = step_y * path.u / step
+            vel_x = step_x * path.speed / step
+            vel_y = step_y * path.speed / step
             velocity.dx, velocity.dy = (vel_x, vel_y)
 
 
