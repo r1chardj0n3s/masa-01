@@ -10,8 +10,7 @@ from cast_away.event_dispatch import COLLISION, register_listener
 
 def collision(world, message):
     pickup_ent, inventory_ent = message.payload
-    if world.has_component(pickup_ent, PickupSpawner):
-        spawner = world.component_for_entity(pickup_ent, PickupSpawner)
+    for spawner in world.try_component(pickup_ent, PickupSpawner):
         # TODO rename me "transfer_to_inventory"
         item = create_inventory_item(
             world=world,
