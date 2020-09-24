@@ -5,7 +5,6 @@ from ..components import invulnerable
 from . import health
 from . import level
 from . import spawner
-from . import drop
 from . import timeout
 from .player import move
 from . import follow_path
@@ -31,7 +30,6 @@ def init_world():
     emitter.init(world)
 
     spawner.init(world)
-    drop.init(world)
 
     invulnerable.init(world)
     move.init(world)

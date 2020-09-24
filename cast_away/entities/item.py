@@ -27,7 +27,7 @@ def drop_inventory_item(world, inventory_item_ent):
     world.delete_entity(inventory_item_ent)
 
     player_pos = world.component_for_entity(item_comp.owner_ent, Position)
-    create_level_item(
+    return create_level_item(
         world, 
         item_comp.name, 
         player_pos.x, 
