@@ -62,7 +62,7 @@
   </object>
   <object id="4" name="PLAYER_SPAWN" x="1090.3" y="314.127">
    <properties>
-    <property name="last_level" value="2-spikes"/>
+    <property name="last_level" value="2-throwing"/>
    </properties>
    <point/>
   </object>
