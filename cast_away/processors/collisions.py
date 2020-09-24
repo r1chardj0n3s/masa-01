@@ -16,6 +16,8 @@ def can_collide(world, ea, ca, eb, cb):
     for avoid in ca.avoid_components:
         if world.has_component(eb, avoid):
             return False
+    if ca.match_components == []:
+        return True
     for match in ca.match_components:
         if world.has_component(eb, match):
             return True
