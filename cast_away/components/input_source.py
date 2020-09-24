@@ -37,8 +37,8 @@ _keybinds = {
     MENU: arcade.key.ESCAPE,
     ACTIVATE: arcade.key.ENTER,
     ITEM_1: arcade.key.Z,
-    ITEM_2: arcade.key.C,
-    ITEM_3: arcade.key.X,
+    ITEM_2: arcade.key.X,
+    ITEM_3: arcade.key.C,
     DROP: arcade.key.LSHIFT,
 }
 
