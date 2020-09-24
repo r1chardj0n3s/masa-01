@@ -4,8 +4,17 @@ from cast_away.components.collidable import Collidable, HitCircle
 from cast_away.components.sprite import Sprite
 
 def create_button(world, obj, level_ent):
+    channel = obj.properties.get("channel")
+    in_level = obj.properties.get("in_level", False)
+    up_image = "data/button_up_sprite.png"
+    down_image = "data/button_down_sprite.png"
     return world.create_entity(
-        Button(obj.properties.get("channel"), in_level=obj.properties.get("in_level", False)), 
+        Button(
+            channel=channel, 
+            in_level=in_level,
+            up_image=up_image,
+            down_image=down_image
+        ), 
         Position(
             x = obj.location.x, 
             y = obj.location.y, 
@@ -13,6 +22,6 @@ def create_button(world, obj, level_ent):
         ),
         Collidable(),
         HitCircle(20),
-        Sprite("data/button_sprite.png", scale=0.5),
+        Sprite(up_image, scale=0.5),
     )
     
