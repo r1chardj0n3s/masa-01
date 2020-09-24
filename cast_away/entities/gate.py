@@ -19,9 +19,11 @@ def toggle_gate(world, gate_entity, button_presser_ent):
     sprite = world.component_for_entity(gate_entity, Sprite)
     if(world.has_component(gate_entity, Barrier)):
         world.remove_component(gate_entity, Barrier)
+        sprite.alpha = 100
         print(f"gate opened by {button_presser_ent}!")
     else:
         world.add_component(gate_entity, Barrier())
+        sprite.alpha = 255
         print(f"gate closed by {button_presser_ent}!")
 
 def create_gate(world, obj, level_ent):

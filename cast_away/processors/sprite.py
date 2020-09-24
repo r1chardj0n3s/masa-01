@@ -23,6 +23,7 @@ class SpriteListProcessor(esper.Processor):
     def process(self, dt):
         all_sprites = set()
         for e, sprite in self.world.get_component(Sprite):
+            sprite.apply_changes()
             if self.world.has_component(e, Position):
                 position = self.world.component_for_entity(e, Position)
                 if position.level is not None:
