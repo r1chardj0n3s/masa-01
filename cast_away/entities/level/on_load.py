@@ -3,6 +3,7 @@ from cast_away.components.level.player_spawn import PlayerSpawns, PlayerSpawn
 
 from cast_away.entities.spawner import create_enemy_spawner, create_enemy_path, create_pickup_spawner
 from cast_away.entities.button import create_button
+from cast_away.entities.gate import create_gate
 
 def ARENA_BOUNDARY(world, level_ent, obj):
     world.add_component(level_ent, ArenaBoundary(obj))
@@ -30,3 +31,6 @@ def ENEMY_PATH(world, level_ent, obj):
 
 def BUTTON(world, level_ent, obj):
     create_button(world, obj, level_ent)
+
+def GATE(world, level_ent, obj):
+    create_gate(world, obj, level_ent)

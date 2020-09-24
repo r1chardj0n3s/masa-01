@@ -1,4 +1,4 @@
-
+from .level import barrier
 from .level import bullet
 from .level import trigger
 from .items import lazorgun
@@ -7,7 +7,9 @@ from . import hurt
 from . import button
 from . import input_event
 
+
 def init_event_handlers():
+    barrier.init()
     bullet.init()
     button.init()
     trigger.init()

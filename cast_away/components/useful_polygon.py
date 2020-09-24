@@ -8,7 +8,9 @@ class UsefulPolygon:
         self.location = obj.location
         self.properties = obj.properties
         px = obj.location.x
+        self.x = px
         py = obj.location.y
+        self.y = py
         self.point_list = [(px + p.x, py + p.y*-1) for p in obj.points]
 
     def is_point_inside(self, x, y):

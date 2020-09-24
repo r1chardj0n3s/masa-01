@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.4" tiledversion="1.4.2" orientation="staggered" renderorder="right-down" width="11" height="22" tilewidth="128" tileheight="64" infinite="0" staggeraxis="y" staggerindex="odd" nextlayerid="13" nextobjectid="9">
+<map version="1.4" tiledversion="1.4.2" orientation="staggered" renderorder="right-down" width="11" height="22" tilewidth="128" tileheight="64" infinite="0" staggeraxis="y" staggerindex="odd" nextlayerid="13" nextobjectid="10">
  <tileset firstgid="1" source="landscapeTiles_sheet.tsx"/>
  <tileset firstgid="129" source="kenney-props.tsx"/>
  <tileset firstgid="241" source="kenney-fences.tsx"/>
@@ -74,9 +74,17 @@
   </object>
   <object id="6" name="BUTTON" x="1020.5" y="437.119">
    <properties>
-    <property name="button_id" type="int" value="1"/>
+    <property name="channel" type="int" value="1"/>
    </properties>
    <point/>
+  </object>
+  <object id="9" name="GATE" x="1018.84" y="324.1">
+   <properties>
+    <property name="channel" type="int" value="1"/>
+    <property name="orientation" value="SW"/>
+    <property name="sprite" value="wooden"/>
+   </properties>
+   <polygon points="0,0 56.5097,31.5789 11.6343,53.1856 -41.5512,24.9307"/>
   </object>
  </objectgroup>
  <layer id="3" name="Tile Layer 2" width="11" height="22" offsetx="0" offsety="33">
