@@ -20,6 +20,7 @@ from . import sequence
 from . import sprite
 from .level import arena_boundary
 from . import velocity
+from . import velocity_effect_processor
 from . import desired_velocity
 
 
@@ -52,5 +53,7 @@ def init_world():
 
     hud_display.init(world)
     collisions.init(world)
+    #NOTE: it is important that the velocity effect processor fires after the collision processor
+    velocity_effect_processor.init(world)
 
     return world
