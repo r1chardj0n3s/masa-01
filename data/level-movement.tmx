@@ -75,13 +75,15 @@
   </object>
   <object id="6" name="BUTTON" x="1020.5" y="437.119">
    <properties>
-    <property name="channel" type="int" value="1"/>
+    <property name="channel" value="movement-switch"/>
+    <property name="in_level" type="bool" value="true"/>
    </properties>
    <point/>
   </object>
   <object id="9" name="GATE" x="1018.84" y="324.1">
    <properties>
-    <property name="channel" type="int" value="1"/>
+    <property name="channel" value="movement-switch"/>
+    <property name="in_level" type="bool" value="true"/>
     <property name="orientation" value="SW"/>
     <property name="sprite" value="wooden"/>
    </properties>

@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 
-BUTTON = 'BUTTON'
+CHANNEL = 'CHANNEL'
 ENTITY_DIED = 'ENTITY_DIED'
 COLLISION = 'COLLISION'
 INPUT = 'INPUT'

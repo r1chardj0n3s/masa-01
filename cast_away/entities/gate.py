@@ -1,7 +1,7 @@
 from cast_away.components.gate import Gate
 from cast_away.components.sprite import Sprite
 from cast_away.components.barrier import Barrier
-from cast_away.components.button import ButtonChannelListener
+from cast_away.components.button import ChannelListener
 from cast_away.components.position import Position
 from cast_away.components.collidable import Collidable, HitPoly
 from cast_away.components.velocity import Velocity
@@ -18,6 +18,9 @@ GATE_SPRITES = {
 }
 
 def create_gate(world, obj, level_ent):
+    level_listen = None
+    if obj.properties.get("in_level", False):
+        level_listen = level_ent
     closed_path, open_path, scale = GATE_SPRITES[obj.properties.get("sprite")][
         obj.properties.get("orientation")
     ]
@@ -26,10 +29,10 @@ def create_gate(world, obj, level_ent):
         Collidable(match_components=[Velocity]),
         HitPoly(obj.point_list),
         Barrier(),
-        ButtonChannelListener(
+        ChannelListener(
             channel=obj.properties.get("channel"),
             script=toggle_gate,
-            level_ent=level_ent,
+            level_ent=level_listen,
         ),
         Sprite(closed_path, scale),
         Gate(open_path, closed_path),
