@@ -38,7 +38,7 @@ class FlashEffect:
         sprite.alpha = self.initial_alpha
 
     def run(self, dt, sprite):
-        self.last_alpha = sprite.alpha
+        self.last_alpha = sprite.alpha or 0
         if self.first:
             self.initial_alpha = sprite.alpha
             self.first = False
