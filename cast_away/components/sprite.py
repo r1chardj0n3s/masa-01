@@ -1,6 +1,5 @@
 import arcade
 
-texture_map = {}
 
 def _prop(key):
     return property(
@@ -9,6 +8,7 @@ def _prop(key):
         None, 
         None
     )
+
 
 class Sprite:
     def __init__(self, path, scale=1):
@@ -42,9 +42,7 @@ class Sprite:
         self._changes = {}
 
     def apply_path_change(self, path):
-        if path not in texture_map:
-            texture_map[path] = arcade.load_texture(path)
-        self._arcade_sprite.texture = texture_map[path]
+        self._arcade_sprite.texture = arcade.load_texture(path)
 
     path = _prop("path")
     scale = _prop("scale")
