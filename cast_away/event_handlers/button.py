@@ -18,6 +18,7 @@ def collision(world, message):
     button = world.component_for_entity(source, Button)
     dispatch(world, Message(BUTTON, (source, dest, button)))
     world.add_component(source, Timeout(1))
+    # print(f"button {source} {button} pressed by {dest}")
 
 
 def button_channel_activated(world, message):
@@ -26,7 +27,7 @@ def button_channel_activated(world, message):
         if listener.channel == button.channel:
             if listener.level_ent is not None:
                 if not world.component_for_entity(listener.level_ent, Level).active:
-                    return
+                    continue
             listener.script(world, ent, dest)
 
 
