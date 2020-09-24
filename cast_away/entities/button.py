@@ -5,7 +5,7 @@ from cast_away.components.sprite import Sprite
 
 def create_button(world, obj, level_ent):
     return world.create_entity(
-        Button(obj.properties.get("button_id")), 
+        Button(obj.properties.get("channel")), 
         Position(
             x = obj.location.x, 
             y = obj.location.y, 
