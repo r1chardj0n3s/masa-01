@@ -4,6 +4,7 @@ from .level import trigger
 from .items import lazorgun
 from .items import pickup
 from .items import drop
+from .items import throwable
 
 from . import entity_death
 from . import hurt
@@ -20,5 +21,6 @@ def init_event_handlers():
     hurt.init()
     input_event.init()
     lazorgun.init()
+    throwable.init()
     pickup.init()
     drop.init()

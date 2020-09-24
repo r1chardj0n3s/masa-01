@@ -14,7 +14,7 @@ def create_inventory_item(world, owner_ent, item_name):
         _, inventory_item_data = ITEM_DATA[item_name]
         item = world.create_entity(
             InventoryItem(owner_ent=owner_ent, name=item_name),
-            *[c() for c in inventory_item_data.component_classes]
+            *[c.build() for c in inventory_item_data.component_classes]
         )
         inventory.item_ents.append(item)
         return item
@@ -45,5 +45,5 @@ def create_level_item(world, name, x, y, level_ent):
         Position(x, y, level_ent),
         Sprite(level_item_data.image, scale=level_item_data.scale),
         Timeout(1),
-        *[c() for c in level_item_data.component_classes]
+        *[c.build() for c in level_item_data.component_classes]
     )

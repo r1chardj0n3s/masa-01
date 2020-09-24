@@ -6,7 +6,7 @@ from cast_away.components.enemy import Enemy
 from cast_away.components.collidable import Collidable, HitCircle
 from cast_away.components.facing import Facing
 from cast_away.components.timeout import Timeout
-from cast_away.components.pickups import LazorGun
+from cast_away.components.items.uses import LazorGun
 
 
 def use_lazorgun(world, message):

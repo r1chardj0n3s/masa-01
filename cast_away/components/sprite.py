@@ -37,6 +37,9 @@ class Sprite:
             if key == "path":
                 self.apply_path_change(value)
             else:
+                new_value = 0
+                if value is not None:
+                    new_value = value
                 setattr(self._arcade_sprite, key, value)
             self._state[key] = value
         self._changes = {}
@@ -49,6 +52,7 @@ class Sprite:
     center_x = _prop("center_x")
     center_y = _prop("center_y")
     alpha = _prop("alpha")
+    angle = _prop("angle")
 
 
 class SpriteList:
