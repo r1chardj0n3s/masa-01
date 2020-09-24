@@ -20,7 +20,7 @@ def create_enemy_spawner(world, obj, level_ent):
 def create_enemy_path(world, obj, level_ent):
     x, y = obj.point_list[0]
     ent = create_enemy(world, None, Position(x, y, level_ent))
-    world.add_component(ent, FollowPath(obj.point_list))
+    world.add_component(ent, FollowPath(obj.point_list, 100))
 
 
 def create_pickup_spawner(world, obj, level_ent):

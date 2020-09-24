@@ -20,6 +20,8 @@ from . import sequence
 from . import sprite
 from .level import arena_boundary
 from . import velocity
+from . import desired_velocity
+
 
 def init_world():
     world = esper.World()
@@ -36,6 +38,7 @@ def init_world():
     follow_path.init(world)
 
     velocity.init(world)
+    desired_velocity.init(world)
     sprite.init(world)
     sprite_effect.init(world)
 
