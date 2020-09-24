@@ -30,14 +30,14 @@
   <object id="3" name="EXIT" x="1280" y="5.33333">
    <properties>
     <property name="match_components" value="cast_away.components.player.Player"/>
-    <property name="next_level" value="3-enemy"/>
+    <property name="next_level" value="enemy"/>
    </properties>
    <polygon points="0,0 -36,13.3333 25.3333,44 49.3333,22.6667"/>
   </object>
   <object id="4" name="EXIT" x="5.33333" y="634.667">
    <properties>
     <property name="match_components" value="cast_away.components.player.Player"/>
-    <property name="next_level" value="2-throwing"/>
+    <property name="next_level" value="throwing"/>
    </properties>
    <polygon points="0,0 53.3333,30.6667 89.3333,8 42.6667,-20"/>
   </object>
@@ -69,14 +69,14 @@
  <objectgroup id="8" name="OnLoad">
   <object id="9" name="PLAYER_SPAWN" x="1232" y="53.3333">
    <properties>
-    <property name="last_level" value="3-enemy"/>
+    <property name="last_level" value="enemy"/>
    </properties>
    <point/>
   </object>
   <object id="2" name="PLAYER_SPAWN" x="144" y="597.333">
    <properties>
     <property name="first" type="bool" value="true"/>
-    <property name="last_level" value="1-movement"/>
+    <property name="last_level" value="movement"/>
    </properties>
    <point/>
   </object>

@@ -25,7 +25,7 @@ def create_image_layer(world, tmx_map, layer, level_comp):
 
 
 def map_filename(name):
-    return f"data/{name}.tmx"
+    return f"data/level-{name}.tmx"
 
 
 def deactivate_map(world, level_ent):

@@ -37,7 +37,7 @@
   <object id="2" name="EXIT" x="81.3333" y="669.333">
    <properties>
     <property name="match_components" value="cast_away.components.player.Player"/>
-    <property name="next_level" value="2-spikes"/>
+    <property name="next_level" value="spikes"/>
    </properties>
    <polygon points="0,0 46.6667,28 89.3333,8 30.6667,-16"/>
   </object>
@@ -46,7 +46,7 @@
   <object id="3" name="PLAYER_SPAWN" x="177.333" y="644">
    <properties>
     <property name="first" type="bool" value="true"/>
-    <property name="last_level" value="2-spikes"/>
+    <property name="last_level" value="spikes"/>
    </properties>
    <point/>
   </object>

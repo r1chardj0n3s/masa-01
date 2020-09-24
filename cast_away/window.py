@@ -20,7 +20,7 @@ from cast_away.event_dispatch import Message, dispatch, INPUT
 
 
 class Game(arcade.Window):
-    def __init__(self, map_name="1-movement"):
+    def __init__(self, map_name="movement"):
         super().__init__(1280, 720, "Chucked Out")
         self.world = init_world()
         init_event_handlers()
