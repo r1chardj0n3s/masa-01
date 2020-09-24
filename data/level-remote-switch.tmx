@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.4" tiledversion="1.4.2" orientation="staggered" renderorder="right-down" width="11" height="22" tilewidth="128" tileheight="64" infinite="0" staggeraxis="y" staggerindex="odd" nextlayerid="13" nextobjectid="14">
+<map version="1.4" tiledversion="1.4.2" orientation="staggered" renderorder="right-down" width="11" height="22" tilewidth="128" tileheight="64" infinite="0" staggeraxis="y" staggerindex="odd" nextlayerid="13" nextobjectid="15">
  <tileset firstgid="1" source="landscapeTiles_sheet.tsx"/>
  <tileset firstgid="129" source="kenney-props.tsx"/>
  <tileset firstgid="241" source="kenney-fences.tsx"/>
@@ -21,19 +21,19 @@
 0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,
-0,0,300,0,0,0,0,0,0,0,0,
-0,0,300,0,0,0,0,0,0,0,0,
-0,0,293,300,0,0,0,0,0,0,0,
-0,0,293,300,0,0,0,0,0,0,0,
-0,0,0,293,300,0,0,0,300,0,0,
-0,0,0,293,300,0,296,300,0,0,0,
-0,0,0,0,293,300,297,300,0,0,0,
-0,0,0,297,293,300,300,0,301,0,0,
-0,0,0,299,298,293,300,294,301,0,0,
-0,0,0,299,298,293,300,301,0,0,0,
-0,0,0,296,0,298,301,300,0,0,0,
-0,0,0,0,0,301,0,300,0,0,0,
+0,0,291,0,0,0,0,0,0,0,0,
+0,0,291,289,289,0,0,0,0,0,0,
+0,0,300,297,0,0,0,0,0,0,0,
+0,0,293,300,289,0,0,0,0,0,0,
+0,0,297,300,289,0,0,0,0,0,0,
+0,0,293,293,300,289,0,0,0,0,0,
+0,0,0,293,300,289,0,0,0,0,0,
+0,0,0,0,293,300,289,0,0,0,0,
+0,0,0,0,293,300,289,0,0,0,0,
+0,0,0,0,0,293,300,0,0,0,0,
+0,0,0,0,0,293,300,0,0,0,0,
+0,0,0,0,0,0,292,300,0,0,0,
+0,0,0,0,0,0,0,300,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,
@@ -41,58 +41,30 @@
 </data>
  </layer>
  <objectgroup id="2" name="Triggers">
-  <object id="3" name="EXIT" x="319.929" y="143.967">
-   <properties>
-    <property name="match_components" value="cast_away.components.player.Player"/>
-    <property name="next_level" value="remote-switch"/>
-   </properties>
-   <polygon points="0,0 -69.8904,46.6307 -7.45814,82.264 69.3598,48.8521"/>
-  </object>
   <object id="10" name="EXIT" x="485.319" y="586.704">
    <properties>
     <property name="match_components" value="cast_away.components.player.Player"/>
-    <property name="next_level" value="throwing"/>
+    <property name="next_level" value="backtrack"/>
    </properties>
    <polygon points="528.31,-99.2798 423.579,-63.3094 483.579,-31.3094 571.915,-66.3859"/>
   </object>
-  <object id="11" name="EXIT" x="499.945" y="600.997">
-   <properties>
-    <property name="match_components" value="cast_away.components.player.Player"/>
-    <property name="next_level" value="spikes"/>
-   </properties>
-   <polygon points="592.133,-333.296 547.679,-304.417 632.499,-249.37 674.74,-280.901"/>
-  </object>
  </objectgroup>
  <objectgroup id="11" name="OnLoad">
-  <object id="4" name="PLAYER_SPAWN" x="415.508" y="255.955">
-   <properties>
-    <property name="last_level" value="remote-switch"/>
-   </properties>
-   <point/>
-  </object>
   <object id="1" name="PLAYER_SPAWN" x="913.46" y="492.136">
    <properties>
     <property name="first" type="bool" value="true"/>
-    <property name="last_level" value="throwing"/>
-   </properties>
-   <point/>
-  </object>
-  <object id="12" name="PLAYER_SPAWN" x="1044.21" y="356.343">
-   <properties>
-    <property name="last_level" value="spikes"/>
+    <property name="last_level" value="backtrack"/>
    </properties>
    <point/>
   </object>
   <object id="2" name="ARENA_BOUNDARY" x="1151.36" y="623.258">
-   <polygon points="-835.346,-467.701 -898.571,-433.773 -830.863,-397.334 -887.432,-353.365 -637.728,-236.351 -579.897,-199.44 -618.051,-169.65 -568.77,-141.626 -381.667,-55.4165 -254.54,-104.983 -138.669,-47.6298 -67.2684,-62.855 -235.664,-176.429 -1.27728,-305.023 -60.1026,-332.236 -255.143,-240.081 -319.804,-262.446 -380.048,-243.003"/>
+   <polygon points="-525.097,-412.742 -574.139,-444.41 -648.259,-425.7 -763.173,-470.482 -875.022,-420.733 -832.084,-404.894 -888.929,-358.884 -839.833,-326.767 -877.736,-288.082 -829.021,-260.065 -767.33,-302.956 -379.894,-112.148 -304.18,-136.894 -138.669,-47.6298 -67.2684,-62.855 -235.664,-176.429 -207.276,-197.533 -319.804,-262.446 -582.153,-391.923"/>
   </object>
-  <object id="13" name="GATE" x="950.249" y="343.934">
+  <object id="14" name="BUTTON" x="405.983" y="246.427">
    <properties>
     <property name="channel" value="backtrack-level-gate"/>
-    <property name="orientation" value="SW"/>
-    <property name="sprite" value="wooden"/>
    </properties>
-   <polygon points="0,0 86.8698,49.6399 42.5485,76.2327 -60.277,15.9557"/>
+   <point/>
   </object>
  </objectgroup>
  <layer id="3" name="Tile Layer 2" width="11" height="22" offsetx="0" offsety="33">
@@ -111,9 +83,9 @@
 0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,296,0,0,
-0,0,0,0,0,0,0,0,301,0,0,
-0,0,0,0,0,0,0,301,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,
@@ -141,8 +113,8 @@
 0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,289,0,0,
-0,0,0,0,0,0,0,294,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,
@@ -168,7 +140,7 @@
 0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,136,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,
