@@ -21,6 +21,7 @@ from .level import arena_boundary
 from . import velocity
 from . import velocity_effect_processor
 from . import desired_velocity
+from . import emitter
 
 
 def init_world():
@@ -28,6 +29,7 @@ def init_world():
 
     timeout.init(world)
     sequence.init(world)
+    emitter.init(world)
 
     spawner.init(world)
     pickup.init(world)

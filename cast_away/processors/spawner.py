@@ -2,12 +2,15 @@ import esper
 
 from cast_away.components.timeout import Timeout
 from cast_away.components.enemy import Enemy
-from cast_away.components.level import Level
-from cast_away.components.spawner import EnemySpawner, PlayerSpawner
+from cast_away.components.level import InLevel, Level
+from cast_away.components.spawner import EnemySpawner
 from cast_away.components.position import Position
 
 from cast_away.entities.enemy import create_enemy
+from cast_away.components.draw_layer import DrawLayer
+from cast_away.components.graphics.emitter import Emitter
 
+from cast_away.graphics.emitters import bee_poof
 
 class EnemySpawnProcessor(esper.Processor):
     def process(self, dt):
@@ -18,6 +21,7 @@ class EnemySpawnProcessor(esper.Processor):
             if es.spawning:
                 if self.world.has_component(ent, Timeout):
                     continue
+
                 create_enemy(self.world, ent, position)
                 es.spawning = False
 
@@ -25,8 +29,9 @@ class EnemySpawnProcessor(esper.Processor):
                 if enemy.spawned_by == ent:
                     break
             else:
-                # TODO visual indication that spawner is spawning
                 es.spawning = True
+                e = bee_poof(position)
+                self.world.create_entity(DrawLayer(100, e), Emitter(e), InLevel(position.level))
                 self.world.add_component(ent, Timeout(1))
 
 
