@@ -45,7 +45,7 @@
   <object id="3" name="EXIT" x="1150.67" y="252">
    <properties>
     <property name="match_components" value="cast_away.components.player.Player"/>
-    <property name="next_level" value="2-spikes"/>
+    <property name="next_level" value="2-throwing"/>
    </properties>
    <polygon points="0,0 -48,25.3333 12,57.3333 61.3333,34.6667"/>
   </object>
