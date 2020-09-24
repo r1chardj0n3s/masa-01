@@ -4,9 +4,10 @@ from .velocity import Velocity
 # kenney tiles have fake isometric, 2:1 pixel ratio of diagonals
 # the following transformation ensures hitting the controller diagonally
 # makes the character move on a "kenney-diagonal" line as drawn on the map
-DIMETRIC_FACTOR = 5.0 ** 0.5  # sqrt(5) aka diagonal of a triangle with sides 2, 1 
+DIMETRIC_FACTOR = 5.0 ** 0.5  # sqrt(5) aka diagonal of a triangle with sides 2, 1
 SCALE_X = 1 / DIMETRIC_FACTOR
 SCALE_Y = 1 / (DIMETRIC_FACTOR * 2)
+
 
 class Facing:
     NEUTRAL = "NEUTRAL"
