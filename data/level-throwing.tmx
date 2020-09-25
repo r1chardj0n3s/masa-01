@@ -57,9 +57,9 @@
   </object>
  </objectgroup>
  <objectgroup id="11" name="OnLoad" offsetx="21.6667" offsety="4.66667">
-  <object id="5" name="ITEM" x="544.574" y="450.412">
+  <object id="5" name="TRASH_CAN" x="544.574" y="450.412">
    <properties>
-    <property name="type" value="saw"/>
+    <property name="item_name" value="saw"/>
    </properties>
    <point/>
   </object>

@@ -6,6 +6,7 @@ from cast_away.entities.button import create_button
 from cast_away.entities.gate import create_gate
 from cast_away.entities.item import create_level_item
 from cast_away.entities.shooter import create_shooter
+from cast_away.entities.trash_can import create_trash_can
 
 
 def ARENA_BOUNDARY(world, level_ent, obj):
@@ -50,3 +51,10 @@ def SHOOTER(world, level_ent, obj):
     name = obj.properties["type"]
     direction = obj.properties["direction"]
     create_shooter(world, name, obj.location.x, obj.location.y, direction, level_ent)
+
+
+def TRASH_CAN(world, level_ent, obj):
+    x = obj.location.x
+    y = obj.location.y
+    item_name = obj.properties["item_name"]
+    create_trash_can(world, x, y, level_ent, item_name)
