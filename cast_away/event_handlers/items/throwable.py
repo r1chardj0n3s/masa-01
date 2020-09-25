@@ -1,10 +1,12 @@
 from cast_away.event_dispatch import USE_ITEM, register_listener
 from cast_away.components.position import Position
 from cast_away.components.facing import Facing
-from cast_away.components.items.uses import Throwable
+from cast_away.components.items.uses import Throwable, THROW_SOUND
 from cast_away.entities.item import drop_inventory_item, InventoryItem
+from cast_away.entities.sound import create_sound
 from cast_away.components.sprite_effect import SpriteEffects, SpinEffect
 from cast_away.components.position_effects import PositionEffects, ThrowToEffect
+
 
 def use_throwable(world, message):
     inventory_item_ent = message.payload['item_ent']
@@ -35,6 +37,7 @@ def use_throwable(world, message):
                 height = throwable.throw_distance / 3,
             )]
         ))
+        create_sound(world, THROW_SOUND)
         
 
 

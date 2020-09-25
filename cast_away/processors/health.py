@@ -3,10 +3,10 @@ import esper
 
 from cast_away.components.invulnerable import Invulnerable
 from cast_away.components.sprite import Sprite
-from cast_away.components.health import Health
+from cast_away.components.health import Health, HURT_SOUND
 from cast_away.components.sprite_effect import SpriteEffects, SpinEffect, FlashEffect
 from cast_away.event_dispatch import dispatch, Message, ENTITY_DIED
-
+from cast_away.entities.sound import create_sound
 
 class HealthProcessor(esper.Processor):
     def process(self, dt):
@@ -21,6 +21,7 @@ class HealthProcessor(esper.Processor):
                     effects = self.world.component_for_entity(ent, SpriteEffects)
                     effects.effects.append(SpinEffect(play_time=0.3, speed=1000))
                     effects.effects.append(FlashEffect(play_time=1, speed=10000))
+                    create_sound(self.world, HURT_SOUND, volume=0.5)
                 health.effects.remove(effect)
 
             if health.amount <= 0:

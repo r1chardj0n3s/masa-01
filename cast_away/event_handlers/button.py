@@ -26,7 +26,7 @@ def collision(world, message):
         level_ent = world.component_for_entity(source, Position).level
     dispatch(world, Message(CHANNEL, (source, dest, Channel(button.channel, level_ent))))
     world.add_component(source, Timeout(1))
-    create_sound(world, BUTTON_SOUND, volume=0.1)
+    create_sound(world, BUTTON_SOUND, volume=0.5)
     # print(f"button \n\t{source} {world.components_for_entity(source)} \n\tpressed by \n\t{dest} {world.components_for_entity(dest)}")
 
 
