@@ -37,7 +37,7 @@ def create_player(world, input_source, mp=None):
 
     player_ent = world.create_entity(
         mp,
-        Position(spawner.x, spawner.y, level_ent),
+        Position(-100, 0, level_ent),
         Velocity(0, 0),
         HitCircle(radius=25),
         Collidable(),
@@ -59,6 +59,7 @@ def create_player(world, input_source, mp=None):
                 ),
                 SpinEffect(1, 720),
             ),
+            Position(spawner.x, spawner.y, level_ent),
             Player(input_source),
         )
     )
