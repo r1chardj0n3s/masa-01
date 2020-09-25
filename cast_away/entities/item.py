@@ -10,20 +10,23 @@ INVENTORY_SIZE = 3
 
 def create_inventory_item(world, owner_ent, item_name):
     inventory = world.component_for_entity(owner_ent, Inventory)
-    if len(inventory.item_ents) < INVENTORY_SIZE:
+    for index, ent in enumerate(inventory.item_ents):
+        if ent is not None:
+            continue
         _, inventory_item_data = ITEM_DATA[item_name]
         item = world.create_entity(
             InventoryItem(owner_ent=owner_ent, name=item_name),
             *[c.build() for c in inventory_item_data.component_classes]
         )
-        inventory.item_ents.append(item)
+        inventory.item_ents[index] = item
         return item
-
 
 def drop_inventory_item(world, inventory_item_ent):
     item_comp = world.component_for_entity(inventory_item_ent, InventoryItem)
     inventory = world.component_for_entity(item_comp.owner_ent, Inventory)
-    inventory.item_ents.remove(inventory_item_ent)
+    for slot_index, ent in enumerate(inventory.item_ents):
+        if ent == inventory_item_ent:
+            inventory.item_ents[slot_index] = None
     world.delete_entity(inventory_item_ent)
 
     player_pos = world.component_for_entity(item_comp.owner_ent, Position)
