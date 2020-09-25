@@ -8,7 +8,7 @@ def toggle_gate(world, gate_entity, button_presser_ent):
     sprite = world.component_for_entity(gate_entity, Sprite)
     if world.has_component(gate_entity, Barrier):
         world.remove_component(gate_entity, Barrier)
-        sprite.alpha = 100
+        sprite.alpha = 255
         sprite.path = gate.open_texture
     else:
         world.add_component(gate_entity, Barrier())

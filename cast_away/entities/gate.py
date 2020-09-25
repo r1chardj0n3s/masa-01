@@ -12,8 +12,12 @@ SE = "SE"
 
 GATE_SPRITES = {
     "wooden": {
-        SW: ("data/gate_wooden_closed_sw.png", "data/gate_wooden_open_sw.png", 0.5),
-        SE: ("data/gate_wooden_closed_se.png", "data/gate_wooden_open_se.png", 0.5),
+        SW: ("data/images/gate_wooden_SW_closed.png", "data/images/gate_wooden_SW_open.png", 1),
+        SE: ("data/images/gate_wooden_SE_closed.png", "data/images/gate_wooden_SE_open.png", 1),
+    },
+    "metal": {
+        SW: ("data/images/gate_metal_SW_closed.png", "data/images/gate_metal_SW_open.png", 1),
+        SE: ("data/images/gate_metal_SE_closed.png", "data/images/gate_metal_SE_open.png", 1),
     }
 }
 
@@ -37,4 +41,3 @@ def create_gate(world, obj, level_ent):
         Sprite(closed_path, scale),
         Gate(open_path, closed_path),
     )
-

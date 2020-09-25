@@ -55,12 +55,12 @@
    </properties>
    <polygon points="528.31,-99.2798 423.579,-63.3094 483.579,-31.3094 571.915,-66.3859"/>
   </object>
-  <object id="11" name="EXIT" x="499.945" y="600.997">
+  <object id="11" name="EXIT" x="419.945" y="646.33">
    <properties>
     <property name="match_components" value="cast_away.components.player.Player"/>
     <property name="next_level" value="spikes"/>
    </properties>
-   <polygon points="592.133,-333.296 547.679,-304.417 632.499,-249.37 674.74,-280.901"/>
+   <polygon points="592.133,-333.296 547.679,-304.417 609.832,-260.037 662.74,-286.234"/>
   </object>
  </objectgroup>
  <objectgroup id="11" name="OnLoad">
@@ -77,22 +77,22 @@
    </properties>
    <point/>
   </object>
-  <object id="12" name="PLAYER_SPAWN" x="1044.21" y="356.343">
+  <object id="12" name="PLAYER_SPAWN" x="980.21" y="376.343">
    <properties>
     <property name="last_level" value="spikes"/>
    </properties>
    <point/>
   </object>
   <object id="2" name="ARENA_BOUNDARY" x="1151.36" y="623.258">
-   <polygon points="-835.346,-467.701 -898.571,-433.773 -830.863,-397.334 -887.432,-353.365 -637.728,-236.351 -579.897,-199.44 -618.051,-169.65 -568.77,-141.626 -381.667,-55.4165 -254.54,-104.983 -138.669,-47.6298 -67.2684,-62.855 -235.664,-176.429 -1.27728,-305.023 -60.1026,-332.236 -255.143,-240.081 -319.804,-262.446 -380.048,-243.003"/>
+   <polygon points="-835.346,-467.701 -898.571,-433.773 -830.863,-397.334 -887.432,-353.365 -637.728,-236.351 -565.23,-198.107 -618.051,-169.65 -568.77,-141.626 -381.667,-55.4165 -254.54,-104.983 -138.669,-47.6298 -60.6017,-77.5217 -247.664,-180.429 -1.27728,-305.023 -60.1026,-332.236 -255.143,-240.081 -319.804,-262.446 -380.048,-243.003"/>
   </object>
   <object id="13" name="GATE" x="950.249" y="343.934">
    <properties>
     <property name="channel" value="backtrack-level-gate"/>
     <property name="orientation" value="SW"/>
-    <property name="sprite" value="wooden"/>
+    <property name="sprite" value="metal"/>
    </properties>
-   <polygon points="0,0 86.8698,49.6399 42.5485,76.2327 -60.277,15.9557"/>
+   <polygon points="-14.3333,19.6667 44.8698,53.9732 26.5485,66.8994 -37.277,31.289"/>
   </object>
  </objectgroup>
  <layer id="3" name="Tile Layer 2" width="11" height="22" offsetx="0" offsety="33">

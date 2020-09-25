@@ -85,7 +85,7 @@
     <property name="channel" value="movement-switch"/>
     <property name="in_level" type="bool" value="true"/>
     <property name="orientation" value="SW"/>
-    <property name="sprite" value="wooden"/>
+    <property name="sprite" value="metal"/>
    </properties>
    <polygon points="0,0 56.5097,31.5789 11.6343,53.1856 -41.5512,24.9307"/>
   </object>

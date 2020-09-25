@@ -46,7 +46,7 @@
     <property name="match_components" value="cast_away.components.player.Player"/>
     <property name="next_level" value="backtrack"/>
    </properties>
-   <polygon points="0,0 -69.8904,46.6307 -7.45814,82.264 69.3598,48.8521"/>
+   <polygon points="74.5,42 27.1096,70.6307 57.5419,96.764 134.36,63.3521"/>
   </object>
   <object id="10" name="EXIT" x="485.319" y="586.704">
    <properties>
@@ -56,44 +56,44 @@
    <polygon points="0,0 -48,25.3333 12,57.3333 61.3333,34.6667"/>
   </object>
  </objectgroup>
- <objectgroup id="11" name="OnLoad">
-  <object id="5" name="ITEM" x="544.574" y="450.412">
+ <objectgroup id="11" name="OnLoad" offsetx="21.6667" offsety="4.66667">
+  <object id="5" name="ITEM" x="544.574" y="450.412" visible="0">
    <properties>
     <property name="type" value="saw"/>
    </properties>
    <point/>
   </object>
-  <object id="2" name="ARENA_BOUNDARY" x="959.889" y="655.169">
-   <polygon points="-766.205,-297.507 -873.751,-222.803 -326.591,53.4228 133.064,-170.999 -60.1518,-275.709 -125.377,-234.109 -646.917,-504.203 -654.035,-459.915 -527.228,-365.271 -704.48,-267.823"/>
+  <object id="2" name="ARENA_BOUNDARY" x="959.889" y="655.169" visible="0">
+   <polygon points="-727.205,-274.507 -866.751,-219.803 -354.591,30.4228 86.064,-187.999 -83.1518,-272.709 -148.377,-243.109 -593.917,-468.203 -635.535,-444.915 -532.228,-372.771 -720.98,-277.823"/>
   </object>
-  <object id="4" name="PLAYER_SPAWN" x="415.508" y="255.955">
+  <object id="4" name="PLAYER_SPAWN" x="415.508" y="255.955" visible="0">
    <properties>
     <property name="last_level" value="spikes"/>
    </properties>
    <point/>
   </object>
-  <object id="1" name="PLAYER_SPAWN" x="569.526" y="582.552">
+  <object id="1" name="PLAYER_SPAWN" x="569.526" y="582.552" visible="0">
    <properties>
     <property name="first" type="bool" value="true"/>
     <property name="last_level" value="movement"/>
    </properties>
    <point/>
   </object>
-  <object id="6" name="BUTTON" x="1086.98" y="334.072">
+  <object id="6" name="BUTTON" x="1086.98" y="334.072" visible="0">
    <properties>
     <property name="channel" value="throw-switch"/>
     <property name="in_level" type="bool" value="true"/>
    </properties>
    <point/>
   </object>
-  <object id="9" name="GATE" x="422.374" y="219.391">
+  <object id="9" name="GATE" x="455.874" y="226.891">
    <properties>
     <property name="channel" value="throw-switch"/>
     <property name="in_level" type="bool" value="true"/>
     <property name="orientation" value="SE"/>
-    <property name="sprite" value="wooden"/>
+    <property name="sprite" value="metal"/>
    </properties>
-   <polygon points="-8.66016,-34.903 31.369,-4.9862 -52.5558,39.8892 -98.2708,9.97225"/>
+   <polygon points="-10.6602,-8.06967 13.0357,5.0138 -58.2225,38.5559 -84.7708,22.3056"/>
   </object>
  </objectgroup>
  <layer id="3" name="Tile Layer 2" width="11" height="22" offsetx="0" offsety="33">
