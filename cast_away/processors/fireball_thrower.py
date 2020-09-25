@@ -7,7 +7,7 @@ from cast_away.components.position import Position
 from cast_away.components.sprite import Sprite
 from cast_away.components.bullet import Bullet
 from cast_away.components.collidable import Collidable, HitCircle
-from cast_away.components.fireball_thrower import FireballThrower
+from cast_away.components.fireball_thrower import FireballThrower, FIREBALL_IMAGE, FIREBALL_SHOOT_SOUND
 from cast_away.components.velocity import Velocity
 from cast_away.components.sprite_effect import SpinEffect, SpriteEffects
 from cast_away.components.facing import Facing
@@ -39,7 +39,7 @@ class FireballThrowerProcessor(esper.Processor):
                 v = Velocity(v.x, v.y)
 
             self.world.create_entity(
-                Sprite("data/kenney_platformerpack_redux/Particles/fireball.png", scale=0.5),
+                Sprite(FIREBALL_IMAGE, scale=0.5),
                 Position(x=thrower_pos.x, y=thrower_pos.y, level=thrower_pos.level),
                 v,
                 Collidable(match_components=[Player]),
@@ -47,6 +47,7 @@ class FireballThrowerProcessor(esper.Processor):
                 Bullet(1, Player),
                 SpriteEffects(SpinEffect(play_time=1, speed=-400))
             )
+            create_sound(world, FIREBALL_SHOOT_SOUND)
             thrower.timeout = random.randint(1, 3)
 
 
