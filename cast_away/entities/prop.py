@@ -25,15 +25,7 @@ def create_prop(world, x, y, type, level_ent):
             ),
         ]
 
-    elif type == "dialog-1":
-        sprite = [
-            Sprite("data/images/dialog-1.png"),
-        ]
-
-    ent = world.create_entity(
+    world.create_entity(
         *sprite,
         Position(x, y, level_ent),
     )
-
-    if type == "dialog-1":
-        world.create_entity(Sequence(ent, Timeout(5), SpriteEffects(FadeEffect(.5))))
