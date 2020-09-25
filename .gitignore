@@ -11,6 +11,7 @@ __pycache__/
 #patched version of libs
 src/arcade
 src/pytiled-parser
+src/pyinstaller
 
 # Distribution / packaging
 .Python
