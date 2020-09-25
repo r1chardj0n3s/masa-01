@@ -20,6 +20,18 @@ class Facing:
     NORTH = "NORTH"
     NORTH_EAST = "NORTH_EAST"
 
+    NAMES = {
+        "NEUTRAL": NEUTRAL,
+        "EAST": EAST,
+        "SOUTH_EAST": SOUTH_EAST,
+        "SOUTH": SOUTH,
+        "SOUTH_WEST": SOUTH_WEST,
+        "WEST": WEST,
+        "NORTH_WEST": NORTH_WEST,
+        "NORTH": NORTH,
+        "NORTH_EAST": NORTH_EAST,
+    }
+
     CARDINALS = {
         (0, 0): NEUTRAL,
         (1, 0): EAST,
@@ -32,8 +44,12 @@ class Facing:
         (1, 1): NORTH_EAST,
     }
 
-    def __init__(self, direction):
-        self.direction = Facing.NEUTRAL
+    def __init__(self, direction=NEUTRAL):
+        self.direction = direction
+
+    @classmethod
+    def from_name(cls, name):
+        return cls(cls.NAMES[name])
 
     def set_cardinals(self, left_right, up_down):
         self.direction = self.CARDINALS[left_right, up_down]

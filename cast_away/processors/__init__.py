@@ -8,7 +8,7 @@ from .player import move
 from . import follow_path
 from . import hud_display
 from . import bullet
-from . import enemy_shoot
+from . import fireball_thrower
 from . import collisions
 from . import position_effects
 from . import sprite_effect
@@ -44,7 +44,7 @@ def add_processors(world):
     position_effects.init(world)
 
     bullet.init(world)
-    enemy_shoot.init(world)
+    fireball_thrower.init(world)
 
     health.init(world)
     level.init(world)

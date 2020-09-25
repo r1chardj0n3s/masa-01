@@ -45,7 +45,7 @@
  <objectgroup id="6" name="OnLoad">
   <object id="3" name="PLAYER_SPAWN" x="196.666" y="605">
    <properties>
-    <property name="first" type="bool" value="false"/>
+    <property name="first" type="bool" value="true"/>
     <property name="last_level" value="spikes"/>
    </properties>
    <point/>
@@ -53,31 +53,31 @@
   <object id="1" name="ARENA_BOUNDARY" x="77.3334" y="633.333" visible="0">
    <polygon points="-1.33333,-62.6667 -3.54365,4.36854 53.1914,33.6089 180,36 984,-386.666 944,-409.333 1142.66,-506.666 1088,-536 882.658,-434.698 822.667,-464"/>
   </object>
-  <object id="9" name="ENEMY_SPAWN" x="464.5" y="285">
+  <object id="9" name="SHOOTER" x="464.5" y="285">
    <properties>
-    <property name="direction" value="SE"/>
-    <property name="type" value="cannon"/>
+    <property name="direction" value="SOUTH_EAST"/>
+    <property name="type" value="fireball"/>
    </properties>
    <point/>
   </object>
-  <object id="10" name="ENEMY_SPAWN" x="724" y="158">
+  <object id="10" name="SHOOTER" x="724" y="158">
    <properties>
-    <property name="direction" value="SE"/>
-    <property name="type" value="cannon"/>
+    <property name="direction" value="SOUTH_EAST"/>
+    <property name="type" value="fireball"/>
    </properties>
    <point/>
   </object>
-  <object id="11" name="ENEMY_SPAWN" x="935" y="388">
+  <object id="11" name="SHOOTER" x="935" y="388">
    <properties>
-    <property name="direction" value="NW"/>
-    <property name="type" value="cannon"/>
+    <property name="direction" value="NORTH_WEST"/>
+    <property name="type" value="fireball"/>
    </properties>
    <point/>
   </object>
-  <object id="12" name="ENEMY_SPAWN" x="677" y="518">
+  <object id="12" name="SHOOTER" x="677" y="518">
    <properties>
-    <property name="direction" value="NW"/>
-    <property name="type" value="cannon"/>
+    <property name="direction" value="NORTH_WEST"/>
+    <property name="type" value="fireball"/>
    </properties>
    <point/>
   </object>

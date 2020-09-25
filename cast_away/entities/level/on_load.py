@@ -5,6 +5,7 @@ from cast_away.entities.spawner import create_enemy_spawner, create_enemy_path
 from cast_away.entities.button import create_button
 from cast_away.entities.gate import create_gate
 from cast_away.entities.item import create_level_item
+from cast_away.entities.shooter import create_shooter
 
 
 def ARENA_BOUNDARY(world, level_ent, obj):
@@ -43,3 +44,9 @@ def BUTTON(world, level_ent, obj):
 
 def GATE(world, level_ent, obj):
     create_gate(world, obj, level_ent)
+
+
+def SHOOTER(world, level_ent, obj):
+    name = obj.properties["type"]
+    direction = obj.properties["direction"]
+    create_shooter(world, name, obj.location.x, obj.location.y, direction, level_ent)

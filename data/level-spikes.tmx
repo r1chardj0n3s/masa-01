@@ -30,7 +30,7 @@
   <object id="3" name="EXIT" x="1280" y="5.33333">
    <properties>
     <property name="match_components" value="cast_away.components.player.Player"/>
-    <property name="next_level" value="enemy"/>
+    <property name="next_level" value="fireballs"/>
    </properties>
    <polygon points="0,0 -36,13.3333 25.3333,44 49.3333,22.6667"/>
   </object>
@@ -69,7 +69,7 @@
  <objectgroup id="8" name="OnLoad">
   <object id="9" name="PLAYER_SPAWN" x="1232" y="53.3333">
    <properties>
-    <property name="last_level" value="enemy"/>
+    <property name="last_level" value="fireballs"/>
    </properties>
    <point/>
   </object>

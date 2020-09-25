@@ -4,19 +4,18 @@ import random
 
 from cast_away.components.player import Player
 from cast_away.components.position import Position
-from cast_away.components.timeout import Timeout
 from cast_away.components.sprite import Sprite
 from cast_away.components.bullet import Bullet
 from cast_away.components.collidable import Collidable, HitCircle
-from cast_away.components.items.fireball_thrower import FireballThrower
-from cast_away.components.enemy import Enemy
+from cast_away.components.fireball_thrower import FireballThrower
 from cast_away.components.velocity import Velocity
 from cast_away.components.sprite_effect import SpinEffect, SpriteEffects
+from cast_away.components.facing import Facing
 
 
-class EnemyShootingProcessor(esper.Processor):
+class FireballThrowerProcessor(esper.Processor):
     def process(self, dt):
-        for _, (thrower, thrower_pos) in self.world.get_components(FireballThrower, Position):
+        for thrower_ent, (thrower, thrower_pos) in self.world.get_components(FireballThrower, Position):
             thrower.timeout = max(0, thrower.timeout - dt)
             if thrower.timeout:
                 continue
@@ -25,13 +24,19 @@ class EnemyShootingProcessor(esper.Processor):
             if not choices:
                 continue
 
-            target_pos =  random.choice(choices)
-            v = - target_pos.point2().connect(thrower_pos.point2()).v.normalize() * 250
+            if thrower.use_facing:
+                facing = self.world.component_for_entity(thrower_ent, Facing)
+                v = facing.velocity()
+                v.magnitude = 250
+            else:
+                target_pos =  random.choice(choices)
+                v = - target_pos.point2().connect(thrower_pos.point2()).v.normalize() * 250
+                v = Velocity(v.x, v.y)
 
             self.world.create_entity(
                 Sprite("data/kenney_platformerpack_redux/Particles/fireball.png", scale=0.5),
                 Position(x=thrower_pos.x, y=thrower_pos.y, level=thrower_pos.level),
-                Velocity(v.x, v.y),
+                v,
                 Collidable(match_components=[Player]),
                 HitCircle(radius=10),
                 Bullet(1, Player),
@@ -41,4 +46,4 @@ class EnemyShootingProcessor(esper.Processor):
 
 
 def init(world):
-    world.add_processor(EnemyShootingProcessor())
+    world.add_processor(FireballThrowerProcessor())
