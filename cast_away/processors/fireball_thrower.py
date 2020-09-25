@@ -12,6 +12,7 @@ from cast_away.components.velocity import Velocity
 from cast_away.components.sprite_effect import SpinEffect, SpriteEffects
 from cast_away.components.facing import Facing
 from cast_away.components.level import Level
+from cast_away.entities.sound import create_sound
 
 
 class FireballThrowerProcessor(esper.Processor):
@@ -47,7 +48,7 @@ class FireballThrowerProcessor(esper.Processor):
                 Bullet(1, Player),
                 SpriteEffects(SpinEffect(play_time=1, speed=-400))
             )
-            create_sound(world, FIREBALL_SHOOT_SOUND)
+            create_sound(self.world, FIREBALL_SHOOT_SOUND)
             thrower.timeout = random.randint(1, 3)
 
 
