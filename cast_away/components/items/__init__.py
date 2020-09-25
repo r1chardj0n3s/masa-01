@@ -44,8 +44,7 @@ ITEM_DATA = {
         _LevelItemData(
             image=":resources:images/enemies/saw.png",
             component_classes=[
-                _ComponentTemplate(Timeout, {"timeout": 5}),
-                _ComponentTemplate(Despawn)
+                _ComponentTemplate(Despawn, {"after_time": 2})
             ],
         ), _InventoryItemData(
             image=":resources:images/enemies/saw.png",
