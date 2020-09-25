@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.4" tiledversion="1.4.2" orientation="staggered" renderorder="right-down" width="11" height="22" tilewidth="128" tileheight="64" infinite="0" staggeraxis="y" staggerindex="odd" nextlayerid="7" nextobjectid="9">
+<map version="1.4" tiledversion="1.4.2" orientation="staggered" renderorder="right-down" width="11" height="22" tilewidth="128" tileheight="64" infinite="0" staggeraxis="y" staggerindex="odd" nextlayerid="8" nextobjectid="9">
  <tileset firstgid="1" source="landscapeTiles_sheet.tsx"/>
+ <imagelayer id="7" name="Image Layer 1" offsetx="64" offsety="0">
+  <image source="images/water.jpg" width="1280" height="720"/>
+  <properties>
+   <property name="z" type="int" value="-1"/>
+  </properties>
+ </imagelayer>
  <layer id="4" name="Tile Layer 4" width="11" height="22">
   <properties>
    <property name="z" type="int" value="0"/>
