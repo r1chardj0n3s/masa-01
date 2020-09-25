@@ -3,7 +3,7 @@
  <tileset firstgid="1" source="landscapeTiles_sheet.tsx"/>
  <tileset firstgid="129" source="kenney-props.tsx"/>
  <imagelayer id="9" name="Image Layer 1" offsetx="64" offsety="0">
-  <image source="images/grass-background.jpg" width="1280" height="720"/>
+  <image source="images/grass-water.jpg" width="1280" height="720"/>
   <properties>
    <property name="z" type="int" value="-1"/>
   </properties>
@@ -13,7 +13,7 @@
    <property name="z" type="int" value="0"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJyV0T0LwkAMBuDs7uKgLuJfcNJBroJSwY8K4urgIDg5KAjiT/cN5GgISa2Bl3L0ISR3RHUl+RbUXElydWxlzgex7ErlC8eyWxmbXTTTVv6dkbWyU+Pmqldp3KjB8kyfwG6MS4EjmY13eyN3sRPHdpCl7HVBdsgs6JlnOCIPZI88kX5g893ekJPMsKD63T3Pu73Uft3A96R3dgNkGNhKeieVsWPzGyUnXs82Vjv6oycZ/8uRc26yXrV1XF/WhCXN
+   eJyV0T0LwkAMBuDs7uKgLuJfcNJBroJSwY8K4urgIHRyUBDEn26C79EQcmcNvBxHH0LSI2oq4CwoXwG5OrYy9wOsuFL5AnZo+q6MjU7OqTPLFt/OnHXGzlWv0rhRxspM74TdGBcSjjCb7Pbi3GAnju1wltjrwtlxZomecYYj587Zcx6cfsLGf1tzTphhQc27e152e6r9ugnfQ+/oBvR9W89W6B1Uxo6NbxSceD3bWO3oj55k/C9Hzj1nvWrrpD7zkyYn
   </data>
  </layer>
  <layer id="2" name="Tile Layer 2" width="11" height="22" offsetx="0" offsety="33">
