@@ -1,7 +1,7 @@
 import esper
-from cast_away.components.timeout import Timeout
 from cast_away.components.despawn import Despawn
 from cast_away.components.sprite_effect import SpriteEffects, FlashEffect
+
 
 class DespawnProcessor(esper.Processor):
     def process(self, dt):

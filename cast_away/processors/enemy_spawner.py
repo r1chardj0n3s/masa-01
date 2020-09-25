@@ -13,6 +13,7 @@ from cast_away.components.graphics.emitter import Emitter
 from cast_away.graphics.emitters import bee_poof
 from cast_away.components.sequence import Sequence
 
+
 class EnemySpawnProcessor(esper.Processor):
     def process(self, dt):
         for ent, (es, position) in self.world.get_components(EnemySpawner, Position):
@@ -35,7 +36,14 @@ class EnemySpawnProcessor(esper.Processor):
                     es.spawn_timer = 5
                     e = bee_poof(position)
                     emitter = self.world.create_entity(InLevel(position.level))
-                    self.world.create_entity(Sequence(emitter, Timeout(3), DrawLayer(PARTICLE_LAYER, e), Emitter(e)))
+                    self.world.create_entity(
+                        Sequence(
+                            emitter,
+                            Timeout(3),
+                            DrawLayer(PARTICLE_LAYER, e),
+                            Emitter(e),
+                        )
+                    )
 
 
 def init(world):

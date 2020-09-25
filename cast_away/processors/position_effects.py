@@ -3,9 +3,12 @@ import esper
 from cast_away.components.position import Position
 from cast_away.components.position_effects import PositionEffects
 
+
 class PositionEffectProcessor(esper.Processor):
     def process(self, dt):
-        for ent, (position, effects) in self.world.get_components(Position, PositionEffects):
+        for ent, (position, effects) in self.world.get_components(
+            Position, PositionEffects
+        ):
             for effect in list(effects.effects):
                 effect.play_time -= dt
                 if effect.play_time < 0:

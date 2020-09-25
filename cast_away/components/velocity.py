@@ -2,10 +2,12 @@ import math
 import euclid
 from dataclasses import dataclass
 
+
 @dataclass
 class BounceVelocityBack:
     target_ent: object
     magnitude: float = 1
+
 
 class Velocity:
     def __init__(self, dx, dy):
@@ -18,6 +20,7 @@ class Velocity:
     @property
     def magnitude(self):
         return math.sqrt(self.dx ** 2 + self.dy ** 2)
+
     @magnitude.setter
     def magnitude(self, value):
         self.normalise()
@@ -32,4 +35,3 @@ class Velocity:
 
     def vector2(self):
         return euclid.Vector2(self.dx, self.dy)
-

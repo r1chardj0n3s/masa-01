@@ -1,8 +1,6 @@
 import esper
 
-from cast_away.components.health import Health, HealthDown
 from cast_away.components.position import Position
-from cast_away.components.sprite import Sprite
 from cast_away.components.bullet import Bullet
 
 

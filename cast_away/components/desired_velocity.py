@@ -13,6 +13,7 @@ class DesiredVelocity:
     @property
     def magnitude(self):
         return math.sqrt(self.dx ** 2 + self.dy ** 2)
+
     @magnitude.setter
     def magnitude(self, value):
         self.normalise()

@@ -25,9 +25,10 @@ from . import despawn
 from . import sound
 from .sound import music
 
+
 def add_processors(world):
     tmx_reload.init(world)
-    
+
     button.init(world)
     timeout.init(world)
 
@@ -54,7 +55,7 @@ def add_processors(world):
 
     hud_display.init(world)
     collisions.init(world)
-    #NOTE: it is important that the velocity effect processor fires after the collision processor
+    # NOTE: it is important that the velocity effect processor fires after the collision processor
     velocity_effect_processor.init(world)
 
     debug_probe.init(world)

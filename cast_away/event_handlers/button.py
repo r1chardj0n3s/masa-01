@@ -9,7 +9,6 @@ from cast_away.event_dispatch import (
 from cast_away.components.button import Button, Channel, ChannelListener, BUTTON_SOUND
 from cast_away.components.timeout import Timeout
 from cast_away.components.position import Position
-from cast_away.components.sound import Sound
 from cast_away.entities.sound import create_sound
 
 
@@ -24,17 +23,24 @@ def collision(world, message):
     level_ent = None
     if button.in_level:
         level_ent = world.component_for_entity(source, Position).level
-    dispatch(world, Message(CHANNEL, (source, dest, Channel(button.channel, level_ent))))
+    dispatch(
+        world, Message(CHANNEL, (source, dest, Channel(button.channel, level_ent)))
+    )
     world.add_component(source, Timeout(1))
     create_sound(world, BUTTON_SOUND, volume=0.5)
-    # print(f"button \n\t{source} {world.components_for_entity(source)} \n\tpressed by \n\t{dest} {world.components_for_entity(dest)}")
+    # print(f"button \n\t{source} {world.components_for_entity(source)} \n\tpressed by \n\t{dest}
+    #  {world.components_for_entity(dest)}")
 
 
 def channel_activated(world, message):
     source, dest, channel = message.payload
     listeners = []
     if channel.level_ent is not None:
-        listeners = [(e, c) for e, (c,p) in world.get_components(ChannelListener, Position) if p.level == channel.level_ent]
+        listeners = [
+            (e, c)
+            for e, (c, p) in world.get_components(ChannelListener, Position)
+            if p.level == channel.level_ent
+        ]
     else:
         listeners = world.get_component(ChannelListener)
     for ent, listener in listeners:

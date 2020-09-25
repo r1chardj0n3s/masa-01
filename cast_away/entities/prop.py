@@ -1,10 +1,11 @@
 import arcade
 
 from cast_away.components.sprite import Sprite
-from cast_away.components.sprite_effect import AnimatedTextureEffect, FadeEffect, SpriteEffects
+from cast_away.components.sprite_effect import (
+    AnimatedTextureEffect,
+    SpriteEffects,
+)
 from cast_away.components.position import Position
-from cast_away.components.timeout import Timeout
-from cast_away.components.sequence import Sequence
 
 
 def create_prop(world, x, y, type, level_ent):

@@ -1,26 +1,18 @@
 import arcade
 from dataclasses import dataclass
-from cast_away.components.draw_layer import DrawLayer, DEFAULT_LAYER
+from cast_away.components.draw_layer import DEFAULT_LAYER
+
 
 def _prop(key):
-    return property(
-        lambda s: s._get(key), 
-        lambda s,v: s._set(key, v), 
-        None, 
-        None
-    )
+    return property(lambda s: s._get(key), lambda s, v: s._set(key, v), None, None)
 
 
 class Sprite:
     def __init__(self, path, scale=1, alpha=255, draw_layer=DEFAULT_LAYER):
-        self._state = {
-            "path": path,
-            "scale": scale,
-            "alpha": alpha
-        }
+        self._state = {"path": path, "scale": scale, "alpha": alpha}
         self.draw_layer = draw_layer
         self._changes = {}
-        self._arcade_sprite = arcade.Sprite(path, scale = scale)
+        self._arcade_sprite = arcade.Sprite(path, scale=scale)
 
     def __repr__(self):
         return f"<Sprite state={self._state} changes={self._changes}"
@@ -29,7 +21,7 @@ class Sprite:
         if key in self._changes:
             return self._changes[key]
         return self._state.get(key, None)
-    
+
     def _set(self, key, value):
         self._changes[key] = value
         if self._changes.get(key) == self._state.get(key):
@@ -40,9 +32,6 @@ class Sprite:
             if key == "path":
                 self.apply_path_change(value)
             else:
-                new_value = 0
-                if value is not None:
-                    new_value = value
                 setattr(self._arcade_sprite, key, value)
             self._state[key] = value
         self._changes = {}
@@ -56,6 +45,7 @@ class Sprite:
     center_y = _prop("center_y")
     alpha = _prop("alpha")
     angle = _prop("angle")
+
 
 @dataclass
 class SpriteList:

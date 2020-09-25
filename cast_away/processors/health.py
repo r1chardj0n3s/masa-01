@@ -2,11 +2,11 @@ from cast_away.components.player import Player
 import esper
 
 from cast_away.components.invulnerable import Invulnerable
-from cast_away.components.sprite import Sprite
 from cast_away.components.health import Health, HURT_SOUND
 from cast_away.components.sprite_effect import SpriteEffects, SpinEffect, FlashEffect
 from cast_away.event_dispatch import dispatch, Message, ENTITY_DIED
 from cast_away.entities.sound import create_sound
+
 
 class HealthProcessor(esper.Processor):
     def process(self, dt):

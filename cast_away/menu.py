@@ -3,7 +3,6 @@ import arcade.gui
 from arcade.gui import UIFlatButton, UIManager
 from .components.input_source import (
     InputSource,
-    InputEvent,
     JoystickState,
     MENU,
     UP,
@@ -12,7 +11,7 @@ from .components.input_source import (
 )
 from .components.player import Player
 from .entities import player
-from cast_away.event_dispatch import register_listener, INPUT
+
 
 # from arcade.gui.ui_style import UIStyle
 JOYSTICK_CHECK_FREQUENCY = 5
@@ -40,6 +39,7 @@ def check_joysticks(world):
                 world.create_entity(InputSource(name, JoystickState(joystick)))
                 all_joysticks.append(name)
         # TODO: clean up removed joysticks
+
 
 class Menu:
     def __init__(self, window, world, show=True):
@@ -132,21 +132,17 @@ class Menu:
                     if event.input == UP:
                         self.highlight_button(-1)
                         events.remove(event)
-                    if (
-                        event.input == ACTIVATE
-                        and self.selected_button is not None
-                    ):
+                    if event.input == ACTIVATE and self.selected_button is not None:
                         menu_activator = source
                         arcade_button = self.buttons[BUTTONS[self.selected_button]]
                         arcade_button.pressed = True
                         arcade_button.hovered = False
                         self.selected_button = None
                         events.remove(event)
-                        
 
             if self.buttons[PLAY].pressed:
                 self.show = False
-                if menu_activator == None:
+                if menu_activator is None:
                     for _, input_source in self.world.get_component(InputSource):
                         if input_source.name == "Keyboard":
                             menu_activator = input_source
@@ -167,7 +163,6 @@ class Menu:
         return False
 
     def spawn_player(self, input_source):
-        name = input_source.name
         is_started = self.is_started(input_source)
         if not is_started:
             player.create_player(self.world, input_source)

@@ -19,6 +19,7 @@ SELECT_PREV = "select prev"
 class InputEvent:
     input: str
 
+
 @dataclass
 class InputSource:
     name: str
@@ -40,11 +41,12 @@ _keybinds = {
 
 KEYBOARD_MAP = dict((v, k) for k, v in _keybinds.items())
 
+
 @dataclass
 class KeyboardState:
     name: str = "keyboard"
-    keys: object = field(default_factory=lambda:dict())
-    events: object = field(default_factory=lambda:[])
+    keys: object = field(default_factory=lambda: dict())
+    events: object = field(default_factory=lambda: [])
 
     def update(self):
         pass
@@ -111,7 +113,7 @@ class JoystickState:
     def _joy_n(self, v, d):
         if v > d:
             return v
-        if v < d * -1 :
+        if v < d * -1:
             return v
         return 0
 
@@ -120,7 +122,7 @@ class JoystickState:
 
     def _joy_y(self):
         return self._joy_n(self.joystick.y, DEAD_ZONE_Y)
-        
+
     def update(self):
         now_x = self._joy_x()
         if now_x < 0 and self.last_x >= 0:
@@ -135,7 +137,6 @@ class JoystickState:
         if now_y > 0 and self.last_y <= 0:
             self.events.append(InputEvent(DOWN))
         self.last_y = now_y
-
 
     def get(self, action):
         # print(f"joy.x {self.joystick.x}")

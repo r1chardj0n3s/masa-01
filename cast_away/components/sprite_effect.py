@@ -1,4 +1,3 @@
-import arcade
 import math
 
 
@@ -13,7 +12,7 @@ class SpinEffect:
         self.speed = speed
         self.first = True
         self.initial_angle = None
-    
+
     def clear(self, sprite):
         sprite.angle = self.initial_angle
 
@@ -33,7 +32,7 @@ class FlashEffect:
         self.direction = -1
         self.first = True
         self.initial_alpha = None
-    
+
     def clear(self, sprite):
         sprite.alpha = self.initial_alpha
 
@@ -58,14 +57,14 @@ class FadeEffect:
         self.play_time = play_time
         self.to_alpha = to_alpha
         self.initial_alpha = None
-    
+
     def clear(self, sprite):
         pass
-    
+
     def run(self, dt, sprite):
         if self.initial_alpha is None:
             self.initial_alpha = sprite.alpha
-        
+
         u = min(1, (self._play_time - self.play_time) / self._play_time)
         sprite.alpha = u * self.to_alpha + (1 - u) * self.initial_alpha
 
@@ -82,7 +81,7 @@ class ThrowToEffect:
         bx, by = self.end_pos.x, self.end_pos.y
         sprite.center_x = bx
         sprite.center_y = by
-    
+
     def run(self, dt, sprite):
         ax, ay = self.start_pos.x, self.start_pos.y
         bx, by = self.end_pos.x, self.end_pos.y

@@ -8,6 +8,7 @@ from cast_away.entities.item import drop_inventory_item
 from cast_away.entities.player import create_player
 from cast_away.components.multiplayer_identifier import MultiplayerIdentifier
 
+
 def entity_died(world, message):
     entity = message.payload
 

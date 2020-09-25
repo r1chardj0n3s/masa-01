@@ -13,14 +13,31 @@ SE = "SE"
 
 GATE_SPRITES = {
     "wooden": {
-        SW: ("data/images/gate_wooden_SW_closed.png", "data/images/gate_wooden_SW_open.png", 1),
-        SE: ("data/images/gate_wooden_SE_closed.png", "data/images/gate_wooden_SE_open.png", 1),
+        SW: (
+            "data/images/gate_wooden_SW_closed.png",
+            "data/images/gate_wooden_SW_open.png",
+            1,
+        ),
+        SE: (
+            "data/images/gate_wooden_SE_closed.png",
+            "data/images/gate_wooden_SE_open.png",
+            1,
+        ),
     },
     "metal": {
-        SW: ("data/images/gate_metal_SW_closed.png", "data/images/gate_metal_SW_open.png", 1),
-        SE: ("data/images/gate_metal_SE_closed.png", "data/images/gate_metal_SE_open.png", 1),
-    }
+        SW: (
+            "data/images/gate_metal_SW_closed.png",
+            "data/images/gate_metal_SW_open.png",
+            1,
+        ),
+        SE: (
+            "data/images/gate_metal_SE_closed.png",
+            "data/images/gate_metal_SE_open.png",
+            1,
+        ),
+    },
 }
+
 
 def create_gate(world, obj, level_ent):
     level_listen = None

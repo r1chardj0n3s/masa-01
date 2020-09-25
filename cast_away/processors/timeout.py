@@ -10,5 +10,6 @@ class TimeoutProcessor(esper.Processor):
                 cooldown.timeout = 0
                 self.world.remove_component(ent, Timeout)
 
+
 def init(world):
     world.add_processor(TimeoutProcessor())

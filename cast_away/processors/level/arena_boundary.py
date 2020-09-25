@@ -2,8 +2,6 @@ import esper
 
 from cast_away.components.velocity import BounceVelocityBack
 from cast_away.components.position import Position
-from cast_away.components.debug_primitives import DebugCircle
-from cast_away.components.useful_polygon import UsefulPolygon
 from cast_away.components.level.arena_boundary import ArenaBoundary
 from cast_away.components.level import Level
 from cast_away.components.player import Player
@@ -19,7 +17,7 @@ class ArenaBoundaryProcessor(esper.Processor):
                     Position, Player
                 ):
                     if not boundary.poly.is_point_inside(position.x, position.y):
-                        self.world.create_entity(BounceVelocityBack(target_ent = ent))
+                        self.world.create_entity(BounceVelocityBack(target_ent=ent))
 
 
 def init(world):

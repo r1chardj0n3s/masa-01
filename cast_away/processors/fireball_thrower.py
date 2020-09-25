@@ -1,5 +1,4 @@
 import esper
-import euclid
 import random
 
 from cast_away.components.player import Player
@@ -7,7 +6,11 @@ from cast_away.components.position import Position
 from cast_away.components.sprite import Sprite
 from cast_away.components.bullet import Bullet
 from cast_away.components.collidable import Collidable, HitCircle
-from cast_away.components.fireball_thrower import FireballThrower, FIREBALL_IMAGE, FIREBALL_SHOOT_SOUND
+from cast_away.components.fireball_thrower import (
+    FireballThrower,
+    FIREBALL_IMAGE,
+    FIREBALL_SHOOT_SOUND,
+)
 from cast_away.components.velocity import Velocity
 from cast_away.components.sprite_effect import SpinEffect, SpriteEffects
 from cast_away.components.facing import Facing
@@ -17,7 +20,9 @@ from cast_away.entities.sound import create_sound
 
 class FireballThrowerProcessor(esper.Processor):
     def process(self, dt):
-        for thrower_ent, (thrower, thrower_pos) in self.world.get_components(FireballThrower, Position):
+        for thrower_ent, (thrower, thrower_pos) in self.world.get_components(
+            FireballThrower, Position
+        ):
             level = self.world.component_for_entity(thrower_pos.level, Level)
             if not level.active:
                 continue
@@ -26,7 +31,9 @@ class FireballThrowerProcessor(esper.Processor):
             if thrower.timeout:
                 continue
 
-            choices = [pos for _, (p, pos) in self.world.get_components(Player, Position)]
+            choices = [
+                pos for _, (p, pos) in self.world.get_components(Player, Position)
+            ]
             if not choices:
                 continue
 
@@ -35,8 +42,11 @@ class FireballThrowerProcessor(esper.Processor):
                 v = facing.velocity()
                 v.magnitude = 250
             else:
-                target_pos =  random.choice(choices)
-                v = - target_pos.point2().connect(thrower_pos.point2()).v.normalize() * 250
+                target_pos = random.choice(choices)
+                v = (
+                    -target_pos.point2().connect(thrower_pos.point2()).v.normalize()
+                    * 250
+                )
                 v = Velocity(v.x, v.y)
 
             self.world.create_entity(
@@ -46,7 +56,7 @@ class FireballThrowerProcessor(esper.Processor):
                 Collidable(match_components=[Player]),
                 HitCircle(radius=10),
                 Bullet(1, Player),
-                SpriteEffects(SpinEffect(play_time=1, speed=-400))
+                SpriteEffects(SpinEffect(play_time=1, speed=-400)),
             )
             create_sound(self.world, FIREBALL_SHOOT_SOUND)
             thrower.timeout = random.randint(1, 3)

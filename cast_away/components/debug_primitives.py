@@ -1,6 +1,6 @@
-
 def debug_circle(x, y):
     return DebugCircle(x, y, 10, (255, 0, 0, 100))
+
 
 class DebugCircle:
     def __init__(self, x, y, size, color, draw=True):

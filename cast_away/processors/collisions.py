@@ -1,12 +1,9 @@
 import esper
-import euclid
-import random
+import math
 
 from cast_away.components.collidable import Collidable, HitPoly, HitCircle
 from cast_away.components.position import Position
 from cast_away.components.level import Level
-from cast_away.components.useful_polygon import is_point_in_polygon
-
 from cast_away.event_dispatch import dispatch, Message, COLLISION
 
 
@@ -51,7 +48,6 @@ def test_polys(world, ea, eb):
 
 
 def test_circle_v_poly(world, circleEntity, polyEntity):
-    circle = world.component_for_entity(circleEntity, HitCircle)
     pos = world.component_for_entity(circleEntity, Position)
     poly = world.component_for_entity(polyEntity, HitPoly)
     return poly.is_point_inside(pos.x, pos.y)
@@ -85,10 +81,11 @@ def does_collide(world, ea, ca, eb, cb):
 
 class CollisionProcessor(esper.Processor):
     def process(self, dt):
-        # collisions will have a complete bidirectional map of entity -> collisions (two entries per collision)
+        # collisions will have a complete bidirectional map of entity -> collisions
+        # # (2 entries per collision)
         collisions = {}
         collidables = []
-        #filter to active level
+        # filter to active level
         for e, (ca, position) in self.world.get_components(Collidable, Position):
             level = self.world.component_for_entity(position.level, Level)
             if level.active:

@@ -1,9 +1,11 @@
 from dataclasses import dataclass, field
 import math
 
+
 @dataclass
 class PositionEffects:
     effects: object = field(default_factory=lambda: [])
+
 
 class ThrowToEffect:
     def __init__(self, play_time, start_pos, end_pos, height):
@@ -17,7 +19,7 @@ class ThrowToEffect:
         bx, by = self.end_pos.x, self.end_pos.y
         position.x = bx
         position.y = by
-    
+
     def run(self, dt, position):
         ax, ay = self.start_pos.x, self.start_pos.y
         bx, by = self.end_pos.x, self.end_pos.y

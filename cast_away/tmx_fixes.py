@@ -1,4 +1,3 @@
-
 import arcade
 import pytiled_parser.objects
 from .components.useful_polygon import UsefulPolygon
@@ -6,7 +5,9 @@ from .components.useful_polygon import UsefulPolygon
 
 def load_object_layer(map, layer_name):
     layer = arcade.tilemap.get_tilemap_layer(map, layer_name)
-    map_height = map.map_size.height * map.tile_size[1] / 2 #only for staggered orientation WOOT!
+    map_height = (
+        map.map_size.height * map.tile_size[1] / 2
+    )  # only for staggered orientation WOOT!
 
     def fix_height(p):
         return p._replace(y=map_height - p.y)

@@ -3,6 +3,7 @@ import esper
 from cast_away.components.sprite import Sprite
 from cast_away.components.sprite_effect import SpriteEffects
 
+
 class SpriteEffectProcessor(esper.Processor):
     def process(self, dt):
         for ent, (sprite, effects) in self.world.get_components(Sprite, SpriteEffects):

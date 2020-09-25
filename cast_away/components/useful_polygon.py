@@ -11,10 +11,10 @@ class UsefulPolygon:
         self.x = px
         py = obj.location.y
         self.y = py
-        self.point_list = [(px + p.x, py + p.y*-1) for p in obj.points]
+        self.point_list = [(px + p.x, py + p.y * -1) for p in obj.points]
 
     def is_point_inside(self, x, y):
         return is_point_in_polygon(x, y, self.point_list)
 
     def __repr__(self):
-        return f'<Polygon name={self.name} path={self.point_list}>'
+        return f"<Polygon name={self.name} path={self.point_list}>"

@@ -3,4 +3,4 @@ class ArenaBoundary:
         self.poly = poly
 
     def __repr__(self):
-        return '<ArenaBoundary>'
+        return "<ArenaBoundary>"

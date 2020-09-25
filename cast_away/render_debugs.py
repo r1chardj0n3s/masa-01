@@ -1,7 +1,7 @@
 import arcade
 from cast_away.components.position import Position
 from cast_away.components.collidable import HitCircle, HitPoly
-from cast_away.components.level import InLevel, Level, LevelProgression
+from cast_away.components.level import InLevel, Level
 from cast_away.components.level.arena_boundary import ArenaBoundary
 
 

@@ -24,7 +24,11 @@ class MultiplayerIdentifier:
 
 
 def player_sprite_for(colour, facing):
-    s = Sprite("data/kenney_robot-pack_side/robot_blueDrive1.png", scale=0.25, draw_layer=CHARACTER_LAYER)
+    s = Sprite(
+        "data/kenney_robot-pack_side/robot_blueDrive1.png",
+        scale=0.25,
+        draw_layer=CHARACTER_LAYER,
+    )
     s._arcade_sprite.texture = player_texture_for(colour, facing)
     return s
 

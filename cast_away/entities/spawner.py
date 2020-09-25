@@ -1,14 +1,10 @@
-from cast_away.components.sprite import Sprite
 from cast_away.components.position import Position
-from cast_away.components.player import Player
-from cast_away.components.collidable import Collidable
 from cast_away.components.spawner import EnemySpawner
 from cast_away.components.follow_path import FollowPath
 from cast_away.entities.enemy import create_enemy
-from cast_away.components.collidable import HitCircle
 
 
-def create_enemy_spawner(world,  x, y, type, level_ent):
+def create_enemy_spawner(world, x, y, type, level_ent):
     world.create_entity(
         EnemySpawner(),
         # Sprite("data/kenney_platformerkit2_isometric/buttonSquare_NE.png", scale=0.5),

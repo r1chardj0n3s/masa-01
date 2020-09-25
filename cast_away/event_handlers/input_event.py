@@ -1,13 +1,21 @@
 from cast_away.components.input_source import ITEM_1, ITEM_2, ITEM_3, DROP
 from cast_away.components.inventory import Inventory
-from cast_away.event_dispatch import Message, DROP_ITEM, INPUT, USE_ITEM, USE_SLOT, dispatch, register_listener
+from cast_away.event_dispatch import (
+    Message,
+    DROP_ITEM,
+    INPUT,
+    USE_ITEM,
+    USE_SLOT,
+    dispatch,
+    register_listener,
+)
 from cast_away.components.player import Player
 
 ITEM_INVENTORY_INDEX = [ITEM_1, ITEM_2, ITEM_3]
 
 
 def handle_input(world, message):
-    input_event = message.payload['input']
+    input_event = message.payload["input"]
     player_ent = message.payload["player_ent"]
 
     # CONVERT ITEM_N input into activate item N
@@ -29,14 +37,14 @@ def handle_input(world, message):
 
 
 def use_slot(world, message):
-    inventory = world.component_for_entity(message.payload['player_ent'], Inventory)
-    item_ent = inventory.item_ents[message.payload['index']]
+    inventory = world.component_for_entity(message.payload["player_ent"], Inventory)
+    item_ent = inventory.item_ents[message.payload["index"]]
     if item_ent is None:
         return
     dispatch(
         world,
         Message(
-            USE_ITEM, dict(player_ent=message.payload['player_ent'], item_ent=item_ent)
+            USE_ITEM, dict(player_ent=message.payload["player_ent"], item_ent=item_ent)
         ),
     )
 

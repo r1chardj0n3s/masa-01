@@ -12,7 +12,13 @@ from cast_away.components.hud.hud_layer import HUDLayer
 from cast_away.menu import Menu
 from cast_away.render_debugs import render_debugs
 from cast_away.components.player import Player
-from cast_away.event_dispatch import Message, dispatch, INPUT, register_listener, RELOAD_MAPS
+from cast_away.event_dispatch import (
+    Message,
+    dispatch,
+    INPUT,
+    register_listener,
+    RELOAD_MAPS,
+)
 from cast_away.world import create_world
 
 

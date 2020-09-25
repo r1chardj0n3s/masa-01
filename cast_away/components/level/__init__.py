@@ -2,6 +2,7 @@ from dataclasses import dataclass
 
 LEVEL_SWAP_SOUND = ":resources:sounds/jump1.wav"
 
+
 @dataclass
 class Level:
     name: str
