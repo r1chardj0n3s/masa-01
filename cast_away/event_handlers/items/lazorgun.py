@@ -6,8 +6,8 @@ from cast_away.components.enemy import Enemy
 from cast_away.components.collidable import Collidable, HitCircle
 from cast_away.components.facing import Facing
 from cast_away.components.timeout import Timeout
-from cast_away.components.items.uses import LazorGun
-
+from cast_away.components.items.uses import LazorGun, LAZOR_SOUND
+from cast_away.entities.sound import create_sound
 
 def use_lazorgun(world, message):
     if not world.has_component(message.payload['item_ent'], LazorGun):
@@ -29,6 +29,7 @@ def use_lazorgun(world, message):
         HitCircle(radius=20),
     )
     world.add_component(message.payload['item_ent'], Timeout(0.5))
+    create_sound(world, LAZOR_SOUND)
 
 
 def init():

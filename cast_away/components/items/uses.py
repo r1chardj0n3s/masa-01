@@ -1,6 +1,7 @@
 from dataclasses import dataclass
 
 THROW_SOUND = ":resources:sounds/laser1.wav"
+LAZOR_SOUND = ":resources:sounds/laser3.wav"
 
 @dataclass
 class Throwable():
