@@ -30,9 +30,8 @@ def handle_input(world, message):
 
 def use_slot(world, message):
     inventory = world.component_for_entity(message.payload['player_ent'], Inventory)
-    try:
-        item_ent = inventory.item_ents[message.payload['index']]
-    except IndexError:
+    item_ent = inventory.item_ents[message.payload['index']]
+    if item_ent is None:
         return
     dispatch(
         world,

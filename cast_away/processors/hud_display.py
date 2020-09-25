@@ -33,19 +33,24 @@ class InventoryDisplayProcessor(esper.Processor):
             def set_sprite_at(i, base_x, image):
                 if i < len(sprite_list):
                     sprite_list[i].texture = arcade.load_texture(image)
+                    sprite_list[i].alpha = 255
                 else:
                     sprite_list.append(inventory_hud_sprite(image, i, base_x, scale=0.25))
+            def hide_sprite_at(i):
+                if(i < len(sprite_list)):
+                    sprite_list[i].alpha = 0
 
             inventory = self.world.component_for_entity(display.player_entity, Inventory)
             mp = self.world.component_for_entity(display.player_entity, MultiplayerIdentifier)
             for i, item_entity in enumerate(inventory.item_ents):
+                if item_entity is None:
+                    hide_sprite_at(i)
+                    continue
                 inventory_item = self.world.component_for_entity(item_entity, InventoryItem)
                 _, inventory_item_data = ITEM_DATA[inventory_item.name]
                 index = COLOURS.index(mp.colour)
                 base_x = index * 300
                 set_sprite_at(i, base_x, inventory_item_data.image)
-            while len(inventory.item_ents) < len(sprite_list):
-                sprite_list.pop()
 
 def init(world):
     world.add_processor(HealthDisplayProcessor())

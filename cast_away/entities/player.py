@@ -44,7 +44,7 @@ def create_player(world, input_source, mp=None):
         Facing(Facing.EAST),
         player_sprite_for(mp.colour, Facing.EAST),
         Health(3),
-        Inventory([]),
+        Inventory(),
     )
 
     world.create_entity(
