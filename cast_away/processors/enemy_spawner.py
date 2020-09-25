@@ -11,6 +11,7 @@ from cast_away.components.draw_layer import DrawLayer, PARTICLE_LAYER
 from cast_away.components.graphics.emitter import Emitter
 
 from cast_away.graphics.emitters import bee_poof
+from cast_away.components.sequence import Sequence
 
 class EnemySpawnProcessor(esper.Processor):
     def process(self, dt):
@@ -18,21 +19,23 @@ class EnemySpawnProcessor(esper.Processor):
             level = self.world.component_for_entity(position.level, Level)
             if not level.active:
                 continue
-            if es.spawning:
-                if self.world.has_component(ent, Timeout):
-                    continue
 
-                create_enemy(self.world, ent, position)
-                es.spawning = False
+            if es.spawn_timer:
+                es.spawn_timer -= dt
 
-            for _, enemy in self.world.get_component(Enemy):
-                if enemy.spawned_by == ent:
-                    break
+                if es.spawn_timer < 0:
+                    es.spawn_timer = 0
+                    create_enemy(self.world, ent, position)
             else:
-                es.spawning = True
-                e = bee_poof(position)
-                self.world.create_entity(DrawLayer(PARTICLE_LAYER, e), Emitter(e), InLevel(position.level))
-                self.world.add_component(ent, Timeout(1))
+                # see whether we need to spawn an enemy for this spawner
+                for _, enemy in self.world.get_component(Enemy):
+                    if enemy.spawned_by == ent:
+                        break
+                else:
+                    es.spawn_timer = 5
+                    e = bee_poof(position)
+                    emitter = self.world.create_entity(InLevel(position.level))
+                    self.world.create_entity(Sequence(emitter, Timeout(3), DrawLayer(PARTICLE_LAYER, e), Emitter(e)))
 
 
 def init(world):

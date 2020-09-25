@@ -11,11 +11,16 @@ from cast_away.components.fireball_thrower import FireballThrower
 from cast_away.components.velocity import Velocity
 from cast_away.components.sprite_effect import SpinEffect, SpriteEffects
 from cast_away.components.facing import Facing
+from cast_away.components.level import Level
 
 
 class FireballThrowerProcessor(esper.Processor):
     def process(self, dt):
         for thrower_ent, (thrower, thrower_pos) in self.world.get_components(FireballThrower, Position):
+            level = self.world.component_for_entity(thrower_pos.level, Level)
+            if not level.active:
+                continue
+
             thrower.timeout = max(0, thrower.timeout - dt)
             if thrower.timeout:
                 continue

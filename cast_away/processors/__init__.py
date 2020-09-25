@@ -2,7 +2,7 @@ from . import invulnerable
 from . import button
 from . import health
 from . import level
-from . import spawner
+from . import enemy_spawner
 from . import timeout
 from .player import move
 from . import follow_path
@@ -31,7 +31,7 @@ def add_processors(world):
 
     sequence.init(world)
     emitter.init(world)
-    spawner.init(world)
+    enemy_spawner.init(world)
 
     invulnerable.init(world)
     move.init(world)

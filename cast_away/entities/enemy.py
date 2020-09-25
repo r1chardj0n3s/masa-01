@@ -19,7 +19,7 @@ def create_enemy(world, spawner_entity, position: Position):
         Enemy(spawner_entity),
         Health(1),
         Hurt(1, [Player]),
-        FireballThrower(),
+        FireballThrower(timeout=1),
         Collidable(match_components=[Player]),
         HitCircle(radius=25),
     )
