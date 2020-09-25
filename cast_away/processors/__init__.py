@@ -22,6 +22,8 @@ from . import emitter
 from . import tmx_reload
 from . import debug_probe
 from . import despawn
+from . import sound
+from .sound import music
 
 def add_processors(world):
     tmx_reload.init(world)
@@ -57,5 +59,7 @@ def add_processors(world):
 
     debug_probe.init(world)
     despawn.init(world)
+    sound.init(world)
+    music.init(world)
 
     return world
