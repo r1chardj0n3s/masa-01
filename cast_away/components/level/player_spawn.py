@@ -1,8 +1,10 @@
 from dataclasses import dataclass
 
+
 @dataclass
 class PlayerSpawns:
     spawns: object
+
 
 @dataclass
 class PlayerSpawn:

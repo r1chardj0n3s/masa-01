@@ -37,7 +37,7 @@
   <object id="4" name="EXIT" x="5.33333" y="634.667">
    <properties>
     <property name="match_components" value="cast_away.components.player.Player"/>
-    <property name="next_level" value="throwing"/>
+    <property name="next_level" value="backtrack"/>
    </properties>
    <polygon points="0,0 53.3333,30.6667 89.3333,8 42.6667,-20"/>
   </object>
@@ -76,7 +76,7 @@
   <object id="2" name="PLAYER_SPAWN" x="144" y="597.333">
    <properties>
     <property name="first" type="bool" value="true"/>
-    <property name="last_level" value="movement"/>
+    <property name="last_level" value="backtrack"/>
    </properties>
    <point/>
   </object>

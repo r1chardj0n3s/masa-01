@@ -57,29 +57,29 @@
   </object>
  </objectgroup>
  <objectgroup id="11" name="OnLoad" offsetx="21.6667" offsety="4.66667">
-  <object id="5" name="ITEM" x="544.574" y="450.412" visible="0">
+  <object id="5" name="ITEM" x="544.574" y="450.412">
    <properties>
     <property name="type" value="saw"/>
    </properties>
    <point/>
   </object>
-  <object id="2" name="ARENA_BOUNDARY" x="959.889" y="655.169" visible="0">
+  <object id="2" name="ARENA_BOUNDARY" x="959.889" y="655.169">
    <polygon points="-727.205,-274.507 -866.751,-219.803 -354.591,30.4228 86.064,-187.999 -83.1518,-272.709 -148.377,-243.109 -593.917,-468.203 -635.535,-444.915 -532.228,-372.771 -720.98,-277.823"/>
   </object>
-  <object id="4" name="PLAYER_SPAWN" x="415.508" y="255.955" visible="0">
+  <object id="4" name="PLAYER_SPAWN" x="415.508" y="255.955">
    <properties>
-    <property name="last_level" value="spikes"/>
+    <property name="last_level" value="backtrack"/>
    </properties>
    <point/>
   </object>
-  <object id="1" name="PLAYER_SPAWN" x="569.526" y="582.552" visible="0">
+  <object id="1" name="PLAYER_SPAWN" x="569.526" y="582.552">
    <properties>
     <property name="first" type="bool" value="true"/>
     <property name="last_level" value="movement"/>
    </properties>
    <point/>
   </object>
-  <object id="6" name="BUTTON" x="1086.98" y="334.072" visible="0">
+  <object id="6" name="BUTTON" x="1086.98" y="334.072">
    <properties>
     <property name="channel" value="throw-switch"/>
     <property name="in_level" type="bool" value="true"/>
