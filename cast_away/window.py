@@ -31,8 +31,7 @@ class Game(arcade.Window):
     def on_key_press(self, symbol, modifiers):
         if symbol == arcade.key.F1:
             self.render_debugs = not self.render_debugs
-
-        for _, keyboard in self.world.get_component(InputSource):
+        for e, keyboard in self.world.get_component(InputSource):
             if keyboard.name == "Keyboard":
                 keyboard.state.keys[symbol] = True
                 if symbol in KEYBOARD_MAP:
@@ -44,22 +43,21 @@ class Game(arcade.Window):
                 del keyboard.state.keys[symbol]
 
     def on_update(self, dt):
-        for player_ent, p in self.world.get_component(Player):
-            while p.input_source.state.events:
-                dispatch(
-                    self.world,
-                    Message(
-                        INPUT,
-                        dict(
-                            player_ent=player_ent,
-                            input=p.input_source.state.events.pop(0),
-                        ),
-                    ),
-                )
-
         if self.first_update or not self.menu.show:
             self.world.process(dt)
             self.first_update = False
+            for player_ent, p in self.world.get_component(Player):
+                while p.input_source.state.events:
+                    dispatch(
+                        self.world,
+                        Message(
+                            INPUT,
+                            dict(
+                                player_ent=player_ent,
+                                input=p.input_source.state.events.pop(0),
+                            ),
+                        ),
+                    )
         self.menu.update(dt)
 
     def on_draw(self):
