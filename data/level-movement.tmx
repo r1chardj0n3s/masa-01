@@ -89,12 +89,6 @@
    </properties>
    <polygon points="0,0 56.5097,31.5789 11.6343,53.1856 -41.5512,24.9307"/>
   </object>
-  <object id="10" name="PROP" x="270.667" y="141.333">
-   <properties>
-    <property name="type" value="dialog-1"/>
-   </properties>
-   <point/>
-  </object>
  </objectgroup>
  <layer id="3" name="Tile Layer 2" width="11" height="22" offsetx="0" offsety="33">
   <properties>
