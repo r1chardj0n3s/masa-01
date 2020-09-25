@@ -1,34 +1,32 @@
 import arcade
 
-from cast_away.processors import init_world
-from cast_away.event_handlers import init_event_handlers
 from cast_away.components.draw_layer import DrawLayer
-from cast_away.components.level import InLevel, Level, LevelProgression
+from cast_away.components.level import InLevel, Level
 from cast_away.components.input_source import (
     InputEvent,
     InputSource,
-    KeyboardState,
     KEYBOARD_MAP,
 )
 from cast_away.components.hud.hud_layer import HUDLayer
-from cast_away.components.graphics.emitter import Emitter
 
 from cast_away.menu import Menu
 from cast_away.render_debugs import render_debugs
 from cast_away.components.player import Player
-from cast_away.event_dispatch import Message, dispatch, INPUT
+from cast_away.event_dispatch import Message, dispatch, INPUT, register_listener, RELOAD_MAPS
+from cast_away.world import create_world
 
 
 class Game(arcade.Window):
     def __init__(self, map_name="movement"):
         super().__init__(1280, 720, "Chucked Out")
-        self.world = init_world()
-        init_event_handlers()
-        self.world.create_entity(InputSource("Keyboard", KeyboardState()))
-        self.world.create_entity(LevelProgression(next_level=map_name))
-        self.menu = Menu(self, self.world)
         self.first_update = True
         self.render_debugs = False
+        self.init(map_name)
+        register_listener(RELOAD_MAPS, lambda w, m: self.init(m.payload, False))
+
+    def init(self, map_name, show_menu=True):
+        self.world = create_world(map_name)
+        self.menu = Menu(self, self.world, show_menu)
 
     def on_key_press(self, symbol, modifiers):
         if symbol == arcade.key.F1:

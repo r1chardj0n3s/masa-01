@@ -42,13 +42,13 @@ def check_joysticks(world):
 
 
 class Menu:
-    def __init__(self, window, world):
+    def __init__(self, window, world, show=True):
         self.window = window
         self.world = world
         self.menu_input = 0
         self.joystick_check = JOYSTICK_CHECK_FREQUENCY
         self.selected_button = None
-        self.show = True
+        self.show = show
 
         self.ui_manager = UIManager(self.window)
         self.sprite_list = arcade.SpriteList()

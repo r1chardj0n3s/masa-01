@@ -1,5 +1,6 @@
 import arcade
 import pytiled_parser
+import os
 
 from cast_away.components.draw_layer import DrawLayer, SPRITES_LAYER_Z
 import cast_away.entities.level.on_load
@@ -25,6 +26,10 @@ def map_filename(name):
     return f"data/level-{name}.tmx"
 
 
+def map_mtime(name):
+    return os.path.getmtime(map_filename(name))
+
+
 def deactivate_map(world, level_ent):
     for bullet_ent, _ in world.get_component(Bullet):
         world.delete_entity(bullet_ent)
@@ -42,7 +47,7 @@ def activate_map(world, current_level):
             break
     else:
         tile_map = arcade.tilemap.read_tmx(map_filename(level_name))
-        level_comp = Level(level_name, tile_map, True)
+        level_comp = Level(level_name, tile_map, map_mtime(level_name), True)
         level_ent = world.create_entity(level_comp)
         print(f"loading level from disk: {level_name}: {level_ent}")
 

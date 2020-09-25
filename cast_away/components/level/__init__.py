@@ -5,6 +5,7 @@ from dataclasses import dataclass
 class Level:
     name: str
     tile_map: object
+    tmx_mtime: float
     active: bool = False
 
 

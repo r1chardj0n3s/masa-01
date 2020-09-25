@@ -83,16 +83,16 @@
    </properties>
    <point/>
   </object>
-  <object id="2" name="ARENA_BOUNDARY" x="1151.36" y="623.258">
+  <object id="2" name="ARENA_BOUNDARY" x="1151.36" y="623.258" visible="0">
    <polygon points="-835.346,-467.701 -898.571,-433.773 -830.863,-397.334 -887.432,-353.365 -637.728,-236.351 -565.23,-198.107 -618.051,-169.65 -568.77,-141.626 -381.667,-55.4165 -254.54,-104.983 -138.669,-47.6298 -60.6017,-77.5217 -247.664,-180.429 -1.27728,-305.023 -60.1026,-332.236 -255.143,-240.081 -319.804,-262.446 -380.048,-243.003"/>
   </object>
-  <object id="13" name="GATE" x="950.249" y="343.934">
+  <object id="13" name="GATE" x="935.749" y="368.434">
    <properties>
     <property name="channel" value="backtrack-level-gate"/>
     <property name="orientation" value="SW"/>
     <property name="sprite" value="metal"/>
    </properties>
-   <polygon points="-14.3333,19.6667 44.8698,53.9732 26.5485,66.8994 -37.277,31.289"/>
+   <polygon points="-24.3333,7.16667 37.3698,41.9732 56.5485,31.8994 -6.777,-2.71097"/>
   </object>
  </objectgroup>
  <layer id="3" name="Tile Layer 2" width="11" height="22" offsetx="0" offsety="33">
