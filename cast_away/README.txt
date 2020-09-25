@@ -21,3 +21,13 @@ License TBD
 
 Please see the various License files in the data directory for additional
 licensing statements.
+
+
+To produce a binary invoke:
+```
+build.bat
+```
+
+	
+
+
