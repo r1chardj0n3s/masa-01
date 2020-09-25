@@ -79,6 +79,7 @@
   </object>
   <object id="9" name="BUTTON" x="806.667" y="274.667">
    <properties>
+    <property name="avoid_components" value="cast_away.components.bullet.Bullet,cast_away.components.enemy.Enemy"/>
     <property name="channel" value="final-gate"/>
    </properties>
    <point/>
