@@ -8,9 +8,6 @@ class Position:
     y: float
     level: int
     
-    def __repr__(self):
-        return f'<Position x={self.x} y={self.y}>'
-
     def __iter__(self):
         return self.x, self.y
 

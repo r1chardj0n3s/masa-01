@@ -4,7 +4,7 @@ from dataclasses import dataclass
 @dataclass
 class Level:
     name: str
-    tile_map: object
+    # tile_map: object
     active: bool = False
 
 
