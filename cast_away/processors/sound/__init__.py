@@ -7,9 +7,10 @@ from cast_away.components.timeout import Timeout
 
 PLAYER_RUMBLE = ":resources:sounds/hit2.wav"
 
+
 class SoundProcessor(esper.Processor):
     def __init__(self):
-        self.rumble = arcade_sound = arcade.Sound(PLAYER_RUMBLE, streaming=True)
+        self.rumble = arcade.Sound(PLAYER_RUMBLE, streaming=True)
 
     def process(self, dt):
         for ent, sound in self.world.get_component(Sound):
@@ -21,7 +22,7 @@ class SoundProcessor(esper.Processor):
 
         for ent, (player, velocity) in self.world.get_components(Player, Velocity):
             if velocity.magnitude > 0:
-                self.rumble.play(volume=0.003)
+                self.rumble.play(volume=0.002)
             else:
                 self.rumble.stop()
 
