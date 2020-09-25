@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.4" tiledversion="1.4.2" orientation="staggered" renderorder="right-down" width="11" height="22" tilewidth="128" tileheight="64" infinite="0" staggeraxis="y" staggerindex="odd" nextlayerid="9" nextobjectid="10">
+<map version="1.4" tiledversion="1.4.2" orientation="staggered" renderorder="right-down" width="11" height="22" tilewidth="128" tileheight="64" infinite="0" staggeraxis="y" staggerindex="odd" nextlayerid="10" nextobjectid="10">
  <tileset firstgid="1" source="landscapeTiles_sheet.tsx"/>
  <tileset firstgid="129" source="kenney-props.tsx"/>
+ <imagelayer id="9" name="Image Layer 1" offsetx="64" offsety="0">
+  <image source="images/grass-background.jpg" width="1280" height="720"/>
+  <properties>
+   <property name="z" type="int" value="-1"/>
+  </properties>
+ </imagelayer>
  <layer id="1" name="Tile Layer 1" width="11" height="22">
   <properties>
    <property name="z" type="int" value="0"/>
