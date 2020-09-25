@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.4" tiledversion="1.4.2" orientation="staggered" renderorder="right-down" width="11" height="22" tilewidth="128" tileheight="64" infinite="0" staggeraxis="y" staggerindex="odd" nextlayerid="15" nextobjectid="14">
+<map version="1.4" tiledversion="1.4.2" orientation="staggered" renderorder="right-down" width="11" height="22" tilewidth="128" tileheight="64" infinite="0" staggeraxis="y" staggerindex="odd" nextlayerid="15" nextobjectid="15">
  <tileset firstgid="1" source="landscapeTiles_sheet.tsx"/>
  <tileset firstgid="129" source="kenney-props.tsx"/>
  <tileset firstgid="241" source="kenney-fences.tsx"/>
@@ -49,12 +49,12 @@
    </properties>
    <polygon points="0,0 -48,25.3333 12,57.3333 61.3333,34.6667"/>
   </object>
-  <object id="13" name="WIN" x="72.687" y="514.127">
+  <object id="14" name="EXIT" x="46.0942" y="487.535">
    <properties>
     <property name="match_components" value="cast_away.components.player.Player"/>
-    <property name="radius" type="int" value="20"/>
+    <property name="next_level" value="win"/>
    </properties>
-   <point/>
+   <polygon points="0,0 -48,25.3333 12,57.3333 61.3333,34.6667"/>
   </object>
  </objectgroup>
  <objectgroup id="11" name="OnLoad">
