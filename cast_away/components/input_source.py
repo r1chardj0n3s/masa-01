@@ -1,4 +1,4 @@
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 import arcade
 
 RIGHT = "right"
@@ -6,7 +6,6 @@ LEFT = "left"
 UP = "up"
 DOWN = "down"
 WEAPON = "weapon"
-START = "start"
 MENU = "menu"
 ACTIVATE = "activate"
 ITEM_1 = "item 1"
@@ -21,11 +20,10 @@ SELECT_PREV = "select prev"
 class InputEvent:
     input: str
 
-
+@dataclass
 class InputSource:
-    def __init__(self, name, state):
-        self.name = name
-        self.state = state
+    name: str
+    state: object
 
 
 _keybinds = {
@@ -44,12 +42,11 @@ _keybinds = {
 
 KEYBOARD_MAP = dict((v, k) for k, v in _keybinds.items())
 
-
+@dataclass
 class KeyboardState:
-    def __init__(self):
-        self.name = "keyboard"
-        self.keys = dict()
-        self.events = []
+    name: str = "keyboard"
+    keys: object = field(default_factory=lambda:dict())
+    events: object = field(default_factory=lambda:[])
 
     def get(self, action):
         return self.keys.get(_keybinds[action])
@@ -106,6 +103,7 @@ class JoystickState:
     def on_joyhat_motion(self, _joystick, hat_x, hat_y):
         self.hat_x = hat_x
         self.hat_y = hat_y
+        print(f"hat moved {hat_x} {hat_y}")
 
     def get(self, action):
         # print(f"joy.x {self.joystick.x}")

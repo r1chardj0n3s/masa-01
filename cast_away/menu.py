@@ -3,6 +3,7 @@ import arcade.gui
 from arcade.gui import UIFlatButton, UIManager
 from .components.input_source import (
     InputSource,
+    InputEvent,
     JoystickState,
     MENU,
     UP,
@@ -11,18 +12,18 @@ from .components.input_source import (
 )
 from .components.player import Player
 from .entities import player
+from cast_away.event_dispatch import register_listener, INPUT
 
 # from arcade.gui.ui_style import UIStyle
-MENU_SPEED = 0.1
 JOYSTICK_CHECK_FREQUENCY = 5
 
 BUTTON_WIDTH = 200
 BUTTON_HEIGHT = 40
 BUTTON_MARGIN = 10
 
-START = "Play"
+PLAY = "Play"
 EXIT = "Exit"
-BUTTONS = [START, EXIT]
+BUTTONS = [PLAY, EXIT]
 
 
 def check_joysticks(world):
@@ -40,12 +41,10 @@ def check_joysticks(world):
                 all_joysticks.append(name)
         # TODO: clean up removed joysticks
 
-
 class Menu:
     def __init__(self, window, world, show=True):
         self.window = window
         self.world = world
-        self.menu_input = 0
         self.joystick_check = JOYSTICK_CHECK_FREQUENCY
         self.selected_button = None
         self.show = show
@@ -123,32 +122,33 @@ class Menu:
                 check_joysticks(self.world)
                 self.joystick_check = 0
 
-            self.menu_input -= dt
-            if self.menu_input < 0:
-                for _, input_source in self.world.get_component(InputSource):
-                    if input_source.state.get(DOWN):
+            for e, source in self.world.get_component(InputSource):
+                events = source.state.events
+                for event in list(events):
+                    if event.input == DOWN:
                         self.highlight_button(1)
-                        self.menu_input = MENU_SPEED
-                    if input_source.state.get(UP):
+                        events.remove(event)
+                    if event.input == UP:
                         self.highlight_button(-1)
-                        self.menu_input = MENU_SPEED
+                        events.remove(event)
                     if (
-                        input_source.state.get(ACTIVATE)
+                        event.input == ACTIVATE
                         and self.selected_button is not None
                     ):
                         self.buttons[BUTTONS[self.selected_button]].pressed = True
-                        menu_activator = input_source
-                        self.menu_input = MENU_SPEED
+                        menu_activator = source
+                        events.remove(event)
 
-            if self.buttons[START].pressed:
+            if self.buttons[PLAY].pressed:
                 self.show = False
                 if menu_activator == None:
                     for _, input_source in self.world.get_component(InputSource):
                         if input_source.name == "Keyboard":
                             menu_activator = input_source
                 self.spawn_player(menu_activator)
+                self.buttons[PLAY].pressed = False
+                self.selected_button = None
 
-                self.buttons[START].pressed = False
             if self.buttons[EXIT].pressed:
                 arcade.close_window()
 
