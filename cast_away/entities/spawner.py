@@ -11,7 +11,7 @@ from cast_away.components.collidable import HitCircle
 def create_enemy_spawner(world,  x, y, type, level_ent):
     world.create_entity(
         EnemySpawner(),
-        Sprite("data/kenney_platformerkit2_isometric/buttonSquare_NE.png", scale=0.5),
+        # Sprite("data/kenney_platformerkit2_isometric/buttonSquare_NE.png", scale=0.5),
         Position(x, y, level_ent),
     )
 

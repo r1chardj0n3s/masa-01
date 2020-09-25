@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.4" tiledversion="1.4.2" orientation="staggered" renderorder="right-down" width="11" height="22" tilewidth="128" tileheight="64" infinite="0" staggeraxis="y" staggerindex="odd" nextlayerid="8" nextobjectid="9">
+<map version="1.4" tiledversion="1.4.2" orientation="staggered" renderorder="right-down" width="11" height="22" tilewidth="128" tileheight="64" infinite="0" staggeraxis="y" staggerindex="odd" nextlayerid="8" nextobjectid="10">
  <tileset firstgid="1" source="landscapeTiles_sheet.tsx"/>
  <imagelayer id="7" name="Image Layer 1" offsetx="64" offsety="0">
   <image source="images/water.jpg" width="1280" height="720"/>
@@ -76,6 +76,12 @@
     <property name="type" value="bee"/>
    </properties>
    <polygon points="39,16 -17.8773,-15.8728 -198.493,51.0281 -228.268,32.4714 -148.814,-82.4651 -221,-116 -274.388,-55.6571 -396,-17 -330.941,13.2457 -137.801,-42.0611 -109.241,-30.6122 -174.32,90.9695 -85,138 -51.8216,60.3881"/>
+  </object>
+  <object id="9" name="BUTTON" x="806.667" y="274.667">
+   <properties>
+    <property name="channel" value="final-gate"/>
+   </properties>
+   <point/>
   </object>
  </objectgroup>
 </map>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.4" tiledversion="1.4.2" orientation="staggered" renderorder="right-down" width="11" height="22" tilewidth="128" tileheight="64" infinite="0" staggeraxis="y" staggerindex="odd" nextlayerid="13" nextobjectid="11">
+<map version="1.4" tiledversion="1.4.2" orientation="staggered" renderorder="right-down" width="11" height="22" tilewidth="128" tileheight="64" infinite="0" staggeraxis="y" staggerindex="odd" nextlayerid="15" nextobjectid="14">
  <tileset firstgid="1" source="landscapeTiles_sheet.tsx"/>
  <tileset firstgid="129" source="kenney-props.tsx"/>
  <tileset firstgid="241" source="kenney-fences.tsx"/>
@@ -31,9 +31,9 @@
 0,297,297,297,297,297,301,300,292,0,0,
 299,297,297,297,297,297,297,300,294,295,0,
 297,300,297,297,297,297,300,301,296,0,0,
-0,297,300,301,297,301,300,301,297,0,0,
-0,297,300,301,301,300,301,297,0,0,0,
-0,0,297,300,301,300,297,297,0,0,0,
+0,300,300,301,297,301,300,301,297,0,0,
+300,297,300,301,301,300,301,297,0,0,0,
+300,0,297,300,301,300,297,297,0,0,0,
 0,0,297,300,300,297,297,0,0,0,0,
 0,0,0,297,300,297,297,0,0,0,0,
 0,0,0,297,297,297,0,0,0,0,0,
@@ -49,6 +49,13 @@
    </properties>
    <polygon points="0,0 -48,25.3333 12,57.3333 61.3333,34.6667"/>
   </object>
+  <object id="13" name="WIN" x="72.687" y="514.127">
+   <properties>
+    <property name="match_components" value="cast_away.components.player.Player"/>
+    <property name="radius" type="int" value="20"/>
+   </properties>
+   <point/>
+  </object>
  </objectgroup>
  <objectgroup id="11" name="OnLoad">
   <object id="5" name="ITEM" x="511.333" y="478.667">
@@ -57,8 +64,8 @@
    </properties>
    <point/>
   </object>
-  <object id="2" name="ARENA_BOUNDARY" x="320" y="356">
-   <polygon points="0,0 -184,88 276,309.333 365.333,309.333 818.667,86.6667 702.667,22.6667 893.333,-69.3333 830.667,-102.667 322.667,156"/>
+  <object id="2" name="ARENA_BOUNDARY" x="320" y="356" visible="0">
+   <polygon points="0,0 -313.418,151.823 -248.676,184.086 -119.213,118.32 276,309.333 365.333,309.333 818.667,86.6667 702.667,22.6667 893.333,-69.3333 830.667,-102.667 322.667,156"/>
   </object>
   <object id="4" name="PLAYER_SPAWN" x="1090.3" y="314.127">
    <properties>
@@ -84,6 +91,15 @@
    <properties>
     <property name="channel" value="movement-switch"/>
     <property name="in_level" type="bool" value="true"/>
+    <property name="orientation" value="SW"/>
+    <property name="sprite" value="metal"/>
+   </properties>
+   <polygon points="0,0 56.5097,31.5789 11.6343,53.1856 -41.5512,24.9307"/>
+  </object>
+  <object id="11" name="GATE" x="148.92" y="437.895">
+   <properties>
+    <property name="channel" value="final-gate"/>
+    <property name="in_level" type="bool" value="false"/>
     <property name="orientation" value="SW"/>
     <property name="sprite" value="metal"/>
    </properties>
@@ -223,7 +239,7 @@
 0,0,0,0,357,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,
-0,317,0,0,0,0,0,0,322,0,0,
+0,0,0,0,0,0,0,0,322,0,0,
 0,321,0,0,0,0,0,316,0,0,0,
 0,0,317,0,0,0,0,316,0,0,0,
 0,0,317,0,0,0,316,0,0,0,0,

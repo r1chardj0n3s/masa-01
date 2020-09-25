@@ -5,14 +5,18 @@ from cast_away.components.useful_polygon import UsefulPolygon
 from cast_away.components.position import Position
 
 def create_trigger(world, level_ent, obj):
+    properties = obj.properties
+    if properties is None:
+        properties = {}
     collision_shape = None
     if isinstance(obj, UsefulPolygon):
         collision_shape = HitPoly(obj.point_list)
     else: 
         #assume circle
-        collision_shape = HitCircle(obj.properties.get("radius"))
-    match_components = [locate(class_name) for class_name in obj.properties.get("match_components", []).split(",")]
-    avoid_components = [locate(class_name) for class_name in obj.properties.get("avoid_components", [])]
+        collision_shape = HitCircle(properties.get("radius"))
+    
+    match_components = [locate(class_name) for class_name in properties.get("match_components", "").split(",")]
+    avoid_components = [locate(class_name) for class_name in properties.get("avoid_components", "").split(",")]
     
     world.create_entity(
         collision_shape,
