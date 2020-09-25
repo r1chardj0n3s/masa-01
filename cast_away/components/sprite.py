@@ -1,5 +1,6 @@
 import arcade
-
+from dataclasses import dataclass
+from cast_away.components.draw_layer import DrawLayer, DEFAULT_LAYER
 
 def _prop(key):
     return property(
@@ -11,11 +12,12 @@ def _prop(key):
 
 
 class Sprite:
-    def __init__(self, path, scale=1):
+    def __init__(self, path, scale=1, draw_layer=DEFAULT_LAYER):
         self._state = {
             "path": path,
             "scale": scale
         }
+        self.draw_layer = draw_layer
         self._changes = {}
         self._arcade_sprite = arcade.Sprite(path, scale = scale)
 
@@ -54,7 +56,7 @@ class Sprite:
     alpha = _prop("alpha")
     angle = _prop("angle")
 
-
+@dataclass
 class SpriteList:
     def __init__(self, _arcade_sprite_list):
         self._arcade_sprite_list = _arcade_sprite_list

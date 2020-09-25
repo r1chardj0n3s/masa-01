@@ -1,7 +1,7 @@
 import arcade
 import pytiled_parser
 
-from cast_away.components.draw_layer import DrawLayer
+from cast_away.components.draw_layer import DrawLayer, SPRITES_LAYER_Z
 import cast_away.entities.level.on_load
 
 from cast_away.entities.level.triggers import create_trigger
@@ -10,9 +10,6 @@ from cast_away.components.bullet import Bullet
 from cast_away.components.level import InLevel, Level
 
 from cast_away.tmx_fixes import load_object_layer
-
-SPRITES_LAYER_Z = 50
-
 
 def create_image_layer(world, tmx_map, layer, level_comp):
     world.create_entity(
@@ -55,9 +52,6 @@ def activate_map(world, current_level):
         triggers = load_object_layer(tile_map, "Triggers")
         for obj in triggers.tiled_objects:
             create_trigger(world, level_ent, obj)
-
-        sprite_list =  arcade.SpriteList()
-        world.create_entity(DrawLayer(SPRITES_LAYER_Z, sprite_list), SpriteList(sprite_list), InLevel(level_ent))
 
         # add all tiled layers
         for layer in tile_map.layers:
