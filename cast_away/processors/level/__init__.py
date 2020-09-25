@@ -37,10 +37,9 @@ class LevelProcessor(esper.Processor):
                         last_level = self.world.component_for_entity(
                             current_level.last_level, Level
                         )
-                        spawn = spawns.get(last_level.name, None)
+                        spawn = spawns.get(last_level.name)
                     if spawn is None:
-                        for name, s in spawns.items():
-                            spawn = s
+                        for _, spawn in spawns.items():
                             if spawn.first:
                                 break
                     position.x = spawn.x
