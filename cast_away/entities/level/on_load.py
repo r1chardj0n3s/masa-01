@@ -5,6 +5,7 @@ from cast_away.entities.spawner import create_enemy_spawner, create_enemy_path
 from cast_away.entities.button import create_button
 from cast_away.entities.gate import create_gate
 from cast_away.entities.item import create_level_item
+from cast_away.entities.trash_can import create_trash_can
 
 
 def ARENA_BOUNDARY(world, level_ent, obj):
@@ -43,3 +44,9 @@ def BUTTON(world, level_ent, obj):
 
 def GATE(world, level_ent, obj):
     create_gate(world, obj, level_ent)
+
+def TRASH_CAN(world, level_ent, obj):
+    x = obj.location.x
+    y = obj.location.y
+    item_name = obj.properties["item_name"]
+    create_trash_can(world, x, y, level_ent, item_name)

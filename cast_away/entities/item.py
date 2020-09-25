@@ -44,7 +44,7 @@ def create_level_item(world, name, x, y, level_ent):
     return world.create_entity(
         LevelItem(name),
         HitCircle(level_item_data.radius),
-        Collidable(match_components=[Player]),
+        Collidable(match_components=[Inventory]),
         Position(x, y, level_ent),
         Sprite(level_item_data.image, scale=level_item_data.scale),
         Timeout(1),
