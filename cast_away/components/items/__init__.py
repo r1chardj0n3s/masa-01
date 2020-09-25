@@ -1,5 +1,7 @@
 from dataclasses import dataclass, field
 from cast_away.components.items.uses import Throwable, LazorGun
+from cast_away.components.timeout import Timeout
+from cast_away.components.despawn import Despawn
 
 @dataclass
 class LevelItem:
@@ -35,6 +37,10 @@ ITEM_DATA = {
     "saw": (
         _LevelItemData(
             image=":resources:images/enemies/saw.png",
+            component_classes=[
+                _ComponentTemplate(Timeout, {"timeout": 5}),
+                _ComponentTemplate(Despawn)
+            ],
         ), _InventoryItemData(
             image=":resources:images/enemies/saw.png",
             component_classes=[

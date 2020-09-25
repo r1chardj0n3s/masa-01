@@ -21,11 +21,11 @@ from . import desired_velocity
 from . import emitter
 from . import tmx_reload
 from . import debug_probe
-
+from . import despawn
 
 def add_processors(world):
     tmx_reload.init(world)
-
+    
     button.init(world)
     timeout.init(world)
 
@@ -56,5 +56,6 @@ def add_processors(world):
     velocity_effect_processor.init(world)
 
     debug_probe.init(world)
+    despawn.init(world)
 
     return world
