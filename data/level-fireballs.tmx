@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.4" tiledversion="1.4.2" orientation="staggered" renderorder="right-down" width="11" height="22" tilewidth="128" tileheight="64" infinite="0" staggeraxis="y" staggerindex="odd" nextlayerid="8" nextobjectid="15">
+ <tileset firstgid="1" source="landscapeTiles_sheet.tsx"/>
+ <tileset firstgid="129" source="towerdefence.tsx"/>
+ <layer id="3" name="Tile Layer 3" width="11" height="22" offsetx="0" offsety="32">
+  <properties>
+   <property name="z" type="int" value="5"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJxjYKAf2MpEnDoXKIaBYAJqQ5DU41LrgoSLiTAThiOAOJ5IdUFAXIFDbQiSO2FqIxlQ/cmApAabOlLVhmBRS0gdsnp0tSE41JYTaSYDVC6XCLUgcVAcVRNpZjCaG/GZCQtHXOqwqWXAoxZdHSFAilpiAQDN4R8K
+  </data>
+ </layer>
+ <layer id="1" name="Tile Layer 1" width="11" height="22">
+  <properties>
+   <property name="z" type="int" value="15"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJxjYKAfcCFBHSlqtzIxMAhQ2UwQJtZMQupgahmwqBXEYSY6EMQijst+QQZMc3C5E5d92MzcwUQ4DLG5k5BaYtQTq45Yd8LMJAWQqp6eAAAi8AsL
+  </data>
+ </layer>
+ <layer id="7" name="Layer 1" width="11" height="22">
+  <properties>
+   <property name="z" type="int" value="15"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJxjYKAfcCFBHSlqQUCAyma6kGAmIXUwtVuZMNUK4jATHQhiEcdlvyADpjm43InLPlzuJBSG2OymhlpSzISpp5aZyOoHKwAAZP4KHw==
+  </data>
+ </layer>
+ <objectgroup id="5" name="Triggers">
+  <object id="2" name="EXIT" x="81.3333" y="638.333">
+   <properties>
+    <property name="match_components" value="cast_away.components.player.Player"/>
+    <property name="next_level" value="spikes"/>
+   </properties>
+   <polygon points="0,0 46.6667,28 170.667,30.6667 -1.3333,-62.6667"/>
+  </object>
+  <object id="13" name="EXIT" x="1125.33" y="110.667">
+   <properties>
+    <property name="match_components" value="cast_away.components.player.Player"/>
+    <property name="next_level" value="enemy"/>
+   </properties>
+   <polygon points="0,0 46.6667,28 89.3333,8 30.6667,-16"/>
+  </object>
+ </objectgroup>
+ <objectgroup id="6" name="OnLoad">
+  <object id="3" name="PLAYER_SPAWN" x="196.666" y="605">
+   <properties>
+    <property name="first" type="bool" value="false"/>
+    <property name="last_level" value="spikes"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="1" name="ARENA_BOUNDARY" x="77.3334" y="633.333" visible="0">
+   <polygon points="-1.33333,-62.6667 -3.54365,4.36854 53.1914,33.6089 180,36 984,-386.666 944,-409.333 1142.66,-506.666 1088,-536 882.658,-434.698 822.667,-464"/>
+  </object>
+  <object id="9" name="ENEMY_SPAWN" x="464.5" y="285">
+   <properties>
+    <property name="direction" value="SE"/>
+    <property name="type" value="cannon"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="10" name="ENEMY_SPAWN" x="724" y="158">
+   <properties>
+    <property name="direction" value="SE"/>
+    <property name="type" value="cannon"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="11" name="ENEMY_SPAWN" x="935" y="388">
+   <properties>
+    <property name="direction" value="NW"/>
+    <property name="type" value="cannon"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="12" name="ENEMY_SPAWN" x="677" y="518">
+   <properties>
+    <property name="direction" value="NW"/>
+    <property name="type" value="cannon"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="14" name="PLAYER_SPAWN" x="1121.33" y="144">
+   <properties>
+    <property name="first" type="bool" value="false"/>
+    <property name="last_level" value="enemy"/>
+   </properties>
+   <point/>
+  </object>
+ </objectgroup>
+</map>

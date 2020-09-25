@@ -10,9 +10,12 @@ class SequenceProcessor(esper.Processor):
             if isinstance(sequence.active_comp, SpriteEffects):
                 if not sequence.active_comp.effects:
                     sequence.active_comp = None
+            else:
+                sequence.active_comp = None
 
             if not sequence.active_comp:
                 sequence.active_comp = sequence.comps.pop(0)
+                print('make active',sequence.active_comp )
                 self.world.add_component(sequence.target_ent, sequence.active_comp)
 
             if not sequence.comps:

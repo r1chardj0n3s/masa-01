@@ -37,7 +37,7 @@
   <object id="2" name="EXIT" x="81.3333" y="669.333">
    <properties>
     <property name="match_components" value="cast_away.components.player.Player"/>
-    <property name="next_level" value="spikes"/>
+    <property name="next_level" value="fireballs"/>
    </properties>
    <polygon points="0,0 46.6667,28 89.3333,8 30.6667,-16"/>
   </object>
@@ -46,14 +46,17 @@
   <object id="3" name="PLAYER_SPAWN" x="177.333" y="644">
    <properties>
     <property name="first" type="bool" value="true"/>
-    <property name="last_level" value="spikes"/>
+    <property name="last_level" value="fireballs"/>
    </properties>
    <point/>
   </object>
-  <object id="1" name="ARENA_BOUNDARY" x="90.6667" y="665.333" visible="0">
+  <object id="1" name="ARENA_BOUNDARY" x="90.6667" y="665.333">
    <polygon points="0,0 37.3333,34.6667 486.667,-190.667 549.333,-253.333 745.333,-160 1121.33,-345.333 678.667,-569.333 300,-380 493.333,-288 424,-221.333"/>
   </object>
   <object id="4" name="ENEMY_SPAWN" x="806.667" y="274.667">
+   <properties>
+    <property name="type" value="bee"/>
+   </properties>
    <point/>
   </object>
   <object id="6" name="ITEM" x="410.667" y="524">
@@ -63,6 +66,9 @@
    <point/>
   </object>
   <object id="7" name="ENEMY_PATH" x="978" y="275">
+   <properties>
+    <property name="type" value="bee"/>
+   </properties>
    <polygon points="39,16 -17.8773,-15.8728 -198.493,51.0281 -228.268,32.4714 -148.814,-82.4651 -221,-116 -274.388,-55.6571 -396,-17 -330.941,13.2457 -137.801,-42.0611 -109.241,-30.6122 -174.32,90.9695 -85,138 -51.8216,60.3881"/>
   </object>
  </objectgroup>
