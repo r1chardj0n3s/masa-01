@@ -39,8 +39,11 @@ def test_circles(world, ea, eb):
     pa = world.component_for_entity(ea, Position)
     cb = world.component_for_entity(eb, HitCircle)
     pb = world.component_for_entity(eb, Position)
-
-    return pa.distance(pb) < ca.radius + cb.radius
+    try:
+        return pa.distance(pb) < ca.radius + cb.radius
+    except:
+        print(f"collision error with: \n\t{ea} {world.components_for_entity(ea)} \n\t{eb} {world.components_for_entity(eb)}")
+        raise
 
 
 def test_polys(world, ea, eb):

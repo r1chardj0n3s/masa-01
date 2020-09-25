@@ -1,7 +1,7 @@
 import arcade
 import esper
 
-from cast_away.components.health import Health
+from cast_away.components.health import Health, HEART_FULL, HEART_EMPTY
 from cast_away.components.hud.health_display import HealthDisplay
 from cast_away.components.hud.inventory_display import InventoryHudDisplay
 from cast_away.components.inventory import Inventory
@@ -10,9 +10,6 @@ from cast_away.components.items import InventoryItem, ITEM_DATA
 from cast_away.components.hud.hud_layer import HUDLayer
 from cast_away.entities.hud.inventory_display import inventory_hud_sprite
 from cast_away.components.multiplayer_identifier import MultiplayerIdentifier, COLOURS
-
-FULL = "data/kenney_platformerpack_redux/HUD/hudHeart_full.png"
-EMPTY = "data/kenney_platformerpack_redux/HUD/hudHeart_empty.png"
 
 
 class HealthDisplayProcessor(esper.Processor):
@@ -23,9 +20,9 @@ class HealthDisplayProcessor(esper.Processor):
             health = self.world.component_for_entity(display.player_entity, Health)
             for i in range(3):
                 if health.amount > i:
-                    hud_layer.drawable[i].texture = arcade.load_texture(FULL)
+                    hud_layer.drawable[i].texture = arcade.load_texture(HEART_FULL)
                 else:
-                    hud_layer.drawable[i].texture = arcade.load_texture(EMPTY)
+                    hud_layer.drawable[i].texture = arcade.load_texture(HEART_EMPTY)
 
 
 class InventoryDisplayProcessor(esper.Processor):

@@ -1,7 +1,7 @@
 from cast_away.components.player import Player
 from cast_away.components.level import LevelProgression
 from cast_away.components.health import Health, HealthDown
-
+from cast_away.entities.sequence import begin_win_sequence
 
 def EXIT(world, level_ent, obj, target):
     if world.has_component(target, Player):
@@ -15,9 +15,10 @@ def SPIKE(world, level_ent, obj, target):
         health = world.component_for_entity(target, Health)
         health.effects.append(HealthDown(1))
 
+game_won = False
 
 def WIN(world, level_ent, obj, target):
-    print("YOU WIN!")
-    import sys
-
-    sys.exit()
+    global game_won
+    if not game_won:
+        game_won = True
+        begin_win_sequence(world, level_ent)
