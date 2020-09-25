@@ -123,6 +123,7 @@ class Menu:
                 self.joystick_check = 0
 
             for e, source in self.world.get_component(InputSource):
+                source.state.update()
                 events = source.state.events
                 for event in list(events):
                     if event.input == DOWN:
@@ -135,9 +136,13 @@ class Menu:
                         event.input == ACTIVATE
                         and self.selected_button is not None
                     ):
-                        self.buttons[BUTTONS[self.selected_button]].pressed = True
                         menu_activator = source
+                        arcade_button = self.buttons[BUTTONS[self.selected_button]]
+                        arcade_button.pressed = True
+                        arcade_button.hovered = False
+                        self.selected_button = None
                         events.remove(event)
+                        
 
             if self.buttons[PLAY].pressed:
                 self.show = False
@@ -147,7 +152,6 @@ class Menu:
                             menu_activator = input_source
                 self.spawn_player(menu_activator)
                 self.buttons[PLAY].pressed = False
-                self.selected_button = None
 
             if self.buttons[EXIT].pressed:
                 arcade.close_window()

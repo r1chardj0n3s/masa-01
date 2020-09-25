@@ -5,7 +5,6 @@ RIGHT = "right"
 LEFT = "left"
 UP = "up"
 DOWN = "down"
-WEAPON = "weapon"
 MENU = "menu"
 ACTIVATE = "activate"
 ITEM_1 = "item 1"
@@ -31,7 +30,6 @@ _keybinds = {
     LEFT: arcade.key.LEFT,
     UP: arcade.key.UP,
     DOWN: arcade.key.DOWN,
-    WEAPON: arcade.key.SPACE,
     MENU: arcade.key.ESCAPE,
     ACTIVATE: arcade.key.ENTER,
     ITEM_1: arcade.key.Z,
@@ -48,6 +46,9 @@ class KeyboardState:
     keys: object = field(default_factory=lambda:dict())
     events: object = field(default_factory=lambda:[])
 
+    def update(self):
+        pass
+
     def get(self, action):
         return self.keys.get(_keybinds[action])
 
@@ -60,7 +61,6 @@ class KeyboardState:
 # PS button = 12
 
 _buttonbinds = {
-    WEAPON: 0,
     MENU: 7,
     ACTIVATE: 0,
     ITEM_1: 1,
@@ -85,16 +85,19 @@ class JoystickState:
         self.events = []
         self.hat_x = 0
         self.hat_y = 0
+        self.last_x = 0
+        self.last_y = 0
         joystick.open()
         joystick.on_joybutton_press = self.on_joybutton_press
         joystick.on_joybutton_release = self.on_joybutton_release
         joystick.on_joyhat_motion = self.on_joyhat_motion
 
     def on_joybutton_press(self, _joystick, button):
-        # print(f"button {button} press")
+        print(f"button {button} press")
         self.buttons[button] = True
         if button in _button_lookup:
             self.events.append(InputEvent(_button_lookup[button]))
+        print(f"events: {self.events}")
 
     def on_joybutton_release(self, _joystick, button):
         self.buttons[button] = False
@@ -105,16 +108,45 @@ class JoystickState:
         self.hat_y = hat_y
         print(f"hat moved {hat_x} {hat_y}")
 
+    def _joy_n(self, v, d):
+        if v > d:
+            return v
+        if v < d * -1 :
+            return v
+        return 0
+
+    def _joy_x(self):
+        return self._joy_n(self.joystick.x, DEAD_ZONE_X)
+
+    def _joy_y(self):
+        return self._joy_n(self.joystick.y, DEAD_ZONE_Y)
+        
+    def update(self):
+        now_x = self._joy_x()
+        if now_x < 0 and self.last_x >= 0:
+            self.events.append(InputEvent(LEFT))
+        if now_x > 0 and self.last_x <= 0:
+            self.events.append(InputEvent(RIGHT))
+        self.last_x = now_x
+
+        now_y = self._joy_y()
+        if now_y < 0 and self.last_y >= 0:
+            self.events.append(InputEvent(UP))
+        if now_y > 0 and self.last_y <= 0:
+            self.events.append(InputEvent(DOWN))
+        self.last_y = now_y
+
+
     def get(self, action):
         # print(f"joy.x {self.joystick.x}")
         # print(f"joy.y {self.joystick.y}")
         if action == LEFT:
-            return self.joystick.x < DEAD_ZONE_X * -1
+            return self._joy_x() < 0
         elif action == RIGHT:
-            return self.joystick.x > DEAD_ZONE_X
+            return self._joy_x() > 0
         elif action == UP:
-            return self.joystick.y < DEAD_ZONE_Y * -1
+            return self._joy_y() < 0
         elif action == DOWN:
-            return self.joystick.y > DEAD_ZONE_Y
+            return self._joy_y() > 0
         else:
             return self.buttons.get(_buttonbinds.get(action))

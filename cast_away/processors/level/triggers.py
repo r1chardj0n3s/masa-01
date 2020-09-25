@@ -14,3 +14,7 @@ def SPIKE(world, level_ent, obj, target):
     if world.has_component(target, Player):
         health = world.component_for_entity(target, Health)
         health.effects.append(HealthDown(1))
+
+def WIN(world, level_ent, obj, target):
+    print("YOU WIN!")
+    import sys; sys.exit()
