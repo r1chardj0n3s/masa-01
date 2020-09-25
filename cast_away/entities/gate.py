@@ -6,6 +6,7 @@ from cast_away.components.position import Position
 from cast_away.components.collidable import Collidable, HitPoly
 from cast_away.components.velocity import Velocity
 from cast_away.event_handlers.gate import toggle_gate
+from cast_away.components.draw_layer import GATES_LAYER
 
 SW = "SW"
 SE = "SE"
@@ -38,6 +39,6 @@ def create_gate(world, obj, level_ent):
             script=toggle_gate,
             level_ent=level_listen,
         ),
-        Sprite(closed_path, scale),
+        Sprite(closed_path, scale, draw_layer=GATES_LAYER),
         Gate(open_path, closed_path),
     )

@@ -5,6 +5,7 @@ from cast_away.components.timeout import Timeout
 from cast_away.components.inventory import Inventory
 from cast_away.components.items import LevelItem, InventoryItem, ITEM_DATA
 from cast_away.components.player import Player
+from cast_away.components.draw_layer import ITEM_LAYER
 
 INVENTORY_SIZE = 3
 
@@ -46,7 +47,7 @@ def create_level_item(world, name, x, y, level_ent):
         HitCircle(level_item_data.radius),
         Collidable(match_components=[Inventory]),
         Position(x, y, level_ent),
-        Sprite(level_item_data.image, scale=level_item_data.scale),
+        Sprite(level_item_data.image, scale=level_item_data.scale, draw_layer=ITEM_LAYER),
         Timeout(1),
         *[c.build() for c in level_item_data.component_classes]
     )
