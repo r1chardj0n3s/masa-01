@@ -3,7 +3,10 @@ from dataclasses import dataclass
 @dataclass
 class Button:
     channel: str
-    in_level: bool
+    up_image: str
+    down_image: str
+    in_level: bool = False
+    down_state: bool = False
 
 @dataclass
 class Channel:

@@ -7,7 +7,7 @@ from cast_away.components.spawner import EnemySpawner
 from cast_away.components.position import Position
 
 from cast_away.entities.enemy import create_enemy
-from cast_away.components.draw_layer import DrawLayer
+from cast_away.components.draw_layer import DrawLayer, PARTICLE_LAYER
 from cast_away.components.graphics.emitter import Emitter
 
 from cast_away.graphics.emitters import bee_poof
@@ -31,7 +31,7 @@ class EnemySpawnProcessor(esper.Processor):
             else:
                 es.spawning = True
                 e = bee_poof(position)
-                self.world.create_entity(DrawLayer(100, e), Emitter(e), InLevel(position.level))
+                self.world.create_entity(DrawLayer(PARTICLE_LAYER, e), Emitter(e), InLevel(position.level))
                 self.world.add_component(ent, Timeout(1))
 
 

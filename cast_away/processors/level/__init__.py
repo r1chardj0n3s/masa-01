@@ -4,8 +4,6 @@ import pytiled_parser
 import os
 
 from cast_away.components.useful_polygon import UsefulPolygon
-from cast_away.components.sprite import SpriteList
-from cast_away.components.draw_layer import DrawLayer
 from cast_away.components.position import Position
 from cast_away.components.player import Player
 from cast_away.components.level.player_spawn import PlayerSpawns

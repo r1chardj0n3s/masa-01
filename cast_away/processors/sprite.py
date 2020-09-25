@@ -4,11 +4,13 @@ import esper
 from cast_away.components.position import Position
 from cast_away.components.facing import Facing
 from cast_away.components.sprite import Sprite, SpriteList
+from cast_away.components.level import InLevel
 from cast_away.components.multiplayer_identifier import (
     MultiplayerIdentifier,
     player_texture_for,
 )
 from cast_away.components.level import Level
+from cast_away.components.draw_layer import DrawLayer
 
 
 class SpriteProcessor(esper.Processor):
@@ -21,30 +23,38 @@ class SpriteProcessor(esper.Processor):
 # make the arcade sprite list (a singleton, hopefully) reflect the ECS sprites
 class SpriteListProcessor(esper.Processor):
     def process(self, dt):
-        all_sprites = set()
-        for e, sprite in self.world.get_component(Sprite):
+        all_sprites = {}
+        for e, (sprite, position) in self.world.get_components(Sprite, Position):
             sprite.apply_changes()
-            if self.world.has_component(e, Position):
-                position = self.world.component_for_entity(e, Position)
-                if position.level is not None:
-                    level = self.world.component_for_entity(position.level, Level)
-                    if level.active:
-                        all_sprites.add(sprite)
-            else:
-                all_sprites.add(sprite)
+            layer = all_sprites.setdefault((sprite.draw_layer, position.level), set())
+            layer.add(sprite._arcade_sprite)
 
-        for _, sprite_list in self.world.get_component(SpriteList):
-            for sprite in list(sprite_list._arcade_sprite_list):
-                if sprite not in all_sprites:
-                    sprite_list._arcade_sprite_list.remove(sprite)
+        layers = []
+        for e, (draw_layer, sprite_list, in_level) in self.world.get_components(DrawLayer, SpriteList, InLevel):
+            layers.append((draw_layer.priority, in_level.level_ent))
 
-            for sprite in all_sprites:
+        for layer, level_ent in all_sprites:
+            if (layer, level_ent) not in layers:
+                sprite_list =  arcade.SpriteList()
+                self.world.create_entity(
+                    DrawLayer(layer, sprite_list), 
+                    SpriteList(sprite_list), 
+                    InLevel(level_ent)
+                )
+        
+        #TODO: clean up unused draw layers
+        
+        for _, (draw_layer, sprite_list, in_level) in self.world.get_components(DrawLayer, SpriteList, InLevel):
+            sprites_in_layer = all_sprites.get((draw_layer.priority, in_level.level_ent), [])
+            for arcade_sprite in list(sprite_list._arcade_sprite_list):
+                if arcade_sprite not in sprites_in_layer:
+                    sprite_list._arcade_sprite_list.remove(arcade_sprite)
+
+            for arcade_sprite in sprites_in_layer:
                 if (
-                    sprite._arcade_sprite
-                    not in sprite_list._arcade_sprite_list.sprite_list
+                    arcade_sprite not in sprite_list._arcade_sprite_list.sprite_list
                 ):
-                    sprite_list._arcade_sprite_list.append(sprite._arcade_sprite)
-
+                    sprite_list._arcade_sprite_list.append(arcade_sprite)
 
 def init(world):
     world.add_processor(SpriteProcessor())

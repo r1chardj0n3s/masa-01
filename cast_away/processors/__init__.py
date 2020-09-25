@@ -2,6 +2,7 @@ import esper
 
 from ..components import invulnerable
 
+from . import button
 from . import health
 from . import level
 from . import spawner
@@ -26,6 +27,7 @@ from . import emitter
 def init_world():
     world = esper.World()
 
+    button.init(world)
     timeout.init(world)
     sequence.init(world)
     emitter.init(world)

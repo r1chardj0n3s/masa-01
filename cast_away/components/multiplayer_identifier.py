@@ -2,7 +2,8 @@ import arcade
 import random
 from dataclasses import dataclass
 
-from cast_away.components.sprite import Sprite, SpriteList
+from cast_away.components.sprite import Sprite
+from cast_away.components.draw_layer import CHARACTER_LAYER
 from cast_away.components.facing import Facing
 
 
@@ -23,7 +24,7 @@ class MultiplayerIdentifier:
 
 
 def player_sprite_for(colour, facing):
-    s = Sprite("data/kenney_robot-pack_side/robot_blueDrive1.png", scale=0.25)
+    s = Sprite("data/kenney_robot-pack_side/robot_blueDrive1.png", scale=0.25, draw_layer=CHARACTER_LAYER)
     s._arcade_sprite.texture = player_texture_for(colour, facing)
     return s
 

@@ -16,6 +16,9 @@ def collision(world, message):
     if not world.has_component(source, Button) or world.has_component(source, Timeout):
         return
     button = world.component_for_entity(source, Button)
+    if button.down_state:
+        return
+    button.down_state = True
     level_ent = None
     if button.in_level:
         level_ent = world.component_for_entity(source, Position).level
