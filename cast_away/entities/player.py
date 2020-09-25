@@ -8,8 +8,8 @@ from cast_away.components.inventory import Inventory
 from cast_away.entities.hud.health_display import create_health_display
 from cast_away.entities.hud.inventory_display import create_player_inventory_hud
 from cast_away.entities.sound import create_sound
+from cast_away.entities.sequence import create_sequence
 from cast_away.components.sprite_effect import SpinEffect, SpriteEffects, ThrowToEffect
-from cast_away.components.sequence import Sequence
 from cast_away.components.multiplayer_identifier import (
     MultiplayerIdentifier,
     player_sprite_for,
@@ -45,21 +45,19 @@ def create_player(world, input_source, mp=None):
     )
 
     create_sound(world, PLAYER_FALL_SOUND, volume=0.08, delay=0.5)
-    world.create_entity(
-        Sequence(
-            player_ent,
-            SpriteEffects(
-                ThrowToEffect(
-                    1,
-                    Position(-100, 0, level_ent),
-                    Position(spawner.x, spawner.y, level_ent),
-                    400,
-                ),
-                SpinEffect(1, 720),
+    create_sequence(world, 
+        player_ent,
+        SpriteEffects(
+            ThrowToEffect(
+                1,
+                Position(-100, 0, level_ent),
+                Position(spawner.x, spawner.y, level_ent),
+                400,
             ),
-            Position(spawner.x, spawner.y, level_ent),
-            Player(input_source),
-        )
+            SpinEffect(1, 720),
+        ),
+        Position(spawner.x, spawner.y, level_ent),
+        Player(input_source),
     )
 
     create_hud(world, player_ent)
