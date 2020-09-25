@@ -1,6 +1,7 @@
 import arcade
 
-from cast_away.components.player import Player
+from cast_away.components.player import Player, PLAYER_FALL_SOUND
+from cast_away.components.sound import Sound
 from cast_away.components.velocity import Velocity
 from cast_away.components.position import Position
 from cast_away.components.collidable import HitCircle, Collidable
@@ -11,6 +12,7 @@ from cast_away.components.inventory import Inventory
 from cast_away.event_dispatch import ENTITY_DIED, register_listener
 from cast_away.entities.hud.health_display import create_health_display
 from cast_away.entities.hud.inventory_display import create_player_inventory_hud
+from cast_away.entities.sound import create_sound
 from cast_away.components.sprite_effect import SpinEffect, SpriteEffects, ThrowToEffect
 from cast_away.components.sequence import Sequence
 from cast_away.components.multiplayer_identifier import (
@@ -47,6 +49,7 @@ def create_player(world, input_source, mp=None):
         Inventory(),
     )
 
+    create_sound(world, PLAYER_FALL_SOUND, volume=0.08, delay=0.5)
     world.create_entity(
         Sequence(
             player_ent,
