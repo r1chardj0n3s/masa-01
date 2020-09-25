@@ -15,7 +15,6 @@ class SequenceProcessor(esper.Processor):
 
             if not sequence.active_comp:
                 sequence.active_comp = sequence.comps.pop(0)
-                print('make active',sequence.active_comp )
                 self.world.add_component(sequence.target_ent, sequence.active_comp)
 
             if not sequence.comps:
