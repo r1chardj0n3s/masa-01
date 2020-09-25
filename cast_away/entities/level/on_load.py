@@ -5,6 +5,7 @@ from cast_away.entities.spawner import create_enemy_spawner, create_enemy_path
 from cast_away.entities.button import create_button
 from cast_away.entities.gate import create_gate
 from cast_away.entities.item import create_level_item
+from cast_away.entities.prop import create_prop
 from cast_away.entities.shooter import create_shooter
 from cast_away.entities.trash_can import create_trash_can
 
@@ -32,7 +33,15 @@ def ITEM(world, level_ent, obj):
 
 
 def ENEMY_SPAWN(world, level_ent, obj):
-    create_enemy_spawner(world, obj, level_ent)
+    create_enemy_spawner(
+        world, obj.location.x, obj.location.y, obj.properties["type"], level_ent
+    )
+
+
+def PROP(world, level_ent, obj):
+    create_prop(
+        world, obj.location.x, obj.location.y, obj.properties["type"], level_ent
+    )
 
 
 def ENEMY_PATH(world, level_ent, obj):

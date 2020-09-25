@@ -77,3 +77,20 @@ class ThrowToEffect:
 
         sprite.center_x = ax + ux
         sprite.center_y = ay + uy
+
+
+class AnimatedTextureEffect:
+    def __init__(self, frames):
+        self.frames = frames
+        self.frame_number = 0
+        self.timer = 0
+        self.play_time = 100
+
+    def run(self, dt, sprite):
+        self.timer -= dt
+        if self.timer <= 0:
+            self.frame_number += 1
+            if self.frame_number == len(self.frames):
+                self.frame_number = 0
+            self.timer, sprite._arcade_sprite.texture = self.frames[self.frame_number]
+        self.play_time = 100

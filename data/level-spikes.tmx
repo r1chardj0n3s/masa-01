@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.4" tiledversion="1.4.2" orientation="staggered" renderorder="right-down" width="11" height="22" tilewidth="128" tileheight="64" infinite="0" staggeraxis="y" staggerindex="odd" nextlayerid="10" nextobjectid="10">
+<map version="1.4" tiledversion="1.4.2" orientation="staggered" renderorder="right-down" width="11" height="22" tilewidth="128" tileheight="64" infinite="0" staggeraxis="y" staggerindex="odd" nextlayerid="10" nextobjectid="12">
  <tileset firstgid="1" source="landscapeTiles_sheet.tsx"/>
  <tileset firstgid="129" source="kenney-props.tsx"/>
  <imagelayer id="9" name="Image Layer 1" offsetx="64" offsety="0">
@@ -88,6 +88,12 @@
   </object>
   <object id="1" name="ARENA_BOUNDARY" x="4" y="636">
    <polygon points="0,0 124,65.3333 585.333,-162.667 516,-201.333 552,-220 622.667,-184 890.667,-314.667 701.333,-414.667 829.333,-481.333 1020,-381.333 958.667,-350.667 1021.33,-318.667 1277.33,-450.667 1282.67,-573.333 1336,-610.667 1276,-632 1014.67,-508 768,-636 629.333,-636 501.333,-572 588,-517.333 582.667,-490.667 432,-416 516,-365.333 516,-336 441.333,-289.333 501.333,-248"/>
+  </object>
+  <object id="11" name="PROP" x="414.667" y="265.333">
+   <properties>
+    <property name="type" value="goat"/>
+   </properties>
+   <point/>
   </object>
  </objectgroup>
  <layer id="3" name="Tile Layer 3" width="11" height="22" offsetx="0" offsety="2">
