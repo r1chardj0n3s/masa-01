@@ -52,6 +52,24 @@ class FlashEffect:
         sprite.alpha = new_alpha
 
 
+class FadeEffect:
+    def __init__(self, play_time, to_alpha=0):
+        self._play_time = play_time
+        self.play_time = play_time
+        self.to_alpha = to_alpha
+        self.initial_alpha = None
+    
+    def clear(self, sprite):
+        pass
+    
+    def run(self, dt, sprite):
+        if self.initial_alpha is None:
+            self.initial_alpha = sprite.alpha
+        
+        u = min(1, (self._play_time - self.play_time) / self._play_time)
+        sprite.alpha = u * self.to_alpha + (1 - u) * self.initial_alpha
+
+
 class ThrowToEffect:
     def __init__(self, play_time, start_pos, end_pos, height):
         self._play_time = play_time

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.4" tiledversion="1.4.2" orientation="staggered" renderorder="right-down" width="11" height="22" tilewidth="128" tileheight="64" infinite="0" staggeraxis="y" staggerindex="odd" nextlayerid="13" nextobjectid="10">
+<map version="1.4" tiledversion="1.4.2" orientation="staggered" renderorder="right-down" width="11" height="22" tilewidth="128" tileheight="64" infinite="0" staggeraxis="y" staggerindex="odd" nextlayerid="13" nextobjectid="11">
  <tileset firstgid="1" source="landscapeTiles_sheet.tsx"/>
  <tileset firstgid="129" source="kenney-props.tsx"/>
  <tileset firstgid="241" source="kenney-fences.tsx"/>
@@ -88,6 +88,12 @@
     <property name="sprite" value="metal"/>
    </properties>
    <polygon points="0,0 56.5097,31.5789 11.6343,53.1856 -41.5512,24.9307"/>
+  </object>
+  <object id="10" name="PROP" x="270.667" y="141.333">
+   <properties>
+    <property name="type" value="dialog-1"/>
+   </properties>
+   <point/>
   </object>
  </objectgroup>
  <layer id="3" name="Tile Layer 2" width="11" height="22" offsetx="0" offsety="33">
