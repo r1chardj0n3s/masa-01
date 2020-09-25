@@ -47,8 +47,7 @@ def activate_map(world, current_level):
             break
     else:
         tile_map = arcade.tilemap.read_tmx(map_filename(level_name))
-        level_comp = Level(level_name, tile_map, map_mtime(level_name), True)
-        level_ent = world.create_entity(level_comp)
+        level_ent = world.create_entity(Level(level_name, map_mtime(level_name), True))
         print(f"loading level from disk: {level_name}: {level_ent}")
 
         for obj in load_object_layer(tile_map, "OnLoad").tiled_objects:
