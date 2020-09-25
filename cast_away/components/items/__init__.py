@@ -3,6 +3,7 @@ from cast_away.components.items.uses import Throwable, LazorGun
 from cast_away.components.timeout import Timeout
 from cast_away.components.despawn import Despawn
 
+PICKUP_SOUND = ":resources:sounds/coin3.wav"
 
 @dataclass
 class LevelItem:

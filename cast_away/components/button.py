@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 
-BUTTON_SOUND = ":resources:sounds/hit2.wav"
+BUTTON_SOUND = ":resources:sounds/rockHit2.ogg"
 
 @dataclass
 class Button:

@@ -1,10 +1,11 @@
 import esper
 
-from cast_away.components.items import LevelItem
+from cast_away.components.items import LevelItem, PICKUP_SOUND
 from cast_away.components.position import Position
 from cast_away.components.timeout import Timeout
 
 from cast_away.entities.item import create_inventory_item
+from cast_away.entities.sound import create_sound
 
 from cast_away.event_dispatch import COLLISION, register_listener
 from cast_away.entities.entity import Entity
@@ -19,6 +20,7 @@ def collision(world, message):
                 item_name=levelItem.name)
             if item_ent is not None:
                 world.delete_entity(level_item_ent)
+                create_sound(world, PICKUP_SOUND)
 
 
 def init():
