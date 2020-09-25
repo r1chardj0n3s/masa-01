@@ -8,8 +8,10 @@ from cast_away.components.timeout import Timeout
 class MusicProcessor(esper.Processor):
     def __init__(self):
         self.music = None
-        
+
     def process(self, dt):
+        if self.music and self.music.is_complete():
+            self.music = None
         for ent, music in self.world.get_component(Music):
             if self.world.has_component(ent, Timeout):
                 continue
@@ -22,5 +24,3 @@ class MusicProcessor(esper.Processor):
 
 def init(world):
     world.add_processor(MusicProcessor())
-
-
