@@ -82,7 +82,7 @@
   </object>
   <object id="6" name="BUTTON" x="1020.5" y="437.119">
    <properties>
-    <property name="channel" value="final-gate"/>
+    <property name="channel" value="movement-switch"/>
     <property name="in_level" type="bool" value="true"/>
    </properties>
    <point/>
