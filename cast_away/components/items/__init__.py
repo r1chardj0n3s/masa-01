@@ -66,7 +66,7 @@ ITEM_DATA = {
     ),
     "heartemitter": (
         _LevelItemData(
-            image=":resources:images/items/star.png",
+            image=HEART_FULL,
         ),
         _InventoryItemData(
             image=HEART_FULL,
