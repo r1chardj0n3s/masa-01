@@ -5,7 +5,9 @@ from cast_away.components.draw_layer import DrawLayer, PARTICLE_LAYER
 from cast_away.components.timeout import Timeout
 from cast_away.components.position import Position
 from cast_away.graphics.emitters import bee_poof
-
+import random
+WINDOW_WIDTH=1280
+WINDOW_HEIGHT=720
 
 def create_sequence(world, target, *comps):
     return world.create_entity(
@@ -26,7 +28,10 @@ def begin_win_sequence(world, level_ent):
     )
 
 def _random_smoke(world, level_ent):
-    position = Position(x=500, y=500, level=level_ent)
+    
+    x = random.randint(0, WINDOW_WIDTH)
+    y = random.randint(0, WINDOW_HEIGHT)
+    position = Position(x, y, level_ent)
     emitter = bee_poof(position)
     
     world.create_entity(
