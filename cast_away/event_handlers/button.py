@@ -6,9 +6,10 @@ from cast_away.event_dispatch import (
     COLLISION,
 )
 
-from cast_away.components.button import Button, Channel, ChannelListener
+from cast_away.components.button import Button, Channel, ChannelListener, BUTTON_SOUND
 from cast_away.components.timeout import Timeout
 from cast_away.components.position import Position
+from cast_away.components.sound import Sound
 
 
 def collision(world, message):
@@ -24,6 +25,7 @@ def collision(world, message):
         level_ent = world.component_for_entity(source, Position).level
     dispatch(world, Message(CHANNEL, (source, dest, Channel(button.channel, level_ent))))
     world.add_component(source, Timeout(1))
+    world.create_entity(Sound(BUTTON_SOUND, 0.05))
     # print(f"button \n\t{source} {world.components_for_entity(source)} \n\tpressed by \n\t{dest} {world.components_for_entity(dest)}")
 
 

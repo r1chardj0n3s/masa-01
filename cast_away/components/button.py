@@ -1,5 +1,7 @@
 from dataclasses import dataclass
 
+BUTTON_SOUND = ":resources:sounds/hit2.wav"
+
 @dataclass
 class Button:
     channel: str
