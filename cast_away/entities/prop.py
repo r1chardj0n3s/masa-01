@@ -8,7 +8,7 @@ from cast_away.components.sequence import Sequence
 
 
 def create_prop(world, x, y, type, level_ent):
-    if type == "goat":git 
+    if type == "goat":
         sprite = [
             Sprite("data/images/goat-1.png"),
             SpriteEffects(
