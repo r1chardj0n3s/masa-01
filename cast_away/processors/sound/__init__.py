@@ -11,6 +11,7 @@ PLAYER_RUMBLE = ":resources:sounds/hit2.wav"
 class SoundProcessor(esper.Processor):
     def __init__(self):
         self.rumble = arcade.Sound(PLAYER_RUMBLE, streaming=True)
+        self.playing = False
 
     def process(self, dt):
         for ent, sound in self.world.get_component(Sound):
@@ -21,10 +22,12 @@ class SoundProcessor(esper.Processor):
             self.world.delete_entity(ent)
 
         for ent, (player, velocity) in self.world.get_components(Player, Velocity):
-            if velocity.magnitude > 0:
+            if velocity.magnitude > 0 and not self.playing:
                 self.rumble.play(volume=0.002)
+                self.playing = True
             else:
                 self.rumble.stop()
+                self.playing = False
 
 
 def init(world):
