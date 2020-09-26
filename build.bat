@@ -8,8 +8,7 @@ pyinstaller ^
  --add-data %PYTHON_ROOT%\src\arcade\arcade\resources;arcade\resources ^
  --add-data "./data;data" ^
  -n cast_away_robot ^
- -c ^
- -d all ^
+ --noconsole ^
  run_game.py
 
 pause
