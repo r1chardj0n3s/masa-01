@@ -132,11 +132,15 @@ class ThrowToEffect:
 
 
 class AnimatedTextureEffect:
-    def __init__(self, frames):
+    def __init__(self, frames, loop=True):
         self.frames = frames
         self.frame_number = 0
         self.timer = 0
         self.play_time = 100
+        self.loop=loop
+
+    def clear(self):
+        sprite._arcade_sprite.texture = self.frames[0]
 
     def run(self, dt, sprite):
         self.timer -= dt
@@ -145,4 +149,5 @@ class AnimatedTextureEffect:
             if self.frame_number == len(self.frames):
                 self.frame_number = 0
             self.timer, sprite._arcade_sprite.texture = self.frames[self.frame_number]
-        self.play_time = 100
+        if self.loop:
+            self.play_time = 100
