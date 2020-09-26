@@ -33,12 +33,13 @@ class EnemySpawnProcessor(esper.Processor):
                     if enemy.spawned_by == ent:
                         break
                 else:
-                    es.spawn_timer = 5
+                    es.spawn_timer = 3
                     e = bee_poof(position)
                     emitter = self.world.create_entity(InLevel(position.level))
-                    create_sequence(self.world,
+                    create_sequence(
+                        self.world,
                         emitter,
-                        Timeout(3),
+                        Timeout(2),
                         DrawLayer(PARTICLE_LAYER, e),
                         Emitter(e),
                     )
