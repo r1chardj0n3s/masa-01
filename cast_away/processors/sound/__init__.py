@@ -23,7 +23,7 @@ class SoundProcessor(esper.Processor):
 
         for ent, (player, velocity) in self.world.get_components(Player, Velocity):
             if velocity.magnitude > 0 and not self.playing:
-                self.rumble.play(volume=0.002)
+                self.rumble.play(volume=0.001)
                 self.playing = True
             else:
                 self.rumble.stop()

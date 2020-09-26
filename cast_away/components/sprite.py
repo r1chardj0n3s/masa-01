@@ -8,8 +8,8 @@ def _prop(key):
 
 
 class Sprite:
-    def __init__(self, path, scale=1, alpha=255, draw_layer=DEFAULT_LAYER):
-        self._state = {"path": path, "scale": scale, "alpha": alpha}
+    def __init__(self, path, scale=1, angle=0, alpha=255, draw_layer=DEFAULT_LAYER):
+        self._state = {"path": path, "scale": scale, "alpha": alpha, "angle": angle}
         self.draw_layer = draw_layer
         self._changes = {}
         self._arcade_sprite = arcade.Sprite(path, scale=scale)

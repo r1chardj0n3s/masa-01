@@ -31,7 +31,7 @@ class HealthProcessor(esper.Processor):
                     effects = self.world.component_for_entity(ent, SpriteEffects)
                     effects.effects.append(SpinEffect(play_time=0.3, speed=1000))
                     effects.effects.append(FlashEffect(play_time=1, speed=10000))
-                    create_sound(self.world, HURT_SOUND, volume=0.5)
+                    create_sound(self.world, HURT_SOUND)
                 health.effects.remove(effect)
 
             if health.amount <= 0:
