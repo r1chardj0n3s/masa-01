@@ -64,8 +64,8 @@
    </properties>
    <point/>
   </object>
-  <object id="2" name="ARENA_BOUNDARY" x="320" y="356" visible="0">
-   <polygon points="0,0 -313.418,151.823 -248.676,184.086 -119.213,118.32 276,309.333 365.333,309.333 818.667,86.6667 702.667,22.6667 893.333,-69.3333 830.667,-102.667 322.667,156"/>
+  <object id="2" name="ARENA_BOUNDARY" x="320" y="356">
+   <polygon points="0,0 -313.418,151.823 -248.676,184.086 -119.213,118.32 276,309.333 365.333,309.333 818.667,86.6667 702.667,22.6667 893.333,-69.3333 836,-101.334 322.667,159.667"/>
   </object>
   <object id="4" name="PLAYER_SPAWN" x="1090.3" y="314.127">
    <properties>
@@ -94,7 +94,7 @@
     <property name="orientation" value="SW"/>
     <property name="sprite" value="metal"/>
    </properties>
-   <polygon points="0,0 56.5097,31.5789 11.6343,53.1856 -41.5512,24.9307"/>
+   <polygon points="-4,-4 56.5097,31.5789 11.6343,53.1856 -45.5512,20.264"/>
   </object>
   <object id="11" name="GATE" x="148.92" y="437.895">
    <properties>
@@ -103,7 +103,7 @@
     <property name="orientation" value="SW"/>
     <property name="sprite" value="metal"/>
    </properties>
-   <polygon points="0,0 56.5097,31.5789 11.6343,53.1856 -41.5512,24.9307"/>
+   <polygon points="-3.33333,-2.66667 58.843,35.2456 14.9676,59.1856 -46.2179,18.5974"/>
   </object>
  </objectgroup>
  <layer id="3" name="Tile Layer 2" width="11" height="22" offsetx="0" offsety="33">

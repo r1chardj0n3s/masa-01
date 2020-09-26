@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.4" tiledversion="1.4.2" orientation="staggered" renderorder="right-down" width="11" height="22" tilewidth="128" tileheight="64" infinite="0" staggeraxis="y" staggerindex="odd" nextlayerid="8" nextobjectid="10">
+<map version="1.4" tiledversion="1.4.2" orientation="staggered" renderorder="right-down" width="11" height="22" tilewidth="128" tileheight="64" infinite="0" staggeraxis="y" staggerindex="odd" nextlayerid="8" nextobjectid="11">
  <tileset firstgid="1" source="landscapeTiles_sheet.tsx"/>
  <imagelayer id="7" name="Image Layer 1" offsetx="64" offsety="0">
   <image source="images/water.jpg" width="1280" height="720"/>
@@ -83,6 +83,12 @@
     <property name="channel" value="final-gate"/>
    </properties>
    <point/>
+  </object>
+  <object id="10" name="ENEMY_PATH" x="979.484" y="394.338">
+   <properties>
+    <property name="type" value="bee"/>
+   </properties>
+   <polygon points="294.825,-84.3512 157.384,-151.559 -54.3265,-172.289 -10.6048,-244.554 -127.613,-208.257 -191.319,-350.624 -274.388,-252.119 -403.067,-255.864 -333.768,-210.071 -103.879,-265.378 47.6461,-195.98 91.385,-95.9696 32.036,-7.9683 102.982,20.688 160.188,-48.4435"/>
   </object>
  </objectgroup>
 </map>

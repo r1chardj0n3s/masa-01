@@ -63,7 +63,7 @@
     <property name="match_components" value="cast_away.components.player.Player"/>
     <property name="next_level" value="enemy"/>
    </properties>
-   <polygon points="0,0 46.6667,28 89.3333,8 30.6667,-16"/>
+   <polygon points="0,0 61.1667,39 101.333,14.5 30.6667,-16"/>
   </object>
  </objectgroup>
  <objectgroup id="6" name="OnLoad">
@@ -74,8 +74,8 @@
    </properties>
    <point/>
   </object>
-  <object id="1" name="ARENA_BOUNDARY" x="77.3334" y="633.333" visible="0">
-   <polygon points="-1.33333,-62.6667 -3.54365,4.36854 53.1914,33.6089 180,36 984,-386.666 944,-409.333 1142.66,-506.666 1088,-536 882.658,-434.698 822.667,-464"/>
+  <object id="1" name="ARENA_BOUNDARY" x="77.3334" y="633.333">
+   <polygon points="-1.33333,-62.6667 -3.54365,4.36854 53.1914,33.6089 180,36 984,-386.666 935.5,-412.333 1134.66,-512.166 1088,-536 882.658,-434.698 822.667,-464"/>
   </object>
   <object id="9" name="SHOOTER" x="464.5" y="285">
    <properties>
