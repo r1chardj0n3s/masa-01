@@ -11,6 +11,15 @@ from cast_away.entities.sound import create_sound
 class HealthProcessor(esper.Processor):
     def process(self, dt):
         for ent, health in self.world.get_component(Health):
+            if health.amount < 3 and not health.effects:
+                if health.regen_timeout:
+                    health.regen_timeout -= dt
+                    if health.regen_timeout < 0:
+                        health.amount += 1
+                        health.regen_timeout = 0
+                else:
+                    health.regen_timeout = 10
+
             for effect in list(health.effects):
                 if not self.world.has_component(ent, Invulnerable):
                     health.amount -= effect.amount
