@@ -13,7 +13,7 @@
    <property name="z" type="int" value="0"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJyV0T0LwkAMBuDs7uKgLuJfcNJBroJSwY8K4urgIHRyUBDEn26C79EQcmcNvBxHH0LSI2oq4CwoXwG5OrYy9wOsuFL5AnZo+q6MjU7OqTPLFt/OnHXGzlWv0rhRxspM74TdGBcSjjCb7Pbi3GAnju1wltjrwtlxZomecYYj587Zcx6cfsLGf1tzTphhQc27e152e6r9ugnfQ+/oBvR9W89W6B1Uxo6NbxSceD3bWO3oj55k/C9Hzj1nvWrrpD7zkyYn
+   eJyVkbsKAkEMRdPbi4XaiL9gpYXMCi4r+FhBbC0shK0sFATx083gDYaQGdfAYRj2cLnZIfpOYAqQmwAujlub+17lVsov4A5Nbmlc8eI5dbps8O3ErDLuXGVVxhtl3NjplXDXxgsJj9At7vZkrnAnjtthltjrzGyZWSJTOhyYG7Nj7kw/4cq/bZgjOixwelNit4far5vwe8gWb0Cft/XcGtlBMXZceaPg4GW2cbVHf2SS8X955NxzrjdtvThv8IImaw==
   </data>
  </layer>
  <layer id="2" name="Tile Layer 2" width="11" height="22" offsetx="0" offsety="33">
@@ -21,7 +21,7 @@
    <property name="z" type="int" value="5"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJwLYWBgCIFidIAujksdAxbxEDSMDxCrjly1xABam0srtbQKs4EOB2IBKWqHMwAA3DMOcQ==
+   eJwLYWBgCIFiQoBYdchqidFDrDpy1RIDaG0urdTSKswGOhyIBaSoHc4AAE52DXU=
   </data>
  </layer>
  <layer id="4" name="spikes" width="11" height="22" offsetx="0" offsety="23">
@@ -101,23 +101,23 @@
    <property name="z" type="int" value="15"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJyzYWBgsIFidIAujksdAxZxGzSMDxCrjly1xABam0srtbQKs4EOB2IBKWqHMwAADB0KUQ==
+   eJyzYWBgsIFiQsCGgTy1hNSTay6xaokBtDaXVmppGW/EqiUGkKqWWECK2uEMAFj/Cdk=
   </data>
  </layer>
- <layer id="6" name="props" width="11" height="22">
+ <layer id="7" name="Tile Layer 6" width="11" height="22" offsetx="0" offsety="-32">
   <properties>
    <property name="z" type="int" value="20"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJxjYKAd2AfEt3HINdPQ3qEM9tHAzDs0MHMUDC4AAG/uA7c=
+   eJxjYMAOXHCwcal1IUIdunpi1Y6CUTAK8AMAWrECIQ==
   </data>
  </layer>
- <layer id="7" name="Tile Layer 6" width="11" height="22" offsetx="0" offsety="-36">
+ <layer id="6" name="props" width="11" height="22">
   <properties>
    <property name="z" type="int" value="25"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJxjYKAOuEglc0bBKBgFpAMA32YA0g==
+   eJxjYMAPbhCQh4HdWMT2AfFtHOqbiTR3pIF9NDDzDg3MHAWDCwAAFIgFSg==
   </data>
  </layer>
 </map>
