@@ -1,6 +1,6 @@
 import esper
+from euclid import Ray2, LineSegment2, Point2, Vector2
 
-from cast_away.components.velocity import BounceVelocityBack
 from cast_away.components.position import Position
 from cast_away.components.level.arena_boundary import ArenaBoundary
 from cast_away.components.level import Level
@@ -13,11 +13,15 @@ class ArenaBoundaryProcessor(esper.Processor):
             ArenaBoundary, Level
         ):
             if level.active:
-                for ent, (position, player) in self.world.get_components(
+                for ent, (pos, player) in self.world.get_components(
                     Position, Player
                 ):
-                    if not boundary.poly.is_point_inside(position.x, position.y):
-                        self.world.create_entity(BounceVelocityBack(target_ent=ent))
+                    if boundary.poly.is_point_inside(pos.x, pos.y):
+                        return
+
+                    closest_point = boundary.poly.closest_point(pos.x, pos.y)
+                    pos.x = closest_point.x
+                    pos.y = closest_point.y
 
 
 def init(world):

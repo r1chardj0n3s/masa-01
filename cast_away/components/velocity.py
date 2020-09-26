@@ -8,6 +8,12 @@ class BounceVelocityBack:
     target_ent: object
     magnitude: float = 1
 
+@dataclass
+class BounceOffLine:
+    target_ent: object
+    intersect: object #(intersection: euler.Point2, line: euler.Vector2)
+    magnitude: float = 1
+
 
 class Velocity:
     def __init__(self, dx, dy):

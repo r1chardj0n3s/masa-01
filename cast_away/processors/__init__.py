@@ -16,7 +16,7 @@ from . import sequence
 from . import sprite
 from .level import arena_boundary
 from . import velocity
-from . import velocity_effect_processor
+from . import velocity_effects
 from . import desired_velocity
 from . import emitter
 from . import tmx_reload
@@ -42,8 +42,7 @@ def add_processors(world):
 
     velocity.init(world)
     desired_velocity.init(world)
-    sprite.init(world)
-    sprite_effect.init(world)
+    
     position_effects.init(world)
 
     bullet.init(world)
@@ -56,7 +55,10 @@ def add_processors(world):
     hud_display.init(world)
     collisions.init(world)
     # NOTE: it is important that the velocity effect processor fires after the collision processor
-    velocity_effect_processor.init(world)
+    velocity_effects.init(world)
+
+    sprite.init(world)
+    sprite_effect.init(world)
 
     debug_probe.init(world)
     despawn.init(world)

@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 
-MUSIC_VOLUME = 0.3
+MUSIC_VOLUME = 0.05
 DEFAULT_MUSIC = "data/JunkyardGame1_1.mp3"
 
 
