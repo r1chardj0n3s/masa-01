@@ -15,13 +15,16 @@ INVENTORY_X_SPACING = 36
 INVENTORY_Y = 50
 
 
+def player_base_x(mp):
+    index = COLOURS.index(mp.colour)
+    return index * 300
+
 class InventoryHudDrawable:
     def __init__(self, world, player_ent):
         self.background_sprite_list = arcade.SpriteList()
 
         mp = world.component_for_entity(player_ent, MultiplayerIdentifier)
-        index = COLOURS.index(mp.colour)
-        base_x = index * 300
+        base_x = player_base_x(mp)
 
         self.background_sprite_list.append(
             arcade.Sprite("data/images/HUD-bg.png", center_x=base_x + 150, center_y=50)

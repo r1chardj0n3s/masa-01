@@ -15,9 +15,10 @@ def collision(world, message):
     for levelItem in world.try_component(level_item_ent, LevelItem):
         if not world.has_component(level_item_ent, Timeout):
             item_ent = create_inventory_item(
-                world=world,
-                owner_ent=inventory_ent,
-                item_name=levelItem.name)
+                world,
+                level_item_ent,
+                inventory_ent,
+                levelItem.name)
             if item_ent is not None:
                 world.delete_entity(level_item_ent)
                 create_sound(world, PICKUP_SOUND)

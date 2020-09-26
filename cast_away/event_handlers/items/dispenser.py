@@ -13,7 +13,7 @@ def collide(world, message):
                 item_name = world.component_for_entity(inventory_item_ent, InventoryItem).name
                 if item_name == dispenser.item_name:
                     return
-        create_inventory_item(world, inventory_ent, dispenser.item_name)
+        create_inventory_item(world, dispenser_ent, inventory_ent, dispenser.item_name)
 
 def init():
     register_listener(COLLISION, collide)
