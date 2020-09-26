@@ -20,6 +20,7 @@ def SPIKE(world, level_ent, obj, target_ent, trigger_source_ent):
     if world.has_component(target_ent, Player):
         health = world.component_for_entity(target_ent, Health)
         health.effects.append(HealthDown(1))
+
         if not world.has_component(target_ent, Invulnerable):
             # and knockback
             pos = world.component_for_entity(target_ent, Position)

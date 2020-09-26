@@ -24,11 +24,9 @@ class SequenceProcessor(esper.Processor):
                     new_comp(self.world, sequence.target_ent)
                 else:
                     sequence.active_comp = new_comp
-                    print('sequence', ent, 'add comp', new_comp, 'to', sequence.target_ent)
                     self.world.add_component(sequence.target_ent, sequence.active_comp)
 
             if not sequence.comps:
-                print('sequence', ent, 'done')
                 self.world.delete_entity(ent)
 
 
