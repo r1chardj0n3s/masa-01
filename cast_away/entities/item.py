@@ -41,6 +41,8 @@ def create_inventory_item_animation(world, source_ent, player_ent, index, invent
 
 
 def drop_inventory_item(world, inventory_item_ent):
+    if inventory_item_ent is None:
+        return
     item_comp = world.component_for_entity(inventory_item_ent, InventoryItem)
     inventory = world.component_for_entity(item_comp.owner_ent, Inventory)
     for slot_index, ent in enumerate(inventory.item_ents):
