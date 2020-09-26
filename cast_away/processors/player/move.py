@@ -4,6 +4,7 @@ from cast_away.components.facing import Facing
 from cast_away.components.velocity import Velocity
 from cast_away.components.input_source import LEFT, RIGHT, UP, DOWN
 from cast_away.components.player import Player
+from cast_away.components.sprite_effect import SpriteEffects, TwistEffect
 
 PLAYER_SPEED = 250
 
