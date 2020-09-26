@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.4" tiledversion="1.4.2" orientation="staggered" renderorder="right-down" width="11" height="22" tilewidth="128" tileheight="64" infinite="0" staggeraxis="y" staggerindex="odd" nextlayerid="9" nextobjectid="15">
+<map version="1.4" tiledversion="1.4.2" orientation="staggered" renderorder="right-down" width="11" height="22" tilewidth="128" tileheight="64" infinite="0" staggeraxis="y" staggerindex="odd" nextlayerid="11" nextobjectid="15">
  <tileset firstgid="1" source="landscapeTiles_sheet.tsx"/>
  <tileset firstgid="129" source="towerdefence.tsx"/>
+ <tileset firstgid="709" source="kenney-props.tsx"/>
+ <tileset firstgid="821" source="kenney-trees.tsx"/>
  <imagelayer id="8" name="Image Layer 1" offsetx="64" offsety="0">
   <image source="images/grass-background.jpg" width="1280" height="720"/>
   <properties>
@@ -21,7 +23,7 @@
    <property name="z" type="int" value="15"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJxjYKAfcCFBHSlqtzIxMAhQ2UwQJtZMQupgahmwqBXEYSY6EMQijst+QQZMc3C5E5d92MzcwUQ4DLG5k5BaYtQTq45Yd8LMJAWQqp6eAAAi8AsL
+   eJxjYKAfcCFBHSlqtzIxMAhQ2UwQJtZMQupgahmwqBXEYSY6EMQijst+QQZMc3C5E5d92MzcwUQ4DLG5ExlMIuBOXIBYdcS6E2YmKYBU9fQEAOcgC50=
   </data>
  </layer>
  <layer id="7" name="Layer 1" width="11" height="22">
@@ -29,7 +31,23 @@
    <property name="z" type="int" value="15"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJxjYKAfcCFBHSlqQUCAyma6kGAmIXUwtVuZMNUK4jATHQhiEcdlvyADpjm43InLPlzuJBSG2OymhlpSzISpp5aZyOoHKwAAZP4KHw==
+   eJxjYKAfyAbiZCLVuUAxMWpBQACKCZlJDICpRTZPkEh1DDjsAandyoSpFmRuMpo6bPoFsYjjsh+mNgbNTdjCB10dCKTgMJMBi1pi7MYFSFFLipkMRKglxW4QSCFB7UAAAEMMDq4=
+  </data>
+ </layer>
+ <layer id="9" name="props" width="11" height="22">
+  <properties>
+   <property name="z" type="int" value="60"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUDHUAAAPIAAE=
+  </data>
+ </layer>
+ <layer id="10" name="Copy of props" width="11" height="22" offsetx="0" offsety="32">
+  <properties>
+   <property name="z" type="int" value="60"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJxjYKAQMEPxAAEbIu1mpKMbzbDZhct+NHHzAQxLfIDYcKYFWDBwVg8ZAAAa0gGi
   </data>
  </layer>
  <objectgroup id="5" name="Triggers">
