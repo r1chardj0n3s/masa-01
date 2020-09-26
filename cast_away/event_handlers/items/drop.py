@@ -1,7 +1,5 @@
 from cast_away.event_dispatch import DROP_ITEM, register_listener
 
-from cast_away.components.player import Player
-from cast_away.components.input_source import ITEM_1, ITEM_2, ITEM_3
 from cast_away.components.inventory import Inventory
 from cast_away.entities.item import drop_inventory_item
 

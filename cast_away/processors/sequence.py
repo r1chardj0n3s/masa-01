@@ -3,12 +3,13 @@ import esper
 from cast_away.components.sequence import Sequence
 from cast_away.components.sprite_effect import SpriteEffects
 from cast_away.components.timeout import Timeout
+from cast_away.components.position_effects import PositionEffects
 
 
 class SequenceProcessor(esper.Processor):
     def process(self, dt):
         for ent, sequence in self.world.get_component(Sequence):
-            if isinstance(sequence.active_comp, SpriteEffects):
+            if isinstance(sequence.active_comp, (SpriteEffects, PositionEffects)):
                 if not sequence.active_comp.effects:
                     sequence.active_comp = None
             elif isinstance(sequence.active_comp, Timeout):
@@ -17,15 +18,17 @@ class SequenceProcessor(esper.Processor):
             else:
                 sequence.active_comp = None
 
-            if not sequence.active_comp:
-                sequence.active_comp = sequence.comps.pop(0)
-                while callable(sequence.active_comp):
-                    sequence.active_comp(self.world, sequence.target_ent)
-                    sequence.active_comp = sequence.comps.pop(0)
-
-                self.world.add_component(sequence.target_ent, sequence.active_comp)
+            while sequence.active_comp is None and sequence.comps:
+                new_comp = sequence.comps.pop(0)
+                if callable(new_comp):
+                    new_comp(self.world, sequence.target_ent)
+                else:
+                    sequence.active_comp = new_comp
+                    print('sequence', ent, 'add comp', new_comp, 'to', sequence.target_ent)
+                    self.world.add_component(sequence.target_ent, sequence.active_comp)
 
             if not sequence.comps:
+                print('sequence', ent, 'done')
                 self.world.delete_entity(ent)
 
 

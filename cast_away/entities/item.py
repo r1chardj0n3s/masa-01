@@ -4,7 +4,6 @@ from cast_away.components.sprite import Sprite
 from cast_away.components.timeout import Timeout
 from cast_away.components.inventory import Inventory
 from cast_away.components.items import LevelItem, InventoryItem, ITEM_DATA
-from cast_away.components.player import Player
 from cast_away.components.draw_layer import ITEM_LAYER
 
 INVENTORY_SIZE = 3
