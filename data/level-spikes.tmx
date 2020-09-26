@@ -102,6 +102,7 @@
   </object>
   <object id="11" name="PROP" x="414.667" y="265.333">
    <properties>
+    <property name="radius" type="int" value="25"/>
     <property name="type" value="goat"/>
    </properties>
    <point/>

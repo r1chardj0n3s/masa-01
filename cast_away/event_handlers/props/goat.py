@@ -16,8 +16,8 @@ def collision(world, message):
             if world.has_component(goat, Timeout):
                 return
             effects = world.component_for_entity(goat, SpriteEffects)
-            effects.effects.append(ScaleUpDownEffect(1))
-            world.add_component(goat, Timeout(2))
+            effects.effects.append(ScaleUpDownEffect(.45))
+            world.add_component(goat, Timeout(.5))
 
 
 def init():
