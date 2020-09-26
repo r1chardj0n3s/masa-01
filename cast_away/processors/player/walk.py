@@ -30,7 +30,7 @@ class WalkProcessor(esper.Processor):
                     ))
 
                 if not self.walk_sound.is_complete() == 0:
-                    self.walk_sound.play(volume=0.05)
+                    self.walk_sound.play(volume=0.1)
             else:
                 self.walk_sound.stop()
 
