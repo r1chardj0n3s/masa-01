@@ -21,7 +21,7 @@ class TMXReloadProcessor(esper.Processor):
 
         for _, level in self.world.get_component(Level):
             if level.tmx_mtime < map_mtime(level.name):
-                print(f"RELOAD {level.tmx_mtime} < {map_mtime(level.name)}")
+                # print(f"RELOAD {level.tmx_mtime} < {map_mtime(level.name)}")
                 dispatch(self.world, RELOAD_MAPS, current_level_name)
                 return
 

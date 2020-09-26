@@ -95,11 +95,11 @@ class JoystickState:
         joystick.on_joyhat_motion = self.on_joyhat_motion
 
     def on_joybutton_press(self, _joystick, button):
-        print(f"button {button} press")
+        # print(f"button {button} press")
         self.buttons[button] = True
         if button in _button_lookup:
             self.events.append(InputEvent(_button_lookup[button]))
-        print(f"events: {self.events}")
+        # print(f"events: {self.events}")
 
     def on_joybutton_release(self, _joystick, button):
         self.buttons[button] = False
@@ -108,7 +108,7 @@ class JoystickState:
     def on_joyhat_motion(self, _joystick, hat_x, hat_y):
         self.hat_x = hat_x
         self.hat_y = hat_y
-        print(f"hat moved {hat_x} {hat_y}")
+        # print(f"hat moved {hat_x} {hat_y}")
 
     def _joy_n(self, v, d):
         if v > d:

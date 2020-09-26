@@ -44,7 +44,6 @@ class Game(arcade.Window):
             self.render_debugs = not self.render_debugs
         for e, keyboard in self.world.get_component(InputSource):
             if keyboard.name == "Keyboard":
-                print('set', symbol)
                 keyboard.state.keys[symbol] = True
                 if symbol in KEYBOARD_MAP:
                     keyboard.state.events.append(InputEvent(KEYBOARD_MAP[symbol]))
