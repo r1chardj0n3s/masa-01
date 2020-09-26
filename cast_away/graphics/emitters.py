@@ -1,6 +1,7 @@
 import arcade
 import random
 from cast_away.graphics.particles import AccelleratingParticle
+from cast_away.components.health import HEART_FULL
 
 def bee_poof(position):
     return arcade.Emitter(
@@ -18,6 +19,17 @@ def bee_poof(position):
     ),
 )
 
+def heart_poof(position):
+    return arcade.Emitter(
+    center_xy=(position.x, position.y),
+    emit_controller=arcade.EmitBurst(50),
+    particle_factory=lambda emitter: arcade.FadeParticle(
+        filename_or_texture=arcade.load_texture(HEART_FULL),
+        change_xy=arcade.rand_in_circle((0.0, 0.0), 1.0),
+        lifetime=1.5,
+        scale=0.1 * random.random(),
+    ),
+)
 
 FIREWORK_PARTICLE = ":resources:images/items/star.png"
 

@@ -5,6 +5,7 @@ from .items import lazorgun
 from .items import pickup
 from .items import drop
 from .items import throwable
+from .items import emit_on_activate
 from .items import dispenser
 
 from . import entity_death
@@ -25,4 +26,5 @@ def init_event_handlers():
     throwable.init()
     pickup.init()
     drop.init()
+    emit_on_activate.init()
     dispenser.init()

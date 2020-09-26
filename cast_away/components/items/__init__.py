@@ -1,8 +1,13 @@
 from dataclasses import dataclass, field
-from cast_away.components.items.uses import Throwable, LazorGun
+from cast_away.components.items.uses import (
+    Throwable, 
+    LazorGun,
+    EmitOnActivate
+)
 from cast_away.components.timeout import Timeout
 from cast_away.components.despawn import Despawn
 from cast_away.components.health import HEART_FULL
+from cast_away.graphics.emitters import heart_poof
 
 PICKUP_SOUND = ":resources:sounds/coin3.wav"
 
@@ -71,7 +76,7 @@ ITEM_DATA = {
         _InventoryItemData(
             image=HEART_FULL,
             component_classes=[
-                _ComponentTemplate(Throwable, {"throw_distance": 200, "throw_speed": 1})
+                _ComponentTemplate(EmitOnActivate, {"emitter_factory": heart_poof})
             ],
         ),
     ),

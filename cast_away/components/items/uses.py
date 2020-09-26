@@ -12,4 +12,6 @@ class Throwable():
 class LazorGun():
     ...
 
-
+@dataclass
+class EmitOnActivate():
+    emitter_factory: object
