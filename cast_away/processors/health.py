@@ -21,6 +21,7 @@ class HealthProcessor(esper.Processor):
                     health.regen_timeout = 10
 
             for effect in list(health.effects):
+                health.regen_timeout = 0
                 if not self.world.has_component(ent, Invulnerable):
                     health.amount -= effect.amount
                     if self.world.has_component(ent, Player):
