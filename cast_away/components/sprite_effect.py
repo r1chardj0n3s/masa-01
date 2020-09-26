@@ -69,6 +69,25 @@ class FadeEffect:
         sprite.alpha = u * self.to_alpha + (1 - u) * self.initial_alpha
 
 
+class ScaleUpDownEffect:
+    def __init__(self, play_time, to_scale=2):
+        self._play_time = play_time
+        self.play_time = play_time
+        self.to_scale = to_scale
+        self.initial_scale = None
+
+    def clear(self, sprite):
+        pass
+
+    def run(self, dt, sprite):
+        if self.initial_scale is None:
+            self.initial_scale = sprite.scale
+
+        u = min(1, (self._play_time - self.play_time) / self._play_time)
+        u = math.sin(u * math.pi)
+        sprite.scale = u * self.to_scale + (1 - u) * self.initial_scale
+
+
 class ThrowToEffect:
     def __init__(self, play_time, start_pos, end_pos, height):
         self._play_time = play_time

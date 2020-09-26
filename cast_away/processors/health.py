@@ -25,7 +25,7 @@ class HealthProcessor(esper.Processor):
                 health.effects.remove(effect)
 
             if health.amount <= 0:
-                dispatch(self.world, Message(ENTITY_DIED, ent))
+                dispatch(self.world, ENTITY_DIED, ent)
 
 
 def init(world):

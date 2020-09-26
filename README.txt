@@ -8,6 +8,8 @@ How to run the game:
 
 The controls are described in the game.
 
+The game is multiplayer, and supports keyboard and controllers.
+
 This is a copyright work created by these people in September 2020:
 
 - Trav <the.trav@gmail.com>

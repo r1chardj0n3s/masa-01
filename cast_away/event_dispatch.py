@@ -8,6 +8,7 @@ USE_SLOT = "USE_SLOT"
 USE_ITEM = "USE_ITEM"
 DROP_ITEM = "DROP_ITEM"
 RELOAD_MAPS = "RELOAD_MAPS"
+RESTART_GAME = "RESTART_GAME"
 
 
 @dataclass
@@ -19,9 +20,9 @@ class Message:
 listeners = {}
 
 
-def dispatch(world, message):
-    for listener in listeners.get(message.type, []):
-        listener(world, message)
+def dispatch(world, type, message_payload=None):
+    for listener in listeners.get(type, []):
+        listener(world, Message(type, message_payload))
 
 
 def register_listener(type, listener):

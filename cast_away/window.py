@@ -13,11 +13,11 @@ from cast_away.menu import Menu
 from cast_away.render_debugs import render_debugs
 from cast_away.components.player import Player
 from cast_away.event_dispatch import (
-    Message,
     dispatch,
     INPUT,
     register_listener,
     RELOAD_MAPS,
+    RESTART_GAME,
 )
 from cast_away.world import create_world
 
@@ -29,6 +29,11 @@ class Game(arcade.Window):
         self.render_debugs = False
         self.init(map_name)
         register_listener(RELOAD_MAPS, lambda w, m: self.init(m.payload, False))
+        register_listener(RESTART_GAME, lambda *a: self.restart(map_name))
+
+    def restart(self, map_name):
+        self.init(map_name)
+        self.world.process(0)
 
     def init(self, map_name, show_menu=True):
         self.world = create_world(map_name)
@@ -39,6 +44,7 @@ class Game(arcade.Window):
             self.render_debugs = not self.render_debugs
         for e, keyboard in self.world.get_component(InputSource):
             if keyboard.name == "Keyboard":
+                print('set', symbol)
                 keyboard.state.keys[symbol] = True
                 if symbol in KEYBOARD_MAP:
                     keyboard.state.events.append(InputEvent(KEYBOARD_MAP[symbol]))
@@ -46,7 +52,9 @@ class Game(arcade.Window):
     def on_key_release(self, symbol, modifiers):
         for _, keyboard in self.world.get_component(InputSource):
             if keyboard.name == "Keyboard":
-                del keyboard.state.keys[symbol]
+                # just in case input source has been cleared
+                if symbol in keyboard.state.keys:
+                    del keyboard.state.keys[symbol]
 
     def on_update(self, dt):
         if self.first_update or not self.menu.show:
@@ -56,12 +64,10 @@ class Game(arcade.Window):
                 while p.input_source.state.events:
                     dispatch(
                         self.world,
-                        Message(
-                            INPUT,
-                            dict(
-                                player_ent=player_ent,
-                                input=p.input_source.state.events.pop(0),
-                            ),
+                        INPUT,
+                        dict(
+                            player_ent=player_ent,
+                            input=p.input_source.state.events.pop(0),
                         ),
                     )
         self.menu.update(dt)

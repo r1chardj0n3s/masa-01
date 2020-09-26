@@ -102,7 +102,7 @@ class CollisionProcessor(esper.Processor):
         for ea, collisions in collisions.items():
             for eb in collisions:
                 # print(f"collision! {ea} {eb}")
-                dispatch(self.world, Message(COLLISION, (ea, eb)))
+                dispatch(self.world, COLLISION, (ea, eb))
 
 
 def init(world):

@@ -11,6 +11,7 @@ from .components.input_source import (
 )
 from .components.player import Player
 from .entities import player
+from cast_away.event_dispatch import dispatch, RESTART_GAME
 
 
 # from arcade.gui.ui_style import UIStyle
@@ -20,9 +21,10 @@ BUTTON_WIDTH = 200
 BUTTON_HEIGHT = 40
 BUTTON_MARGIN = 10
 
-PLAY = "Play"
-EXIT = "Exit"
-BUTTONS = [PLAY, EXIT]
+BUTTON_PLAY = "Play"
+BUTTON_RESTART = "Restart Game"
+BUTTON_EXIT = "Exit"
+BUTTONS = [BUTTON_PLAY, BUTTON_RESTART, BUTTON_EXIT]
 
 
 def check_joysticks(world):
@@ -140,16 +142,20 @@ class Menu:
                         self.selected_button = None
                         events.remove(event)
 
-            if self.buttons[PLAY].pressed:
+            if self.buttons[BUTTON_PLAY].pressed:
                 self.show = False
                 if menu_activator is None:
                     for _, input_source in self.world.get_component(InputSource):
                         if input_source.name == "Keyboard":
                             menu_activator = input_source
                 self.spawn_player(menu_activator)
-                self.buttons[PLAY].pressed = False
+                self.buttons[BUTTON_PLAY].pressed = False
 
-            if self.buttons[EXIT].pressed:
+            if self.buttons[BUTTON_RESTART].pressed:
+                dispatch(self.world, RESTART_GAME)
+                self.buttons[BUTTON_RESTART].pressed = False
+
+            if self.buttons[BUTTON_EXIT].pressed:
                 arcade.close_window()
 
     def draw(self):
@@ -164,5 +170,6 @@ class Menu:
 
     def spawn_player(self, input_source):
         is_started = self.is_started(input_source)
+        print(input_source, is_started)
         if not is_started:
             player.create_player(self.world, input_source)
