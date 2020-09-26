@@ -4,7 +4,7 @@ from cast_away.components.level import InLevel
 from cast_away.components.draw_layer import DrawLayer, PARTICLE_LAYER
 from cast_away.components.timeout import Timeout
 from cast_away.components.position import Position
-from cast_away.graphics.emitters import bee_poof
+from cast_away.graphics.emitters import bee_poof, firework
 import random
 WINDOW_WIDTH=1280
 WINDOW_HEIGHT=720
@@ -21,18 +21,22 @@ def begin_win_sequence(world, level_ent):
     # for player_ent, player_comp in world.get_component(Player):
     create_sequence(world, 
         level_ent,
-        _random_smoke,
+        _random_emitter,
         Timeout(1),
         begin_win_sequence,
         Timeout(1)
     )
 
-def _random_smoke(world, level_ent):
-    
+EMITTERS = [
+    bee_poof, 
+    firework
+]
+
+def _random_emitter(world, level_ent):
     x = random.randint(0, WINDOW_WIDTH)
     y = random.randint(0, WINDOW_HEIGHT)
     position = Position(x, y, level_ent)
-    emitter = bee_poof(position)
+    emitter = random.choice(EMITTERS)(position)
     
     world.create_entity(
         Emitter(emitter), 
