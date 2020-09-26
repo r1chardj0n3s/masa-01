@@ -11,5 +11,6 @@ class HealthDown:
 class Health:
     def __init__(self, amount):
         self.amount = amount
+        self.maximum = amount
         self.regen_timeout = 0
         self.effects = []

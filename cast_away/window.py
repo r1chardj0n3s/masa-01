@@ -24,7 +24,7 @@ from cast_away.world import create_world
 
 class Game(arcade.Window):
     def __init__(self, map_name="movement"):
-        super().__init__(1280, 720, "Chucked Out")
+        super().__init__(1280, 720, "Cast Away Robot")
         self.first_update = True
         self.render_debugs = False
         self.init(map_name)
