@@ -19,7 +19,7 @@ class WalkProcessor(esper.Processor):
                     sprite_effects.effects.append(TwistEffect(
                         play_time=0.5, 
                         speed=2, 
-                        size=.05
+                        size=.01
                     ))
 
 
