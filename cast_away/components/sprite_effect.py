@@ -27,6 +27,30 @@ class SpinEffect:
             self.initial_angle = sprite.angle
         sprite.angle = sprite.angle + dt * self.speed
 
+class TwistEffect:
+    def __init__(self, play_time, speed, size):
+        self.play_time = play_time
+        self.counter = 0
+        self.speed = speed
+        self.size = size
+        self.first = True
+        self.initial_angle = None
+
+    def clear(self, sprite):
+        sprite.angle = self.initial_angle
+
+    def run(self, dt, sprite):
+        self.counter += dt
+        if self.first:
+            self.first = False
+            if sprite.angle is None:
+                sprite.angle = 0
+            self.initial_angle = sprite.angle
+        point_on_curve = (self.counter*self.speed) % 1
+        sprite.angle = curve(point_on_curve) * self.size * 360
+
+def curve(x):
+    return math.sin(2*math.pi*x) 
 
 class FlashEffect:
     def __init__(self, play_time, speed):

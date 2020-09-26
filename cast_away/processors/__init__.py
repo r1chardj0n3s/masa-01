@@ -5,6 +5,7 @@ from . import level
 from . import enemy_spawner
 from . import timeout
 from .player import move
+from .player import walk
 from . import follow_path
 from . import hud_display
 from . import bullet
@@ -38,6 +39,7 @@ def add_processors(world):
 
     invulnerable.init(world)
     move.init(world)
+    walk.init(world)
     follow_path.init(world)
 
     velocity.init(world)
