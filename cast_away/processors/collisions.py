@@ -93,6 +93,7 @@ class CollisionProcessor(esper.Processor):
             level = self.world.component_for_entity(position.level, Level)
             if level.active:
                 collidables.append((e, (ca, position)))
+
         # detection
         for ea, (ca, position) in collidables:
             for eb, cb in collidables:

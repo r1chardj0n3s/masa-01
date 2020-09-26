@@ -1,16 +1,18 @@
 import arcade
 
+from cast_away.components.prop import Prop
 from cast_away.components.sprite import Sprite
 from cast_away.components.sprite_effect import (
     AnimatedTextureEffect,
     SpriteEffects,
 )
 from cast_away.components.position import Position
+from cast_away.components.collidable import Collidable, HitCircle
 
 
-def create_prop(world, x, y, type, level_ent):
+def create_prop(world, x, y, type, radius, level_ent):
     if type == "goat":
-        sprite = [
+        comps = [
             Sprite("data/images/goat-1.png"),
             SpriteEffects(
                 AnimatedTextureEffect(
@@ -26,7 +28,11 @@ def create_prop(world, x, y, type, level_ent):
             ),
         ]
 
+    if radius:
+        comps.extend([Collidable(), HitCircle(radius)])
+
     world.create_entity(
-        *sprite,
+        Prop(type),
+        *comps,
         Position(x, y, level_ent),
     )

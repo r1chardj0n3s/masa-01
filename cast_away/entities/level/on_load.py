@@ -40,7 +40,7 @@ def ENEMY_SPAWN(world, level_ent, obj):
 
 def PROP(world, level_ent, obj):
     create_prop(
-        world, obj.location.x, obj.location.y, obj.properties["type"], level_ent
+        world, obj.location.x, obj.location.y, obj.properties["type"], obj.properties.get("radius"), level_ent
     )
 
 

@@ -5,6 +5,9 @@ class SpriteEffects:
     def __init__(self, *effects):
         self.effects = list(effects)
 
+    def add(self, effect):
+        self.effects.append(effect)
+
 
 class SpinEffect:
     def __init__(self, play_time, speed):
@@ -85,6 +88,7 @@ class ScaleUpDownEffect:
 
         u = min(1, (self._play_time - self.play_time) / self._play_time)
         u = math.sin(u * math.pi)
+        # print(u, math.sin(u * math.pi))
         sprite.scale = u * self.to_scale + (1 - u) * self.initial_scale
 
 

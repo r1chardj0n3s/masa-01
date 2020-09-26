@@ -7,6 +7,7 @@ from .items import drop
 from .items import throwable
 from .items import emit_on_activate
 from .items import dispenser
+from .props import goat
 
 from . import entity_death
 from . import hurt
@@ -28,3 +29,4 @@ def init_event_handlers():
     drop.init()
     emit_on_activate.init()
     dispenser.init()
+    goat.init()
