@@ -170,6 +170,5 @@ class Menu:
 
     def spawn_player(self, input_source):
         is_started = self.is_started(input_source)
-        print(input_source, is_started)
         if not is_started:
             player.create_player(self.world, input_source)
