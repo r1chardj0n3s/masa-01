@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.4" tiledversion="1.4.2" orientation="staggered" renderorder="right-down" width="11" height="22" tilewidth="128" tileheight="64" infinite="0" staggeraxis="y" staggerindex="odd" nextlayerid="8" nextobjectid="14">
+ <tileset firstgid="1" source="landscapeTiles_sheet.tsx"/>
+ <imagelayer id="7" name="Image Layer 1" offsetx="64" offsety="0">
+  <image source="images/water.jpg" width="1280" height="720"/>
+  <properties>
+   <property name="z" type="int" value="-1"/>
+  </properties>
+ </imagelayer>
+ <layer id="4" name="Tile Layer 4" width="11" height="22">
+  <properties>
+   <property name="z" type="int" value="0"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJxjYBicIIsEtS5AXE+kmYlQ9YRADRA3AHEhAfXBQJwEVeNCQG0dVH0hAfUgd2ZC5bQIqIX5HWSmIRDL4FCP7HcQdgZiIzzmNiC50wqItYG4AI8bQDgWSsvjUIeuPg6Iy4BYmoBaKzzuRAcGJKglVh2y+sEKAFOlFgI=
+  </data>
+ </layer>
+ <objectgroup id="5" name="Triggers">
+  <object id="10" name="WIN" x="924.404" y="278.727">
+   <properties>
+    <property name="match_components" value="cast_away.components.player.Player"/>
+    <property name="radius" type="int" value="20"/>
+   </properties>
+   <point/>
+  </object>
+ </objectgroup>
+ <objectgroup id="6" name="OnLoad">
+  <object id="3" name="PLAYER_SPAWN" x="915.066" y="268.101">
+   <properties>
+    <property name="first" type="bool" value="true"/>
+    <property name="last_level" value="movement"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="1" name="ARENA_BOUNDARY" x="90.6667" y="665.333" visible="0">
+   <polygon points="524.212,-255.713 615.245,-311.825 583.838,-351.766 628.604,-390.14 681.405,-393.978 828.66,-323.018 806.856,-275.35 749.982,-248.244 664.631,-288.381 605.126,-255.443 635.579,-220.279 476.145,-125.478 614.467,-61.2393 874.08,-187.165 809.184,-230.469 846.485,-253.737 929.468,-218.319 1177.59,-349.169 672.274,-602.576 104.379,-312.236 428.126,-152.472 559.528,-229.004"/>
+  </object>
+  <object id="13" name="TRASH_CAN" x="1125.14" y="329.87">
+   <properties>
+    <property name="item_name" value="heartemitter"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="12" name="TRASH_CAN" x="515.262" y="461.563">
+   <properties>
+    <property name="item_name" value="lazorgun"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="11" name="TRASH_CAN" x="709.604" y="551.062">
+   <properties>
+    <property name="item_name" value="saw"/>
+   </properties>
+   <point/>
+  </object>
+ </objectgroup>
+</map>
